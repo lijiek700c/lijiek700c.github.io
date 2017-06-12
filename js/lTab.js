@@ -1,5 +1,6 @@
 define(function(){
 	var tab=function(obj1,obj2,fn){
+		localStorage.setItem('index',0);
 		var aBtn=obj1.children('.weui-navbar__item');
 		var aCon=obj2.children('.weui-tab__panel');
 		var timer=null,bool=false;

@@ -90,9 +90,12 @@ define(function(){
 					event.preventDefault();
 					return;
 				}
-
+				var index;
 				if(Math.abs(percentage)>startRefreshDis&&joinRefreshFlag){
-					var index=0||localStorage.getItem('index');
+					if(localStorage.getItem('firstOpen')){
+						index=0;
+					}
+					var index=localStorage.getItem('index');
 					pullArrow.hide();
 					pullText.text('正在刷新...');
 
