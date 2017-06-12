@@ -2,152 +2,67 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>test</title>
-<script>
-	function addReady(fn){
-		if(document.addEventListener){
-			document.addEventListener('DOMContentLoaded',fn,false);
-		}else{
-			document.attachEvent('onreadystatechange',function(){
-				if(document.readyState==='complete'){
-					fn();
-				}
-			});
-		}
-	}
-	function getByClass(oParent,sClass){
-		if(oParent.getElementsByClassName){
-			return oParent.getElementsByClassName(sClass);
-		}else{
-			var aResult=[];
-			var aAll=oParent.getElementsByTagName('*');
-			var re=new RegExp('\\b'+sClass+'\\b');
-			for(var i=0,len=aAll.length;i<len;i++){
-				if(aAll[i].className.search(re)>=0){
-					aResult.push(aAll[i]);
-				}
-			}
-		}
-		return aResult;
-	}
-	function getStyle(obj,name){
-		return obj.currentStyle?obj.currentStyle[name]:getComputedStyle(obj,false)[name];
-	}
-	function move(obj,json,options){
-		options=options||{};
-		options.time=options.time||700;
-		options.easing=options.easing||'ease-in';
-		var start={},dis={},n=0,count,cur;
-		for(var name in json){
-			start[name]=parseFloat(getStyle(obj,name));
-			dis[name]=json[name]-start[name];
-		}
-		count=Math.round(options.time/30);
-		clearInterval(obj.timer);
-		obj.timer=setInterval(function(){
-			n++;
-			for(var name in json){
-				switch(options.easing){
-					case 'linear':
-						cur=start[name]+dis[name]*n/count;
-						break;
-					case 'ease-out':
-						var a=1-n/count;
-						cur=start[name]+dis[name]*(1-Math.pow(a,3));
-						break;
-					default:
-						var a=n/count;
-						cur=start[name]+dis[name]*Math.pow(a,3);
-						break;
-				}
-				if(name==='opacity'){
-					obj.style[name]=cur;
-					obj.style.filter='alpha(opacity='+cur*100+')';
-				}else{
-					obj.style[name]=cur+'px';
-				}
-				if(n>=count){
-					clearInterval(obj.timer);
-					options.complete&&options.complete();
-				}
-			}
-		},16);
-	}
-	function dragFall(obj,fn){
-		var docEle=document.documentElement;
-		var iSpeedX,iSpeedY,oldX,oldY;
-		obj.onmousedown=function(ev){
-			clearInterval(obj.timer);
-			var oEvent=ev||window.event;
-			var disX=oEvent.clientX-obj.offsetLeft;
-			var disY=oEvent.clientY-obj.offsetTop;
-			document.onmousemove=function(ev){
-				var oEvent=ev||window.event;
-				var ls=oEvent.clientX-disX;
-				var ts=oEvent.clientY-disY;
-				obj.style.left=ls+'px';
-				obj.style.top=ts+'px';
-				iSpeedX=oEvent.clientX-oldX;
-				iSpeedY=oEvent.clientY-oldY;
-				oldX=oEvent.clientX;
-				oldY=oEvent.clientY;
-			};
-			document.onmouseup=function(){
-				document.onmousemove=null;
-				document.onmouseup=null;
-				fall(fn);
-			};
-		};
-		function fall(fn){
-			clearInterval(obj.timer);
-			obj.timer=setInterval(function(){
-				iSpeedY+=1.5;
-				var l=obj.offsetLeft+iSpeedX;
-				var t=obj.offsetTop+iSpeedY;
-				if(t<0){
-					t=0;
-					iSpeedY*=-0.8;
-					iSpeedX*=0.8;
-				}
-				if(l<0){
-					l=0;
-					iSpeedX*=-0.8;
-					iSpeedY*=0.8;
-				}
-				if(t>=docEle.clientHeight-obj.offsetHeight){
-					t=docEle.clientHeight-obj.offsetHeight;
-					iSpeedY*=-0.8;
-					iSpeedX*=0.8;
-				}
-				if(l>=docEle.clientWidth-obj.offsetWidth){
-					l=docEle.clientWidth-obj.offsetWidth;
-					iSpeedX*=-0.8;
-					iSpeedY*=0.8;
-				}
-				if(Math.abs(iSpeedY)<=1)iSpeedY=0;
-				if(Math.abs(iSpeedX)<=1)iSpeedX=0;
-				obj.style.left=l+'px';
-				obj.style.top=t+'px';
-				if(iSpeedY==0&&iSpeedX==0&&t>=docEle.clientHeight-obj.offsetHeight){
-					clearInterval(obj.timer);
-					fn&&fn();
-				}
-			},16);
-		}	
-	}
-	addReady(function(){
-		var oTest=getByClass(document,'test')[0];
-		move(oTest,{left:500,top:500});
-		dragFall(oTest,function(){
-			move(oTest,{left:0,top:0},{easing:'ease-out'});
-		});
-	});
-</script>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>index</title>
+	<link rel="stylesheet" href="css/weui.css">
+<script data-main='js/main' src="js/require.js"></script>
 <style>
-	.test {position:absolute;top:0;left:0;width:100px;height:100px;background:red;border-radius:50%;}
+
 </style>
 </head>
 <body>
-	<div class="test"></div>
+	<div class="weui-mask" id="weuiMask" style="display:none;"></div>
+	<!--数据加载中-->
+	<div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p class="weui-toast__content">数据加载中</p>
+        </div>
+    </div>
+	<!--已完成-->
+	<div id="toast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+            <p class="weui-toast__content">已完成</p>
+        </div>
+    </div>
+	<!--暂无数据-->
+	<div id="toastError" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-icon-info-circle weui-icon_toast"></i>
+            <p class="weui-toast__content">暂无数据</p>
+        </div>
+    </div>
+    <!--选项-->
+    <div class="weui-tab" style="overflow:hidden;">
+    	<!--导航-->
+        <div class="weui-navbar">
+            <div class="weui-navbar__item weui-bar__item_on">
+                前端好文章
+            </div>
+            <div class="weui-navbar__item">
+                Css && Js
+            </div>
+            <div class="weui-navbar__item">
+                综合扩展
+            </div>
+        </div>
+        <!--内容区-->
+        <div class="content">
+        	<div class="weui-tab__panel" style="display:block;">
+					
+        	</div>
+			<div class="weui-tab__panel">
+				
+	        </div>
+			<div class="weui-tab__panel">
+				
+	        </div>	
+        </div>
+		
+    </div>
 </body>
 </html>
