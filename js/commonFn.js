@@ -92,7 +92,7 @@ define(function(){
 				}
 
 				if(Math.abs(percentage)>startRefreshDis&&joinRefreshFlag){
-					var index=localStorage.getItem('index');
+					var index=0||localStorage.getItem('index');
 					pullArrow.hide();
 					pullText.text('正在刷新...');
 
