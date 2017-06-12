@@ -5,10 +5,8 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 	<title>index</title>
 	<link rel="stylesheet" href="css/weui.css">
+	<link rel="stylesheet" href="css/animation.css">
 <script data-main='js/main' src="js/require.js"></script>
-<style>
-
-</style>
 </head>
 <body>
 	<div class="weui-mask" id="weuiMask" style="display:none;"></div>
@@ -37,7 +35,7 @@
         </div>
     </div>
     <!--选项-->
-    <div class="weui-tab" style="overflow:hidden;">
+    <div class="weui-tab">
     	<!--导航-->
         <div class="weui-navbar">
             <div class="weui-navbar__item weui-bar__item_on">
@@ -52,13 +50,17 @@
         </div>
         <!--内容区-->
         <div class="content">
-        	<div class="weui-tab__panel" style="display:block;">
-					
+        	<div id="pullDown" class="weui-loadmore pullDown">
+	            	<i id="pullArrow"></i>
+	            	<span id="pullText">下拉刷新</span>
         	</div>
-			<div class="weui-tab__panel">
+        	<div class="weui-tab__panel animated swing" style="display:block;">
+																
+        	</div>
+			<div class="weui-tab__panel animated">
 				
 	        </div>
-			<div class="weui-tab__panel">
+			<div class="weui-tab__panel animated">
 				
 	        </div>	
         </div>
