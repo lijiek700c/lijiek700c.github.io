@@ -143,7 +143,7 @@ define(function(){
 				
 			});
 	};
-	function pulladdData(obj,arr){
+	function pulladdData(obj,arr,bool){
 		for(var i=0,len=arr.length;i<len;i++){
 			var html='<a href="javascript:void(0);" class="weui-media-box '+
 						'weui-media-box_appmsg">'+
@@ -156,7 +156,7 @@ define(function(){
 	                    '</div>'+
                 	'</a>'+
                 	'<i class="weui-icon-cancel"></i>';
-            $('<div></div>').addClass('weui-panel__bd').html(html).prependTo(obj);    	
+            bool?$('<div></div>').addClass('weui-panel__bd').html(html).appendTo(obj):$('<div></div>').addClass('weui-panel__bd').html(html).prependTo(obj);    	
 		}
 	}
 	function deleteListItem(dialog,mask,listItem){
@@ -180,17 +180,39 @@ define(function(){
 			quitBtn=null;	
 		});
 	}
-	function dialogOperate(){
-		
-			//confirmBtn=dialogBox.find('.weui-dialog__btn_primary'),
-			//quitBtn=dialogBox.find('.weui-dialog__btn_default');
-
+	function scrollLoad(opt){
+		var win=$(window),
+			body=$('body'),
+			aCon=opt.tabPanel.children('.weui-tab__panel'),
+			preLoadDis=0.05,loadBool=false,upDown=true;timer=null;
+		win.scroll(function(){
+			var offsetHeight=$(this).innerHeight();
+			var scrollHeight=body.height();
+			var scrollTop=body.scrollTop();
+			if(parseInt(preLoadDis)!==preLoadDis){
+				preLoadDis=scrollHeight*preLoadDis;
+			}
+			if((offsetHeight+scrollTop)>=scrollHeight){
+				if(loadBool)return;
+				loadBool=true;
+				showMaskToast(opt.mask,opt.loadingToast);
+				var index=0||localStorage.getItem('index');
+				clearTimeout(timer);
+				timer=setTimeout(function(){
+					hideMaskToast(opt.mask,opt.loadingToast);
+					pulladdData(aCon.eq(index),opt.refreshData[index],upDown);
+					showToast(opt.toast);
+					loadBool=false;
+				},2000);
+			}
+		});
 	}
 	return {
 		showToast:showToast,
 		showMaskToast:showMaskToast,
 		hideMaskToast:hideMaskToast,
 		pullDownRefresh:pullDownRefresh,
+		scrollLoad:scrollLoad,
 		deleteListItem:deleteListItem
 	};
 });

@@ -41,6 +41,12 @@ require(['jquery','commonFn','lTab','loadData','refreshData'],function($,common,
 			toast:toast,
 			refreshData:refreshData
 		});
-			
+		common.scrollLoad({
+			tabPanel:tabPanel,
+			mask:mask,
+			loadingToast:loadingToast,
+			toast:toast,
+			refreshData:refreshData
+		});	
 	});
 });

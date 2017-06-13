@@ -20,11 +20,6 @@ define(function(){
 		//opt.common   opt.closeDialog   opt.mask
 		opt.tabPanel.on('click','.weui-icon-cancel',function(){
 			opt.common.deleteListItem(opt.closeDialog,opt.mask,$(this).parent());
-			/*opt.closeDialog.css('display','block').addClass('flash');*/
-			/*var closeParent=$(this).parent();
-			closeParent.slideUp(300,function(){
-				$(this).css('display','none');
-			});*/
 		});
 	};
 	return tab;
