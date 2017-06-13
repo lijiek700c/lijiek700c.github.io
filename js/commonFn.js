@@ -159,10 +159,38 @@ define(function(){
             $('<div></div>').addClass('weui-panel__bd').html(html).prependTo(obj);    	
 		}
 	}
+	function deleteListItem(dialog,mask,listItem){
+		var confirmBtn=dialog.find('.weui-dialog__btn_primary');
+		var quitBtn=dialog.find('.weui-dialog__btn_default');
+		showMaskToast(mask);
+		dialog.css('display','block').addClass('flash');
+		confirmBtn.on('click',function(){
+			listItem.slideUp(300,function(){
+				$(this).css('display','none');
+				dialog.css('display','none').removeClass('flash');
+				hideMaskToast(mask);
+				confirmBtn=null;
+				quitBtn=null;
+			});
+		});
+		quitBtn.on('click',function(){
+			dialog.css('display','none').removeClass('flash');
+			hideMaskToast(mask);
+			confirmBtn=null;
+			quitBtn=null;	
+		});
+	}
+	function dialogOperate(){
+		
+			//confirmBtn=dialogBox.find('.weui-dialog__btn_primary'),
+			//quitBtn=dialogBox.find('.weui-dialog__btn_default');
+
+	}
 	return {
 		showToast:showToast,
 		showMaskToast:showMaskToast,
 		hideMaskToast:hideMaskToast,
-		pullDownRefresh:pullDownRefresh
+		pullDownRefresh:pullDownRefresh,
+		deleteListItem:deleteListItem
 	};
 });

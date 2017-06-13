@@ -1,8 +1,8 @@
 define(function(){
-	var tab=function(obj1,obj2,fn){
+	var tab=function(opt){
 		localStorage.setItem('index',0);
-		var aBtn=obj1.children('.weui-navbar__item');
-		var aCon=obj2.children('.weui-tab__panel');
+		var aBtn=opt.navBar.children('.weui-navbar__item');
+		var aCon=opt.tabPanel.children('.weui-tab__panel');
 		var timer=null,bool=false;
 		aBtn.each(function(index,domEle){
 			$(domEle).click(function(){
@@ -17,11 +17,14 @@ define(function(){
 				},1000);
 			});	
 		});
-		obj2.on('click','.weui-icon-cancel',function(){
-			var closeParent=$(this).parent();
+		//opt.common   opt.closeDialog   opt.mask
+		opt.tabPanel.on('click','.weui-icon-cancel',function(){
+			opt.common.deleteListItem(opt.closeDialog,opt.mask,$(this).parent());
+			/*opt.closeDialog.css('display','block').addClass('flash');*/
+			/*var closeParent=$(this).parent();
 			closeParent.slideUp(300,function(){
 				$(this).css('display','none');
-			});
+			});*/
 		});
 	};
 	return tab;
