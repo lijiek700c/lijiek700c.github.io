@@ -57,6 +57,7 @@ define(function(){
 				if(percentage<0){
 					event.preventDefault();
 					if(!changeOneTimeDom){
+						//opt.before&&opt.before();
 						changeOneTimeDom=1;
 					}
 
@@ -95,7 +96,7 @@ define(function(){
 					if(localStorage.getItem('firstOpen')){
 						index=0;
 					}
-					var index=localStorage.getItem('index');
+					index=localStorage.getItem('index');
 					pullArrow.hide();
 					pullText.text('正在刷新...');
 
@@ -163,18 +164,21 @@ define(function(){
 		var confirmBtn=dialog.find('.weui-dialog__btn_primary');
 		var quitBtn=dialog.find('.weui-dialog__btn_default');
 		showMaskToast(mask);
-		dialog.css('display','block').addClass('flash');
+		dialog.css('display','block').addClass('fadeIn');
+		var bodyScrollTop=$('body').scrollTop();
 		confirmBtn.on('click',function(){
+			var listItemHeight=listItem.height();
+			$('body').scrollTop(bodyScrollTop-listItemHeight);
 			listItem.slideUp(300,function(){
-				$(this).css('display','none');
-				dialog.css('display','none').removeClass('flash');
+				$(this).css('display','none').remove();
+				dialog.css('display','none').removeClass('fadeIn');
 				hideMaskToast(mask);
 				confirmBtn=null;
 				quitBtn=null;
 			});
 		});
 		quitBtn.on('click',function(){
-			dialog.css('display','none').removeClass('flash');
+			dialog.css('display','none').removeClass('fadeIn');
 			hideMaskToast(mask);
 			confirmBtn=null;
 			quitBtn=null;	
@@ -182,10 +186,11 @@ define(function(){
 	}
 	function scrollLoad(opt){
 		var win=$(window),
+			opt=opt||{},
 			body=$('body'),
 			aCon=opt.tabPanel.children('.weui-tab__panel'),
 			preLoadDis=0.05,loadBool=false,upDown=true;timer=null;
-		win.scroll(function(){
+		win.on('scroll',function(){
 			var offsetHeight=$(this).innerHeight();
 			var scrollHeight=body.height();
 			var scrollTop=body.scrollTop();
@@ -207,12 +212,13 @@ define(function(){
 			}
 		});
 	}
+	
 	return {
 		showToast:showToast,
 		showMaskToast:showMaskToast,
 		hideMaskToast:hideMaskToast,
 		pullDownRefresh:pullDownRefresh,
 		scrollLoad:scrollLoad,
-		deleteListItem:deleteListItem
+		deleteListItem:deleteListItem,
 	};
 });

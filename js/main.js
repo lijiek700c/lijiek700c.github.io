@@ -6,6 +6,7 @@ require.config({
 		'loadData':['loadData'],
 		'refreshData':['refreshData']
 	}
+	//罗俊杰   17317190739
 });
 var arr=[
 		[{imgSrc:'images/test.png',title:'标题1a1',conIntro:'至少证明我们还活着'},{imgSrc:'images/test.png',title:'标题1a1',conIntro:'至少证明我们还活着'},{imgSrc:'images/test.png',title:'标题1a1',conIntro:'至少证明我们还活着'},{imgSrc:'images/test.png',title:'标题1a1',conIntro:'至少证明我们还活着'},{imgSrc:'images/test.png',title:'标题1a1',conIntro:'至少证明我们还活着'},{imgSrc:'images/test.png',title:'标题1a1',conIntro:'至少证明我们还活着'},{imgSrc:'images/test.png',title:'标题1a1',conIntro:'至少证明我们还活着'},{imgSrc:'images/test.png',title:'标题1a1',conIntro:'至少证明我们还活着'},{imgSrc:'images/test.png',title:'标题1a1',conIntro:'至少证明我们还活着'},{imgSrc:'images/test.png',title:'标题1a1',conIntro:'至少证明我们还活着'}],
@@ -47,6 +48,7 @@ require(['jquery','commonFn','lTab','loadData','refreshData'],function($,common,
 			loadingToast:loadingToast,
 			toast:toast,
 			refreshData:refreshData
-		});	
+		});
+		
 	});
 });

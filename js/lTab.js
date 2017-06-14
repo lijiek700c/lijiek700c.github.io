@@ -4,12 +4,14 @@ define(function(){
 		var aBtn=opt.navBar.children('.weui-navbar__item');
 		var aCon=opt.tabPanel.children('.weui-tab__panel');
 		var timer=null,bool=false;
+		var re=/weui-bar__item_on/g;
 		aBtn.each(function(index,domEle){
 			$(domEle).click(function(){
+				if($(this).attr('class').search(re)!=-1)return;
 				if(bool)return;
 				bool=true;
 				$(this).addClass('weui-bar__item_on').siblings().removeClass('weui-bar__item_on');
-				aCon.eq(index).css('display','block').addClass('swing').siblings('.weui-tab__panel').css('display','none').removeClass('swing');
+				aCon.eq(index).css('display','block').addClass('bounceInLeft').siblings('.weui-tab__panel').css('display','none').removeClass('bounceInLeft');
 				localStorage.setItem('index',index);
 				clearTimeout(timer);
 				setTimeout(function(){
