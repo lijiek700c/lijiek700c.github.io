@@ -169,9 +169,11 @@ define(function(){
 		showMaskToast(mask);
 		dialog.css('display','block').addClass('fadeIn');
 		confirmBtn.on('click',function(){
+			var top=listItem.offset().top;
 			var clientHeight=document.documentElement.clientHeight;
 			var listItemHeight=listItem.height();
 			var scrollHeight=body.height();
+			console.log(top);
 			body.scrollTop(scrollHeight-clientHeight-listItemHeight-10);	
 			listItem.slideUp(300,function(){
 				$(this).css('display','none').remove();
