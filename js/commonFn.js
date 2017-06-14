@@ -1,10 +1,11 @@
 define(function(){
-	function showToast(ele){
+	function showToast(ele,fn){
 			var timer=null,obj=ele;
 			showMaskToast(obj);
 			clearTimeout(timer);
 			timer=setTimeout(function(){
-				hideMaskToast(obj);	
+				hideMaskToast(obj);
+				fn&&fn();
 			},800);	
 	}
 	function showMaskToast(){
@@ -160,19 +161,25 @@ define(function(){
             bool?$('<div></div>').addClass('weui-panel__bd').html(html).appendTo(obj):$('<div></div>').addClass('weui-panel__bd').html(html).prependTo(obj);    	
 		}
 	}
-	function deleteListItem(dialog,mask,listItem){
+	function deleteListItem(dialog,mask,toast,listItem){
 		var confirmBtn=dialog.find('.weui-dialog__btn_primary');
 		var quitBtn=dialog.find('.weui-dialog__btn_default');
+		var body=$('body');
+		toast.find('.weui-toast__content').text('已删除');
 		showMaskToast(mask);
 		dialog.css('display','block').addClass('fadeIn');
-		var bodyScrollTop=$('body').scrollTop();
 		confirmBtn.on('click',function(){
+			var clientHeight=document.documentElement.clientHeight;
 			var listItemHeight=listItem.height();
-			$('body').scrollTop(bodyScrollTop-listItemHeight);
+			var scrollHeight=body.height();
+			body.scrollTop(scrollHeight-clientHeight-listItemHeight-10);	
 			listItem.slideUp(300,function(){
 				$(this).css('display','none').remove();
 				dialog.css('display','none').removeClass('fadeIn');
 				hideMaskToast(mask);
+				showToast(toast,function(){
+					toast.find('.weui-toast__content').text('已完成');	
+				});
 				confirmBtn=null;
 				quitBtn=null;
 			});

@@ -33,6 +33,7 @@ require(['jquery','commonFn','lTab','loadData','refreshData'],function($,common,
 			tabPanel:tabPanel,
 			closeDialog:closeDialog,
 			mask:mask,
+			toast:toast,
 			common:common
 		});
 		common.pullDownRefresh({
@@ -49,6 +50,6 @@ require(['jquery','commonFn','lTab','loadData','refreshData'],function($,common,
 			toast:toast,
 			refreshData:refreshData
 		});
-		
+
 	});
 });
