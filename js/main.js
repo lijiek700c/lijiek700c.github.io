@@ -29,6 +29,7 @@ require(['jquery','commonFn','lTab','loadData','refreshData'],function($,common,
 			loadingToast:loadingToast,
 			toast:toast
 		});
+		common.loadClientImg(lazyLoadImgArr);
 		tab({
 			navBar:navBar,
 			tabPanel:tabPanel,
@@ -45,7 +46,6 @@ require(['jquery','commonFn','lTab','loadData','refreshData'],function($,common,
 			toast:toast,
 			refreshData:refreshData
 		});
-		common.loadClientImg(lazyLoadImgArr);
 		common.scrollLoad({
 			tabPanel:tabPanel,
 			mask:mask,
