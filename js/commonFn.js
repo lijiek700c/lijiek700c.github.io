@@ -233,14 +233,15 @@ define(function(){
 					loadBool=false;
 				},2000);
 			}
+			var index=localStorage.getItem('index')||0;
 			//console.log(opt.lazyLoadImgArr[0]);
-			if(opt.lazyLoadImgArr.length===0)return;
+			if(opt.lazyLoadImgArr[index].length===0)return;
 			//图片延迟加载
-			var img=opt.lazyLoadImgArr[count];
+			var img=opt.lazyLoadImgArr[index][count];
 			if((offsetHeight+scrollTop)>=img.offset().top){
 					var src=img.attr('data-src');
 					img.attr('src',src).removeAttr('data-src');
-					opt.lazyLoadImgArr.splice(count,1);
+					opt.lazyLoadImgArr[index].splice(count,1);
 			}
 		});
 	}
@@ -252,10 +253,12 @@ define(function(){
 		//0 1 2 3 4 5
 		aImgParent.each(function(index,ele){
 			var aImgInThis=$(ele).find('img');
+			var itemArr=[];
 			aImgInThis.each(function(index2,imgEle){
 				var img=$(imgEle);
-				index2<count?arr.push(img):lazyLoadImgArr.push(img);
-			});	 				
+				index2<count?arr.push(img):itemArr.push(img);
+			});	
+			lazyLoadImgArr.push(itemArr); 				
 		});
 		for(var i=0,len=arr.length;i<len;i++){
 			var src=arr[i].attr('data-src');
