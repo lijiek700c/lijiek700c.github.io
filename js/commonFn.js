@@ -174,7 +174,11 @@ define(function(){
 			var listItemHeight=listItem.height();
 			var scrollHeight=body.height();
 			console.log(top);
-			body.scrollTop(scrollHeight-clientHeight-listItemHeight-10);	
+			if(top>=clientHeight){
+				body.scrollTop(scrollHeight-clientHeight-listItemHeight-10);	
+			}else{
+				body.scrollTop(20);
+			}
 			listItem.slideUp(300,function(){
 				$(this).css('display','none').remove();
 				dialog.css('display','none').removeClass('fadeIn');
