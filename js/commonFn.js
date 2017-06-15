@@ -6,7 +6,7 @@ define(function(){
 			timer=setTimeout(function(){
 				hideMaskToast(obj);
 				fn&&fn();
-			},800);	
+			},500);	
 	}
 	function showMaskToast(){
 		allEleToggle(arguments,'block');		
@@ -169,7 +169,6 @@ define(function(){
 		if(control)return;
 		control=true;
 		toast.find('.weui-toast__content').text('已删除');
-		
 		showMaskToast(mask);
 		dialog.css('display','block').addClass('fadeIn');
 		confirmBtn.on('click',function(){
@@ -195,7 +194,6 @@ define(function(){
 						toast.find('.weui-toast__content').text('已完成');	
 					});	
 				},600);
-				
 				confirmBtn=null;
 				quitBtn=null;
 				control=false;
@@ -212,16 +210,17 @@ define(function(){
 		var win=$(window),
 			opt=opt||{},
 			body=$('body'),
-			aCon=opt.tabPanel.children('.weui-tab__panel'),
+			aCon=opt.tabPanel.children('.weui-tab__panel'),count=0,
 			preLoadDis=0.05,loadBool=false,upDown=true;timer=null;
-		win.on('scroll',function(){
-			var offsetHeight=$(this).innerHeight();
-			var scrollHeight=body.height();
-			var scrollTop=body.scrollTop();
+		win.on('scroll',function(event){
+			var offsetHeight=$(window).innerHeight();
+			var scrollHeight=$(document).height();
+			var scrollTop=$(window).scrollTop();
 			if(parseInt(preLoadDis)!==preLoadDis){
 				preLoadDis=scrollHeight*preLoadDis;
 			}
-			if((offsetHeight+scrollTop)>=scrollHeight){
+			//加载新的列表项
+			if((offsetHeight+scrollTop)>=scrollHeight){  
 				if(loadBool)return;
 				loadBool=true;
 				showMaskToast(opt.mask,opt.loadingToast);
@@ -234,7 +233,34 @@ define(function(){
 					loadBool=false;
 				},2000);
 			}
+			//console.log(opt.lazyLoadImgArr[0]);
+			if(opt.lazyLoadImgArr.length===0)return;
+			//图片延迟加载
+			var img=opt.lazyLoadImgArr[count];
+			if((offsetHeight+scrollTop)>=img.offset().top){
+					var src=img.attr('data-src');
+					img.attr('src',src).removeAttr('data-src');
+					opt.lazyLoadImgArr.splice(count,1);
+			}
 		});
+	}
+	function loadClientImg(lazyLoadImgArr){
+		var aImg=$('img:first'),arr=[],clientHeight=document.documentElement.clientHeight;
+		var eleHeight=aImg.parents('.weui-panel__bd').height();
+		var count=parseInt(clientHeight/eleHeight);
+		var aImgParent=$('.weui-tab__panel');
+		//0 1 2 3 4 5
+		aImgParent.each(function(index,ele){
+			var aImgInThis=$(ele).find('img');
+			aImgInThis.each(function(index2,imgEle){
+				var img=$(imgEle);
+				index2<count?arr.push(img):lazyLoadImgArr.push(img);
+			});	 				
+		});
+		for(var i=0,len=arr.length;i<len;i++){
+			var src=arr[i].attr('data-src');
+			arr[i].removeAttr('data-src').attr('src',src);
+		}
 	}
 	
 	return {
@@ -244,5 +270,6 @@ define(function(){
 		pullDownRefresh:pullDownRefresh,
 		scrollLoad:scrollLoad,
 		deleteListItem:deleteListItem,
+		loadClientImg:loadClientImg
 	};
 });

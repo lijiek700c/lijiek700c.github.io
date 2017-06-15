@@ -20,6 +20,7 @@ require(['jquery','commonFn','lTab','loadData','refreshData'],function($,common,
 			loadingToast=$('#loadingToast'),
 			toast=$('#toast'),
 			toastError=$('#toastError');
+		var lazyLoadImgArr=[];
 		loadData({
 			tabPanel:tabPanel,
 			arr:arr,
@@ -44,13 +45,14 @@ require(['jquery','commonFn','lTab','loadData','refreshData'],function($,common,
 			toast:toast,
 			refreshData:refreshData
 		});
+		common.loadClientImg(lazyLoadImgArr);
 		common.scrollLoad({
 			tabPanel:tabPanel,
 			mask:mask,
 			loadingToast:loadingToast,
 			toast:toast,
+			lazyLoadImgArr:lazyLoadImgArr,
 			refreshData:refreshData
 		});
-
 	});
 });

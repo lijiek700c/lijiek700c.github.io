@@ -15,7 +15,7 @@ define(function(){
 				var html='<a href="javascript:void(0);" class="weui-media-box '+
 						'weui-media-box_appmsg">'+
 	                    '<div class="weui-media-box__hd">'+
-	                        '<img class="weui-media-box__thumb" src="'+HtmlArr[j].imgSrc+'" alt="">'+
+	                        '<img class="weui-media-box__thumb" data-src="'+HtmlArr[j].imgSrc+'" alt="">'+
 	                    '</div>'+
 	                    '<div class="weui-media-box__bd">'+
 	                        '<h4 class="weui-media-box__title">'+HtmlArr[j].title+'</h4>'+
