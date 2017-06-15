@@ -34,6 +34,7 @@ require(['jquery','commonFn','lTab','loadData','refreshData'],function($,common,
 			closeDialog:closeDialog,
 			mask:mask,
 			toast:toast,
+			loadingToast:loadingToast,
 			common:common
 		});
 		common.pullDownRefresh({

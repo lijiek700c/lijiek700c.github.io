@@ -161,33 +161,44 @@ define(function(){
             bool?$('<div></div>').addClass('weui-panel__bd').html(html).appendTo(obj):$('<div></div>').addClass('weui-panel__bd').html(html).prependTo(obj);    	
 		}
 	}
-	function deleteListItem(dialog,mask,toast,listItem){
+	function deleteListItem(dialog,mask,toast,loadingToast,listItem){
 		var confirmBtn=dialog.find('.weui-dialog__btn_primary');
 		var quitBtn=dialog.find('.weui-dialog__btn_default');
 		var body=$('body');
+		var control=false,timer=null;
+		if(control)return;
+		control=true;
 		toast.find('.weui-toast__content').text('已删除');
+		
 		showMaskToast(mask);
 		dialog.css('display','block').addClass('fadeIn');
 		confirmBtn.on('click',function(){
+			loadingToast.find('.weui-toast__content').text('正在删除...');
 			var top=listItem.offset().top;
 			var clientHeight=document.documentElement.clientHeight;
 			var listItemHeight=listItem.height();
 			var scrollHeight=body.height();
-			console.log(top);
 			if(top>=clientHeight){
 				body.scrollTop(scrollHeight-clientHeight-listItemHeight-10);	
 			}else{
-				body.scrollTop(20);
+				body.scrollTop(0);
 			}
+			dialog.css('display','none').removeClass('fadeIn');
+			showMaskToast(loadingToast);
 			listItem.slideUp(300,function(){
 				$(this).css('display','none').remove();
-				dialog.css('display','none').removeClass('fadeIn');
-				hideMaskToast(mask);
-				showToast(toast,function(){
-					toast.find('.weui-toast__content').text('已完成');	
-				});
+				hideMaskToast(mask,loadingToast);
+				loadingToast.find('.weui-toast__content').text('数据加载中');
+				clearTimeout(timer);
+				timer=setTimeout(function(){
+					showToast(toast,function(){
+						toast.find('.weui-toast__content').text('已完成');	
+					});	
+				},600);
+				
 				confirmBtn=null;
 				quitBtn=null;
+				control=false;
 			});
 		});
 		quitBtn.on('click',function(){
