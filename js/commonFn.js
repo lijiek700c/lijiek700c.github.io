@@ -235,7 +235,10 @@ define(function(){
 			}
 			var index=localStorage.getItem('index')||0;
 			//console.log(opt.lazyLoadImgArr[0]);
-			if(opt.lazyLoadImgArr[index].length===0)return;
+			if(opt.lazyLoadImgArr[index].length===0){
+				//opt.lazyLoadImgArr=null;
+				return;
+			}
 			//图片延迟加载
 			var img=opt.lazyLoadImgArr[index][count];
 			if((offsetHeight+scrollTop)>=img.offset().top){
@@ -246,7 +249,8 @@ define(function(){
 		});
 	}
 	function loadClientImg(lazyLoadImgArr){
-		var aImg=$('img:first'),arr=[],clientHeight=document.documentElement.clientHeight;
+		var aImg=$('img:first'),arr=[],clientHeight=$(window).height();
+		console.log(clientHeight);
 		var eleHeight=aImg.parents('.weui-panel__bd').height();
 		var count=parseInt(clientHeight/eleHeight);
 		var aImgParent=$('.weui-tab__panel');
