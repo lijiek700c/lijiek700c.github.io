@@ -6,7 +6,14 @@
 	<title>index</title>
 	<link rel="stylesheet" href="css/weui.css">
 	<link rel="stylesheet" href="css/animation.css">
-<script data-main='js/main' src="js/require.js"></script>
+	<style>
+		@media screen and (min-width:750px) {
+			.weui-tab {width:750px;margin:0 auto;border:1px solid #ccc;background:#eee;overflow:hidden;}
+			body {background:pink;}
+			.weui-mask {width:750px;height:auto !important;left:50%;margin-left:-375px;}
+		}
+	</style>
+	<script data-main='js/main' src="js/require.js"></script>
 </head>
 <body class="animated fadeIn">
 	<div class="weui-mask" id="weuiMask" style="display:none;"></div>
