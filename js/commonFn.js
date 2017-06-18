@@ -236,7 +236,6 @@ define(function(){
 			var index=localStorage.getItem('index')||0;
 			//console.log(opt.lazyLoadImgArr[0]);
 			if(opt.lazyLoadImgArr[index].length===0){
-				//opt.lazyLoadImgArr=null;
 				return;
 			}
 			//图片延迟加载

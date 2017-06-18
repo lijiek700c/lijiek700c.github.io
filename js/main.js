@@ -4,7 +4,8 @@ require.config({
 		'commonFn':['commonFn'],
 		'lTab':['lTab'],
 		'loadData':['loadData'],
-		'refreshData':['refreshData']
+		'refreshData':['refreshData'],
+		'testIE':['testIE']
 	}
 	//罗俊杰   17317190739
 });
@@ -13,7 +14,7 @@ var arr=[
 		[{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'}],
 		[{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'}]
 	];
-require(['jquery','commonFn','lTab','loadData','refreshData'],function($,common,tab,loadData,refreshData){
+require(['jquery','testIE','commonFn','lTab','loadData','refreshData'],function($,testIE,common,tab,loadData,refreshData){
 	$(document).ready(function(){
 		var navBar=$('.weui-navbar'),tabPanel=$('.content'),closeDialog=$('.weui-dialog');
 		var mask=$('#weuiMask'),
@@ -21,6 +22,10 @@ require(['jquery','commonFn','lTab','loadData','refreshData'],function($,common,
 			toast=$('#toast'),
 			toastError=$('#toastError');
 		var lazyLoadImgArr=[];
+		testIE({
+			mask:mask,
+			closeDialog:closeDialog
+		});
 		loadData({
 			tabPanel:tabPanel,
 			arr:arr,
