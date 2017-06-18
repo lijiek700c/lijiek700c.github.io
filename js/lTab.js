@@ -21,7 +21,13 @@ define(function(){
 		});
 		//opt.common   opt.closeDialog   opt.mask
 		opt.tabPanel.on('click','.weui-icon-cancel',function(){
-			opt.common.deleteListItem(opt.closeDialog,opt.mask,opt.toast,opt.loadingToast,$(this).parent());
+			opt.common.deleteListItem({
+				closeDialog:opt.closeDialog,
+				mask:opt.mask,
+				toast:opt.toast,
+				loadingToast:opt.loadingToast,
+				listItem:$(this).parent()
+			});
 		});
 	};
 	return tab;

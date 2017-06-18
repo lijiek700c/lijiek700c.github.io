@@ -107,6 +107,8 @@ define(function(){
 
 					showMaskToast(opt.mask,opt.loadingToast);
 
+					$('html').addClass('noScroll');
+
 					refreshFlag=1;
 
 					var timer=null
@@ -118,6 +120,8 @@ define(function(){
 						pullText.text('下拉刷新');
 
 						hideMaskToast(opt.mask,opt.loadingToast);
+
+						$('html').removeClass('noScroll');
 
 						pulladdData(wrapper.children('.weui-tab__panel').eq(index),opt.refreshData[index]);
 						showToast(opt.toast);
@@ -161,39 +165,40 @@ define(function(){
             bool?$('<div></div>').addClass('weui-panel__bd').html(html).appendTo(obj):$('<div></div>').addClass('weui-panel__bd').html(html).prependTo(obj);    	
 		}
 	}
-	function deleteListItem(dialog,mask,toast,loadingToast,listItem){
-		var confirmBtn=dialog.find('.weui-dialog__btn_primary');
-		var quitBtn=dialog.find('.weui-dialog__btn_default');
+	function deleteListItem(opt){
+		//dialog,mask,toast,loadingToast,listItem
+		var confirmBtn=opt.closeDialog.find('.weui-dialog__btn_primary');
+		var quitBtn=opt.closeDialog.find('.weui-dialog__btn_default');
 		var body=$('body');
 		var control=false,timer=null;
 		if(control)return;
 		control=true;
-		toast.find('.weui-toast__content').text('已删除');
-		showMaskToast(mask);
-		dialog.css('display','block').addClass('fadeIn');
+		opt.toast.find('.weui-toast__content').text('已删除');
+		showMaskToast(opt.mask);
+		$('html').addClass('noScroll');
+		opt.closeDialog.css('display','block').addClass('fadeIn');
 		confirmBtn.on('click',function(){
-			body.css('overflow','hidden');
-			loadingToast.find('.weui-toast__content').text('正在删除...');
-			var top=listItem.offset().top;
-			var clientHeight=document.documentElement.clientHeight;
-			var listItemHeight=listItem.height();
+			opt.loadingToast.find('.weui-toast__content').text('正在删除...');
+			var top=opt.listItem.offset().top;
+			var clientHeight=$(window).height();
+			var listItemHeight=opt.listItem.height();
 			var scrollHeight=body.height();
 			if(top>=clientHeight){
 				body.scrollTop(scrollHeight-clientHeight-listItemHeight-10);	
 			}else{
 				body.scrollTop(0);
 			}
-			dialog.css('display','none').removeClass('fadeIn');
-			showMaskToast(loadingToast);
-			listItem.slideUp(300,function(){
+			opt.closeDialog.css('display','none').removeClass('fadeIn');
+			showMaskToast(opt.loadingToast);
+			opt.listItem.slideUp(300,function(){
 				$(this).css('display','none').remove();
-				hideMaskToast(mask,loadingToast);
-				loadingToast.find('.weui-toast__content').text('数据加载中');
+				hideMaskToast(opt.mask,opt.loadingToast);
+				$('html').removeClass('noScroll');
+				opt.loadingToast.find('.weui-toast__content').text('数据加载中');
 				clearTimeout(timer);
 				timer=setTimeout(function(){
-					showToast(toast,function(){
-						toast.find('.weui-toast__content').text('已完成');
-						body.css('overflow','auto');	
+					showToast(opt.toast,function(){
+						opt.toast.find('.weui-toast__content').text('已完成');
 					});	
 				},600);
 				confirmBtn=null;
@@ -202,8 +207,9 @@ define(function(){
 			});
 		});
 		quitBtn.on('click',function(){
-			dialog.css('display','none').removeClass('fadeIn');
-			hideMaskToast(mask);
+			opt.closeDialog.css('display','none').removeClass('fadeIn');
+			hideMaskToast(opt.mask);
+			$('html').removeClass('noScroll');
 			confirmBtn=null;
 			quitBtn=null;	
 		});
@@ -215,6 +221,8 @@ define(function(){
 			aCon=opt.tabPanel.children('.weui-tab__panel'),count=0,
 			preLoadDis=0.05,loadBool=false,upDown=true;timer1=timer=null;
 		win.on('scroll',function(){
+			//alert(body.scrollTop());
+			if(body.scrollTop()==0)return;
 			var offsetHeight=$(window).innerHeight();
 			var scrollHeight=$(document).height();
 			var scrollTop=$(window).scrollTop();
@@ -226,14 +234,14 @@ define(function(){
 				if(loadBool)return;
 				loadBool=true;
 				showMaskToast(opt.mask,opt.loadingToast);
-				body.css('overflow','hidden');
+				$('html').addClass('noScroll');
 				var index=0||localStorage.getItem('index');
 				clearTimeout(timer);
 				timer=setTimeout(function(){
 					hideMaskToast(opt.mask,opt.loadingToast);
+					$('html').removeClass('noScroll');
 					pulladdData(aCon.eq(index),opt.refreshData[index],upDown);
 					showToast(opt.toast);
-					body.css('overflow','auto');
 					clearTimeout(timer1);
 					timer1=setTimeout(function(){
 						loadBool=false;	
@@ -243,12 +251,9 @@ define(function(){
 			//返回顶部
 			if(scrollTop>100){
 				opt.userActions.show().addClass('swing');
-
-					
 			}else{
 				opt.userActions.hide(200).removeClass('swing');	
 			}
-
 			//----
 			var index=localStorage.getItem('index')||0;
 			//console.log(opt.lazyLoadImgArr[0]);
@@ -295,6 +300,7 @@ define(function(){
 		showSearchBtn.on('click',function(){
 			opt.mask.show();
 			opt.searchBox.show(200);
+			//$('html').addClass('noScroll');
 		});
 	}
 	function searchArticle(opt){
@@ -313,11 +319,15 @@ define(function(){
 			$(this).hide();	
 		});
 		startSearchBtn.on('click',function(){
+			//$('html').addClass('noScroll');
 			if(userInput.val()==='')return;
+			var index=localStorage.getItem('index');
+			opt.tabPanel.children('.weui-tab__panel').eq(index).hide();
 			console.log(userInput.val());
 			opt.searchBox.fadeOut(200);
 			showMaskToast(opt.loadingToast);
-			body.css('overflow','hidden');
+			
+			
 		});
 		closeSearchBtn.on('click',function(){
 			opt.mask.hide();
@@ -325,6 +335,10 @@ define(function(){
 				$(this).hide();	
 			});
 		});
+	}
+	//显示弹窗后，阻止window窗口滚动
+	function smartScroll(){
+
 	}
 	return {
 		showToast:showToast,

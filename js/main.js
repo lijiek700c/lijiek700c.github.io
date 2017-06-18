@@ -70,6 +70,7 @@ require(['jquery','testIE','commonFn','lTab','loadData','refreshData'],function(
 			searchBox:searchBox
 		});
 		common.searchArticle({
+			tabPanel:tabPanel,
 			searchBox:searchBox,
 			mask:mask,
 			loadingToast:loadingToast,
