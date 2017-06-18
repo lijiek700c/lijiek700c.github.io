@@ -27,15 +27,15 @@
             color:pink;
         }
         .searchBar {
-            position:fixed;left:50%;top:180px;z-index:100000;padding:8px 10px;
-            width:40%;max-width:300px;height:auto;text-align:center;background:#EFEFF4;border-radius:3px;
+            position:fixed;left:50%;top:100px;z-index:100000;padding:8px 10px;
+            min-width:220px;max-width:300px;height:auto;text-align:center;background:#EFEFF4;border-radius:3px;
             display:none;
         }
         .searchBar > .search-title-box {
             padding:0 0 15px 0;
         }
         .searchBar .weui-search-bar__box {padding-right:0;}
-        
+        .weui-search-bar__input:focus + .weui-icon-clear {display:block;}
         .center1 {
             -webkit-transform:translate(-50%);
             -moz-transform:translate(-50%);
