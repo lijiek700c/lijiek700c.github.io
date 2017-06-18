@@ -21,6 +21,8 @@ define(function(){
 					window.close(true);
 				});
 			});
+		}else{
+			$('.weui-tab').show();
 		}
 	}
 	return testIE;

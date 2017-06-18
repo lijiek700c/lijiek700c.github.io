@@ -16,11 +16,14 @@ var arr=[
 	];
 require(['jquery','testIE','commonFn','lTab','loadData','refreshData'],function($,testIE,common,tab,loadData,refreshData){
 	$(document).ready(function(){
+		var body=$('body');
 		var navBar=$('.weui-navbar'),tabPanel=$('.content'),closeDialog=$('.weui-dialog');
+		var searchBox=$('#searchBar');
 		var mask=$('#weuiMask'),
 			loadingToast=$('#loadingToast'),
 			toast=$('#toast'),
-			toastError=$('#toastError');
+			toastError=$('#toastError'),
+			userActions=$('.userActions');
 		var lazyLoadImgArr=[];
 		testIE({
 			mask:mask,
@@ -56,8 +59,21 @@ require(['jquery','testIE','commonFn','lTab','loadData','refreshData'],function(
 			mask:mask,
 			loadingToast:loadingToast,
 			toast:toast,
+			userActions:userActions,
 			lazyLoadImgArr:lazyLoadImgArr,
 			refreshData:refreshData
+		});
+		common.returnTop({
+			userActions:userActions,
+			mask:mask,
+			body:body,
+			searchBox:searchBox
+		});
+		common.searchArticle({
+			searchBox:searchBox,
+			mask:mask,
+			loadingToast:loadingToast,
+			toast:toast,	
 		});
 	});
 });
