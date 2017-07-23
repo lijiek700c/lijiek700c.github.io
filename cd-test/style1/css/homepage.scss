@@ -40,14 +40,14 @@ $rem:75px;
 	box-lines:multiple;
 }
 @mixin flex() {
-	-webkit-flex:1 1 auto;
-	-moz-flex:1 1 auto;
-	flex:1 1 auto;
+	-webkit-flex:1 0 auto;
+	-moz-flex:1 0 auto;
+	flex:1 0 auto;
 }
 @mixin boxFlex() {
-	-webkit-box-flex:1;
-	-moz-box-flex:1;
-	box-flex:1;
+	-webkit-box-flex:1.0;
+	-moz-box-flex:1.0;
+	box-flex:1.0;
 }
 @function px2em($px,$cx){
 	@return $cx/$px+em;

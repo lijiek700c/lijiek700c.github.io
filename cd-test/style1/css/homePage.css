@@ -60,12 +60,12 @@ body {
   -webkit-align-items: flex-start;
   -moz-align-items: flex-start;
   align-items: flex-start;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1 1 auto;
-  -moz-flex: 1 1 auto;
-  flex: 1 1 auto;
+  -webkit-box-flex: 1.0;
+  -moz-box-flex: 1.0;
+  box-flex: 1.0;
+  -webkit-flex: 1 0 auto;
+  -moz-flex: 1 0 auto;
+  flex: 1 0 auto;
   text-align: center;
   font-size: 24px; }
 
@@ -159,12 +159,12 @@ body {
   -webkit-align-items: flex-start;
   -moz-align-items: flex-start;
   align-items: flex-start;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  box-flex: 1;
-  -webkit-flex: 1 1 auto;
-  -moz-flex: 1 1 auto;
-  flex: 1 1 auto;
+  -webkit-box-flex: 1.0;
+  -moz-box-flex: 1.0;
+  box-flex: 1.0;
+  -webkit-flex: 1 0 auto;
+  -moz-flex: 1 0 auto;
+  flex: 1 0 auto;
   font-size: 20px;
   padding-left: 0.72rem; }
 
