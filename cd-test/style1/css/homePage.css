@@ -25,49 +25,12 @@ body {
   width: 10rem;
   padding-top: 0.26667rem;
   margin-bottom: 0.26667rem;
-  /* display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: flex;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  box-direction: normal;
-  -webkit-box-align: start;
-  -moz-box-align: start;
-  box-align: start;
-  -webkit-box-lines: multiple;
-  -moz-box-lines: multiple;
-  box-lines: multiple;
-  -webkit-flex-flow: row wrap;
-  -moz-flex-flow: row wrap;
-  flex-flow: row wrap; */
   background: #fff; }
 
 .funSelArea > li {
   width: 2.5rem;
   height: 2.4rem;
-  /* width: 2.08rem;
-  height: 2.4rem; */
-  /* -webkit-box-pack: start;
-  -moz-box-pack: start;
-  box-pack: start;
-  -webkit-box-align: start;
-  -moz-box-align: start;
-  box-align: start;
-  -webkit-justify-content: flex-start;
-  -moz-justify-content: flex-start;
-  justify-content: flex-start;
-  -webkit-align-items: flex-start;
-  -moz-align-items: flex-start;
-  align-items: flex-start;
-  -webkit-box-flex: 1.0;
-  -moz-box-flex: 1.0;
-  box-flex: 1.0;
-  -webkit-flex: 1 0 auto;
-  -moz-flex: 1 0 auto;
-  flex: 1 0 auto; */
+  
   text-align: center;
   font-size: 24px; }
 
@@ -126,47 +89,11 @@ body {
 
 .linksBox {
   padding: 0.26667rem 0 0 0;
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: flex;
-  -webkit-box-direction: normal;
-  -moz-box-direction: normal;
-  box-direction: normal;
-  -webkit-box-align: start;
-  -moz-box-align: start;
-  box-align: start;
-  -webkit-box-lines: multiple;
-  -moz-box-lines: multiple;
-  box-lines: multiple;
-  -webkit-flex-flow: row wrap;
-  -moz-flex-flow: row wrap;
-  flex-flow: row wrap;
   border-bottom: 1px solid #b4b8c4; }
 
 .linksBox > li {
   width: 3.2rem;
   height: 1rem;
-  -webkit-box-pack: start;
-  -moz-box-pack: start;
-  box-pack: start;
-  -webkit-box-align: start;
-  -moz-box-align: start;
-  box-align: start;
-  -webkit-justify-content: flex-start;
-  -moz-justify-content: flex-start;
-  justify-content: flex-start;
-  -webkit-align-items: flex-start;
-  -moz-align-items: flex-start;
-  align-items: flex-start;
-  -webkit-box-flex: 1.0;
-  -moz-box-flex: 1.0;
-  box-flex: 1.0;
-  -webkit-flex: 1 0 auto;
-  -moz-flex: 1 0 auto;
-  flex: 1 0 auto;
   font-size: 20px;
   padding-left: 0.72rem; }
 
