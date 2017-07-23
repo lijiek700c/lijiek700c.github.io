@@ -30,7 +30,6 @@ body {
 .funSelArea > li {
   width: 2.5rem;
   height: 2.4rem;
-  
   text-align: center;
   font-size: 24px; }
 
@@ -42,11 +41,11 @@ body {
   background-size: 100% 100%; }
 
 .funSelArea .lh01 {
-  line-height: 0.45333rem; }
+  line-height: 0.55333rem; }
 
 .funSelArea .lh02 {
   font-size: 20px;
-  line-height: 0.26667rem; }
+  line-height: 0.36667rem; }
 
 .conBox {
   width: 10rem;
@@ -59,7 +58,7 @@ body {
   line-height: 1.17333rem;
   border-bottom: 1px solid #b4b8c4;
   color: #333;
-  font-size: 28px; }
+  font-size: 36px; }
 
 .conBox li > a {
   color: #666; }
