@@ -1,0 +1,205 @@
+body {
+  background: #ededf1; }
+
+.header {
+  width: 10rem;
+  height: 1.5733333333rem;
+  background: #4eb6f5;
+  color: #fff;
+  font-size: 48px;
+  text-align: center;
+  line-height: 1.5733333333rem; }
+
+.banner {
+  width: 10rem;
+  height: 3.2rem; }
+
+.banner > a {
+  display: block; }
+
+.banner > a, .banner > a > img {
+  width: 100%;
+  height: 100%; }
+
+.funSelArea {
+  width: 10rem;
+  padding-top: 0.2666666667rem;
+  margin-bottom: 0.2666666667rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  box-align: start;
+  -webkit-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  flex-flow: row wrap;
+  background: #fff; }
+
+.funSelArea > li {
+  width: 2.08rem;
+  height: 2.4rem;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  box-pack: start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  box-align: start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-align-items: flex-start;
+  -moz-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -moz-flex: 1 1 auto;
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 24px; }
+
+.funSelArea > li > a {
+  display: block;
+  width: 1.3066666667rem;
+  height: 1.3066666667rem;
+  margin: 0 auto;
+  background-size: 100% 100%; }
+
+.funSelArea .lh01 {
+  line-height: 0.4533333333rem; }
+
+.funSelArea .lh02 {
+  font-size: 20px;
+  line-height: 0.2666666667rem; }
+
+.conBox {
+  width: 10rem;
+  padding: 0 0.4rem;
+  margin-bottom: 0.2666666667rem;
+  background: #fff; }
+
+.conBox .title {
+  height: 1.1733333333rem;
+  line-height: 1.1733333333rem;
+  border-bottom: 1px solid #b4b8c4;
+  color: #333;
+  font-size: 28px; }
+
+.conBox li > a {
+  color: #666; }
+
+.conBox .title > .wordTrans {
+  font-size: 24px;
+  margin-left: 10px; }
+
+.listInfoOne > li, .listInfoTwo > li {
+  height: 1.3333333333rem;
+  line-height: 1.3333333333rem;
+  border-bottom: 1px solid #ededed; }
+
+.listInfoOne > li > i {
+  width: 0.64rem;
+  height: 0.5733333333rem;
+  margin-top: 0.4rem;
+  background: url("../images/downLoadIcon.png") no-repeat;
+  background-size: 100%; }
+
+.listInfoTwo > li {
+  height: 1.1733333333rem;
+  line-height: 1.1733333333rem; }
+
+.listInfoOne > li:last-child, .listInfoTwo > li:last-child {
+  border-bottom: none; }
+
+.linksBox {
+  padding: 0.2666666667rem 0 0 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  box-direction: normal;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  box-align: start;
+  -webkit-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  flex-flow: row wrap;
+  border-bottom: 1px solid #b4b8c4; }
+
+.linksBox > li {
+  width: 3.2rem;
+  height: 1rem;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  box-pack: start;
+  -webkit-box-align: start;
+  -moz-box-align: start;
+  box-align: start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-align-items: flex-start;
+  -moz-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -moz-flex: 1 1 auto;
+  flex: 1 1 auto;
+  font-size: 20px;
+  padding-left: 0.72rem; }
+
+.linksBox a {
+  display: block;
+  line-height: 0.4533333333rem;
+  color: #808080; }
+
+.linksBox span {
+  line-height: 0.2666666667rem; }
+
+.weui-footer {
+  width: 10rem;
+  height: 1.6rem;
+  background: #ddedf8;
+  color: #999999;
+  font-size: 20px;
+  padding-top: 0.2666666667rem;
+  border-top: 1px solid #b4b8c4;
+  text-align: center; }
+
+.weui-footer__links {
+  font-size: 0; }
+
+.weui-footer__link {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 .62em;
+  position: relative;
+  font-size: 20px; }
+
+.weui-footer__text {
+  padding: 0 .34em; }
+
+.goTop {
+  position: fixed;
+  right: 0.4rem;
+  bottom: 2.6666666667rem;
+  width: 0.64rem;
+  height: 0.64rem;
+  background: url("../images/goTop.png") no-repeat;
+  background-size: 100% 100%; }
+
+/*# sourceMappingURL=homePage.css.map */

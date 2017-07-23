@@ -1,0 +1,26 @@
+/* 首页图标 */
+.icon-LM {
+	background:url('../images/iconLM.png') no-repeat;
+}
+.icon-DT {
+	background:url('../images/iconDT.png') no-repeat;
+}
+.icon-GW {
+	background:url('../images/iconGW.png') no-repeat;
+}
+.icon-CT {
+	background:url('../images/iconCT.png') no-repeat;
+}
+.icon-DL {
+	background:url('../images/iconDF.png') no-repeat;
+}
+.iconLaws {
+	background:url('../images/iconLaws.png') no-repeat;
+}
+.iconEvents {
+	background:url('../images/iconEvents.png') no-repeat;
+}
+.icon-OT {
+	background:url('../images/iconOthers.png') no-repeat;
+}
+

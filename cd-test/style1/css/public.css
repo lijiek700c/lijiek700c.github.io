@@ -1,0 +1,35 @@
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  line-height: 1.6;color:#666;
+  font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+a img {
+  border: 0;
+}
+img {
+	vertical-align:top;
+}
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+ul,li,ol {
+	list-style:none;
+}
+.fl {
+	float:left;
+}
+.fr {
+	float:right;
+}
+.clear:after {
+	content:'';display:block;clear:both;visibility:hidden;height:0;
+}
