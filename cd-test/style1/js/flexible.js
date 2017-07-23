@@ -44,9 +44,10 @@
             }else {
                 dpr = 1;
             }
-        }
-        if(isAndroid){
+        }else if(isAndroid){
             dpr = 2;
+        }else{
+            dpr=2;
         }
         scale = 1 / dpr;
     }
