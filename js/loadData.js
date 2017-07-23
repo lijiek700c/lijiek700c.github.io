@@ -12,7 +12,7 @@ define(function(){
 			var conBox=aCon.eq(i);
 			var HtmlArr=json.arr[i];
 			for(var j=0,len2=HtmlArr.length;j<len2;j++){
-				var html='<a href="javascript:void(0);" class="weui-media-box '+
+				var html='<a href="'+HtmlArr[j].href+'" class="weui-media-box '+
 						'weui-media-box_appmsg">'+
 	                    '<div class="weui-media-box__hd">'+
 	                        '<img class="weui-media-box__thumb" data-src="'+HtmlArr[j].imgSrc+'" alt="">'+
