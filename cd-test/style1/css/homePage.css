@@ -86,24 +86,6 @@ body {
 .listInfoOne > li:last-child, .listInfoTwo > li:last-child {
   border-bottom: none; }
 
-.linksBox {
-  padding: 0.26667rem 0 0 0;
-  border-bottom: 1px solid #b4b8c4; }
-
-.linksBox > li {
-  width: 3.2rem;
-  height: 1rem;
-  font-size: 20px;
-  padding-left: 0.72rem; }
-
-.linksBox a {
-  display: block;
-  line-height: 0.45333rem;
-  color: #808080; }
-
-.linksBox span {
-  line-height: 0.26667rem; }
-
 .weui-footer {
   width: 10rem;
   height: 1.6rem;

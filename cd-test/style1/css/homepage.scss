@@ -55,6 +55,9 @@ $rem:75px;
 @function px2rem($num){
 	@return $num/$rem+rem;	
 }
+@function lh($fs,$lh){
+	@return $lh/$fs;		
+}
 body {
 	background:#ededf1;
 }
