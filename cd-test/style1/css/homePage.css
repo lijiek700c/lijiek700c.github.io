@@ -25,7 +25,7 @@ body {
   width: 10rem;
   padding-top: 0.26667rem;
   margin-bottom: 0.26667rem;
-  display: -webkit-box;
+  /* display: -webkit-box;
   display: -moz-box;
   display: box;
   display: -webkit-flex;
@@ -42,13 +42,15 @@ body {
   box-lines: multiple;
   -webkit-flex-flow: row wrap;
   -moz-flex-flow: row wrap;
-  flex-flow: row wrap;
+  flex-flow: row wrap; */
   background: #fff; }
 
 .funSelArea > li {
-  width: 2.08rem;
+  width: 2.5rem;
   height: 2.4rem;
-  -webkit-box-pack: start;
+  /* width: 2.08rem;
+  height: 2.4rem; */
+  /* -webkit-box-pack: start;
   -moz-box-pack: start;
   box-pack: start;
   -webkit-box-align: start;
@@ -65,7 +67,7 @@ body {
   box-flex: 1.0;
   -webkit-flex: 1 0 auto;
   -moz-flex: 1 0 auto;
-  flex: 1 0 auto;
+  flex: 1 0 auto; */
   text-align: center;
   font-size: 24px; }
 
