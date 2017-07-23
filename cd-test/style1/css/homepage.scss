@@ -35,6 +35,9 @@ $rem:75px;
 	-webkit-box-align:start;
 	-moz-box-align:start;
 	box-align:start;
+	-webkit-box-lines:multiple;
+	-moz-box-lines:multiple;
+	box-lines:multiple;
 }
 @mixin flex() {
 	-webkit-flex:1 1 auto;

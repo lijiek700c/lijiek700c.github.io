@@ -3,12 +3,12 @@ body {
 
 .header {
   width: 10rem;
-  height: 1.5733333333rem;
+  height: 1.57333rem;
   background: #4eb6f5;
   color: #fff;
   font-size: 48px;
   text-align: center;
-  line-height: 1.5733333333rem; }
+  line-height: 1.57333rem; }
 
 .banner {
   width: 10rem;
@@ -23,8 +23,8 @@ body {
 
 .funSelArea {
   width: 10rem;
-  padding-top: 0.2666666667rem;
-  margin-bottom: 0.2666666667rem;
+  padding-top: 0.26667rem;
+  margin-bottom: 0.26667rem;
   display: -webkit-box;
   display: -moz-box;
   display: box;
@@ -37,6 +37,9 @@ body {
   -webkit-box-align: start;
   -moz-box-align: start;
   box-align: start;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  box-lines: multiple;
   -webkit-flex-flow: row wrap;
   -moz-flex-flow: row wrap;
   flex-flow: row wrap;
@@ -68,27 +71,27 @@ body {
 
 .funSelArea > li > a {
   display: block;
-  width: 1.3066666667rem;
-  height: 1.3066666667rem;
+  width: 1.30667rem;
+  height: 1.30667rem;
   margin: 0 auto;
   background-size: 100% 100%; }
 
 .funSelArea .lh01 {
-  line-height: 0.4533333333rem; }
+  line-height: 0.45333rem; }
 
 .funSelArea .lh02 {
   font-size: 20px;
-  line-height: 0.2666666667rem; }
+  line-height: 0.26667rem; }
 
 .conBox {
   width: 10rem;
   padding: 0 0.4rem;
-  margin-bottom: 0.2666666667rem;
+  margin-bottom: 0.26667rem;
   background: #fff; }
 
 .conBox .title {
-  height: 1.1733333333rem;
-  line-height: 1.1733333333rem;
+  height: 1.17333rem;
+  line-height: 1.17333rem;
   border-bottom: 1px solid #b4b8c4;
   color: #333;
   font-size: 28px; }
@@ -101,26 +104,26 @@ body {
   margin-left: 10px; }
 
 .listInfoOne > li, .listInfoTwo > li {
-  height: 1.3333333333rem;
-  line-height: 1.3333333333rem;
+  height: 1.33333rem;
+  line-height: 1.33333rem;
   border-bottom: 1px solid #ededed; }
 
 .listInfoOne > li > i {
   width: 0.64rem;
-  height: 0.5733333333rem;
+  height: 0.57333rem;
   margin-top: 0.4rem;
   background: url("../images/downLoadIcon.png") no-repeat;
   background-size: 100%; }
 
 .listInfoTwo > li {
-  height: 1.1733333333rem;
-  line-height: 1.1733333333rem; }
+  height: 1.17333rem;
+  line-height: 1.17333rem; }
 
 .listInfoOne > li:last-child, .listInfoTwo > li:last-child {
   border-bottom: none; }
 
 .linksBox {
-  padding: 0.2666666667rem 0 0 0;
+  padding: 0.26667rem 0 0 0;
   display: -webkit-box;
   display: -moz-box;
   display: box;
@@ -133,6 +136,9 @@ body {
   -webkit-box-align: start;
   -moz-box-align: start;
   box-align: start;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  box-lines: multiple;
   -webkit-flex-flow: row wrap;
   -moz-flex-flow: row wrap;
   flex-flow: row wrap;
@@ -164,11 +170,11 @@ body {
 
 .linksBox a {
   display: block;
-  line-height: 0.4533333333rem;
+  line-height: 0.45333rem;
   color: #808080; }
 
 .linksBox span {
-  line-height: 0.2666666667rem; }
+  line-height: 0.26667rem; }
 
 .weui-footer {
   width: 10rem;
@@ -176,7 +182,7 @@ body {
   background: #ddedf8;
   color: #999999;
   font-size: 20px;
-  padding-top: 0.2666666667rem;
+  padding-top: 0.26667rem;
   border-top: 1px solid #b4b8c4;
   text-align: center; }
 
@@ -196,7 +202,7 @@ body {
 .goTop {
   position: fixed;
   right: 0.4rem;
-  bottom: 2.6666666667rem;
+  bottom: 2.66667rem;
   width: 0.64rem;
   height: 0.64rem;
   background: url("../images/goTop.png") no-repeat;
