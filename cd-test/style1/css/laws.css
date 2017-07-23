@@ -28,7 +28,7 @@ body {
   text-align: center;
   font-size: 24px;
   color: #fff;
-  line-height: 1.66667; }
+  line-height: 0.53333rem; }
 
 .laws-newsConBox, .laws-newsConBox2 {
   width: 9.2rem;
@@ -41,7 +41,7 @@ body {
   height: 1.06667rem;
   font-size: 34px;
   color: #000;
-  line-height: 2.66667; }
+  line-height: 1.26667rem; }
 
 .laws-newsConBox > .newsTime {
   height: 0.74667rem;
