@@ -7,7 +7,6 @@
     var scale = 0;
     var tid;
     var flexible = lib.flexible || (lib.flexible = {});
-    alert('test');
     if (metaEl) {
         console.warn('将根据已有的meta标签来设置缩放比例');
         var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
@@ -35,6 +34,7 @@
         var isAndroid = win.navigator.appVersion.match(/android/gi);
         var isIPhone = win.navigator.appVersion.match(/iphone/gi);
         var devicePixelRatio = win.devicePixelRatio;
+        alert(win.navigator.appVersion);
         alert(devicePixelRatio);
         if (isIPhone) {
             // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
@@ -64,7 +64,6 @@
         }
         scale = 1 / dpr;
     }
-
     docEl.setAttribute('data-dpr', dpr);
     if (!metaEl) {
         metaEl = doc.createElement('meta');
