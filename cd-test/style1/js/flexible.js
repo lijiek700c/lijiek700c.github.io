@@ -31,6 +31,7 @@
     }
 
     if (!dpr && !scale) {
+        var vivo
         var isAndroid = win.navigator.appVersion.match(/android/gi);
         var isIPhone = win.navigator.appVersion.match(/iphone/gi);
         var devicePixelRatio = win.devicePixelRatio;
@@ -48,11 +49,11 @@
         }else if(isAndroid){
             if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {                
                 dpr = 3;
-            }/*else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)){
+            }else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)){
                 dpr = 2;
             }else {
                 dpr = 1;
-            }*/
+            }
         }else{
             if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {                
                 dpr = 3;
