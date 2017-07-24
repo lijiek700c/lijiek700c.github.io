@@ -1,8 +1,9 @@
+* {
+	margin:0;padding:0;
+}
 .body{
 	width: 100%;
 	background: #EEEDF2;
-	display: flex;
-	flex-direction: column;
 }
 .top{
 	width: 100%;
