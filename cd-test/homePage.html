@@ -6,42 +6,42 @@
 	<meta content="yes" name="apple-touch-fullscreen">
 	<meta content="telephone=no,email=no" name="format-detection">
 	<title>常德公安境外人员管理</title>
+	<script src="style1/js/flexible.js"></script>
 	<link rel="stylesheet" href="style1/css/public.css">
 	<link rel="stylesheet" href="style1/css/icon.css">
 	<link rel="stylesheet" href="style1/css/swiper.min.css">
 	<link rel="stylesheet" href="style1/css/homePage.css">
-	<script src="style1/js/flexible.js"></script>
 </head>
 <body>
-<div class="swiper-container swiper-container-horizontal">
-	<div class="swiper-wrapper">
-		<div class="swiper-slide">
-			<a href="#">
-				<img src="style1/images/1.png" alt="">
-			</a>		
+	<div class="swiper-container swiper-container-horizontal">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<a href="#">
+					<img src="style1/images/1.png" alt="">
+				</a>		
+			</div>
+			<div class="swiper-slide">
+				<a href="#">
+					<img src="style1/images/2.png" alt="">
+				</a>		
+			</div>
+			<div class="swiper-slide">
+				<a href="#">
+					<img src="style1/images/3.png" alt="">
+				</a>		
+			</div>
 		</div>
-		<div class="swiper-slide">
-			<a href="#">
-				<img src="style1/images/2.png" alt="">
-			</a>		
-		</div>
-		<div class="swiper-slide">
-			<a href="#">
-				<img src="style1/images/3.png" alt="">
-			</a>		
-		</div>
+	    <div class="swiper-pagination">
+			<span class="swiper-pagination-bullet"></span>
+			<span class="swiper-pagination-bullet"></span>
+			<span class="swiper-pagination-bullet"></span>
+	    </div>
 	</div>
-    <div class="swiper-pagination">
-		<span class="swiper-pagination-bullet"></span>
-		<span class="swiper-pagination-bullet"></span>
-		<span class="swiper-pagination-bullet"></span>
-    </div>
-</div>
 	<ul class="funSelArea clear">
 		<li class="fl">
-			<a href="#" class="icon-LM"></a>
-			<p class="lh01">在线留言</p>
-			<p class="lh02">Leave Message</p>	
+			<a href="#" class="icon-OT"></a>
+			<p class="lh01">住宿登记</p>
+			<p class="lh02">Registration</p>	
 		</li>
 		<li class="fl">
 			<a href="#" class="icon-DT"></a>
@@ -49,19 +49,14 @@
 			<p class="lh02">Online Map</p>	
 		</li>
 		<li class="fl">
-			<a href="#" class="icon-GW"></a>
-			<p class="lh01">关于我们</p>
-			<p class="lh02">About Us</p>	
+			<a href="#" class="icon-LM"></a>
+			<p class="lh01">在线留言</p>
+			<p class="lh02">Leave Message</p>	
 		</li>
 		<li class="fl">
 			<a href="#" class="icon-CT"></a>
 			<p class="lh01">联系我们</p>
 			<p class="lh02">Consultation</p>	
-		</li>
-		<li class="fl">
-			<a href="#" class="icon-DL"></a>
-			<p class="lh01">生活资讯</p>
-			<p class="lh02">Daily Life</p>	
 		</li>
 		<li class="fl">
 			<a href="#" class="iconLaws"></a>
@@ -74,9 +69,14 @@
 			<p class="lh02">Events</p>	
 		</li>
 		<li class="fl">
-			<a href="#" class="icon-OT"></a>
-			<p class="lh01">住宿登记</p>
-			<p class="lh02">Registration</p>	
+			<a href="#" class="icon-DL"></a>
+			<p class="lh01">生活资讯</p>
+			<p class="lh02">Daily Life</p>	
+		</li>
+		<li class="fl">
+			<a href="#" class="icon-GW"></a>
+			<p class="lh01">关于我们</p>
+			<p class="lh02">About Us</p>	
 		</li>	
 	</ul>
 	<div class="conBox">
@@ -97,35 +97,56 @@
 	</div>
 	<div class="conBox">
 		<p class="title">
-			<span>公告</span>
-			<span class="wordTrans">Notice</span> 
+			<span>最新通知</span>
+			<span class="wordTrans">Latest Notice</span> 
 		</p>
 		<ul class="listInfoTwo">
 			<li class="clear">
-				<a href="#" class="fl">台湾居民来往大陆通行证申请表.doc</a>
+				<a href="#" class="fl">在线即可提交来常境外人员临住信息</a>
+				<span class="fr dateTime">2017-07-12</span>
 			</li>
 			<li class="clear">
-				<a href="#" class="fl">台签证申请表.docx</a>
+				<a href="#" class="fl">常德公安境外人员管理推出便民新举措</a>
+				<span class="fr dateTime">2017-07-12</span>
 			</li>
 		</ul>
 	</div>
 	<div class="weui-footer">
-		<p class="weui-footer__links">
-			<span class="weui-footer__link">copyRight ©2017</span>	
-		</p>	
-		<p class="weui-footer__text">
-			Changsha Gongxin Chengfeng Information Technology co.,ltd
-		</p>	
+		<p>本服务由常德市公安局授权</p>
+		<p>长沙公信诚丰信息技术服务有限公司提供技术支持</p>
+		<p>服务热线：0731-88730000</p>
 	</div>	
 	<span class="goTop"></span>
 <script src="style1/js/jquery-3.2.1.min.js"></script>
 <script src="style1/js/swiper.min.js"></script>
 <script>
+console.log(lib.flexible.px2rem('30px'));
 var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
         loop:true,
         autoplay:2500,
         autoplayDisableOnInteraction:false
+});
+$(document).ready(function(){
+	var dpr=window.devicePixelRatio;
+	var docEle=$(document),goTopBtn=$('span.goTop');
+	var height=parseInt($('.swiper-container').first().height()/dpr);
+	var scrollHeight=parseInt($('body').innerHeight()/dpr);
+	var clientHeight=window.screen.height;
+	docEle.on('scroll',function(){
+		var scrollTop=$('body').scrollTop();
+		if(scrollTop>=height+50){
+			goTopBtn.show();
+		}else{
+			goTopBtn.hide();
+		}
+		if(scrollTop+clientHeight>=scrollHeight){
+			//alert('sdawawd');
+		}	
+	});
+	goTopBtn.on('click',function(){
+		$('body').animate({scrollTop:'0'},100);
+	});
 });
 </script>
 </body>
