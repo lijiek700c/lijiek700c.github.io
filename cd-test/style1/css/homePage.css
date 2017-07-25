@@ -131,4 +131,11 @@ body {
 .swiper-slide a > img {
   width:100%;height:100%;
 }
+.swiper-pagination-bullet {
+   width:20px;height:20px;opacity:1;border:1px solid #ddedf8;
+   background:none;
+}
+.swiper-pagination-bullet-active {
+  background:#ddedf8;
+}
 /*# sourceMappingURL=homePage.css.map */
