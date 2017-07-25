@@ -5,22 +5,38 @@
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="yes" name="apple-touch-fullscreen">
 	<meta content="telephone=no,email=no" name="format-detection">
-	<title>常德公安境外人员管理</title><!-- 
-	<link rel="stylesheet" href="style1/css/weiui.css"> -->
+	<title>常德公安境外人员管理</title>
 	<link rel="stylesheet" href="style1/css/public.css">
 	<link rel="stylesheet" href="style1/css/icon.css">
+	<link rel="stylesheet" href="style1/css/swiper.min.css">
 	<link rel="stylesheet" href="style1/css/homePage.css">
 	<script src="style1/js/flexible.js"></script>
 </head>
 <body>
-	<div class="header">
-		Foreigners Management
+<div class="swiper-container swiper-container-horizontal">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide">
+			<a href="#">
+				<img src="style1/images/1.png" alt="">
+			</a>		
+		</div>
+		<div class="swiper-slide">
+			<a href="#">
+				<img src="style1/images/2.png" alt="">
+			</a>		
+		</div>
+		<div class="swiper-slide">
+			<a href="#">
+				<img src="style1/images/3.png" alt="">
+			</a>		
+		</div>
 	</div>
-	<div class="banner">
-		<a href="#">
-			<img src="style1/images/testBanner.png" alt="">
-		</a>
-	</div>
+    <div class="swiper-pagination">
+		<span class="swiper-pagination-bullet"></span>
+		<span class="swiper-pagination-bullet"></span>
+		<span class="swiper-pagination-bullet"></span>
+    </div>
+</div>
 	<ul class="funSelArea clear">
 		<li class="fl">
 			<a href="#" class="icon-LM"></a>
@@ -102,5 +118,15 @@
 		</p>	
 	</div>	
 	<span class="goTop"></span>
+<script src="style1/js/jquery-3.2.1.min.js"></script>
+<script src="style1/js/swiper.min.js"></script>
+<script>
+var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        loop:true,
+        autoplay:2500,
+        autoplayDisableOnInteraction:false
+});
+</script>
 </body>
 </html>
