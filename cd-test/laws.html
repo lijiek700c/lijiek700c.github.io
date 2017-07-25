@@ -2,19 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="yes" name="apple-touch-fullscreen">
 	<meta content="telephone=no,email=no" name="format-detection">
 	<title>法律法规</title>
 	<link rel="stylesheet" href="style1/css/public.css">
 	<link rel="stylesheet" href="style1/css/icon.css">
-	<link rel="stylesheet" href="style1/css/laws.css">
-	<script src="style1/js/flexible.js"></script>
+	<link rel="stylesheet" href="style1/css/laws.css"><!-- 
+	<script src="style1/js/flexible.js"></script> -->
 </head>
 <body>
-	<div class="header">
-		Laws and Regulations
-	</div>
 	<div class="laws-ruleBox">
 		<div class="laws-sendTimeBox">
 			<div class="showTime">
@@ -34,7 +32,9 @@
 			<p class="newsTxt">
 				外国人请遵守法律法规外国人请遵守法律法规外国人请遵守法律法规外国人请遵守法律法规外国人请遵守法律法规外国人请遵守法律法规外国人请遵守法律法规外国人请遵守法律法规	
 			</p>
-			<a href="#" class="readAll">查看全文</a>
+			<p class="readAll">
+				<a href="#">查看全文</a>
+			</p>
 		</div>
 	</div>
 	<div class="laws-ruleBox">
@@ -52,11 +52,11 @@
 				</p>
 			</a>
 			<a href="#" class="law-newsList clear">
-				<div class="fl leftTxtBox">
+				<div class="leftTxtBox">
 					<p class="p1">外国人停留证件</p>
 					<p class="p2">About Stay Permit</p>	
 				</div>
-				<img src="style1/images/laws02.png" alt="" class="fr newsImg">	
+				<img src="style1/images/laws02.png" alt="" class="newsImg">	
 			</a>
 			<a href="#" class="law-newsList clear">
 				<div class="fl leftTxtBox">
@@ -71,45 +71,64 @@
 	<ul class="linksBox clear">
 		<li class="fl">
 			<a href="#">关于我们</a>
-			<span>About Us</span>
+			<p>About Us</p>
 		</li>
 		<li class="fl">
 			<a href="#">在线地图</a>
-			<span>Online Map</span>
+			<p>Online Map</p>
 		</li>
 		<li class="fl">
 			<a href="#">电话咨询</a>
-			<span>consultation</span>
+			<p>consultation</p>
 		</li>
 		<li class="fl">
 			<a href="#">在线留言</a>
-			<span>Leave Message</span>
+			<p>Leave Message</p>
 		</li>
 		<li class="fl">
 			<a href="#">法律宣传</a>
-			<span>Laws</span>
+			<p>Laws</p>
 		</li>
 		<li class="fl">
 			<a href="#">其它</a>
-			<span>Others</span>
+			<p>Others</p>
 		</li>
 		<li class="fl">
 			<a href="#">生活资讯</a>
-			<span>Daily Life</span>
+			<p>Daily Life</p>
 		</li>
 		<li class="fl">
 			<a href="#">涉外动态</a>
-			<span>Events</span>
+			<p>Events</p>
 		</li>	
 	</ul>
-	<div class="weui-footer">
-		<p class="weui-footer__links">
-			<span class="weui-footer__link">copyRight ©2017</span>	
-		</p>	
-		<p class="weui-footer__text">
-			Changsha Gongxin Chengfeng Information Technology co.,ltd
-		</p>	
-	</div>
+
+<div class="cd-footer">
+	<div class="cd-footTxt">
+		<p>本服务由常德市公安局授权</p>
+		<p>长沙公信诚丰信息技术服务有限公司提供技术支持</p>
+		<p>服务热线：0731-88730000</p>
+	</div>	
+</div>
 	<span class="goTop"></span>
+<script src="style1/js/jquery-3.2.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	var docEle=$(document),goTopBtn=$('span.goTop');
+	var scrollHeight=$('body').innerHeight();
+	var clientHeight=window.screen.height;
+	docEle.on('scroll',function(){
+		var scrollTop=$('body').scrollTop();
+		if(scrollTop+clientHeight>=scrollHeight){
+			goTopBtn.show();
+		}else{
+			goTopBtn.hide();
+		}	
+	});
+	goTopBtn.on('click',function(){
+		$('body').animate({scrollTop:'0'},100);
+	});
+});
+</script>
 </body>
 </html>
