@@ -10,7 +10,6 @@
 		}
         docEle.style.fontSize = rem + 'px';
         resObj.rem = win.rem = rem;
-        console.log(resObj.rem);
 	}
 	win.addEventListener('resize', function() {
         clearTimeout(tid);

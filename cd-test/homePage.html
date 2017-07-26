@@ -5,7 +5,6 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="yes" name="apple-touch-fullscreen">
-	<meta content="telephone=no,email=no" name="format-detection">
 	<title>常德公安境外人员管理</title>
 	<link rel="stylesheet" href="style1/css/public.css">
 	<link rel="stylesheet" href="style1/css/icon.css">
@@ -56,7 +55,7 @@
 			<p class="lh02">Leave Message</p>	
 		</li>
 		<li class="fl">
-			<a href="#" class="icon-CT"></a>
+			<a href="tel:0147-88469258" class="icon-CT"></a>
 			<p class="lh01">联系我们</p>
 			<p class="lh02">Consultation</p>	
 		</li>
@@ -133,20 +132,15 @@ var swiper = new Swiper('.swiper-container', {
         autoplayDisableOnInteraction:false
 });
 $(document).ready(function(){
-	var dpr=window.devicePixelRatio;
 	var docEle=$(document),goTopBtn=$('span.goTop');
-	var height=parseInt($('.swiper-container').first().height()/dpr);
-	var scrollHeight=parseInt($('body').innerHeight()/dpr);
+	var scrollHeight=$('body').innerHeight();
 	var clientHeight=window.screen.height;
 	docEle.on('scroll',function(){
 		var scrollTop=$('body').scrollTop();
-		if(scrollTop>=height+50){
+		if(scrollTop+clientHeight>=scrollHeight){
 			goTopBtn.show();
 		}else{
 			goTopBtn.hide();
-		}
-		if(scrollTop+clientHeight>=scrollHeight){
-			//alert('sdawawd');
 		}	
 	});
 	goTopBtn.on('click',function(){
