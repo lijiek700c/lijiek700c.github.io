@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 	<meta content="yes" name="apple-mobile-web-app-capable">
 	<meta content="yes" name="apple-touch-fullscreen">
 	<meta content="telephone=no,email=no" name="format-detection">
 	<title>常德公安境外人员管理</title>
-	<script src="style1/js/flexible.js"></script>
 	<link rel="stylesheet" href="style1/css/public.css">
 	<link rel="stylesheet" href="style1/css/icon.css">
 	<link rel="stylesheet" href="style1/css/swiper.min.css">
 	<link rel="stylesheet" href="style1/css/homePage.css">
+	<script src="style1/js/setRem.js"></script>
 </head>
 <body>
+<div class="widthControl">
 	<div class="swiper-container swiper-container-horizontal">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide">
@@ -49,7 +51,7 @@
 			<p class="lh02">Online Map</p>	
 		</li>
 		<li class="fl">
-			<a href="#" class="icon-LM"></a>
+			<a href="LeaveMessage.html" class="icon-LM"></a>
 			<p class="lh01">在线留言</p>
 			<p class="lh02">Leave Message</p>	
 		</li>
@@ -74,7 +76,7 @@
 			<p class="lh02">Daily Life</p>	
 		</li>
 		<li class="fl">
-			<a href="#" class="icon-GW"></a>
+			<a href="AboutUs.html" class="icon-GW"></a>
 			<p class="lh01">关于我们</p>
 			<p class="lh02">About Us</p>	
 		</li>	
@@ -100,27 +102,30 @@
 			<span>最新通知</span>
 			<span class="wordTrans">Latest Notice</span> 
 		</p>
-		<ul class="listInfoTwo">
-			<li class="clear">
-				<a href="#" class="fl">在线即可提交来常境外人员临住信息</a>
-				<span class="fr dateTime">2017-07-12</span>
-			</li>
-			<li class="clear">
-				<a href="#" class="fl">常德公安境外人员管理推出便民新举措</a>
-				<span class="fr dateTime">2017-07-12</span>
-			</li>
-		</ul>
+		<div class="listInfoTwo">
+				<a href="#" class="clear">
+				<p class="fl noticeTxt">在线即可提交来常境外人员临住信息在线即可提交来常境外人员临住信息</p>
+					<span class="fr dateTime">2017-07-12</span>
+				</a>
+				<a href="#" class="clear">
+				<p class="fl noticeTxt">在线即可提交来常境外人员临住信息</p>
+					<span class="fr dateTime">2017-07-12</span>
+				</a>
+				
+		</div>
 	</div>
-	<div class="weui-footer">
-		<p>本服务由常德市公安局授权</p>
-		<p>长沙公信诚丰信息技术服务有限公司提供技术支持</p>
-		<p>服务热线：0731-88730000</p>
-	</div>	
-	<span class="goTop"></span>
+	<div class="cd-footer">
+		<div class="cd-footTxt">
+			<p>本服务由常德市公安局授权</p>
+			<p>长沙公信诚丰信息技术服务有限公司提供技术支持</p>
+			<p>服务热线：0731-88730000</p>
+		</div>	
+	</div>
+</div>
+<span class="goTop"></span>
 <script src="style1/js/jquery-3.2.1.min.js"></script>
 <script src="style1/js/swiper.min.js"></script>
 <script>
-console.log(lib.flexible.px2rem('30px'));
 var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
         loop:true,

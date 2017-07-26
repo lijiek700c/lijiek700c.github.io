@@ -8,11 +8,11 @@
 	<meta content="telephone=no,email=no" name="format-detection">
 	<title>法律法规</title>
 	<link rel="stylesheet" href="style1/css/public.css">
-	<link rel="stylesheet" href="style1/css/icon.css">
-	<link rel="stylesheet" href="style1/css/laws.css"><!-- 
-	<script src="style1/js/flexible.js"></script> -->
+	<link rel="stylesheet" href="style1/css/laws.css">
+	<script src="style1/js/setRem.js"></script>
 </head>
 <body>
+<div class="widthControl">	
 	<div class="laws-ruleBox">
 		<div class="laws-sendTimeBox">
 			<div class="showTime">
@@ -32,9 +32,9 @@
 			<p class="newsTxt">
 				外国人请遵守法律法规外国人请遵守法律法规外国人请遵守法律法规外国人请遵守法律法规外国人请遵守法律法规外国人请遵守法律法规外国人请遵守法律法规外国人请遵守法律法规	
 			</p>
-			<p class="readAll">
-				<a href="#">查看全文</a>
-			</p>
+			<a href="#" class="readAll">
+				查看全文
+			</a>
 		</div>
 	</div>
 	<div class="laws-ruleBox">
@@ -67,14 +67,13 @@
 			</a>
 		</div>
 	</div>
-
 	<ul class="linksBox clear">
 		<li class="fl">
 			<a href="homePage.html">首页</a>
 			<p>About Us</p>
 		</li>
 		<li class="fl">
-			<a href="#">关于我们</a>
+			<a href="AboutUs.html">关于我们</a>
 			<p>About Us</p>
 		</li>
 		<li class="fl">
@@ -86,11 +85,11 @@
 			<p>consultation</p>
 		</li>
 		<li class="fl">
-			<a href="#">在线留言</a>
+			<a href="LeaveMessage.html">在线留言</a>
 			<p>Leave Message</p>
 		</li>
 		<li class="fl">
-			<a href="#">法律宣传</a>
+			<a href="laws.html">法律宣传</a>
 			<p>Laws</p>
 		</li>
 		<li class="fl">
@@ -102,19 +101,19 @@
 			<p>Daily Life</p>
 		</li>
 		<li class="fl">
-			<a href="#">涉外动态</a>
+			<a href="Events.html">涉外动态</a>
 			<p>Events</p>
 		</li>	
 	</ul>
-
-<div class="cd-footer">
+	<div class="cd-footer">
 	<div class="cd-footTxt">
 		<p>本服务由常德市公安局授权</p>
 		<p>长沙公信诚丰信息技术服务有限公司提供技术支持</p>
 		<p>服务热线：0731-88730000</p>
 	</div>	
+	</div>
 </div>
-	<span class="goTop"></span>
+<span class="goTop"></span>
 <script src="style1/js/jquery-3.2.1.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -133,6 +132,7 @@ $(document).ready(function(){
 		$('body').animate({scrollTop:'0'},100);
 	});
 });
+console.log(resObj.px2rem('167px'));
 </script>
 </body>
 </html>

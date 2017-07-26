@@ -49,7 +49,7 @@ body {
 .laws-newsConBox > .newsLink, .laws-newsConBox2 > .newsLink {
   display: block;
   width: 100%;
-  height:166px;
+  height:4.453333333333333rem;
   margin-bottom:16px; 
 }
 
@@ -71,10 +71,7 @@ body {
 }
 
 .laws-newsConBox > .readAll {
-  height:43px;
-}
-.laws-newsConBox > .readAll > a {
-  color: #000;font-size: 14px; line-height:42px; 
+  display:block;height:43px;color: #000;font-size: 14px; line-height:42px;
 }
 .laws-newsConBox2 {
   padding-top:12px;
@@ -128,52 +125,25 @@ body {
   font-size:14px; 
 }
 .law-newsList > .leftTxtBox > .p1 {
-  line-height: 1.61538; }
+  line-height: 1.61538; 
+}
 
 .law-newsList > .leftTxtBox > .p2 {
   font-size:12px;
   line-height: 1.5; 
+}
+.law-newsList > .leftTxtBox > .p1,.law-newsList > .leftTxtBox > .p2 {
+  word-wrap: break-word;
+  word-break: break-all;
 }
 .law-newsList > img.newsImg {
   width:50px;
   height:50px;
   margin-top:7px; 
 }
-.linksBox {
-  border-bottom: 1px solid #b4b8c4;
-  padding-bottom:10px;
-}
-.linksBox > li {
-  width:33.33333333%;
-  height:40px;
-  font-size:12px;
-  padding:6px 0 0 27px;
-}
-.linksBox a {
-  display: block;
-  line-height:16px;
-  color: #808080;
-}
-.linksBox p {
-  line-height:14px; 
-}
-.goTop {
-  display:none;
-  position: fixed;
-  right:15px;
-  bottom:147px;
-  width:24px;
-  height:24px;
-  background: url("../images/goTop.png") no-repeat;
-  background-size: 100% 100%; }
 
-
-.cd-footer {
-  display:table;width:100%;
+@media screen and (min-width:768px) {
+  .widthControl {
+    width:768px;margin:0 auto;
+  }
 }
-.cd-footTxt {
-  display:table-cell;height:115px;background:#ededf1;
-  text-align:center;vertical-align:middle;font-size:12px;
-  color:#999;
-}
-/*# sourceMappingURL=laws.css.map */
