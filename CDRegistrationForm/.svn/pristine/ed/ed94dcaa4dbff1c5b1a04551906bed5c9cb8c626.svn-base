@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1" />
+	<link rel="stylesheet" href="../css/registrationForm.css" type="text/css" />
+</head>
+<body>
+<div class="body">
+  <div class="item">
+
+        <div>
+        <label class="item_chinese">您的姓名</label>
+        <label class="item_english"> Your Name</label>
+        <label class="item_need">*</label>
+        <input class="item_input" type="input" >
+        </div>
+
+        <div style="margin-top: 12px;">
+        <label class="item_chinese">邮箱</label>
+        <label class="item_english"> Email</label>
+        <label class="item_need"></label>
+        <input class="item_input" type="input" >
+        </div>
+
+        <div style="margin-top:12px;">
+        <label class="item_chinese">联系电话</label>
+        <label class="item_english"> Tel</label>
+        <label class="item_need">*</label>
+        <input class="item_input" type="input" >
+        </div>
+
+        <div style="margin-top: 12px;">
+        <label class="item_chinese">内容</label>
+        <label class="item_english"> Content</label>
+        <label class="item_need">*</label>
+        <textarea class="item_big_input" type="input" ></textarea>
+        </div>
+
+        <label class="submit_but" id="submit">提交</label>
+  </div>
+</div>
+</body>
+</html>

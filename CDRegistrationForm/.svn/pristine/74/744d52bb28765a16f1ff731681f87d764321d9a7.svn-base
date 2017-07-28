@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="yes" name="apple-touch-fullscreen">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<title>关于我们</title>
+	<link rel="stylesheet" href="../css/public.css">
+	<link rel="stylesheet" href="../css/AboutUs.css">
+	<script src="../js/setRem.js"></script>
+</head>
+<body>
+<div class="widthControl">
+	<div class="au-title">常德市境外人员管理网络平台简介</div>
+	<div class="au-propaImgBox">
+		<div class="au-imgBox">
+			<img src="../img/aboutUs01.png" alt="">	
+		</div>	
+	</div>
+	<div class="au-txtBox">
+		<p class="au-cn">为了更好的服务来常外国友人，常德公安境外人员管理网络平台正式对外启用，外国友人可以通过平台了解我们的各种服务信息，通过平台进行业务咨询、信息登记、周边公共服务设施定位、生活信息交流等。
+期待您对我们平台建设提出好的建议。</p>
+<p class="au-en">In order to offer better service to the foreign people,Changde foreigner administration online platform is formally launched to the public.Foreign friends can get various service information through the platform,such as advisory service, location of the surrounding public service facilities,information registration,mutual communication,etc.
+Look forward to your good advice for our platform construction.</p>		
+	</div>
+	<ul class="linksBox clear">
+		<li class="fl">
+			<a href="homePage.html">首页</a>
+			<p>Home</p>
+		</li>
+		<li class="fl">
+			<a href="registrationForm.html">住宿登记</a>
+			<p>Registration</p>
+		</li>
+		<li class="fl">
+			<a href="#">在线地图</a>
+			<p>Online Map</p>
+		</li>
+		<li class="fl">
+			<a href="#">电话咨询</a>
+			<p>consultation</p>
+		</li>
+		<li class="fl">
+			<a href="LeaveMessage02.html">在线留言</a>
+			<p>Leave Message</p>
+		</li>
+		<li class="fl">
+			<a href="laws.html">法律宣传</a>
+			<p>Laws</p>
+		</li>
+		<li class="fl">
+			<a href="#">生活资讯</a>
+			<p>Daily Life</p>
+		</li>
+		<li class="fl">
+			<a href="Events.html">涉外动态</a>
+			<p>Events</p>
+		</li>
+		<li class="fl">
+			<a href="AboutUs.html">关于我们</a>
+			<p>About Us</p>
+		</li>	
+	</ul>
+<div class="cd-footer">
+	<div class="cd-footTxt">
+		<p>本服务由常德市公安局授权</p>
+		<p>长沙公信诚丰信息技术服务有限公司提供技术支持</p>
+		<p>服务热线：0731-88730000</p>
+	</div>	
+</div>
+</div>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/cd-operate.js"></script>
+</body>
+</html>

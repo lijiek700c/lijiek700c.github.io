@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="yes" name="apple-touch-fullscreen">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<title>在线留言</title>
+	<link rel="stylesheet" href="../css/public.css">
+	<link rel="stylesheet" href="../css/LeaveMessage.css">
+</head>
+<body>
+<div class="widthControl">
+	<!--输入留言信息-->
+	<div class="lm-userInfoBox">
+		<p class="lm-titie">
+			请发表您的留言：
+		</p>
+		<div class="lm-userInsertArea">
+			<div class="lm-userInsertBox">
+				<label for="" class="clear">
+					<span class="fl cn-word">您的姓名</span>
+					<span class="fl en-word">Your Name</span>
+					<span class="fl symbol">*</span>		
+				</label>
+				<input type="text">		
+			</div>
+			<div class="lm-userInsertBox">
+				<label for="" class="clear">
+					<span class="fl cn-word">邮箱</span>
+					<span class="fl en-word">E-mail Address</span>
+					<span class="fl symbol"></span>		
+				</label>
+				<input type="text">		
+			</div>
+			<div class="lm-userInsertBox">
+				<label for="" class="clear">
+					<span class="fl cn-word">电话</span>
+					<span class="fl en-word">Mobile Number</span>
+					<span class="fl symbol"></span>		
+				</label>
+				<input type="text">		
+			</div>
+			<div class="lm-userInsertBox">
+				<label for="" class="clear">
+					<span class="fl cn-word">内容</span>
+					<span class="fl en-word">Content</span>
+					<span class="fl symbol"></span>		
+				</label>
+				<textarea></textarea>		
+			</div>
+			<div class="lm-tableBox">
+				<div class="lm-btnBox">
+					<span class="lm-btn lm-submit">提交</span>
+					<span class="lm-btn">取消</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--回复留言-->
+	<div class="lm-replyMesArea">
+		<div class="lm-replyMesBox">
+			<img src="../img/headIcon01.png" alt="">
+			<div class="lm-replyTxtBox">
+				<p class="weixinName">微信号名称</p>
+				<p class="lm-leaveMesCon">
+					会议指出，在充分肯定成绩的同时要清醒看到，经济运行中还存在不少矛盾和问题，要站在经济长周期和结构优化升级的角度，把握经济发展阶段性特征，保持头脑清醒和战略定力，坚定不移抓好供给侧结构性改革，妥善化解重大风险隐患，促进经济社会持续健康发展。
+				</p>
+				<p class="clear lm-timeAndReply">
+					<span class="fl lm-date">2017-5-18&nbsp;18:00</span>
+					<span class="fr lm-replyBtn">回复</span>
+				</p>
+				<div class="lm-replyTxtCon">
+					<div class="lm-replyerBox">
+						<span class="replyerName">孔明:</span>会议要求，各地区各部门要增强政治意识、大局意识、核心意识、看齐意识，把思想认识统一到党中央对经济形势的判断上来，不折不扣贯彻执行党中央制定的大政方针。要做好统筹协调，把工作做精做细，形成政策合力。要有高度的责任心和担当精神，发扬钉钉子精神，不断提高执行力		
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div class="lm-replyMesBox">
+			<img src="../img/headIcon01.png" alt="">
+			<div class="lm-replyTxtBox">
+				<p class="weixinName">微信号名称</p>
+				<p class="lm-leaveMesCon">
+					会议指出，在充分肯定成绩的同时要清醒看到，经济运行中还存在不少矛盾和问题，要站在经济长周期和结构优化升级的角度，把握经济发展阶段性特征，保持头脑清醒和战略定力，坚定不移抓好供给侧结构性改革，妥善化解重大风险隐患，促进经济社会持续健康发展1111111111111111111111111111111111111111111111111111111111111111111。
+				</p>
+				<p class="clear lm-timeAndReply">
+					<span class="fl lm-date">2017-5-18&nbsp;18:00</span>
+					<span class="fr lm-replyBtn">回复</span>
+				</p>
+				<div class="lm-replyTxtCon">
+					<div class="lm-replyerBox">
+						<span class="replyerName">孔明:</span>会议要求，各地区各部门要增强政治意识、大局意识、核心意识、看齐意识，把思想认识统一到党中央对经济形势的判断上来，不折不扣贯彻执行党中央制定的大政方针。要做好统筹协调，把工作做精做细，形成政策合力。要有高度的责任心和担当精神，发扬钉钉子精神，不断提高执行力。		
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<ul class="linksBox clear">
+		<li class="fl">
+			<a href="homePage.html">首页</a>
+			<p>Home</p>
+		</li>
+		<li class="fl">
+			<a href="registrationForm.html">住宿登记</a>
+			<p>Registration</p>
+		</li>
+		<li class="fl">
+			<a href="#">在线地图</a>
+			<p>Online Map</p>
+		</li>
+		<li class="fl">
+			<a href="#">电话咨询</a>
+			<p>consultation</p>
+		</li>
+		<li class="fl">
+			<a href="LeaveMessage02.html">在线留言</a>
+			<p>Leave Message</p>
+		</li>
+		<li class="fl">
+			<a href="laws.html">法律宣传</a>
+			<p>Laws</p>
+		</li>
+		<li class="fl">
+			<a href="#">生活资讯</a>
+			<p>Daily Life</p>
+		</li>
+		<li class="fl">
+			<a href="Events.html">涉外动态</a>
+			<p>Events</p>
+		</li>
+		<li class="fl">
+			<a href="AboutUs.html">关于我们</a>
+			<p>About Us</p>
+		</li>	
+	</ul>
+	<div class="cd-footer">
+		<div class="cd-footTxt">
+			<p>本服务由常德市公安局授权</p>
+			<p>长沙公信诚丰信息技术服务有限公司提供技术支持</p>
+			<p>服务热线：0731-88730000</p>
+		</div>	
+	</div>
+</div>
+<span class="goTop"></span>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	var docEle=$(document),goTopBtn=$('span.goTop');
+	var scrollHeight=$('body').innerHeight();
+	var clientHeight=window.screen.height;
+	docEle.on('scroll',function(){
+		var scrollTop=$('body').scrollTop();
+		if(scrollTop+clientHeight>=scrollHeight){
+			goTopBtn.show();
+		}else{
+			goTopBtn.hide();
+		}	
+	});
+	goTopBtn.on('click',function(){
+		$('body').animate({scrollTop:'0'},100);
+	});
+});
+</script>
+</body>
+</html>

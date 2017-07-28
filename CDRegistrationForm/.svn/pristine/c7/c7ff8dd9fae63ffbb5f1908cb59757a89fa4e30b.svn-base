@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="yes" name="apple-touch-fullscreen">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<title>涉外动态</title>
+	<link rel="stylesheet" href="../css/public.css">
+	<link rel="stylesheet" href="../css/Events.css">
+	<script src="../js/setRem.js"></script>
+</head>
+<body>
+<div class="widthControl">
+	<div class="laws-ruleBox">
+		<div class="laws-sendTimeBox">
+			<div class="showTime">
+				4月8日 下午17:30
+			</div>	
+		</div>
+		<div class="laws-newsConBox">
+			<div class="newsTitle">
+				经山水公司举办文化交流活动 温暖常德外籍友人	
+			</div>
+			<div class="newsCon">
+				<p class="cn-word">
+					今年以来，曾沉寂一时的比特币又火了，原因无他，就是价格暴涨,一个比特币价格甚至一度突破20000元人民币。于是，一个叫做“矿工”的群体也让人眼红了，这群在川西深山等地“挖掘”比特币的逐梦111111111111111111111111111111111111111111111111111111111111111111111111111111111111111	
+				</p>
+				<p class="en-word">
+					This year, once a quiet bit of bitcoin and fire, no reason for him, that is, prices soared, a bitcoin price and even exceeded 20000 yuan. Then, a group called the "miners" also make people jealous, this group in Western Sichuan mountains such as "mining" bitcoin dream who was widely reported. Even the national supercomputer was put into "mining" rumors. "Mining" what is going on, bitcoin is really a reliable currency?1111111111111111111111111111111111111111111111	
+				</p>		
+			</div>
+			<div class="readAll clear">
+				<a href="#" class="fl">查看全文</a>
+				<span class="fr">2017年5月8日</span>
+			</div>
+		</div>
+	</div>
+	<div class="laws-ruleBox">
+		<div class="laws-sendTimeBox">
+			<div class="showTime">
+				4月8日 下午17:30
+			</div>	
+		</div>
+		<div class="laws-newsConBox">
+			<div class="newsTitle">
+				经山水公司举办文化交流活动 温暖常德外籍友人	
+			</div>
+			<div class="newsCon">
+				<p class="cn-word">
+					今年以来，曾沉寂一时的比特币又火了，原因无他，就是价格暴涨，一个比特币价格甚至一度突破20000元人民币。于是，一个叫做“矿工”的群体也让人眼红了，这群在川西深山等地“挖掘”比特币的逐梦之人被广泛报道。甚至还有国家级的超级计算机也被投入到“挖矿”的传言。“挖矿”到底是怎么回事，比特币真是一种靠谱的货币吗？		
+				</p>
+				<p class="en-word">
+					This year, once a quiet bit of bitcoin and fire, no reason for him, that is, prices soared, a bitcoin price and even exceeded 20000 yuan. Then, a group called the "miners" also make people jealous, this group in Western Sichuan mountains such as "mining" bitcoin dream who was widely reported. Even the national supercomputer was put into "mining" rumors. "Mining" what is going on, bitcoin is really a reliable currency?	
+				</p>		
+			</div>
+			<div class="readAll clear">
+				<a href="#" class="fl">查看全文</a>
+				<span class="fr">2017年5月8日</span>
+			</div>
+		</div>
+	</div>
+	<div class="laws-ruleBox">
+		<div class="laws-sendTimeBox">
+			<div class="showTime">
+				4月8日 下午17:30
+			</div>	
+		</div>
+		<div class="laws-newsConBox2">
+			<a href="#" class="newsLink">
+				<img src="../img/laws01.png" alt="">
+				<p class="mask"></p>
+				<p class="maskTxt">
+					中国签证简介<span>About Chinese Visa</span>
+				</p>
+			</a>
+			<a href="#" class="law-newsList">我们对“三非”外国人说NO!!!</a>
+			<a href="#" class="law-newsList">要解释清楚什么是“挖矿”，就必须理解什么是比特币</a>
+			<a href="#" class="law-newsList">大体来说，比特币是一种电子“加密货币”，是密码学的产物</a>
+		</div>
+	</div>
+	<ul class="linksBox clear">
+		<li class="fl">
+			<a href="homePage.html">首页</a>
+			<p>Home</p>
+		</li>
+		<li class="fl">
+			<a href="registrationForm.html">住宿登记</a>
+			<p>Registration</p>
+		</li>
+		<li class="fl">
+			<a href="#">在线地图</a>
+			<p>Online Map</p>
+		</li>
+		<li class="fl">
+			<a href="#">电话咨询</a>
+			<p>consultation</p>
+		</li>
+		<li class="fl">
+			<a href="LeaveMessage02.html">在线留言</a>
+			<p>Leave Message</p>
+		</li>
+		<li class="fl">
+			<a href="laws.html">法律宣传</a>
+			<p>Laws</p>
+		</li>
+		<li class="fl">
+			<a href="#">生活资讯</a>
+			<p>Daily Life</p>
+		</li>
+		<li class="fl">
+			<a href="Events.html">涉外动态</a>
+			<p>Events</p>
+		</li>
+		<li class="fl">
+			<a href="AboutUs.html">关于我们</a>
+			<p>About Us</p>
+		</li>	
+	</ul>
+	<div class="cd-footer">
+		<div class="cd-footTxt">
+			<p>本服务由常德市公安局授权</p>
+			<p>长沙公信诚丰信息技术服务有限公司提供技术支持</p>
+			<p>服务热线：0731-88730000</p>
+		</div>	
+	</div>
+</div>
+<span class="goTop"></span>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	var docEle=$(document),goTopBtn=$('span.goTop');
+	var scrollHeight=$('body').innerHeight();
+	var clientHeight=window.screen.height;
+	docEle.on('scroll',function(){
+		var scrollTop=$('body').scrollTop();
+		if(scrollTop+clientHeight>=scrollHeight){
+			goTopBtn.show();
+		}else{
+			goTopBtn.hide();
+		}	
+	});
+	goTopBtn.on('click',function(){
+		$('body').animate({scrollTop:'0'},100);
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+.lm-userInfoBox {
+	margin-bottom:10px;padding-bottom:8px;
+	background:#fff;
+}
+.lm-titie {
+	height:54px;line-height:45px;
+	padding-left:15px;font-size:15px;color:#000;
+}
+.lm-userInsertArea {
+	padding:0 32px;font-size:14px;color:#333;
+}
+.lm-userInsertBox {
+	margin-bottom:15px;
+	color:#333;
+}
+.lm-userInsertBox > label {
+	display:block;height:29px;
+}
+.lm-userInsertBox span.cn-word {
+	font-size:14px;line-height:29px;margin-right:6px;
+}
+.lm-userInsertBox span.en-word {
+	font-size:12px;line-height:30px;margin-right:4px;
+}
+.lm-userInsertBox span.symbol {
+	color:#d90000;line-height:26px;
+}
+.lm-userInsertBox > input,.lm-userInsertBox > textarea {
+	display:block;width:100%;height:32px;line-height:32px;padding-left:8px;
+	border:1px solid #b4b8c4;border-radius:2px;
+}
+.lm-userInsertBox > textarea {
+	height:64px;line-height:24px;	
+}
+.lm-tableBox {
+	display:table;width:100%;
+}
+.lm-btnBox {
+	display:table-cell;width:100%;height:52px;font-size:0;
+	text-align:center;vertical-align:middle;
+}
+.lm-btn {
+	display:inline-block;width:80px;height:32px;line-height:32px;
+	color:#fff;font-size:18px;border-radius:2px;
+	background:#b4b8c4;
+}
+.lm-btn.lm-submit {
+	background:#4fb6f5;margin-right:20px;
+}
+.lm-btn:active {
+	background:#666;
+}
+.lm-btn.lm-submit:active {
+	background:#16a0f4;
+}
+.lm-replyMesBox {
+	background:#fff;padding:10px 15px;
+	margin-bottom:5px;
+	display:webkit-box;
+	display:box;
+	display:flex;	
+}
+.lm-replyMesBox > img {
+	width:48px;height:48px;margin-right:5px;
+	border-radius:2px;
+}
+.lm-replyTxtBox {
+	webkit-box-flex:1;
+	box-flex:1;
+	flex:1;
+	color:#808080;font-size:12px;
+}
+.lm-replyTxtBox > .weixinName {
+	height:32px;line-height:32px;
+	color:#000;font-size:14px;
+}
+.lm-leaveMesCon {
+	line-height:18px;
+	word-wrap: break-word;
+	word-break: break-all;	
+}
+.lm-timeAndReply {
+	height:30px;
+}
+.lm-timeAndReply > .lm-date {
+	color:#999;line-height:30px;
+}
+.lm-timeAndReply > .lm-replyBtn {
+	color:#666;line-height:30px;
+}
+.lm-replyTxtCon {
+	background:#eee;padding:4px 12px 8px 8px;
+}
+.lm-replyerBox {
+	color:#666;line-height:18px;
+	word-wrap: break-word;
+	word-break: break-all;	
+}
+.lm-replyerBox > .replyerName {
+	color:#333;font-size:13px;line-height:17px;
+}
+/* 弹窗尺寸调整 */
+.weui-dialog {
+	padding-top:20px;
+}
+.weui-dialog__bd {
+	padding-top:0.8em;
+}
+/* 弹窗图标调整 */
+.weui-icon_msg {
+	font-size:58px;
+}
+@media screen and (min-width:768px) {
+  .widthControl {
+    width:768px;margin:0 auto;
+  }
+}

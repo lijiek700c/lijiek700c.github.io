@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="yes" name="apple-touch-fullscreen">
+	<title>生活资讯</title>
+	<link rel="stylesheet" href="../css/public.css">
+</head>
+<body>
+<div class="widthControl">
+	<ul class="linksBox clear">
+		<li class="fl">
+			<a href="homePage.html">首页</a>
+			<p>Home</p>
+		</li>
+		<li class="fl">
+			<a href="registrationForm.html">住宿登记</a>
+			<p>Registration</p>
+		</li>
+		<li class="fl">
+			<a href="#">在线地图</a>
+			<p>Online Map</p>
+		</li>
+		<li class="fl">
+			<a href="#">电话咨询</a>
+			<p>consultation</p>
+		</li>
+		<li class="fl">
+			<a href="LeaveMessage02.html">在线留言</a>
+			<p>Leave Message</p>
+		</li>
+		<li class="fl">
+			<a href="laws.html">法律宣传</a>
+			<p>Laws</p>
+		</li>
+		<li class="fl">
+			<a href="#">生活资讯</a>
+			<p>Daily Life</p>
+		</li>
+		<li class="fl">
+			<a href="Events.html">涉外动态</a>
+			<p>Events</p>
+		</li>
+		<li class="fl">
+			<a href="AboutUs.html">关于我们</a>
+			<p>About Us</p>
+		</li>	
+	</ul>
+	<div class="cd-footer">
+		<div class="cd-footTxt">
+			<p>本服务由常德市公安局授权</p>
+			<p>长沙公信诚丰信息技术服务有限公司提供技术支持</p>
+			<p>服务热线：0731-88730000</p>
+		</div>	
+	</div>
+</div>
+	<div class="js_dialog" id="Dialog2">
+    	<div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd">暂无数据</div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
+            </div>
+        </div>
+    </div>
+
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script src="../js/cd-operate.js"></script>
+<script>
+$(document).ready(function(){
+	var dialog=$('#Dialog2');
+	dialog.fadeIn(200);
+	dialog.on('click','.weui-dialog__btn_primary',function(){
+		$(this).parents('.js_dialog').fadeOut(200);
+	});
+
+});
+</script>
+</body>
+</html>
