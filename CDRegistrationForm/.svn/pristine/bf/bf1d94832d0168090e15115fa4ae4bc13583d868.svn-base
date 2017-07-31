@@ -21,7 +21,7 @@
 		var clientHeight=window.screen.height;
 		docEle.on('scroll',function(){
 			var scrollTop=$('body').scrollTop();
-			if(scrollTop+clientHeight>=scrollHeight-30){
+			if(scrollTop+clientHeight>=scrollHeight){
 				goTopBtn.show();
 			}else{
 				goTopBtn.hide();
