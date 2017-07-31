@@ -83,7 +83,7 @@
 				docEle.onload=function(){
 					clearTimeout(tid);
 					tid=setTimeout(function(){
-						localStorage.setItem('loadBool',true);
+						//localStorage.setItem('loadBool',true);
 						loadBox.addClass('hinge');
 						loadBox.delay(500).fadeOut(function(){
 							$(this).hide();
