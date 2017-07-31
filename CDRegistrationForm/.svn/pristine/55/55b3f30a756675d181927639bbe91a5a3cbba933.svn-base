@@ -138,10 +138,10 @@
 <script>
 $("#visa").click(function(){
 	location.href = "../word/签证申请表.docx";
-});
+})
 $("#current").click(function(){
 	location.href = "../word/台湾居民来往大陆通行证申请表.doc";
-});
+})
 var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
         effect: 'coverflow',
@@ -159,6 +159,34 @@ var swiper = new Swiper('.swiper-container', {
         autoplay:2500,
         autoplayDisableOnInteraction:false
 });
+;(function($){
+	var openLoading=function(){
+		var tid=null,aImg=$('.swiper-wrapper img'),
+			loadBox=$('.loadMask');
+		loadBox.removeClass('hinge').show();
+		$.each(aImg,function(index,docEle){
+			var _this=$(this);
+			var src=_this.attr('data-src');
+			docEle.setAttribute('src',src);
+			if(index===2){
+				docEle.onload=function(){
+					clearTimeout(tid);
+					tid=setTimeout(function(){
+						loadBox.addClass('hinge');
+						loadBox.on('animationend',function(){
+							$(this).hide();
+						});
+					},1500);
+				};
+			}
+		});
+	};
+	if(!('loadObj' in window)){
+		window.loadObj={
+			openLoading:openLoading
+		};
+	}	
+})($);
 $(function(){
 	loadObj.openLoading();
 });
