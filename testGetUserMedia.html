@@ -6,7 +6,7 @@
 	<title>试试</title>
 </head>
 <body>
-	<video id="video" autoplay="" width="300" height="300"></video>
+	<video id="video" autoplay="autoplay" width="300" height="300"></video>
 	<button id="picture">点击试试</button>
 	<canvas id="canvas" width="300" height="300"></canvas>
 <script>
@@ -40,6 +40,7 @@ domReady(function(){
 		},errcb);
 	}
 	oBtn.addEventListener('click',function(){
+		alert(1);
 		context.drawImage(video,0,0,300,300);
 	},false);
 });
