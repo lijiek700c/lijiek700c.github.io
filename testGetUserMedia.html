@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>试试</title>
+</head>
+<body>
+	<video id="video" autoplay="" width="300" height="300"></video>
+	<button id="picture">点击试试</button>
+	<canvas id="canvas" width="300" height="300"></canvas>
+<script>
+function domReady(fn){
+	if(document.addEventListener){
+		document.addEventListener('DOMContentLoaded',fn,false);
+	}else{
+		document.attach('onreadystatechange',function(){
+			if(document.readyState==='complete'){
+				fn();
+			}
+		});
+	}
+}
+domReady(function(){
+	var video=document.getElementById('video');
+	var context=document.getElementById('canvas').getContext('2d');
+	var oBtn=document.getElementById('picture');
+	var errcb=function(){
+		console.log('something wrong!!!');
+	};
+	if(navigator.getUserMedia){
+		navigator.getUserMedia({'video':true},function(stream){
+			video.src=stream;
+			video.play();
+		},errcb);
+	}else if(navigator.webkitGetUserMedia){
+		navigator.webkitGetUserMedia({'video':true},function(stream){
+			video.src=window.webkitURL.createObjectURL(stream);
+			video.play();
+		},errcb);
+	}
+	oBtn.addEventListener('click',function(){
+		context.drawImage(video,0,0,300,300);
+	},false);
+});
+</script>
+</body>
+</html>
