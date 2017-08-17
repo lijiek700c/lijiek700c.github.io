@@ -19,6 +19,17 @@
 }
 
 </style>
+<script>
+window.onload=function(){
+	console.log(parent);
+	//console.log(window.parent.document);
+	var oBtn=document.getElementById('btn');
+	oBtn.onclick=function(){
+		//console.log(window.parent.document);
+		parent.sayHello();
+	};
+};
+</script>
 </head>
 <body>
 <div class="cd-footer">
@@ -28,5 +39,6 @@
 		<p>服务热线：0731-88730000</p>
 	</div>	
 </div>
+<button id="btn">点击试试</button>
 </body>
 </html>

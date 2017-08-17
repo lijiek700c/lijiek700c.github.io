@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>testGetCamera</title>
+</head>
+<body>
+<video id="video" width="640" height="480" autoplay></video>  
+<button id="snap">Snap Photo</button>  
+<canvas id="canvas" width="640" height="480"></canvas> 
+<script>
+/*{
+	// ...
+	"permissions":{
+		// ...
+		"Camera": {
+			"description": "摄像头"
+		}
+	}
+}*/
+window.addEventListener('DOMContentLoaded',function(){
+	/*document.addEventListener('plusready',onPlusReady,false);
+	function onPlusReady(){
+		var cmr=plus.camera.getCamera();
+		console.log(typeof cmr);
+	}*/
+	var video=document.getElementById('video'),
+		aCanvas=document.getElementById('canvas'),
+		ctx=aCanvas.getContext('2d');
+	navigator.getUserMedia=navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia||navigator.msGetUserMedia;
+	navigator.getUserMedia({video:true},goStream,noStream);
+	function goStream(stream){
+		video.src=URL.createObjectURL(stream);
+		video.onerror = function () {  
+          stream.stop();  
+        };  
+        stream.onended = noStream;  
+        video.onloadedmetadata = function () {  
+          alert('摄像头成功打开！');  
+        };
+	}
+	function noStream(err){
+		alert(err);
+	}
+});
+</script>
+</body>
+</html>
