@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="css/caseQuery.css">
 </head>
 <body>
-<div class="ds-bigBox" style="display:block;">
+<div class="ds-bigBox" style="display:none;">
 	<!--查询步骤S-->
 	<div class="ds-queryProceBox">
 		<span class="ds-proceBtn ds-proceOne">查询</span>
@@ -30,7 +30,7 @@
 	</div>
 	<!--扫描身份证E-->
 	<!--搜索案件编号S-->
-	<div class="ds-searchBox" style="display:block;">
+	<div class="ds-searchBox" style="display:none;">
 		<!--查询案件编号S-->
 		<div class="ds-queryInputBox">
 			<div class="ds-on">
@@ -90,7 +90,7 @@
 $(function(){
     setParentHeight();
     firstOpen('正在跳转','.ds-bigBox');
-    var video=$('#video');
+    var video=$(document.getElementById('video'));
     video.css({
     	'width':'396px',
     	'height':'396px'
