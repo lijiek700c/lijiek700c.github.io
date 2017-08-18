@@ -32,11 +32,11 @@ window.addEventListener('DOMContentLoaded',function(){
 		alert(err);
 	}
 snap.addEventListener('click',function(){
-	
+	alert('拍照');
 	//绘制canvas图形
-    ctx.getContext('2d').drawImage(video, 0, 0, 600, 480);
+    ctx.drawImage(video, 0, 0, 600, 480);
     //把canvas图像转为img图片
-    img.src = canvas.toDataURL("image/png");
+    img.src = ctx.toDataURL("image/png");
 },false);
 });
 console.log(window.URL);
