@@ -1,0 +1,154 @@
+.ds-queryInputBox {
+	margin-top:152px;
+}
+.ds-queryInputBox > div {
+	position:relative;width:720px;height:60px;overflow:hidden;margin:0 auto;display:none;
+}
+.ds-queryInputBox > div.ds-on {
+	display:block;
+}
+.ds-queryInputBox .ds-searchInput {
+	width:540px;height:100%;line-height:60px;font-size:28px;color:#666;
+	border:2px solid #b3b3b3;border-right:none;padding:0 0 0 12px;
+	font-family:'Microsoft YaHei';
+	border-top-left-radius:2px;
+	border-bottom-left-radius:2px;	
+}
+.ds-queryInputBox .ds-searchIcon {
+	position:absolute;top:13px;right:190px;width:34px;height:34px;background:url('../img/ds-searchIcon.png') no-repeat;
+}
+.ds-queryInputBox .ds-searchBtn {
+	width:180px;height:60px;line-height:60px;cursor:pointer;
+	text-align:center;font-size:30px;background:#3388ff;color:#fff;
+	-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
+}
+.ds-queryInputBox .ds-searchInput:focus {
+	border-color:#3388ff;
+}
+.ds-queryInputBox .ds-searchInput:focus + i.ds-searchIcon {
+	background:url('../img/ds-searchIcon02.png');
+}
+.ds-queryInputBox .ds-searchBtn:active {
+	background:#0c6ef8;
+}
+/* 查询步骤 */
+.ds-queryProceBox {
+	position:relative;width:628px;margin-top:20px;height:68px;
+}
+.ds-proceBtn {
+	position:absolute;left:0;top:0;font-size:24px;line-height:68px;
+	height:100%;color:#fff;text-align:center;
+}
+.ds-proceOne {
+	width:160px;left:80px;
+	background:url('../img/proce01.png') no-repeat;
+}
+.ds-proceTwo,.ds-proceThree {
+	width:210px;left:224px;
+	background:url('../img/proce02.png') no-repeat;
+}
+.ds-proceThree {
+	left:418px;
+}
+.ds-tabProce {
+	background:url('../img/proce03.png') no-repeat;
+}
+/* 扫描窗口 */
+.ds-scanIdBox {
+	width:400px;height:400px;margin:-28px auto 0;
+	border:2px solid #e7eff1;
+}
+.ds-scanIdArea {
+	position:relative;width:100%;height:100%;
+}
+.ds-scanIdArea video {
+	width:100%;height:100%;
+}
+.ds-scanTxt {
+	font-size:22px;line-height:102px;color:#646464;text-align:center;
+}
+/* 四个边角 */
+.ds-border {
+	position:absolute;width:32px;height:32px;
+}
+.ds-leftT {
+	top:-2px;left:-2px;background:url('../img/border01.png') no-repeat;
+}
+.ds-rightT {
+	top:-2px;right:-2px;background:url('../img/border02.png') no-repeat;
+}
+.ds-leftB {
+	bottom:-2px;left:-2px;background:url('../img/border04.png') no-repeat;
+}
+.ds-rightB {
+	bottom:-2px;right:-2px;background:url('../img/border03.png') no-repeat;
+}
+/* 查询结果表格 */
+.table {
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-collapse: collapse;
+    margin:80px auto;
+}
+.table td {
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+    border-right: 1px solid #ccc;
+    word-break:break-all;
+    word-wrap:break-word;
+}
+.table thead tr > td:last-child,.table tbody tr > td:last-child {
+    border-right:none;
+}
+.table thead tr > td {
+    color:#4c4c4c;line-height:58px;font-weight:normal;
+}
+.table thead tr > td:nth-child(1) {
+    width:258px;
+}
+.table thead tr > td:nth-child(2) {
+    width:310px;
+}
+.table thead tr > td:nth-child(3) {
+    width:700px;
+}
+.table thead tr > td:nth-child(4) {
+    width:327px;
+}
+.table thead tr {
+    border-bottom:1px solid #ccc;
+}
+.table tbody tr {
+    border-bottom:1px solid #ccc;cursor: pointer;
+}
+.table tbody tr:last-child {
+    border-bottom:none;
+}
+.table tbody tr > td {
+    font-size:24px;color: #666;line-height:50px;
+}
+.table tbody tr > td:nth-child(3) > a {
+	display:block;font-size:24px;color: #666;line-height:50px;
+}
+.table tbody tr > td:nth-child(3) > a:active {
+	color:#999;text-decoration:underline;
+}
+/* 设置输入框placeholder的样式 */
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #999;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #999;
+}
+
+input:-ms-input-placeholder {
+    color: #999;
+}
+
+input::-webkit-input-placeholder {
+    color: #999;
+}

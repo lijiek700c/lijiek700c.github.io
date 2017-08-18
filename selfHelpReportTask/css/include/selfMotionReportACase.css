@@ -1,0 +1,187 @@
+.bigBox > .body {
+  width: 1220px;
+  margin: 50px auto;
+  margin-bottom: 200px;
+}
+.bigBox > .body > .fl {
+  width: 500px;
+}
+.bigBox > .body > .fl > .scanArea {
+  width: 400px;
+  height: 400px;
+  background: #f02222;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  position: relative;
+}
+.bigBox > .body > .fl > .scanArea > div {
+  background: #f3d0ce;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.bigBox > .body > .fl > .scanArea > div:nth-child(1) {
+  width: 400px;
+  height: 336px;
+}
+.bigBox > .body > .fl > .scanArea > div:nth-child(2) {
+  width: 336px;
+  height: 400px;
+}
+.bigBox > .body > .fl > .scanArea > div:nth-child(3) {
+  width: 388px;
+  height: 388px;
+  background: #d9d9d9;
+}
+.bigBox > .body > .fl > .scanArea > div:nth-child(4) {
+  background-color: #ff0204;
+  /* ��֧�ֽ��������������˷��� */
+  background-image: -webkit-linear-gradient(left, #d9d9d9, #ff0204, #d9d9d9);
+  /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
+  background-image: -moz-linear-gradient(left, #d9d9d9, #ff0204, #d9d9d9);
+  /* For Firefox (3.6 to 15) */
+  background-image: -o-linear-gradient(left, #d9d9d9, #ff0204, #d9d9d9);
+  /* For old Opera (11.1 to 12.0) */
+  background-image: linear-gradient(to right, #d9d9d9, #ff0204, #d9d9d9);
+  /* Standard syntax; must be last */
+  width: 388px;
+  height: 2px;
+}
+.bigBox > .body > .fl > p {
+  width: 400px;
+  line-height: 38px;
+  font-size: 24px;
+  color: #666;
+  text-align: center;
+}
+.bigBox > .body > .fr {
+  width: 720px;
+}
+.bigBox > .body > .fr > .title {
+  height: 100px;
+  line-height: 92px;
+  font-size: 30px;
+  color: #000;
+}
+.bigBox > .body > .fr > ul {
+  margin-bottom: 10px;
+}
+.bigBox > .body > .fr > ul > li {
+  min-height: 40px;
+  margin: 10px 0;
+  font-size: 22px;
+  color: #000;
+}
+.bigBox > .body > .fr > ul > li > span {
+  vertical-align: middle;
+  text-align: right;
+  float: left;
+  width: 112px;
+  padding-right: 18px;
+  line-height: 40px;
+  min-height: 40px;
+}
+.bigBox > .body > .fr > ul > li .independent {
+  padding: 0;
+  width: auto;
+  margin: 0 10px;
+}
+.bigBox > .body > .fr > ul > li > .input {
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #cdcdcd;
+  background: #ffffff;
+  color: #666;
+  padding: 0 10px;
+  font-size: 18px;
+}
+.bigBox > .body > .fr > ul > li > .input.area {
+  min-width: 600px;
+  max-width: 600px;
+  padding: 4px 0;
+  max-height: 200px;
+  min-height: 200px;
+  line-height: 30px;
+  font-size: 18px;
+  color: #999;
+}
+.bigBox > .body > .fr > ul > li > .input::-webkit-input-placeholder {
+  font-size: 18px;
+}
+.bigBox > .body > .fr > ul > li > .input::-moz-placeholder {
+  font-size: 18px;
+}
+.bigBox > .body > .fr > ul > li > .input.w200 {
+  width: 200px;
+}
+.bigBox > .body > .fr > ul > li > .input.w140 {
+  width: 140px;
+}
+.bigBox > .body > .fr > ul > li > .input.w100 {
+  width: 100px;
+}
+.bigBox > .body > .fr > ul > li > .input.w600 {
+  width: 600px;
+}
+.bigBox > .body > .fr > ul > li > .input.dropDown {
+  position: relative;
+}
+.bigBox > .body > .fr > ul > li > .input.dropDown > .icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  -webkit-transform: translate(0, -50%);
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -o-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+.bigBox > .body > .fr > ul > li > .input.dropDown > ul {
+  z-index: 1;
+  background: #ffffff;
+  display: none;
+  position: absolute;
+  overflow: auto;
+  border: 1px solid #cdcdcd;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+}
+.bigBox > .body > .fr > ul > li > .input.dropDown > ul.show {
+  display: block;
+}
+.bigBox > .body > .fr > ul > li > .input.dropDown > ul > li {
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+  cursor: pointer;
+}
+.bigBox > .body > .fr > ul > li > .input.dropDown > ul > li:hover {
+  background: #e7e7e7;
+}
+.bigBox > .body > .fr > ul > li > .subBtn {
+  margin-top: 30px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  width: 360px;
+  height: 68px;
+  line-height: 68px;
+  text-align: center;
+  border-radius: 4px;
+  background: #287dd8;
+  color: #ffffff;
+  font-size: 30px;
+}
+.bigBox > .body > .fr > ul > li > .subBtn:hover {
+  background: #478fdd;
+}
+.bigBox > .body > .fr > ul > li > .subBtn:active {
+  background: #287dd8;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="#ffffff" name="msapplication-TileColor"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+
+    <title>自助报案服务终端</title>
+    <link rel="stylesheet" href="css/public/public.css"/>
+    <link rel="stylesheet" href="css/homePage.css"/>
+    <link rel="stylesheet" href="css/ball-spin-clockwise.css"/>
+    <link rel="icon" href="img/pliceBadgeIcon.ico"/>
+
+
+</head>
+<body class="scrollStyle noScrollStyle">
+
+<div class="bigBox ">
+    <div class="header">
+        <img src="img/header.png" width="100%" class="imgSizeTest"/>
+
+        <!--<p class="textContainer">-->
+        <!--<i class="icon policeBadge"></i>-->
+        <!--<span class="main" data-textAnimated="textContent">湖南省公安机关执法办案系统</span>-->
+        <!--<span class="assistant">自助报案服务终端</span>-->
+        <!--</p>-->
+    </div>
+    <div class="body" style="position:relative;">
+        <iframe src="./login.html" frameborder="0" id="iframeView" onload="console.log('f   ')"></iframe>
+        <!--加载S-->
+        <div class="ds-loadingBox" style="display:none;">
+            <div class="ds-wrapper">
+                <div class="la-ball-spin-clockwise la-2x">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="ds-loadingTxt">
+                    <span>正在加载</span>
+                    <div>
+                        <p class="first">.</p>
+                        <p class="second">.</p>
+                        <p class="third">.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--加载E-->
+    </div>
+    <div class="footer">
+        <p>本服务由湖南湘江智慧科技股份有限公司提供技术支持</p>
+
+        <p>24小时服务电话：400-800-2285</p>
+    </div>
+
+</div>
+
+
+<script src="js/public/jquery-3.2.1.min.js"></script>
+<script src="js/homePage.js"></script>
+
+</body>
+</html>

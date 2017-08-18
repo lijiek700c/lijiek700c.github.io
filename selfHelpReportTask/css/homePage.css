@@ -1,0 +1,78 @@
+html {
+  height: 100%;
+  margin: 0 auto;
+}
+html body {
+  height: 100%;
+  margin: 0 auto;
+}
+html body .bigBox {
+  margin: 0 auto;
+  position: relative;
+  min-height: 100%;
+  min-width: 1350px;
+}
+html body .bigBox > .header {
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  position: relative;
+}
+html body .bigBox > .header p {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  margin-top: 190px;
+  text-align: center;
+  color: #ffffff;
+}
+html body .bigBox > .header p > .icon {
+  top: -70px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+html body .bigBox > .header p > .main {
+  display: block;
+  font-size: 60px;
+}
+html body .bigBox > .header p > .assistant {
+  display: block;
+  line-height: 100px;
+  height: 100px;
+  width: 520px;
+  margin: 30px auto 0 auto;
+  padding: 0 66px;
+  border: 2px solid #8abcf1;
+  border-radius: 4px;
+  font-size: 48px;
+}
+html body .bigBox > .body {
+  margin: 0 auto;
+}
+html body .bigBox > .body > #iframeView {
+  width: 100%;
+}
+html body .bigBox > .footer {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 80px;
+  border: 1px solid #cfd9e2;
+  background: #eef5fb;
+  color: #8595a2;
+  text-align: center;
+  font-size: 14px;
+  line-height: 25px;
+  padding-top: 20px;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查询结果详情</title>
+	<link rel="stylesheet" href="css/public/public.css">
+	<link rel="stylesheet" href="css/resultsDetail.css">
+</head>
+<body>
+	<!--查询结果详情S-->
+	<div class="ds-detailBox" style="display:none;">
+		<div class="title">案件详情标题</div>
+		<div class="ds-detailCon">
+			<p>张超的简历中，透出求职的急切。他称自己“刚离职，随时可以去上班”，对于新工作，他甚至表示“可以从一名实习生干起”。他的期望职业是建筑施工现场管理，期望月薪：4000-6000元/月。张超的简历中，透出求职的急切。他称自己“刚离职，随时可以去上班”，对于新工作，他甚至表示“可以从一名实习生干起”。他的期望职业是建筑施工现场管理，期望月薪：4000-6000元/月。</p>
+			<p>天津市公安局西青分局通报称，张超误入传销组织后，7月13日，传销人员王某某发现张超有中暑症状，并服用藿香正气水等药物，但病情未见好转。当晚，传销人员王某某、刘某某雇用祖某某夫妇开车，共同将张超送往天津站让其回家。途中发现病情严重，将其遗弃。
+张超去世的消息传来，母亲王英终日卧床，一天只吃一顿饭，一听到别人谈起张超就大哭。年迈的奶奶被亲戚接到别处，脱下张超送的几乎不离身的手镯。</p>
+			<p>天津市公安局西青分局通报称，张超误入传销组织后，7月13日，传销人员王某某发现张超有中暑症状，并服用藿香正气水等药物，但病情未见好转。当晚，传销人员王某某、刘某某雇用祖某某夫妇开车，共同将张超送往天津站让其回家。途中发现病情严重，将其遗弃。
+张超去世的消息传来，母亲王英终日卧床，一天只吃一顿饭，一听到别人谈起张超就大哭。年迈的奶奶被亲戚接到别处，脱下张超送的几乎不离身的手镯。</p>
+		</div>
+		<div class="ds-backBtn">返回列表</div>
+	</div>
+	<!--查询结果详情E-->
+<script src="js/public/jquery-3.2.1.min.js"></script>
+<script>
+function openLoad(){
+	var timer=null;
+	window.parent.dsLoading({
+		txt:'正在跳转',
+		bool:true
+	});
+	clearTimeout(timer);
+	timer=setTimeout(function(){
+		window.parent.dsLoading({
+			bool:false,
+			fn:function(){
+				$('.ds-detailBox').show();
+			}
+		});
+	},1500);
+}
+$(function(){
+	setInterval(function(){
+		window.parent.heightChange($(document).height());
+	},20);
+    window.onload = function () {
+        window.parent.heightChange($(document).height());
+    };
+    /*window.onresize = function () {
+    	console.log($(document).height());
+        window.parent.heightChange($(document).height())
+    };*/
+    openLoad();
+    function delayGo(str){
+	    var timer=null;
+	    clearTimeout(timer);
+		timer=setTimeout(function(){
+			window.parent.jump(str);
+		},200);
+    }
+	$('.ds-backBtn').click(function(){
+		delayGo('searchResults.html');
+	});
+});
+</script>
+</body>
+</html>

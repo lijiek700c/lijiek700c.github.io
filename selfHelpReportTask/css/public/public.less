@@ -1,0 +1,245 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button,
+textarea, table, tr, td,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #f8f8f9;
+  min-height: 100%;
+  body {
+    min-height: 100%;
+    color: #586067;
+    font-size: 12px;
+  }
+
+}
+
+i {
+  font-style: normal;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  border: none;
+  vertical-align: middle;
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+table, tr, td {
+  border-collapse: collapse;
+}
+
+input, select, textarea {
+  padding: 0 8px;
+  height: 30px;
+  color: #666;
+}
+
+input:focus, select:focus {
+  outline: none;
+}
+
+textarea {
+  border: 1px solid #cbcac6;
+  padding: 12px 9px;
+  color: #333;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+/* 设置输入框placeholder的样式 */
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #999;
+}
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #999;
+}
+
+input:-ms-input-placeholder {
+  color: #999;
+
+}
+
+input::-webkit-input-placeholder {
+  color: #999;
+}
+
+/*左浮动*/
+.fl {
+  float: left;
+}
+
+/*右浮动*/
+.fr {
+  float: right;
+}
+
+.clear:before {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.clear:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
+  &.hide {
+    display: none;
+  }
+}
+
+.bigBox {
+  position: relative;
+  font-size: 12px;
+  margin: 0 auto;
+}
+
+.animation {
+  transition: all linear .2s;
+}
+
+.inlineBlock {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
+.scrollStyle {
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    background: #E5E5E5;
+    width: 6px;
+    height: 6px;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #A6A6A6;
+    border-radius: 5px;
+  }
+}
+
+.scrollStyle.noScrollStyle {
+  overflow: auto;
+  &::-webkit-scrollbar {
+    background: #E5E5E5;
+    width: 0;
+    height: 0;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #A6A6A6;
+    border-radius: 5px;
+  }
+}
+
+.icon {
+  font-style: normal;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #1296db;
+  cursor: pointer;
+  vertical-align: middle;
+
+  &.policeBadge {
+    width: 183px;
+    height: 192px;
+    background: url("./../../img/pliceBadge.png");
+  }
+
+  &.userNameIcon {
+    width: 28px;
+    height: 32px;
+    background: url("./../../img/Sprite-T.png") -18px -21px;
+  }
+
+  &.pwdIcon {
+    width: 28px;
+    height: 31px;
+    background: url("./../../img/Sprite-T.png") -18px -75px;
+  }
+
+}
+
+.radio {
+  > label {
+    cursor: pointer;
+    margin: 0 10px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 2px solid #a6a6a6;
+    border-radius: 2px;
+    line-height: 20px;
+    position: relative;
+    &:hover {
+      border-color: #808080;
+    }
+    i.icon {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      &.show {
+        display: block;
+      }
+    }
+  }
+}
+
+//.titleNav {
+//  height: 50px;
+//  line-height: 50px;
+//  font-size: 15px;
+//  color: #394e5f;
+//  padding: 0 34px;
+//  border-bottom: 1px solid #dce4ec;
+//  > .fr {
+//    margin-left: 26px;
+//  }
+//}
