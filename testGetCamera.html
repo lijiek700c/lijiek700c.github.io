@@ -6,7 +6,8 @@
 </head>
 <body>
 <video id="video" width="640" height="480" autoplay></video>  
-<button id="snap">Snap Photo</button>  
+<button id="snap">Snap Photo</button>
+<button id="download">下载图片</button>
 <canvas id="canvas" width="640" height="480"></canvas>
 <img id='img' src=''>
 <script>
@@ -15,22 +16,25 @@ window.addEventListener('DOMContentLoaded',function(){
 		aCanvas=document.getElementById('canvas'),
 		ctx=aCanvas.getContext('2d'),
 		snap=document.getElementById('snap'),
+		download=document.getElementById('download'),
 		img=document.getElementById('img');
 	navigator.getUserMedia=navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia||navigator.msGetUserMedia;
 	navigator.getUserMedia({video:true},goStream,noStream);
+	/*打开摄像头*/
 	function goStream(stream){
 		video.src=URL.createObjectURL(stream);
-		video.onerror = function () {  
+		video.onerror=function (){  
           stream.stop();  
         };  
-        stream.onended = noStream;  
-        video.onloadedmetadata = function () {  
+        stream.onended=noStream;  
+        video.onloadedmetadata=function () {  
           alert('摄像头成功打开！');  
         };
 	}
 	function noStream(err){
 		alert(err);
 	}
+/*拍照显示到canvas*/
 snap.addEventListener('click',function(){
 	alert('拍照');
 	//绘制canvas图形
@@ -38,8 +42,36 @@ snap.addEventListener('click',function(){
     //把canvas图像转为img图片
     img.src = ctx.toDataURL("image/png");
 },false);
+/*下载所拍图片*/
+download.addEventListener('click',function(){
+	downloadImg('png');
+},false);
+
+	function downloadImg(type) {
+		console.log(ctx);
+	    //设置保存图片的类型
+	    var imgdata=ctx.toDataURL(type);
+	    //将mime-type改为image/octet-stream,强制让浏览器下载
+	    var fixtype=function (type) {
+	        type=type.toLocaleLowerCase().replace(/jpg/i,'jpeg');
+	        var r=type.match(/png|jpeg|bmp|gif/)[0];
+	        return 'image/'+r;
+	    }
+	    imgdata=imgdata.replace(fixtype(type), 'image/octet-stream')
+	    //将图片保存到本地
+	    var saveFile=function (data, filename) {
+	        var link=document.createElement('a');
+	        link.href=data;
+	        link.download=filename;
+	        var event=document.createEvent('MouseEvents');
+	        event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+	        link.dispatchEvent(event);
+	    }
+	    var filename=new Date().toLocaleDateString() + '.' + type;
+	    saveFile(imgdata, filename);
+	}
 });
-console.log(window.URL);
+//console.log(window.URL);
 </script>
 </body>
 </html>
