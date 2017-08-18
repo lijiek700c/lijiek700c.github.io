@@ -153,7 +153,7 @@ input::-webkit-input-placeholder {
     color: #999;
 }
 /*  */
-@media screen and (max-width:1680px) {
+@media screen and (max-width:1820px) {
 	.ds-scanIdBox {
 		margin-top:20px;
 	}
