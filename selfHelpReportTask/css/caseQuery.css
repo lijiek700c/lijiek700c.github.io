@@ -55,7 +55,7 @@
 }
 /* 扫描窗口 */
 .ds-scanIdBox {
-	width:800px;height:601px;margin:-28px auto 0;
+	width:800px;height:601px;margin:20px auto 0;
 	border:2px solid #e7eff1;
 }
 .ds-scanIdArea {
