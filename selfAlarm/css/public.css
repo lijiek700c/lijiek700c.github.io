@@ -1,0 +1,125 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button,
+textarea, table, tr, td,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background:#fff;
+    color:#333;
+    font-size:24px;
+    font-family:'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
+    min-height: 100%;
+    padding-bottom:128px;
+}
+
+i {
+    font-style: normal;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+}
+
+table, tr, td {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input, select,textarea {
+    border: none;
+    height: 30px;
+    color: #666;
+    font-family:'Microsoft YaHei';
+}
+
+input:focus, select:focus {
+    outline: none;
+}
+
+textarea {
+    border:1px solid #cbcac6;
+    padding: 12px 9px;
+    color: #333;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+/* 设置输入框placeholder的样式 */
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #999;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #999;
+}
+
+input:-ms-input-placeholder {
+    color: #999;
+}
+
+input::-webkit-input-placeholder {
+    color: #999;
+}
+
+/*左浮动*/
+.fl {
+    float: left;
+}
+
+/*右浮动*/
+.fr {
+    float: right;
+}
+
+.clear:before {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.clear:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+* {
+    box-sizing: border-box;
+}
