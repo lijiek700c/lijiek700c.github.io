@@ -1,0 +1,45 @@
+
+/*  */
+.ds-proceTwo {
+	width:210px;
+    background:url('../images/selectService02.png') no-repeat;
+    margin-left:-16px;
+}
+.ds-proceThree,.ds-proceFour {
+	width:180px;margin-left:-16px;
+    background:url('../images/bodyConfirm.png') no-repeat;
+}
+.ds-proceFour {
+	 background:url('../images/caseSearch.png') no-repeat;
+}
+.ds-tabProce {
+    background:url('../images/proce03.png') no-repeat;
+}
+/* 查询区域 */
+.ds-searchBox {
+	margin:146px auto 0;
+	width:1700px;
+}
+.ds-inputArea {
+	width:820px;height:72px;margin:0 auto;
+}
+.ds-inputArea > input {
+	display:block;width:570px;height:100%;
+	color:#000;font-size:36px;line-height:72px;
+	padding-left:20px;border-top-left-radius:6px;
+	border-bottom-left-radius:6px;background:#fff;
+}
+.ds-inputArea > p {
+	width:250px;height:72px;
+	background:#00a0e9;
+	border:1px solid #b1d2f5;
+	border-top-right-radius:6px;
+	border-bottom-right-radius:6px;
+}
+.ds-inputArea > p > i {
+	width:34px;height:34px;margin:19px 9px 0 29px;
+	background:url('../images/sBtn.png') no-repeat;
+}
+.ds-inputArea > p > span {
+	font-size:36px;color:#fff;line-height:68px;
+}

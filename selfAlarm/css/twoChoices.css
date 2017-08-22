@@ -46,7 +46,10 @@
 	width:180px;margin-left:-16px;
     background:url('../images/bodyConfirm.png') no-repeat;
 }
-
+.ds-proceFour {
+	 background:url('../images/caseSearch.png') no-repeat;
+}
+/*  */
 .ds-tabProce {
     background:url('../images/proce03.png') no-repeat;
 }
