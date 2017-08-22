@@ -7,17 +7,14 @@
 	<link rel="stylesheet" href="css/twoChoices.css">
 </head>
 <body>
+<div class="twoChoiceBox" style="display:none;">
 	<!--操作步骤-->
 	<div class="ds-queryProceBox">
-		<div class="ds-proceBtn ds-proceOne">
-			操作步骤
-		</div>
-		<div class="ds-proceBtn ds-proce">
-			<span class="fl">选择服务项目</span>
-			<i class="fl"></i>
-		</div>
+		<div class="ds-proceBtn ds-proceOne"></div>
+		<div class="ds-proceBtn ds-proceTwo"></div>
+		<div class="ds-proceBtn ds-proceThree"></div>
 	</div>
-	<div class="ds-queryInputBox" style="display:none;">
+	<div class="ds-queryInputBox">
 		<span>
 			<i class="search"></i>
 			<b>案件查询</b>
@@ -27,11 +24,12 @@
 			<b>自助报案</b>
 		</span>
 	</div>
+</div>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/basicOpe.js"></script>
 <script>
 $(function(){
-    firstOpen('正在跳转','.ds-queryInputBox');
+    firstOpen('正在跳转','.twoChoiceBox');
 	$('.ds-searchBtn').click(function(){
 		delayGo('');
 	});

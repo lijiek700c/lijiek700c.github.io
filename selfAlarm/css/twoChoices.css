@@ -36,3 +36,17 @@
 	transform:translateY(3px);
 	box-shadow:inset 0px 0px 10px 0px #40b7ef,0px 0px 0 0px #bebbc4;
 }
+/*  */
+.ds-proceTwo {
+	width:210px;
+    background:url('../images/selectService.png') no-repeat;
+    margin-left:-16px;
+}
+.ds-proceThree {
+	width:180px;margin-left:-16px;
+    background:url('../images/bodyConfirm.png') no-repeat;
+}
+
+.ds-tabProce {
+    background:url('../images/proce03.png') no-repeat;
+}

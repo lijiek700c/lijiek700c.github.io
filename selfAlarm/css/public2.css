@@ -131,23 +131,7 @@ input::-webkit-input-placeholder {
     height:100%;
 }
 .ds-proceOne {
-    width:160px;text-align:center;
-    background:url('../images/proce01.png') no-repeat;
+    width:160px;
+    background:url('../images/opePro.png') no-repeat;
 }
-.ds-proce {
-    background:url('../images/grayBg.png') no-repeat;
-}
-.ds-proce span {
-    min-width:158px;height:100%;
-    background:#ccc;
-}
-.ds-proce i {
-    width:22px;height:68px;
-    background:url('../images/grayArrow.png') no-repeat;
-}
-.ds-proceThree {
-    left:418px;
-}
-.ds-tabProce {
-    background:url('../images/proce03.png') no-repeat;
-}
+
