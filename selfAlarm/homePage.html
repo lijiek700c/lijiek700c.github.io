@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="css/public.css">
 	<link rel="stylesheet" href="css/homePage.css">
 	<link rel="stylesheet" href="css/softkeys.css">
+	<link rel="stylesheet" href="css/ball-spin-clockwise.css">
 </head>
 <body>
 	<!--页头-->
@@ -22,8 +23,33 @@
 			<p class="num">400-800-2285</p>
 		</div>
 	</div>
-	<div class="ds-insertArea">
-		
+	<!--iframe-->
+	<div class="ds-operateArea">
+		<iframe class="ds-iframe" src="" frameborder="0" scrolling="no"></iframe>
+		<!--加载S-->
+        <div class="ds-loadingBox" style="display:none;">
+            <div class="ds-wrapper">
+                <div class="la-ball-spin-clockwise la-2x">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="ds-loadingTxt">
+                    <span>正在加载</span>
+                    <div>
+                        <p class="first">.</p>
+                        <p class="second">.</p>
+                        <p class="third">.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--加载E-->
 	</div>
 	<!--页脚-->
 	<div class="ds-footer clear">
@@ -39,9 +65,16 @@
 	</div>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/ds-public.js"></script>
+<script src="js/ds-public.js"></script>
 <script>
+var index=0;
+var srcArr=['twoChoices.html','http://www.baidu.com','http://www.qq.com'];
 $(function(){
-	
+	setIframeSize();
+	setIframeSrc();
+	$(window).on('unload',function(){
+		localStorage.clear();
+	});
 });
 </script>
 </body>

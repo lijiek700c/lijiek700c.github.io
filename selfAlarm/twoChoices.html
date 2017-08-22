@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>主界面</title>
+	<link rel="stylesheet" href="css/public2.css">
+	<link rel="stylesheet" href="css/twoChoices.css">
+</head>
+<body>
+	<!--操作步骤-->
+	<div class="ds-queryProceBox">
+		<div class="ds-proceBtn ds-proceOne">
+			操作步骤
+		</div>
+		<div class="ds-proceBtn ds-proce">
+			<span class="fl">选择服务项目</span>
+			<i class="fl"></i>
+		</div>
+	</div>
+	<div class="ds-queryInputBox" style="display:none;">
+		<span>
+			<i class="search"></i>
+			<b>案件查询</b>
+		</span>
+		<span>
+			<i class="alarm"></i>
+			<b>自助报案</b>
+		</span>
+	</div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/basicOpe.js"></script>
+<script>
+$(function(){
+    firstOpen('正在跳转','.ds-queryInputBox');
+	$('.ds-searchBtn').click(function(){
+		delayGo('');
+	});
+	$('.ds-btnBlue').click(function(){
+		delayGo('');
+	});
+	$(document).on('keydown',function(ev){
+		//alert(ev.which);
+	});
+});
+</script>
+</body>
+</html>

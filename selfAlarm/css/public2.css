@@ -24,8 +24,6 @@ body {
     color:#333;
     font-size:24px;
     font-family:'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
-    min-height: 100%;
-    padding-bottom:128px;
 }
 
 i {
@@ -125,21 +123,27 @@ input::-webkit-input-placeholder {
 
 /* 操作步骤 */
 .ds-queryProceBox {
-    position:absolute;top:180px;left:-50px;width:100%;height:68px;
+    position:absolute;top:20px;left:30px;width:100%;height:68px;
+    color:#fff;font-size:24px;
 }
 .ds-proceBtn {
-    position:absolute;left:0;top:0;font-size:24px;line-height:68px;
-    height:100%;color:#fff;
-    padding:0 20px;
+    float:left;line-height:68px;
+    height:100%;
 }
 .ds-proceOne {
-    left:80px;
+    width:160px;text-align:center;
     background:url('../images/proce01.png') no-repeat;
-    background-size:100% 100%;
 }
-.ds-proceTwo,.ds-proceThree {
-    width:210px;left:224px;
-    background:url('../images/proce02.png') no-repeat;
+.ds-proce {
+    background:url('../images/grayBg.png') no-repeat;
+}
+.ds-proce span {
+    min-width:158px;height:100%;
+    background:#ccc;
+}
+.ds-proce i {
+    width:22px;height:68px;
+    background:url('../images/grayArrow.png') no-repeat;
 }
 .ds-proceThree {
     left:418px;
