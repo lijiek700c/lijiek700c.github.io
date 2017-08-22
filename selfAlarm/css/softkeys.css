@@ -40,6 +40,7 @@
 	margin: 0 0.1em 0.4em 0.1em;
 	border: 0.1em solid #aaa;
 	border-radius: 5px;
+	color:#fff;
 	cursor: pointer;
 }
 
@@ -47,7 +48,6 @@
 	outline: none;
 	background-color: #4b94ce;
 	border-color: #4b94ce;
-	color: #fff;
 }
 
 .softkeys__btn span {
