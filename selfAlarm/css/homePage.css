@@ -1,7 +1,6 @@
 body {
 	overflow:hidden;
-	background:url('../images/bodyBg.jpg') center top no-repeat;
-	
+	background:url('../images/bodyBg.png') center top no-repeat;
 }
 .ds-header {
 	width:100%;height:160px;color:#fff;
