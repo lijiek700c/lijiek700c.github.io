@@ -87,11 +87,11 @@ textarea:focus {
     color: #999;
 }
 
-input:-ms-input-placeholder {
+input:-ms-input-placeholder,textarea:-ms-input-placeholder {
     color: #999;
 }
 
-input::-webkit-input-placeholder {
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
     color: #999;
 }
 
@@ -123,17 +123,25 @@ input::-webkit-input-placeholder {
 
 /* 操作步骤 */
 .ds-queryProceBox {
-    position:absolute;top:20px;left:30px;width:100%;height:68px;
-    color:#fff;font-size:24px;
+    position:absolute;top:170px;left:30px;width:100%;height:60px;
+    font-size:24px;z-index:3;
 }
 .ds-proceBtn {
-    float:left;line-height:68px;
+    float:left;line-height:60px;
     height:100%;
 }
-.ds-proceOne {
-    width:160px;
-    background:url('../images/opePro.png') no-repeat;
+.ds-proceHome {
+    width:69px;
+    background:url('../images/bzHome.png') no-repeat;
 }
+.ds-proce {
+    width:202px;text-align:center;color:#444;margin-left:-12px;
+    background:url('../images/notSel.png') no-repeat;
+}
+.ds-proce.sel {
+    background:url('../images/isSel.png') no-repeat;
+}
+/*  */
 /* 表格 */
 .table {
     box-sizing: border-box;
@@ -180,18 +188,74 @@ input::-webkit-input-placeholder {
 .table tbody a.word {
     display:block;color:#666;
 }
-/* 
-.table tbody tr:last-child {
-    border-bottom:none;
-}
-.table tbody tr > td {
-    font-size:24px;color: #666;line-height:50px;
-}
+/* 页头 */
 
-.table tbody tr:active {
-    background:rgba(229, 249, 255, 0.6);
+.ds-header {
+    position:relative;width:100%;height:140px;color:#fff;
+    background:url('../images/headerBg.png') no-repeat;
+    z-index:3;
 }
-.table tbody tr:active > td {
-    color:#999;
-} */
-
+.ds-header > a {
+    height:108px;
+    margin:20px 0 0 50px;
+}
+.ds-header > a > i {
+    width:91px;height:100px;margin-right:16px;
+    background:url('../images/jinhui.png') no-repeat;
+}
+.ds-header > a > span {
+    font-size:50px;color:#fff;line-height:102px;
+}
+.ds-header > div {
+    width:360px;font-size:22px;margin:40px 30px 0 0;color:#eee;
+}
+.ds-header p.iconP {
+    height:40px;
+    font-size:30px;
+}
+.ds-header p.iconP span.txt {
+    font-size:24px;margin:7px 0 0 14px;
+}
+.ds-header p.iconP span.num {
+    font-size:32px;line-height:40px;
+}
+.ds-header p.num {
+    line-height:34px;text-align:right;padding-right:12px;
+}
+/* 页脚 */
+.ds-footer {
+    position:fixed;left:0;bottom:0;width:100%;height:128px;font-size:24px;color:#e9f0f3;
+    background:rgba(0,0,0,0.3);z-index:3;
+}
+.ds-footer > .footerTxt {
+    margin:28px 0 0 30px;line-height:36px;
+}
+.ds-footer > .btnBox {
+    margin:20px 40px 0 0 ;
+}
+.ds-footer > .btnBox > span {
+    position:relative;width:300px;height:96px;margin-left:10px;
+    cursor:pointer;transition:all .1s ease-in;
+}
+.ds-footer > .btnBox > span:before {
+    content:'';position:absolute;top:-4px;left:-4px;
+    width:100%;height:100%;
+}
+.ds-footer > .btnBox > span:active {
+    box-shadow:0px 0px 20px 0px #fff;transform:translateY(2px);
+}
+.ds-footer > .btnBox > span.on:before {
+    border:4px dashed #ccc;
+}
+.ds-footer > .btnBox > span.home {
+    background:url('../images/home.png') no-repeat;
+}
+.ds-footer > .btnBox > span.return {
+    background:url('../images/back.png') no-repeat;
+}
+.ds-footer > .btnBox > span.next {
+    background:url('../images/next.png') no-repeat;
+}
+.ds-footer > .btnBox > span.home {
+    background:url('../images/home.png') no-repeat;
+}

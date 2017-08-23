@@ -19,7 +19,6 @@
 		            var character = '',
 		            type = 'letter',
 		            styleClass = '';
-
 		            switch (typeof button) {
 		            /*case 'array':*/
 			            case 'object':
@@ -54,14 +53,14 @@
 			                    type = 'tab';
 			                    break;
 
-			                case 'space':
-			                    character = '<span>space</span>';
+			                case '空格':
+			                    character = '<span>空格</span>';
 			                    type = 'space';
 			                    styleClass = 'softkeys__btn--space';
 			                    break;
 
-			                case 'delete':
-			                    character = '<span>delete</span>';
+			                case '删除':
+			                    character = '<span>删除</span>';
 			                    type = 'delete';
 			                    break;
 			                case '隐藏':
@@ -75,7 +74,6 @@
 			                }
 			                break;
 		            }
-
 		            obj.append('<' + settings.buttonWrapper + ' class="softkeys__btn  ' + styleClass + '" data-type="' + type + '">' + character + '</' + settings.buttonWrapper + '>');
 		        };
 		        /*创建每一行的按键E*/
@@ -98,12 +96,12 @@
 		                targetValue=input.val();
 		                switch (type) {
 			                case 'capslock':
-			                    toggleCase(obj);
+			                    toggleCase(_this);
 			                    break;
 
 			                case 'shift':
-			                    toggleCase(obj);
-			                    toggleAlt(obj);
+			                    toggleCase(_this);
+			                    toggleAlt(_this);
 			                    break;
 
 			                case 'return':
@@ -127,6 +125,12 @@
 			                        character = $(this).children('span').eq(1).html();
 			                    } else {
 			                        character = $(this).children('span').eq(0).html();
+			                    }
+			                    
+			                    if (_this.hasClass('softkeys--caps')) {
+			                        character = $(this).children('span').eq(1).text();
+			                    } else {
+			                        character = $(this).children('span').eq(0).text();
 			                    }
 			                    break;
 
@@ -154,6 +158,7 @@
 		    	return this;
 		    };
 		    var container=$(container);
+		    container.addClass('animated');
 		    container.createKeys({
 				layout : [
 		            [
@@ -170,7 +175,7 @@
 		                ['0',')'],
 		                ['-', '_'],
 		                ['=','+'],
-		                'delete'
+		                '删除'
 		            ],
 		            [
 		                'q','w','e','r','t','y','u','i','o','p',
@@ -187,7 +192,7 @@
 		            [
 		                'shift',
 		                'z','x','c','v','b','n','m',
-		                'space',
+		                '空格',
 		                [',','&lt;'],
 		                ['.','&gt;'],
 		                ['/','?'],
@@ -196,6 +201,7 @@
 		        ]
 			});
 		    var input=$('input[name]');
+		    input.focus();
 		    $.each(input,function(index){
 		    	(function(i){
 		    		input.eq(i).focus(function(){

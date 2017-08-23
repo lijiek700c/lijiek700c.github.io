@@ -1,20 +1,4 @@
 
-/*  */
-.ds-proceTwo {
-	width:210px;
-    background:url('../images/selectService02.png') no-repeat;
-    margin-left:-16px;
-}
-.ds-proceThree,.ds-proceFour {
-	width:180px;margin-left:-16px;
-    background:url('../images/bodyConfirm.png') no-repeat;
-}
-.ds-proceFour {
-	 background:url('../images/caseSearch.png') no-repeat;
-}
-.ds-tabProce {
-    background:url('../images/proce03.png') no-repeat;
-}
 /* 查询区域 */
 .ds-searchBox {
 	margin:146px auto 0;
@@ -35,6 +19,7 @@
 	border:1px solid #b1d2f5;
 	border-top-right-radius:6px;
 	border-bottom-right-radius:6px;
+	box-shadow:0px 0px 10px 0px #d8d8d8;
 }
 .ds-inputArea > p > i {
 	width:34px;height:34px;margin:19px 9px 0 29px;

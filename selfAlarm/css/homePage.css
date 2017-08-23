@@ -2,80 +2,86 @@ body {
 	overflow:hidden;
 	background:url('../images/bodyBg.png') center top no-repeat;
 }
+/* 页头 */
+
 .ds-header {
-	width:100%;height:160px;color:#fff;
-	background:url('../images/headerBg.png') no-repeat;
+    width:100%;height:140px;color:#fff;
+    background:url('../images/headerBg.png') no-repeat;
 }
 .ds-header > a {
-	height:108px;
-	margin:27px 0 0 50px;
+    height:108px;
+    margin:20px 0 0 50px;
 }
 .ds-header > a > i {
-	width:97px;height:107px;margin-right:16px;
-	background:url('../images/jinhui.png') no-repeat;
+    width:91px;height:100px;margin-right:16px;
+    background:url('../images/jinhui.png') no-repeat;
 }
 .ds-header > a > span {
-	font-size:60px;color:#fff;line-height:108px;
+    font-size:50px;color:#fff;line-height:102px;
 }
 .ds-header > div {
-	font-size:30px;margin:32px 85px 0 0;color:#eee;
+    width:360px;font-size:22px;margin:40px 30px 0 0;color:#eee;
 }
 .ds-header p.iconP {
-	height:50px;
-	font-size:30px;
+    height:40px;
+    font-size:30px;
 }
-.ds-header p.iconP i {
-	width:50px;height:50px;margin-right:7px;
-	background:url('../images/phone.png') no-repeat;
+.ds-header p.iconP span.txt {
+    font-size:24px;margin:7px 0 0 14px;
 }
-.ds-header p.iconP span {
-	line-height:50px;
+.ds-header p.iconP span.num {
+    font-size:32px;line-height:40px;
 }
 .ds-header p.num {
-	line-height:58px;
+    line-height:34px;text-align:right;padding-right:12px;
 }
+/* 页脚 */
 .ds-footer {
-	position:fixed;left:0;bottom:0;width:100%;height:128px;font-size:24px;color:#e9f0f3;
-	background:rgba(0,0,0,0.3);
+    position:fixed;left:0;bottom:0;width:100%;height:128px;font-size:24px;color:#e9f0f3;
+    background:rgba(0,0,0,0.3);
 }
 .ds-footer > .footerTxt {
-	margin:28px 0 0 30px;line-height:36px;
+    margin:28px 0 0 30px;line-height:36px;
 }
 .ds-footer > .btnBox {
-	margin:20px 40px 0 0 ;
+    margin:20px 40px 0 0 ;
 }
 .ds-footer > .btnBox > span {
-	position:relative;width:300px;height:96px;margin-left:10px;
-	cursor:pointer;transition:all .1s ease-in;
+    position:relative;width:300px;height:96px;margin-left:10px;
+    cursor:pointer;transition:all .1s ease-in;
+
 }
 .ds-footer > .btnBox > span:before {
-	content:'';position:absolute;top:-4px;left:-4px;
-	width:100%;height:100%;
+    content:'';position:absolute;top:-4px;left:-4px;
+    width:100%;height:100%;
 }
 .ds-footer > .btnBox > span:active {
-	box-shadow:0px 0px 20px 0px #fff;transform:translateY(2px);
+    box-shadow:0px 0px 20px 0px #fff;transform:translateY(2px);
 }
 
 .ds-footer > .btnBox > span.on:before {
-	border:4px dashed #ccc;
+    border:4px dashed #ccc;
 }
 .ds-footer > .btnBox > span.home {
-	background:url('../images/home.png') no-repeat;
+    background:url('../images/home.png') no-repeat;
 }
 .ds-footer > .btnBox > span.return {
-	background:url('../images/back.png') no-repeat;
+    background:url('../images/back.png') no-repeat;
 }
 .ds-footer > .btnBox > span.next {
-	background:url('../images/next.png') no-repeat;
+    background:url('../images/next.png') no-repeat;
 }
 .ds-footer > .btnBox > span.home {
-	background:url('../images/home.png') no-repeat;
+    background:url('../images/home.png') no-repeat;
+}
+.ds-footer > .btnBox > span.confirm {
+    background:url('../images/confirm.png') no-repeat;
 }
 /* 键盘输入区域 */
 .ds-operateArea {
 	position:relative;/* width:1692px; */
 	margin:0 auto;
-	overflow:hidden;
+	/* overflow:hidden; */
 }
 .ds-iframe {
 	width:100%;height:100%;

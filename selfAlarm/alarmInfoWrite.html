@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>报案信息填写</title>
+	<link rel="stylesheet" href="css/public2.css">
+	<link rel="stylesheet" href="css/alarmInfoWrite.css">
+	<link rel="stylesheet" href="css/softkeys.css">
+</head>
+<body>
+<div class="ds-infoWriteBox" style="display:none;">
+	<!--操作步骤S-->
+	<div class="ds-queryProceBox">
+		<div class="ds-proceBtn ds-proceHome"></div>
+		<div class="ds-proceBtn ds-proce">选择服务项目</div>
+		<div class="ds-proceBtn ds-proce">身份确认</div>
+		<div class="ds-proceBtn ds-proce sel">填写信息</div>
+		<div class="ds-proceBtn ds-proce">资料上传</div>
+		<div class="ds-proceBtn ds-proce">完成报案</div>
+	</div>
+	<!--操作步骤E-->
+	<!--信息输入区域-->
+	<div class="ds-infoInsertArea">
+		<ul class="ds-infoUl clear">
+			<li class="fl">
+				<label class="clear" for="" >
+					<span class="fl">案发时间</span>
+					<div class="fl inputBox">
+						<input type="text">
+						<i class="ds-date"></i>
+					</div>			
+				</label>
+				<label class="clear" for="" >
+					<span class="fl">案发地点</span>
+					<div class="fl inputBox">
+						<input type="text" placeholder="请选择">
+						<input class="details" type="text" placeholder="请输入详细地址">
+						<i class="ds-arrow"></i>
+					</div>			
+				</label>
+				<label class="third clear" for="" >
+					<span class="fl">报案人电话</span>
+					<div class="fl inputBox">
+						<input name="key1" type="text" placeholder="请输入报案人电话">
+					</div>			
+				</label>
+				<label class="clear" for="" >
+					<span class="fl">被举报人姓名</span>
+					<div class="fl inputBox">
+						<input name="key2" type="text" placeholder="请输入被举报人电话">
+					</div>			
+				</label>
+			</li>
+			<li class="fl">
+				<label class="clear" for="" >
+					<span class="fl">报案人常住地址</span>
+					<div class="fl inputBox">
+						<input type="text" placeholder="请选择">
+						<input class="details" type="text" placeholder="请输入详细地址">
+						<i class="ds-arrow"></i>
+					</div>			
+				</label>
+				<label class="third clear" for="" >
+					<span class="fl">案件描述</span>
+					<textarea class="fl" id="" placeholder="简要案情或者报案记录（发案时间、地点、 简要过程、涉案人基本情况、受害情况等） 以及是否接受证据"></textarea>
+				</label>
+			</li>
+		</ul>
+	</div>
+	<!--键盘-->
+	<div class="softkeys"></div>
+</div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/basicOpe.js"></script>
+<script>
+$(function(){
+    firstOpen('正在跳转','.ds-infoWriteBox');
+    dsKeyBoard('.softkeys');
+});
+</script>
+</body>
+</html>

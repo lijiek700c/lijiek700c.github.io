@@ -1,0 +1,58 @@
+.ds-queryProceBox {
+	top:20px;
+}
+/* 信息输入区域 */
+.ds-infoInsertArea {
+	margin-top:118px;
+}
+.ds-infoUl {
+	font-size:30px;
+}
+.ds-infoUl > li {
+	margin-right:109px;
+}
+.ds-infoUl > li:last-child {
+	margin-right:0;
+}
+.ds-infoUl label {
+	display:block;margin-bottom:20px;
+}
+.ds-infoUl label.third {
+	margin-top:80px;
+}
+.ds-infoUl label > span {
+	width:244px;line-height:60px;color:#fff;
+	text-align:right;padding-right:10px;
+}
+.ds-infoUl label > textarea {
+	resize:none;width:604px;height:224px;
+	line-height:46px;padding:8px 15px;color:#666;font-size:30px;
+}
+.ds-infoUl div.inputBox {
+	position:relative;width:604px;height:60px;border:2px solid #ccc;
+	border-radius:2px;background:#fff;
+}
+.ds-infoUl div.inputBox > input {
+	position:absolute;top:0;left:0;
+	width:100%;height:100%;background:transparent;
+	line-height:56px;color:#666;font-size:30px;
+	padding-left:16px;
+}
+.ds-infoUl div.inputBox > input.details {
+	width:604px;height:60px;top:58px;left:-2px;
+	background:#fff;border:2px solid #ccc;
+	border-top:none;
+}
+.ds-infoUl div.inputBox > i.ds-date {
+	position:absolute;top:12px;right:16px;
+	width:32px;height:32px;
+	background:url('../images/ds-date.png') no-repeat;
+}
+.ds-infoUl div.inputBox > i.ds-arrow {
+	position:absolute;top:20px;right:18px;
+	width:28px;height:16px;
+	background:url('../images/ds-arrow.png') no-repeat;
+}
+
+/*  */
+

@@ -3,30 +3,46 @@ function setIframeSize(){
 	var oHead=$('.ds-header'),
 	oFoot=$('.ds-footer'),
 	oArea=$('.ds-operateArea'),
+	oFrame=$('.ds-iframe'),
 	win=$(window);
 	var timer=null;
 	oArea.height(win.innerHeight()-oHead.height()-oFoot.height());
+	if(oFrame.attr('src')==='alarmInfoWrite.html'){
+		$('.ds-header').hide();
+		oArea.height(win.innerHeight()-oFoot.height());
+	}
 	win.on('resize',function(){
 		clearTimeout(timer);
 		timer=setTimeout(function(){
 			oArea.height(win.innerHeight()-oHead.height()-oFoot.height());
+			if(oFrame.attr('src')==='alarmInfoWrite.html'){
+				$('.ds-header').hide();
+				oArea.height(win.innerHeight()-oFoot.height());
+			}
 		},200);
 	});
 }
-/*设置iframe的src链接*/
-function setIframeSrc(){
+/*设置iframe的src链接和页脚提示信息*/
+function setIframeTxtSrc(){
 	var tabBtn=$('span','.btnBox');
 	var oIframe=$('.ds-iframe');
+	var aP=$('.footerTxt p','.ds-footer');
 	var timer=null;
-	oIframe.attr('src',srcArr[1]);
+	oIframe.attr('src',srcArr[0]);
+	aP.eq(0).text(txtArr[0].p1);
+	aP.eq(1).text(txtArr[0].p2);
 	tabBtn.on('click',function(){
 		var _this=$(this);
 		if(_this.hasClass('return')){
+			if(oIframe.attr('src')==='idVertificate.html'){
+				window.open('threeChoices.html','_self');
+				return false;
+			}
 			index--;
 			if(index<=0){
 				index=0;
 			}
-		}else if(_this.hasClass('next')){
+		}else if(_this.hasClass('next')||_this.hasClass('confirm')){
 			index++;
 			if(index>=srcArr.length){
 				index=srcArr.length-1;
@@ -97,26 +113,15 @@ function getFirstOpen(){
 }
 /*页面打开时的加载动画*/
 function openLoad(opt){
-	var timer=null;
 	opt.showBool=opt.showBool||null;
 	if(opt.showBool){
 		$(opt.str).css('display','block');
 		return;
 	}
-	window.parent.dsLoading({
+	dsLoading({
 		txt:opt.txt,
 		bool:true
 	});
-	clearTimeout(timer);
-	timer=setTimeout(function(){
-		window.parent.dsLoading({
-			bool:false,
-			fn:function(){
-				$(opt.str).show();
-				setFirstOpen();
-			}
-		});
-	},1800);
 }
 /*页面第一次打开时执行加载动画*/
 function firstOpen(txt,str){
@@ -133,5 +138,29 @@ function firstOpen(txt,str){
     	});
     }
 }
-
+/**/
+function hideLoading(opt){
+	var timer=null;
+	clearTimeout(timer);
+	timer=setTimeout(function(){
+		dsLoading({
+			bool:false,
+			fn:function(){
+				$(opt.str).show();
+				setFirstOpen();
+			}
+		});
+	},2000);
+}
+/**/
+function closeLoading(opt){
+    var src=$('.ds-testBodyBg').attr('data-src');
+    $('.ds-testBodyBg').attr('src',src);
+    $('.ds-testBodyBg').get(0).onload=function(){
+    	hideLoading({
+    		txt:opt.txt,
+    		str:opt.str
+    	});
+    };
+}
 

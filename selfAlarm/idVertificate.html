@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>身份确认</title>
+	<link rel="stylesheet" href="css/public2.css">
+	<link rel="stylesheet" href="css/idVertificate.css">
+</head>
+<body>
+<div class="ds-idVertificateBox" style="display:none;">
+	<!--操作步骤S-->
+	<div class="ds-queryProceBox">
+		<div class="ds-proceBtn ds-proceHome"></div>
+		<div class="ds-proceBtn ds-proce">选择服务项目</div>
+		<div class="ds-proceBtn ds-proce sel">身份确认</div>
+		<div class="ds-proceBtn ds-proce">填写信息</div>
+		<div class="ds-proceBtn ds-proce">资料上传</div>
+		<div class="ds-proceBtn ds-proce">完成报案</div>
+	</div>
+	<!--操作步骤E-->
+	<div class="ds-searchBox">
+		<!--输入框-->
+		<div class="ds-inputArea clear">
+			<label class="fl clear" for="">
+				<span class="fl">身份证号</span>
+				<input name="key1" class="fl" type="text">
+			</label>
+			<p class="fl">案件查询</p>
+		</div>
+	</div>
+	<!--提示扫描身份证-->
+	<div class="ds-notice">
+		<img src="images/notice01.png" alt="">
+	</div>
+</div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/basicOpe.js"></script>
+<script>
+$(function(){
+    firstOpen('正在跳转','.ds-idVertificateBox');
+});
+</script>
+</body>
+</html>
