@@ -48,6 +48,7 @@ function setIframeTxtSrc(){
 				index=srcArr.length-1;
 			}
 		}else{
+			window.open('threeChoices.html','_self');
 			return false;
 		}
 		clearTimeout(timer);
@@ -100,7 +101,6 @@ function delayGo(str){
 		window.parent.jump(str);
 	},200);
 }
-
 function setFirstOpen(){
 	var strArr=location.href.split('/');
 	var str=strArr[strArr.length-1].split('.')[0];

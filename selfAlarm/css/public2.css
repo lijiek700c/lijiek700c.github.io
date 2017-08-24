@@ -24,6 +24,7 @@ body {
     color:#333;
     font-size:24px;
     font-family:'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
+    overflow:hidden;
 }
 
 i {
@@ -141,7 +142,11 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
 .ds-proce.sel {
     background:url('../images/isSel.png') no-repeat;
 }
-/*  */
+.ds-proce:last-child {
+    width:220px;
+    background:url('../images/complete.png') no-repeat;
+}
+/* complete.png */
 /* 表格 */
 .table {
     box-sizing: border-box;
@@ -258,4 +263,8 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
 }
 .ds-footer > .btnBox > span.home {
     background:url('../images/home.png') no-repeat;
+}
+/* 背景图片 */
+.ds-testBodyBg {
+    position:absolute;top:0;left:0;width:1920px;height:1080px;
 }
