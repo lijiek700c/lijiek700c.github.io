@@ -268,3 +268,15 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
 .ds-testBodyBg {
     position:absolute;top:0;left:0;width:1920px;height:1080px;
 }
+
+/*  */
+@media screen and (max-width:1470px){
+    .ds-header > div {
+        margin:0;position:absolute;top:32px;right:85px;
+    }
+}
+@media screen and (max-width:1680px) {
+    .ds-footer > .btnBox {
+        margin:0;position:absolute;top:20px;right:40px;
+    }
+}

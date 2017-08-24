@@ -101,13 +101,21 @@ $(function(){
     });
     var aSelBtn=$('.ds-queryInputBox > span');
     var aMainBtn=$('.btnBox span','.ds-footer');
-    aSelBtn.on('click',function(ev){
+    aSelBtn.on('click touchstart',function(ev){
     	var _this=$(this);
+    	var oI=_this.children('i');
     	if(_this.hasClass('onSel')){
     		return false;
     	}
     	aSelBtn.removeClass('onSel');
     	_this.addClass('onSel');
+    	if(oI.hasClass('search')){
+    		window.location.href='caseSearch.html';
+    	}else if(oI.hasClass('alarm')){
+			window.location.href='lawsTxt.html?'+'selfAlarm';
+    	}else{
+
+    	}
     });
     aMainBtn.on('click',function(ev){
     	ev.preventDefault();
@@ -126,9 +134,16 @@ $(function(){
 
     	}
     });
-    $(window).on('unload',function(){
-    	localStorage.clear();
+    $(window).on({
+    	'load',function(){
+    		localStorage.clear();
+    	},
+    	'touchmove',function(ev){
+    		ev.preventDefault();
+    		return false;
+    	}
     });
+
 });
 </script>
 </body>
