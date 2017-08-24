@@ -135,10 +135,10 @@ $(function(){
     	}
     });
     $(window).on({
-    	'load',function(){
+    	'load':function(){
     		localStorage.clear();
     	},
-    	'touchmove',function(ev){
+    	'touchmove':function(ev){
     		ev.preventDefault();
     		return false;
     	}
