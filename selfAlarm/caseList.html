@@ -7,13 +7,12 @@
 	<link rel="stylesheet" href="css/caseList.css">
 	<link rel="stylesheet" href="css/softkeys.css">
 </head>
-<body>
-<div class="ds-caseSearchBox" style="display:none;">
+<body style="background:#ccc;">
+<div class="ds-caseSearchBox" style="display:block;">
 	<!--操作步骤-->
 	<div class="ds-queryProceBox" style="top:20px;">
 		<div class="ds-proceBtn ds-proceHome"></div>
 		<div class="ds-proceBtn ds-proce">选择服务项目</div>
-		<div class="ds-proceBtn ds-proce">身份确认</div>
 		<div class="ds-proceBtn ds-proce sel">案件查询</div>
 		<div class="ds-proceBtn ds-proce">打印受理书</div>
 		<div class="ds-proceBtn ds-proce">完成查询</div>
@@ -27,6 +26,7 @@
 				<i class="fl"></i>
 				<span class="fl">案件查询</span>
 			</p>
+			<span class="validate animated"></span>
 		</div>
 		<!--查询结果列表-->
 		<table class="table mr57" style="display:none;">
@@ -58,8 +58,60 @@
 <script src="js/basicOpe.js"></script>
 <script>
 $(function(){
-    firstOpen('正在跳转','.ds-caseSearchBox');
-    dsKeyBoard('.softkeys');
+    //firstOpen('正在跳转','.ds-caseSearchBox');
+    dsKeyBoard('.softkeys',createNumArr());
+
+    /*验证案件编号*/
+function testCaseNum(){
+	var bool=false;
+    $('.ds-inputArea > p').on('click',function(ev){
+    	ev.preventDefault();
+    	dsValidate();
+    });
+    function dsValidate(){
+    	var txtSpan=$('span.validate','.ds-inputArea'),
+    		caseInput=$('input[name]','.ds-inputArea'),
+    		moveArr=['bounce','flash','pulse','rubberBand','shake','swing','tada','wobble','jello'];
+    	var classStr=moveArr[random(0,10)];
+    	if(bool){
+    		return;
+    	}
+    	bool=true;
+    	var timer=null;
+    	clearTimeout(timer);
+    	timer=setTimeout(function(){
+    		deleteClass(txtSpan,moveArr);
+    		txtSpan.text('');	
+			if(caseInput.val()===''){
+				caseInput.focus();
+				txtSpan.text('请输入案件编号!!!');
+			}else{
+				txtSpan.text('案件编号错误!!!');
+			}
+			txtSpan.show().addClass(classStr);
+				txtSpan.fadeOut(2000,function(){
+					bool=false;
+				});	
+    	},200);
+    }
+    function random(m,n){
+    	return Math.floor(m+Math.random()*(n-m));
+    }
+    function deleteClass(obj,classArr){
+    	for(var i=0;i<classArr.length;i++){
+    		var objClassArr=obj.get(0).className.split(' ');
+    		for(var j=0;j<objClassArr.length;j++){
+    			if(objClassArr[j]===classArr[i]){
+    				objClassArr.pop();
+    				obj.get(0).className=objClassArr.join(' ');
+    				break;
+    			}
+    		}
+    	}
+    }
+}
+testCaseNum();
+    
 });
 </script>
 </body>

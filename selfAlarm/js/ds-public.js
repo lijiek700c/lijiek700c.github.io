@@ -34,7 +34,7 @@ function setIframeTxtSrc(){
 	tabBtn.on('click',function(){
 		var _this=$(this);
 		if(_this.hasClass('return')){
-			if(oIframe.attr('src')==='idVertificate.html'){
+			if(oIframe.attr('src')==='caseList.html'||oIframe.attr('src')==='idVertificate02.html'){
 				window.open('threeChoices.html','_self');
 				return false;
 			}
@@ -54,6 +54,8 @@ function setIframeTxtSrc(){
 		clearTimeout(timer);
 		timer=setTimeout(function(){
 			oIframe.attr('src',srcArr[index]);
+			aP.eq(0).text(txtArr[index].p1);
+			aP.eq(1).text(txtArr[index].p2);
 		},200);
 	});
 }

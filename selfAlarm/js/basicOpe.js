@@ -1,7 +1,46 @@
 /*键盘*/
 ;(function($,win){
 	if(!('dsKeyBoard' in win)){
-		win.dsKeyBoard=function(container){
+		win.dsKeyBoard=function(container,layouts,bool){
+			var layout=layouts||[
+		            [
+		                ['`','~'],
+		                ['1','!'],
+		                ['2','@'],
+		                ['3','#'],
+		                ['4','$'],
+		                ['5','%'],
+		                ['6','^'],
+		                ['7','&amp;'],
+		                ['8','*'],
+		                ['9','('],
+		                ['0',')'],
+		                ['-', '_'],
+		                ['=','+'],
+		                '删除'
+		            ],
+		            [
+		                'q','w','e','r','t','y','u','i','o','p',
+		                ['[','{'],
+		                [']','}']
+		            ],
+		            [
+		                'capslock',
+		                'a','s','d','f','g','h','j','k','l',
+		                [';',':'],
+		                ["'",'&quot;'],
+		                ['\\','|']
+		            ],
+		            [
+		                'shift',
+		                'z','x','c','v','b','n','m',
+		                '空格',
+		                [',','&lt;'],
+		                ['.','&gt;'],
+		                ['/','?'],
+		                ['@']
+		            ]
+		        ];
 			$.fn.createKeys=function(options){
 				var settings=$.extend({
 		    		layout: [],			  //按键数组
@@ -67,6 +106,14 @@
 			                	character = '<span>隐藏</span>';
 			                	type='hide';
 			                	break;
+			                case '清空':
+			                	character = '<span>清空</span>';
+			                	type='clear';
+			                	break;
+			                case '回退':
+			                	character = '<span>回退</span>';
+			                	type='backspace';
+			                	break;
 			                default:
 			                    character = button;
 			                    type = 'letter';
@@ -82,7 +129,9 @@
 			            for (var i = 0; i < settings.layout.length; i++) {
 			                createRow($(this), settings.layout[i]);
 			            }
-			            $(this).prepend($('<div></div>').text('隐藏').addClass('softHideBtn'));
+			            if(bool){	
+			            	$(this).prepend($('<div></div>').text('隐藏').addClass('softHideBtn'));
+			            }
 		        	}
 		        });
 		    };
@@ -135,12 +184,18 @@
 			                    break;
 
 			                case 'letter':
-			                    character = $(this).html();
+			                    character = $(this).html()||$(this).text();
 
 			                    if (_this.hasClass('softkeys--caps')) {
 			                        character = character.toUpperCase();
 			                    }
 			                    break;
+			                case 'clear':
+			                	targetValue='';
+			                	break;
+			                case 'backspace':
+			                	targetValue = targetValue.substr(0, targetValue.length - 1);
+			                	break;
 		                }
 		                input.focus().val(targetValue + character);
 
@@ -160,48 +215,10 @@
 		    var container=$(container);
 		    container.addClass('animated');
 		    container.createKeys({
-				layout : [
-		            [
-		                ['`','~'],
-		                ['1','!'],
-		                ['2','@'],
-		                ['3','#'],
-		                ['4','$'],
-		                ['5','%'],
-		                ['6','^'],
-		                ['7','&amp;'],
-		                ['8','*'],
-		                ['9','('],
-		                ['0',')'],
-		                ['-', '_'],
-		                ['=','+'],
-		                '删除'
-		            ],
-		            [
-		                'q','w','e','r','t','y','u','i','o','p',
-		                ['[','{'],
-		                [']','}']
-		            ],
-		            [
-		                'capslock',
-		                'a','s','d','f','g','h','j','k','l',
-		                [';',':'],
-		                ["'",'&quot;'],
-		                ['\\','|']
-		            ],
-		            [
-		                'shift',
-		                'z','x','c','v','b','n','m',
-		                '空格',
-		                [',','&lt;'],
-		                ['.','&gt;'],
-		                ['/','?'],
-		                ['@']
-		            ]
-		        ]
+				layout:layout
 			});
 		    var input=$('input[name]');
-		    input.focus();
+		    input.blur();
 		    $.each(input,function(index){
 		    	(function(i){
 		    		input.eq(i).focus(function(){
@@ -274,4 +291,43 @@ function firstOpen(txt,str){
     		showBool:true,
     	});
     }
+}
+/*数字键盘的数组*/
+function createNumArr(){
+	var numArr=[];
+	while(numArr.length<9){
+		var num=random1(0,9);
+		if(testRepeat(num,numArr)){
+			numArr.push(num);
+		}
+	}
+	numArr.splice(random2(0,8),0,0);
+	var layouts=[];
+	for(var i=0;i<4;i++){
+		var tempArr=[];
+		for(var j=0;j<3;j++){
+			tempArr.push(String(numArr[0]));
+			numArr.splice(0,1);
+		}
+		layouts.push(tempArr);
+	}
+	var temp=layouts[3][0];
+	layouts[3][0]='清空';
+	layouts[3][1]=temp;
+	layouts[3][2]='回退';
+	function testRepeat(num,arr){
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]===num){
+				return false;
+			}
+		}
+		return true;
+	}
+	function random1(m,n){
+		return Math.floor(m+1+Math.random()*(n-m));
+	}
+	function random2(m,n){
+		return Math.floor(m+Math.random()*(n-m));
+	}
+	return layouts;
 }
