@@ -22,7 +22,8 @@
 		            [
 		                'q','w','e','r','t','y','u','i','o','p',
 		                ['[','{'],
-		                [']','}']
+		                [']','}'],
+		                '清空'
 		            ],
 		            [
 		                'capslock',
@@ -217,7 +218,7 @@
 		    container.createKeys({
 				layout:layout
 			});
-		    var input=$('input[name]');
+		    var input=$('input[name],textarea[name]');
 		    input.blur();
 		    $.each(input,function(index){
 		    	(function(i){

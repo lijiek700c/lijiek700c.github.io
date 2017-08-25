@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="css/alarmInfoWrite.css">
 	<link rel="stylesheet" href="css/softkeys.css">
 	<link rel="stylesheet" href="css/LArea.css">
+	<link rel="stylesheet" href="css/LCalendar.min.css">
 </head>
 <body>
 <div class="ds-infoWriteBox" style="display:none;">
@@ -27,7 +28,7 @@
 				<label class="clear" for="" >
 					<span class="fl">案发时间</span>
 					<div class="fl inputBox">
-						<input type="text">
+						<input type="text"  placeholder="请选择" readonly id="time">
 						<i class="ds-date"></i>
 					</div>			
 				</label>
@@ -56,14 +57,14 @@
 				<label class="clear" for="" >
 					<span class="fl">报案人常住地址</span>
 					<div class="fl inputBox">
-						<input type="text" placeholder="请选择">
-						<input class="details" type="text" placeholder="请输入详细地址">
+						<input type="text" placeholder="请选择" id="address1">
+						<input class="details" type="text" name="key4" placeholder="请输入详细地址">
 						<i class="ds-arrow"></i>
 					</div>			
 				</label>
 				<label class="third clear" for="" >
 					<span class="fl">案件描述</span>
-					<textarea class="fl" id="" placeholder="简要案情或者报案记录（发案时间、地点、 简要过程、涉案人基本情况、受害情况等） 以及是否接受证据"></textarea>
+					<textarea class="fl" id="" name="key5" placeholder="简要案情或者报案记录（发案时间、地点、 简要过程、涉案人基本情况、受害情况等） 以及是否接受证据"></textarea>
 				</label>
 			</li>
 		</ul>
@@ -78,10 +79,20 @@
 <script src="js/LAreaData1.js"></script>
 <script src="js/LAreaData2.js"></script>
 <script src="js/LArea.js"></script>
+<script src="js/LCalendar.js"></script>
 <script>
 $(function(){
-    firstOpen('正在跳转','.ds-infoWriteBox');
+    //firstOpen('正在跳转','.ds-infoWriteBox');
     dsKeyBoard('.softkeys','',true);
+    /*日期选择*/
+    var calendar = new LCalendar();
+		calendar.init({
+			'trigger': '#time', //标签id
+			'type': 'datetime', //date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择,
+			'minDate': (new Date().getFullYear()-3) + '-' + 1 + '-' + 1, //最小日期
+			'maxDate': (new Date().getFullYear()+3) + '-' + 12 + '-' + 31 //最大日期
+		});
+    /*地区选择*/
     var area1 = new LArea();
 	     area1.init({
 	    'trigger': '#address', //触发选择控件的文本框，同时选择完毕后name属性输出到该位置
@@ -92,7 +103,19 @@ $(function(){
 	    'type': 1, //数据源类型
 	    'data': LAreaData //数据源
 	});
-area1.value=[16,0,0];//控制初始位置，注意：该方法并不会影响到input的value
+	area1.value=[16,0,0];//控制初始位置，注意：该方法并不会影响到input的value
+	/*---*/
+	var area2 = new LArea();
+	     area2.init({
+	    'trigger': '#address1', //触发选择控件的文本框，同时选择完毕后name属性输出到该位置
+	    'keys': {
+	        id: 'id',
+	        name: 'name'
+	    }, //绑定数据源相关字段 id对应valueTo的value属性输出 name对应trigger的value属性输出
+	    'type': 1, //数据源类型
+	    'data': LAreaData //数据源
+	});
+	area2.value=[16,0,0];//控制初始位置，注意：该方法并不会影响到input的value
 });
 </script>
 </body>
