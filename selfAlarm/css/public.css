@@ -19,13 +19,14 @@ p {
     margin: 0;
     padding: 0;
 }
-
 body {
     color:#333;
     font-size:24px;
     font-family:'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
     min-height: 100%;
+    background:url('../images/bodyBg.png') center top no-repeat;
     padding-bottom:128px;
+    overflow:hidden;
 }
 
 i {
@@ -123,27 +124,3 @@ input::-webkit-input-placeholder {
     box-sizing: border-box;
 }
 
-/* 操作步骤 */
-.ds-queryProceBox {
-    position:absolute;top:180px;left:-50px;width:100%;height:68px;
-}
-.ds-proceBtn {
-    position:absolute;left:0;top:0;font-size:24px;line-height:68px;
-    height:100%;color:#fff;
-    padding:0 20px;
-}
-.ds-proceOne {
-    left:80px;
-    background:url('../images/proce01.png') no-repeat;
-    background-size:100% 100%;
-}
-.ds-proceTwo,.ds-proceThree {
-    width:210px;left:224px;
-    background:url('../images/proce02.png') no-repeat;
-}
-.ds-proceThree {
-    left:418px;
-}
-.ds-tabProce {
-    background:url('../images/proce03.png') no-repeat;
-}

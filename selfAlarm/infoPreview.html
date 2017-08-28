@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<title>信息预览</title>
+	<link rel="stylesheet" href="css/public2.css">
+	<link rel="stylesheet" href="css/infoPreview.css">
+	<link rel="stylesheet" href="css/ball-spin-clockwise.css">
+</head>
+<body>
+<div class="ds-infoPreview" style="display:none;">
+	<!--页头-->
+	<div class="ds-header clear">
+		<a class="fl" href="#">
+			<i class="fl"></i>
+			<span class="fl">湖南省公安接报案查询系统</span>
+		</a>
+		<div class="fr">
+			<p class="iconP clear">
+				<span class="fl txt">服务电话：</span>
+				<span class="fl num" >400-800-2285</span>
+			</p>
+			<p class="num">湖南湘江智慧科技股份有限公司</p>
+		</div>
+	</div>
+	<!--操作步骤S-->
+	<div class="ds-queryProceBox">
+		<div class="ds-proceBtn ds-proceHome"></div>
+		<div class="ds-proceBtn ds-proce">选择服务项目</div>
+		<div class="ds-proceBtn ds-proce">身份确认</div>
+		<div class="ds-proceBtn ds-proce">填写信息</div>
+		<div class="ds-proceBtn ds-proce">资料上传</div>
+		<div class="ds-proceBtn ds-proce sel">信息预览</div>
+		<div class="ds-proceBtn ds-proce">完成报案</div>
+	</div>
+	<!--操作步骤E-->
+	<!--信息展示区域-->
+	<div class="ds-infoShowArea clear">
+		<table class="table fl wid1080">
+			<tbody>
+				<tr>
+					<td>案件编号:</td>
+				</tr>
+				<tr>
+					<td>报案人姓名：某某</td>
+				</tr>
+				<tr>
+					<td>报案人联系电话：13800000000</td>
+				</tr>
+				<tr>
+					<td>报案人常住地址：湖南省长沙市岳麓区麓谷企业广场 </td>
+				</tr>
+				<tr>
+					<td>被举报人姓名：某某</td>
+				</tr>
+				<tr>
+					<td>案发时间：2017-08-22&nbsp;18:00</td>
+				</tr>
+				<tr>
+					<td>案发地址：未知地点</td>
+				</tr>
+				<tr>
+					<td class="limitLine">
+						<p>报案人常住地址：湖南省长沙市岳麓区麓谷企业广场 报案人常住地址：湖南省长沙市岳麓区麓谷企业广场 报案人常住地址：湖南省长沙市岳麓区麓谷企业广场 报案人常住地址：湖南省长沙市岳麓区麓谷企业广场 报案人常住地址：湖南省长沙市岳麓区麓谷企业广场 报案人常住地址：湖南省长沙市岳麓区麓谷企业广场报案人常住地址：湖南省长沙市岳麓区麓谷企业广场 报案人常住地址：湖南省长沙市岳麓区麓谷企业广场 报案人常住地址：湖南省长沙市岳麓区麓谷企业广场 报案人常住地址：湖南省长沙市岳麓区麓谷企业广场 报案人常住地址：湖南省长沙市岳麓区麓谷企业广场 报案人常住地址：湖南省长沙市岳麓区麓谷企业广场
+						</p>
+					</td>
+				</tr>
+			</tbody>	
+		</table>
+		<div class="fl ds-preImgBox">
+			<img src="images/bodyBg.png" alt="">
+			<img src="images/bodyBg.png" alt="">
+			<img src="images/bodyBg.png" alt="">
+			<img src="images/bodyBg.png" alt="">
+		</div>
+	</div>
+	<!--页脚-->
+	<div class="ds-footer clear">
+		<div class="fl footerTxt"> 
+			<p>温馨提示：用户报案信息汇总展示页，点击“确定”完成报案操作。</p>
+			<p></p>
+		</div>
+		<div class="fr btnBox clear">
+			<span class="fl home"></span>
+			<span class="fl return"></span>
+			<span class="fl next"></span>
+		</div>
+	</div>
+</div>
+
+<!--加载S-->
+    <div class="ds-loadingBox" style="display:none;">
+        <div class="ds-wrapper">
+            <div class="la-ball-spin-clockwise la-2x">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="ds-loadingTxt" style="color:#000;">
+                <span>正在加载</span>
+                <div>
+                    <p class="first">.</p>
+                    <p class="second">.</p>
+                    <p class="third">.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--加载E-->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/ds-public.js"></script>
+<script>
+$(function(){
+/*打开页面时的加载动画*/
+   firstOpen('','.ds-infoPreview');
+   hideLoading({
+   		txt:'',
+   		str:'.ds-infoPreview'			
+   });
+   var aSpan=$('div.btnBox > span','.ds-footer');
+	aSpan.on('click',function(){
+		var _this=$(this);
+		if(_this.hasClass('next')){
+			window.location.href='infoPreview.html';
+		}else if(_this.hasClass('return')){
+			window.location.href='dataUpload.html';
+		}else{
+			window.location.href='threeChoices.html';
+		}
+	});
+});
+</script>
+</body>
+</html>

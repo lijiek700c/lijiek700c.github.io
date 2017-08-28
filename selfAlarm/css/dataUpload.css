@@ -1,0 +1,49 @@
+.ds-uploadImgBox {
+	width:1860px;height:426px;
+	margin:137px auto 116px;
+}
+.ds-uploadImgBox > label {
+	width:450px;height:336px;
+	background:rgba(0,0,0,0.3) url('../images/add.png') center no-repeat;
+	border:1px solid #5a87c3;
+}
+.ds-uploadImgBox > label > input[type=file] {
+	opacity:0;
+}
+.ds-imgList {
+	width:100%;height:100%;
+	overflow:hidden;
+}
+.ds-imgList > ul {
+	width:100%;height:100%;
+}
+.ds-uploadImgBox li.showImg {
+ 	position:relative;width:450px;height:100%;
+ 	text-align:center;margin-right:20px;
+ } 
+.ds-uploadImgBox li.showImg:last-child {
+	margin-right:0;
+ } 
+.ds-uploadImgBox li.showImg > img {
+ 	width:100%;height:336px;
+ 	margin-bottom:40px;
+ }  
+.ds-uploadImgBox li.showImg > span {
+ 	display:inline-block;width:160px;height:50px;line-height:50px;
+ 	background:#b8c3cc;border-radius:3px;color:#fff;
+ 	-webkit-user-select:none;
+ 	user-select:none;
+}
+.ds-uploadImgBox li.showImg > span.add {
+ 	position:absolute;left:50%;top:143px;margin-left:-80px;
+ 	background:#00a0e9;
+}
+.ds-uploadImgBox li.showImg > span.add:active {
+	background:#3bbdf8;
+}
+.ds-uploadImgBox li.showImg > span.delete {
+	background:#ff0000;display:none;
+}
+.ds-uploadImgBox li.showImg > span.delete:active {
+	background:#fa3333;
+}

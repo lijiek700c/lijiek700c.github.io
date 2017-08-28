@@ -1,0 +1,15 @@
+.ds-caseListArea {
+	width:1800px;height:560px;
+	margin:98px auto 32px;
+	background:rgba(0,0,0,0.38);
+	overflow:hidden;
+}
+.table tbody a.btn {
+    display:inline-block;font-size:24px;
+    padding:4px 12px;color:#fff;
+    line-height:32px;
+    background:#00a0e9;border-radius:4px;
+}
+.table tbody a.btn:active {
+	background:#3bbdf8;text-decoration:underline;
+}

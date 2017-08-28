@@ -1,0 +1,29 @@
+.ds-infoShowArea {
+	margin-top:104px;
+	padding:0 110px;
+}
+.table.wid1080 {
+	width:1080px;
+}
+.table.wid1080 td {
+	height:48px;line-height: 48px;
+	text-align:left;
+}
+.table.wid1080 td.limitLine p {
+	padding-bottom:8px;
+	overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+.ds-preImgBox {
+	width:590px;/* height:564px; */
+	margin-left:20px;font-size:0;
+	padding:10px 0 0 10px;
+	background:rgba(0,0,0,0.3);
+}
+.ds-preImgBox img {
+	width:280px;height:253px;
+	margin:0 10px 10px 0;
+}

@@ -87,7 +87,11 @@ $(function(){
     aSpan.on('click',function(){
     	var _this=$(this);
     	if(_this.hasClass('agree')){
-    		window.location.href=linkStr+'.html';
+    		if(linkStr==='caseSearch'){
+    			window.location.href='idVertificateSearch.html';
+    		}else if(linkStr==='selfAlarm'){
+    			window.location.href='idVertificateAlarm.html';
+    		}
     	}else{
     		window.location.href='threeChoices.html';
     	}

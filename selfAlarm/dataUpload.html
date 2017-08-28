@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>资料上传</title>
+	<link rel="stylesheet" href="css/public2.css">
+	<link rel="stylesheet" href="css/ball-spin-clockwise.css">
+	<link rel="stylesheet" href="css/dataUpload.css">
+</head>
+<body>
+<div class="ds-uploadBox" style="display:none;">
+	<!--页头-->
+	<div class="ds-header clear">
+		<a class="fl" href="#">
+			<i class="fl"></i>
+			<span class="fl">湖南省公安接报案查询系统</span>
+		</a>
+		<div class="fr">
+			<p class="iconP clear">
+				<span class="fl txt">服务电话：</span>
+				<span class="fl num" >400-800-2285</span>
+			</p>
+			<p class="num">湖南湘江智慧科技股份有限公司</p>
+		</div>
+	</div>
+	<!--操作步骤S-->
+	<div class="ds-queryProceBox">
+		<div class="ds-proceBtn ds-proceHome"></div>
+		<div class="ds-proceBtn ds-proce">选择服务项目</div>
+		<div class="ds-proceBtn ds-proce">身份确认</div>
+		<div class="ds-proceBtn ds-proce">填写信息</div>
+		<div class="ds-proceBtn ds-proce sel">资料上传</div>
+		<div class="ds-proceBtn ds-proce">信息预览</div>
+		<div class="ds-proceBtn ds-proce">完成报案</div>
+	</div>
+	<!--操作步骤E-->
+	<div class="ds-uploadImgBox">
+		<div class="ds-imgList">
+			<ul>
+				<li class="fl showImg">
+					<span class="add">添加</span>
+					<img src="images/bodyBg.png" alt="">
+					<span class="delete">删除</span>
+				</li>
+				<li class="fl showImg">
+					<span class="add">添加</span>
+					<img src="images/bodyBg.png" alt="">
+					<span class="delete">删除</span>
+				</li>
+				<li class="fl showImg">
+					<span class="add">添加</span>
+					<img src="images/bodyBg.png" alt="">
+					<span class="delete">删除</span>
+				</li>
+				<li class="fl showImg">
+					<span class="add">添加</span>
+					<img src="images/bodyBg.png" alt="">
+					<span class="delete">删除</span>
+				</li>
+				<!--
+					<li class="fl showImg">
+						<img src="images/jinhui.png" alt="">
+						<span class="delete">删除</span>
+					</li>
+				-->
+			</ul>
+		</div>
+		<!-- <label for="upload" class="fr pz">
+			<input type="file" id="upload">
+		</label> -->
+	</div>
+	<!--调摄像头拍照S-->
+	<!-- <div class="ds-getCamera">
+		<div class="ds-cameraArea">
+			<div class="ds-cameraBox">
+				<video width="800" height="600" autoplay></video>
+				<canvas width="800" height="600" id="canvas"></canvas>
+			</div>
+			<span>拍照</span>
+		</div>
+	</div> -->
+    <!--调摄像头拍照E-->
+
+	<!--页脚-->
+	<div class="ds-footer clear">
+		<div class="fl footerTxt"> 
+			<p>温馨提示：把资料平铺在屏幕下方的扫描平台。</p>
+			<p>点击“添加”，开始资料扫描。</p>
+		</div>
+		<div class="fr btnBox clear">
+			<span class="fl home"></span>
+			<span class="fl return"></span>
+			<span class="fl next"></span>
+		</div>
+	</div>
+</div>
+<!--加载S-->
+    <div class="ds-loadingBox" style="display:none;">
+        <div class="ds-wrapper">
+            <div class="la-ball-spin-clockwise la-2x">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="ds-loadingTxt" style="color:#000;">
+                <span>正在加载</span>
+                <div>
+                    <p class="first">.</p>
+                    <p class="second">.</p>
+                    <p class="third">.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--加载E-->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/ds-public.js"></script>
+<script>
+$(function(){
+	
+/*打开页面时的加载动画*/
+   firstOpen('','.ds-uploadBox');
+   hideLoading({
+   		txt:'',
+   		str:'.ds-uploadBox'			
+   });
+   var aSpan=$('div.btnBox > span','.ds-footer');
+	aSpan.on('click',function(){
+		var _this=$(this);
+		if(_this.hasClass('next')){
+			window.location.href='infoPreview.html';
+		}else if(_this.hasClass('return')){
+			window.location.href='alarmInfoWrite.html';
+		}else{
+			window.location.href='threeChoices.html';
+		}
+	});
+});
+</script>
+</body>
+</html>

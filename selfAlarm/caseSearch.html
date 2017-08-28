@@ -2,96 +2,165 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 	<title>案件查询</title>
-	<link rel="stylesheet" href="css/public.css">
-	<link rel="stylesheet" href="css/homePage.css">
-	<link rel="stylesheet" href="css/ball-spin-clockwise.css">
+	<link rel="stylesheet" href="css/public2.css">
+    <link rel="stylesheet" href="css/ball-spin-clockwise.css">
+	<link rel="stylesheet" href="css/caseList.css">
+	<link rel="stylesheet" href="css/softkeys.css">
 </head>
 <body>
-	<!--页头-->
-	<div class="ds-header clear">
-		<a class="fl" href="#">
-			<i class="fl"></i>
-			<span class="fl">湖南省公安机关执法办案系统自助服务</span>
-		</a>
-		<div class="fr">
-			<p class="iconP clear">
-				<span class="fl txt">服务电话：</span>
-				<span class="fl num" >400-800-2285</span>
-			</p>
-			<p class="num">湖南湘江智慧科技股份有限公司</p>
-		</div>
+<div class="ds-caseSearchBox" style="display:none;">
+    <!--页头-->
+    <div class="ds-header clear">
+        <a class="fl" href="#">
+            <i class="fl"></i>
+            <span class="fl">湖南省公安接报案查询系统</span>
+        </a>
+        <div class="fr">
+            <p class="iconP clear">
+                <span class="fl txt">服务电话：</span>
+                <span class="fl num" >400-800-2285</span>
+            </p>
+            <p class="num">湖南湘江智慧科技股份有限公司</p>
+        </div>
+    </div>
+	<!--操作步骤-->
+	<div class="ds-queryProceBox">
+        <div class="ds-proceBtn ds-proceHome"></div>
+        <div class="ds-proceBtn ds-proce">选择服务项目</div>
+        <div class="ds-proceBtn ds-proce">身份确认</div>
+        <div class="ds-proceBtn ds-proce sel">案件查询</div>
+        <div class="ds-proceBtn ds-proce">案件列表</div>
+        <div class="ds-proceBtn ds-proce">打印受理书</div>
+        <div class="ds-proceBtn ds-proce">完成查询</div>
 	</div>
-	<!--iframe-->
-	<div class="ds-operateArea">
-		<iframe class="ds-iframe" src="" frameborder="0" scrolling="no"></iframe>
-		<!--加载S-->
-        <div class="ds-loadingBox" style="display:none;">
-            <div class="ds-wrapper">
-                <div class="la-ball-spin-clockwise la-2x">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="ds-loadingTxt">
-                    <span>正在加载</span>
-                    <div>
-                        <p class="first">.</p>
-                        <p class="second">.</p>
-                        <p class="third">.</p>
-                    </div>
+	<!--查询区域-->
+	<div class="ds-searchBox">
+		<!--输入框-->
+		<div class="ds-inputArea clear">
+			<input name="key1" class="fl" type="text" placeholder="请输入案件编号">
+			<!-- <p class="fl clear">
+                <i class="fl"></i>
+                <span class="fl">案件查询</span>
+            </p> -->
+			<span class="validate animated"></span>
+		</div>
+		<div class="softkeys"></div>
+	</div>
+    <!--页脚-->
+    <div class="ds-footer clear">
+        <div class="fl footerTxt"> 
+            <p>温馨提示：请在输入框内输入案件编号。</p>
+            <p>验证成功后，点击“下一步”继续操作。</p>
+        </div>
+        <div class="fr btnBox clear">
+            <span class="fl home"></span>
+            <span class="fl return"></span>
+            <span class="fl next"></span>
+        </div>
+    </div>
+</div>
+<!--加载S-->
+    <div class="ds-loadingBox" style="display:none;">
+        <div class="ds-wrapper">
+            <div class="la-ball-spin-clockwise la-2x">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="ds-loadingTxt" style="color:#000;">
+                <span>正在加载</span>
+                <div>
+                    <p class="first">.</p>
+                    <p class="second">.</p>
+                    <p class="third">.</p>
                 </div>
             </div>
         </div>
-        <!--加载E-->
-	</div>
-	<!--页脚-->
-	<div class="ds-footer clear">
-		<div class="fl footerTxt">
-			<p></p>
-			<p></p>
-		</div>
-		<div class="fr btnBox clear">
-			<span class="fl home"></span>
-			<span class="fl return"></span>
-			<span class="fl confirm"></span>
-		</div>
-	</div>
+    </div>
+<!--加载E-->
 <script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/basicOpe.js"></script>
 <script src="js/ds-public.js"></script>
 <script>
-var index=0;
-var srcArr=['caseList.html',''];
-var txtArr=[{
-		p1:'温馨提示：请在输入框内输入案件编号，点击“案件查询”进行操作。',
-		p2:''
-	},
-	{
-		p1:'温馨提示：把身份证放置左边感应区。点击“确定”按钮，进行操作。',
-		p2:''
-	}
-];
 $(function(){
-	setIframeSize();
-	setIframeTxtSrc();
-	$('.ds-iframe').on('load',function(){
-		var _this=$(this);
-		if(_this.attr('src')==='alarmInfoWrite.html'){
-			$('.ds-header').hide();
-			$('.ds-operateArea').height($(window).innerHeight()-$('.ds-footer').height());
-		}else{
-			$('.ds-header').show();
-		}
-	});
-	$(window).on('unload',function(){
-		localStorage.clear();
-	});
+    /*打开页面时的加载动画*/
+   firstOpen('','.ds-caseSearchBox');
+   hideLoading({
+        txt:'',
+        str:'.ds-caseSearchBox'          
+   });
+   dsKeyBoard('.softkeys',createNumArr());
+   var aSpan=$('div.btnBox > span','.ds-footer');
+    aSpan.on('click',function(){
+        var _this=$(this);
+        if(_this.hasClass('next')){
+            window.location.href='caseList.html';
+        }else if(_this.hasClass('return')){
+            window.location.href='idVertificateSearch.html';
+        }else{
+            window.location.href='threeChoices.html';
+        }
+    });
+    
+
+    /*验证案件编号*/
+function testCaseNum(){
+	var bool=false;
+    $('.ds-inputArea > p').on('click',function(ev){
+    	ev.preventDefault();
+    	dsValidate();
+    });
+    function dsValidate(){
+    	var txtSpan=$('span.validate','.ds-inputArea'),
+    		caseInput=$('input[name]','.ds-inputArea'),
+    		moveArr=['bounce','flash','pulse','rubberBand','shake','swing','tada','wobble','jello'];
+    	var classStr=moveArr[random(0,10)];
+    	if(bool){
+    		return;
+    	}
+    	bool=true;
+    	var timer=null;
+    	clearTimeout(timer);
+    	timer=setTimeout(function(){
+    		deleteClass(txtSpan,moveArr);
+    		txtSpan.text('');	
+			if(caseInput.val()===''){
+				caseInput.focus();
+				txtSpan.text('请输入案件编号!!!');
+			}else{
+				txtSpan.text('案件编号错误!!!');
+			}
+			txtSpan.show().addClass(classStr);
+				txtSpan.fadeOut(2000,function(){
+					bool=false;
+				});	
+    	},200);
+    }
+    function random(m,n){
+    	return Math.floor(m+Math.random()*(n-m));
+    }
+    function deleteClass(obj,classArr){
+    	for(var i=0;i<classArr.length;i++){
+    		var objClassArr=obj.get(0).className.split(' ');
+    		for(var j=0;j<objClassArr.length;j++){
+    			if(objClassArr[j]===classArr[i]){
+    				objClassArr.pop();
+    				obj.get(0).className=objClassArr.join(' ');
+    				break;
+    			}
+    		}
+    	}
+    }
+}
+testCaseNum();
+    
 });
 </script>
 </body>

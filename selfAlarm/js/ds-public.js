@@ -140,7 +140,7 @@ function firstOpen(txt,str){
     	});
     }
 }
-/**/
+/*隐藏加载动画*/
 function hideLoading(opt){
 	var timer=null;
 	clearTimeout(timer);
@@ -154,7 +154,7 @@ function hideLoading(opt){
 		});
 	},2000);
 }
-/**/
+/*threeChoices页面的背景图加载完成后关闭加载动画*/
 function closeLoading(opt){
     var src=$('.ds-testBodyBg').attr('data-src');
     $('.ds-testBodyBg').attr('src',src);
@@ -165,4 +165,5 @@ function closeLoading(opt){
     	});
     };
 }
+
 

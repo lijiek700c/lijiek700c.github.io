@@ -13,7 +13,7 @@
 	<div class="ds-header clear">
 		<a class="fl" href="#">
 			<i class="fl"></i>
-			<span class="fl">湖南省公安机关执法办案系统自助服务</span>
+			<span class="fl">湖南省公安接报案查询系统</span>
 		</a>
 		<div class="fr">
 			<p class="iconP clear">
@@ -60,14 +60,15 @@
 		<div class="fr btnBox clear">
 			<span class="fl home"></span>
 			<span class="fl return"></span>
-			<span class="fl confirm"></span>
+			<span class="fl next"></span>
 		</div>
 	</div>
+
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/ds-public.js"></script>
 <script>
 var index=0;
-var srcArr=['idVertificate02.html','alarmInfoWrite.html',''];
+var srcArr=['idVertificate02.html','alarmInfoWrite.html','dataUpload.html'];
 var txtArr=[{
 		p1:'温馨提示：把身份证放置左边感应区。点击“确定”按钮，进行操作。',
 		p2:'若未识别到信息，请点击“重新读取”。'
@@ -75,6 +76,10 @@ var txtArr=[{
 	{
 		p1:'温馨提示：把身份证放置左边感应区。点击“确定”按钮，进行操作。',
 		p2:''
+	},
+	{
+		p1:'温馨提示：把资料平铺在屏幕下方的扫描平台，点击”+“ 添加拍照。',
+		p2:'点击图片可做”删除”操作。'
 	}
 ];
 $(function(){
