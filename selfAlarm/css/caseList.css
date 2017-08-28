@@ -114,7 +114,6 @@
 		transform: translate3d(0,-4px,0);
 	}
 }
-
 .bounce {
 	-webkit-transform-origin: center bottom;
 	transform-origin: center bottom;

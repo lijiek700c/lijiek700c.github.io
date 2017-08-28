@@ -1,3 +1,8 @@
+/**/
+$(document).on('contextmenu',function(ev){
+	ev.preventDefault();
+	return false;
+});
 /*加载---S*/
 ;(function(window,$){
 	var dsLoading=function(opt){

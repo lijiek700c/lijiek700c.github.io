@@ -27,3 +27,30 @@
 	width:280px;height:253px;
 	margin:0 10px 10px 0;
 }
+/* 打印报案信息小票 */
+.ds-infoPrint {
+	position:absolute;left:50%;margin-left:-114px;
+	top:140px;
+	width:228px;min-height:424px;z-index:9;
+	color:#fff;text-align:center;
+	display:none;
+}
+.ds-infoPrint > h2,.ds-caseInfo > h2 {
+	font-size:24px;line-height:64px;
+	font-weight:normal;
+}
+.ds-caseInfo {
+	padding:10px 6px 24px;
+	border:1px solid #fff;
+}
+.ds-caseInfo > h2 {
+	line-height:58px;
+}
+.ds-caseInfo > p {
+	text-align:left;font-size:14px;line-height:24px;
+}
+.ds-caseInfo > p.limitLine {
+	text-indent:2em;
+}
+
+
