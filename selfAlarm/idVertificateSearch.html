@@ -101,6 +101,27 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/ds-public.js"></script>
 <script>
+/**/
+window.addEventListener('DOMContentLoaded',function(){
+	console.log(URL);
+	var video=document.getElementById('video');
+    navigator.getUserMedia=navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia||navigator.msGetUserMedia;
+	navigator.getUserMedia({video:true},goStream,noStream);
+	function goStream(stream){
+		video.src=URL.createObjectURL(stream);
+		video.onerror = function () {  
+          stream.stop();  
+        };  
+        stream.onended = noStream;  
+        video.onloadedmetadata = function () {  
+          console.log('摄像头成功打开！');  
+        };
+	}
+	function noStream(err){
+		console.log(err);
+	}
+});
+/**/
 $(function(){
    /*打开页面时的加载动画*/
    firstOpen('','.ds-idVertificateBox');
@@ -119,25 +140,8 @@ $(function(){
 			window.location.href='threeChoices.html';
 		}
 	});
-	/**/
-	console.log(URL);
-	var video=document.getElementById('video');
-    navigator.getUserMedia=navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia||navigator.msGetUserMedia;
-	navigator.getUserMedia({video:true},goStream,noStream);
-	function goStream(stream){
-		video.src=URL.createObjectURL(stream);
-		video.onerror = function () {  
-          stream.stop();  
-        };  
-        stream.onended = noStream;  
-        video.onloadedmetadata = function () {  
-          console.log('摄像头成功打开！');  
-        };
-	}
-	function noStream(err){
-		console.log(err);
-	}
-	/**/
+	
+
 	$('.ds-getCamera span').on('click',function(){
 		var _this=$(this);
 		_this.parents('.ds-getCamera').fadeOut(200);
