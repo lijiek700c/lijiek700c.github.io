@@ -29,12 +29,11 @@
 		<div class="ds-proceBtn ds-proceHome"></div>
 		<div class="ds-proceBtn ds-proce">选择服务项目</div>
 		<div class="ds-proceBtn ds-proce">身份确认</div>
-		<div class="ds-proceBtn ds-proce">填写信息</div>
-		<div class="ds-proceBtn ds-proce">资料上传</div>
-		<div class="ds-proceBtn ds-proce sel">信息预览</div>
-		<div class="ds-proceBtn ds-proce">完成报案</div>
+		<div class="ds-proceBtn ds-proce">案件查询</div>
+		<div class="ds-proceBtn ds-proce">案件列表</div>
+		<div class="ds-proceBtn ds-proce sel">案件详情</div>
+		<div class="ds-proceBtn ds-proce">完成查询</div>
 	</div>
-	<!--操作步骤E-->
 	<!--信息展示区域-->
 	<div class="ds-infoShowArea clear">
 		<table class="table fl wid1080">
@@ -78,8 +77,8 @@
 	<!--页脚-->
 	<div class="ds-footer clear">
 		<div class="fl footerTxt"> 
-			<p>温馨提示：用户报案信息汇总展示页，点击“确定”完成报案操作。</p>
-			<p></p>
+			<p>温馨提示：案件详情信息展示页，点击“确定”完成案件查询操作。</p>
+			<p>点击“返回”，返回“案件列表”。</p>
 		</div>
 		<div class="fr btnBox clear">
 			<span class="fl home"></span>
@@ -127,9 +126,9 @@ $(function(){
 	aSpan.on('click',function(){
 		var _this=$(this);
 		if(_this.hasClass('confirm')){
-			window.location.href='completeAlarm.html';
+			window.location.href='completeSearch.html';
 		}else if(_this.hasClass('return')){
-			window.location.href='dataUpload.html';
+			window.location.href='caseList.html';
 		}else{
 			window.location.href='threeChoices.html';
 		}

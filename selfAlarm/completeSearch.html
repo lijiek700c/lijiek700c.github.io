@@ -9,6 +9,7 @@
 </head>
 <body>
 <div class="ds-completeBox" style="display:none;">
+	
     <!--页头-->
     <div class="ds-header clear">
         <a class="fl" href="#">
@@ -25,26 +26,27 @@
     </div>
 	<!--操作步骤-->
 	<div class="ds-queryProceBox">
-        <div class="ds-proceBtn ds-proceHome"></div>
-        <div class="ds-proceBtn ds-proce">选择服务项目</div>
-        <div class="ds-proceBtn ds-proce">身份确认</div>
-        <div class="ds-proceBtn ds-proce">填写信息</div>
-        <div class="ds-proceBtn ds-proce">资料上传</div>
-        <div class="ds-proceBtn ds-proce">信息预览</div>
-        <div class="ds-proceBtn ds-proce sel">完成报案</div>
+		<div class="ds-proceBtn ds-proceHome"></div>
+		<div class="ds-proceBtn ds-proce">选择服务项目</div>
+		<div class="ds-proceBtn ds-proce sel">身份确认</div>
+		<div class="ds-proceBtn ds-proce">案件查询</div>
+		<div class="ds-proceBtn ds-proce">案件列表</div>
+		<div class="ds-proceBtn ds-proce">案件详情</div>
+		<div class="ds-proceBtn ds-proce sel">完成查询</div>
 	</div>
-    <!--页脚-->
-    <div class="ds-footer clear">
-        <div class="fl footerTxt">
-            <p>温馨提示：点击“确定”，返回首页。</p>
-        </div>
-    </div>
-    <!--提示的弹窗-->
+
+	<!--页脚-->
+	<div class="ds-footer clear">
+		<div class="fl footerTxt">
+			<p>温馨提示：点击“确定”，返回首页。</p>
+		</div>
+	</div>
+	<!--提示的弹窗-->
 	<div class="js_dialog" id="iosDialog2">
         <div class="weui-mask"></div>
         <div class="weui-dialog">
             <div class="weui-dialog__bd">
-				已完成自助报案
+				已完成自助查询
             </div>
             <div class="weui-dialog__ft">
                 <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>
@@ -82,15 +84,15 @@
 
 <script>
 $(function(){
-    /*首次打开页面加载*/
+	/*首次打开页面加载*/
     firstOpen('正在跳转','.ds-completeBox');
     /*关闭加载动画*/
     hideLoading({
-        txt:'正在跳转',
-        str:'.ds-completeBox'
+    	txt:'正在跳转',
+    	str:'.ds-completeBox'
     });
     $('.weui-dialog__btn_primary','.js_dialog').on('click',function(){
-        window.location.href='threeChoices.html';
+    	window.location.href='threeChoices.html';
     });
 });
 </script>

@@ -37,7 +37,7 @@
 }
 /* 验证输入的案件编号 */
 .ds-inputArea > span.validate {
-	display:none;position:absolute;left:820px;top:0;font-size:30px;color:#e50000;
+	display:none;position:absolute;left:850px;top:0;font-size:30px;color:#e50000;
 	width:240px;height:72px;line-height:72px;text-align:center;
 	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
 }

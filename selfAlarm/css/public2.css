@@ -148,7 +148,7 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
     background:url('../images/complete.png') no-repeat;
 }
 .ds-proce:last-child.sel {
-    width:220px;
+    width:202px;
     background:url('../images/isSel.png') no-repeat;
 }
 

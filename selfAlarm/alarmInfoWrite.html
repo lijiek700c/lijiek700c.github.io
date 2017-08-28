@@ -79,7 +79,7 @@
 						<i class="ds-arrow"></i>
 					</div>			
 				</label>
-				<label class="third clear" for="" >
+				<label class="third clear" for="">
 					<span class="fl">案件描述</span>
 					<textarea class="fl" id="textarea1" id="key5" placeholder="简要案情或者报案记录（发案时间、地点、 简要过程、涉案人基本情况、受害情况等） 以及是否接受证据"></textarea>
 				</label>
@@ -176,21 +176,14 @@ aInput.on('focus',function(){
 $(document).on('click','div#virtualKeyboard a',function(ev){
 	ev.preventDefault();
 	return false;
-});
-/*
-$(document).on('contextmenu','div#virtualKeyboard',function(ev){
-	ev.preventDefault();
-	return false;
-});*/
-
-    
+});    
     /*日期选择*/
     var calendar = new LCalendar();
 		calendar.init({
 			'trigger': '#time', //标签id
 			'type': 'datetime', //date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择,
-			'minDate': (new Date().getFullYear()-3) + '-' + 1 + '-' + 1, //最小日期
-			'maxDate': (new Date().getFullYear()+3) + '-' + 12 + '-' + 31 //最大日期
+			'minDate': (new Date().getFullYear()-10) + '-' + 1 + '-' + 1, //最小日期
+			'maxDate': (new Date().getFullYear()+10) + '-' + 12 + '-' + 31 //最大日期
 		});
     /*地区选择*/
     var area1 = new LArea();

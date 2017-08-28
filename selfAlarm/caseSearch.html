@@ -32,7 +32,7 @@
         <div class="ds-proceBtn ds-proce">身份确认</div>
         <div class="ds-proceBtn ds-proce sel">案件查询</div>
         <div class="ds-proceBtn ds-proce">案件列表</div>
-        <div class="ds-proceBtn ds-proce">打印受理书</div>
+        <div class="ds-proceBtn ds-proce">案件详情</div>
         <div class="ds-proceBtn ds-proce">完成查询</div>
 	</div>
 	<!--查询区域-->
@@ -98,34 +98,33 @@ $(function(){
    });
    dsKeyBoard('.softkeys','',true);
    var aSpan=$('div.btnBox > span','.ds-footer');
+    var bool=false;
     aSpan.on('click',function(){
         var _this=$(this);
         if(_this.hasClass('next')){
-            window.location.href='caseList.html';
+            if(bool){
+                return;
+            }
+            bool=true;
+            testCaseNum();
         }else if(_this.hasClass('return')){
             window.location.href='idVertificateSearch.html';
         }else{
             window.location.href='threeChoices.html';
         }
     });
-    
-
-    /*验证案件编号*/
+/*验证案件编号*/
 function testCaseNum(){
-	var bool=false;
-    $('.ds-inputArea > p').on('click',function(ev){
+
+    /*$('.ds-inputArea > p').on('click',function(ev){
     	ev.preventDefault();
-    	dsValidate();
-    });
+    });*/
+    dsValidate();
     function dsValidate(){
     	var txtSpan=$('span.validate','.ds-inputArea'),
     		caseInput=$('input[name]','.ds-inputArea'),
     		moveArr=['bounce','flash','pulse','rubberBand','shake','swing','tada','wobble','jello'];
     	var classStr=moveArr[random(0,10)];
-    	if(bool){
-    		return;
-    	}
-    	bool=true;
     	var timer=null;
     	clearTimeout(timer);
     	timer=setTimeout(function(){
@@ -134,7 +133,9 @@ function testCaseNum(){
 			if(caseInput.val()===''){
 				caseInput.focus();
 				txtSpan.text('请输入案件编号!!!');
-			}else{
+			}else if(caseInput.val()==='123456'){
+                window.location.href='caseList.html';
+            }else{
 				txtSpan.text('案件编号错误!!!');
 			}
 			txtSpan.show().addClass(classStr);
@@ -158,9 +159,7 @@ function testCaseNum(){
     		}
     	}
     }
-}
-testCaseNum();
-    
+}   
 });
 </script>
 </body>

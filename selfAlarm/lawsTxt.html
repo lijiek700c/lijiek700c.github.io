@@ -84,6 +84,11 @@ $(function(){
     });
     var linkStr=location.href.split('?')[1];
     var aSpan=$('.ds-btnBox > span');
+    if(linkStr==='caseSearch'){
+        $('.footerTxt > p:first-child').text('温馨提示：点击“同意”按钮，表示我已阅读并同意以上条款，进入自助查询界面。');
+    }else if(linkStr==='selfAlarm'){
+        $('.footerTxt > p:first-child').text('温馨提示：点击“同意”按钮，表示我已阅读并同意以上条款，进入自助报案界面。');
+    }
     aSpan.on('click',function(){
     	var _this=$(this);
     	if(_this.hasClass('agree')){
@@ -95,9 +100,6 @@ $(function(){
     	}else{
     		window.location.href='threeChoices.html';
     	}
-    });
-    $(window).on('unload',function(){
-    	localStorage.clear();
     });
 });
 </script>

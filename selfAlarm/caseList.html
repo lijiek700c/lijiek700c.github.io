@@ -31,7 +31,7 @@
 		<div class="ds-proceBtn ds-proce">身份确认</div>
 		<div class="ds-proceBtn ds-proce">案件查询</div>
 		<div class="ds-proceBtn ds-proce sel">案件列表</div>
-		<div class="ds-proceBtn ds-proce">打印受理书</div>
+		<div class="ds-proceBtn ds-proce">案件详情</div>
 		<div class="ds-proceBtn ds-proce">完成查询</div>
 	</div>
 	<!--操作步骤E-->
@@ -160,7 +160,7 @@
         <div class="fr btnBox clear">
             <span class="fl home"></span>
             <span class="fl return"></span>
-            <span class="fl next"></span>
+            <!-- <span class="fl next"></span> -->
         </div>
     </div>
 </div>
@@ -199,15 +199,6 @@ $(function(){
         txt:'',
         str:'.ds-caseListBox'          
    });
-   /*$(window).on({
-        'unload':function(){
-            localStorage.clear();
-        },
-        'touchmove':function(ev){
-            ev.preventDefault();
-            return false;
-        }
-    });*/
    var aSpan=$('div.btnBox > span','.ds-footer');
     aSpan.on('click',function(){
         var _this=$(this);
@@ -218,6 +209,10 @@ $(function(){
         }else{
             window.location.href='threeChoices.html';
         }
+    });
+    $(document).on('click','.table a.btn',function(ev){
+        ev.preventDefault();
+        window.location.href='caseDetails.html?';
     });
 });
 </script>
