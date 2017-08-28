@@ -7,6 +7,8 @@
 	<link rel="stylesheet" href="css/public2.css">
 	<link rel="stylesheet" href="css/ball-spin-clockwise.css">
 	<link rel="stylesheet" href="css/idVertificate.css">
+	<script src="http://zwtest.benxiangai.com/net/zwwindow/zwjdemo/JS/main.js"></script>
+	<script src="http://zwtest.benxiangai.com/net/zwwindow/zwjdemo/JS/IDCard.js"></script>
 </head>
 <body>
 <div class="ds-idVertificateBox" style="display:none;">
@@ -97,9 +99,22 @@
 		</div>
 	</div>
     <!--调摄像头拍照E-->
+<img id="photo" src="" alt="">
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/ds-public.js"></script>
 <script>
+console.log(window.external);
+function readIdInfo() {
+    send_command(
+    "idReaderReadInfo",
+    "nothing",
+    function (receivedData) {
+        var idInfo = JSON.parse(receivedData);
+        document.getElementById("photo").src = "data:image/jpeg;base64," + idInfo.idImg;
+        logger(receivedData);
+    });
+}
+readInfo();
 /**/
 window.addEventListener('DOMContentLoaded',function(){
 	var video=document.getElementById('video'),
@@ -123,17 +138,17 @@ window.addEventListener('DOMContentLoaded',function(){
 	}
 
 /*拍照显示到canvas*/
-snap.addEventListener('click',function(){
+/*snap.addEventListener('click',function(){
 	alert('拍照');
 	//绘制canvas图形
     ctx.drawImage(video, 0, 0, 600, 480);
     //把canvas图像转为img图片
     img.src = ctx.toDataURL("image/png");
-},false);
+},false);*/
 /*下载所拍图片*/
-download.addEventListener('click',function(){
+/*download.addEventListener('click',function(){
 	downloadImg('png');
-},false);
+},false);*/
 
 	function downloadImg(type) {
 		console.log(ctx);
