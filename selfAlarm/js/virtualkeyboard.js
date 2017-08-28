@@ -1069,11 +1069,12 @@ function() {
             _ = []
         }
     };
+    /*设置中文列表的left,top值*/
     i.updatePosition = function() {
         var x = DOM.getOffset(c);
-        l.style.left = x.x + 'px';
+        l.style.left = x.x-120 + 'px';
         var X = DocumentSelection.getSelectionOffset(c);
-        l.style.top = x.y + X.y + X.h - c.scrollTop + 'px'
+        l.style.top = x.y + X.y + X.h - c.scrollTop+20 + 'px'
     };
     i.setSuggestions = function(x) {
         if (!isArray(x)) return false;

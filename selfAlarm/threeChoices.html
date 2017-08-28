@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/threeChoices.css">
 </head>
 <body>
-<div class="threeChoicesBox" style="display:none;">
+<div class="threeChoicesBox" style="display:block;">
 	<!--页头-->
 	<div class="ds-header clear">
 		<a class="fl" href="#">
@@ -47,7 +47,7 @@
 	</div>
 </div>
 	<!--加载S-->
-    <div class="ds-loadingBox" style="display:none;">
+    <div class="ds-loadingBox" style="background:#fff;display:none;">
         <div class="ds-wrapper">
             <div class="la-ball-spin-clockwise la-2x">
                 <div></div>
@@ -77,6 +77,7 @@
 <script src="js/ds-public.js"></script>
 <script>
 $(function(){
+	alert(111);
 	/*首次打开页面加载*/
     firstOpen('','.threeChoicesBox');
     /*关闭加载动画*/

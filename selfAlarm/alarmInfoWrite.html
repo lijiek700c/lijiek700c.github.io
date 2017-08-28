@@ -66,7 +66,7 @@
 				<label class="clear" for="" >
 					<span class="fl">被举报人姓名</span>
 					<div class="fl inputBox">
-						<input id="key3" type="text" placeholder="请输入被举报人电话">
+						<input id="key3" type="text" placeholder="请输入被举报人姓名">
 					</div>			
 				</label>
 			</li>
@@ -166,6 +166,7 @@ function test(id){
 var aInput=$('input[id],textarea[id]');
 test(aInput.eq(0).attr('id'));
 aInput.on('focus',function(){
+	//console.log($('#VirtualKeyboardIME')) 1034 1072;
 	var _this=$(this);
 	if(_this.attr('id')==='time'){
 		return false;
