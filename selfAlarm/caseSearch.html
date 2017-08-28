@@ -28,7 +28,6 @@
 	<!--操作步骤-->
 	<div class="ds-queryProceBox">
         <div class="ds-proceBtn ds-proceHome"></div>
-        <div class="ds-proceBtn ds-proce">选择服务项目</div>
         <div class="ds-proceBtn ds-proce">身份确认</div>
         <div class="ds-proceBtn ds-proce sel">案件查询</div>
         <div class="ds-proceBtn ds-proce">案件列表</div>
@@ -96,6 +95,7 @@ $(function(){
         txt:'',
         str:'.ds-caseSearchBox'          
    });
+   //console.log($('input[name=key1]'));
    dsKeyBoard('.softkeys','',true);
    var aSpan=$('div.btnBox > span','.ds-footer');
     var bool=false;

@@ -219,7 +219,9 @@
 				layout:layout
 			});
 		    var input=$('input[name],textarea[name]');
-		    input.blur();
+		    input.eq(0).focus();
+		    container.bindKeyPress(input.eq(0));
+		    container.removeClass('animated');
 		    $.each(input,function(index){
 		    	(function(i){
 		    		input.eq(i).focus(function(){
@@ -230,6 +232,9 @@
 		    	})(index);
 		    });
 		    $('div.softHideBtn').on('click',function(){
+		    	if(!container.hasClass('animated')){
+    				container.addClass('animated');
+	    		}
 		    	$(this).parent().addClass('bounceOutDown').removeClass('bounceInUp');
 		    });
 		}
