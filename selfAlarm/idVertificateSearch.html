@@ -103,22 +103,24 @@
 <script>
 /**/
 window.addEventListener('DOMContentLoaded',function(){
-	console.log(URL);
-	var video=document.getElementById('video');
+	var video=document.getElementById('video'),
+		canvas=document.getElementById('canvas'),
+		ctx=canvas.getContext('2d');
     navigator.getUserMedia=navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia||navigator.msGetUserMedia;
 	navigator.getUserMedia({video:true},goStream,noStream);
+	/*打开摄像头*/
 	function goStream(stream){
 		video.src=URL.createObjectURL(stream);
-		video.onerror = function () {  
+		video.onerror=function (){  
           stream.stop();  
         };  
-        stream.onended = noStream;  
-        video.onloadedmetadata = function () {  
-          console.log('摄像头成功打开！');  
+        stream.onended=noStream;  
+        video.onloadedmetadata=function () {  
+          alert('摄像头成功打开！');  
         };
 	}
 	function noStream(err){
-		console.log(err);
+		alert(err);
 	}
 });
 /**/
