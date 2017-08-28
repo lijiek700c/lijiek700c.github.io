@@ -86,11 +86,11 @@
         </div>
     </div>
 <!--加载E-->
-<!--调摄像头拍照S-->
+	<!--调摄像头拍照S-->
 	<div class="ds-getCamera">
 		<div class="ds-cameraArea">
 			<div class="ds-cameraBox">
-				<video width="800" height="600" autoplay></video>
+				<video width="800" height="600" autoplay id="video"></video>
 				<canvas width="800" height="600" id="canvas"></canvas>
 			</div>
 			<span>拍照</span>
@@ -100,6 +100,66 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/ds-public.js"></script>
 <script>
+/**/
+window.addEventListener('DOMContentLoaded',function(){
+	var video=document.getElementById('video'),
+		canvas=document.getElementById('canvas'),
+		ctx=canvas.getContext('2d');
+    navigator.getUserMedia=navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia||navigator.msGetUserMedia;
+	navigator.getUserMedia({video:true},goStream,noStream);
+	/*打开摄像头*/
+	function goStream(stream){
+		video.src=URL.createObjectURL(stream);
+		video.onerror=function (){  
+          stream.stop();  
+        };  
+        stream.onended=noStream;  
+        video.onloadedmetadata=function(){  
+          console.log('摄像头成功打开！');  
+        };
+	}
+	function noStream(err){
+		console.warn(err);
+	}
+
+/*拍照显示到canvas*/
+snap.addEventListener('click',function(){
+	alert('拍照');
+	//绘制canvas图形
+    ctx.drawImage(video, 0, 0, 600, 480);
+    //把canvas图像转为img图片
+    img.src = ctx.toDataURL("image/png");
+},false);
+/*下载所拍图片*/
+download.addEventListener('click',function(){
+	downloadImg('png');
+},false);
+
+	function downloadImg(type) {
+		console.log(ctx);
+	    //设置保存图片的类型
+	    var imgdata=ctx.toDataURL(type);
+	    //将mime-type改为image/octet-stream,强制让浏览器下载
+	    var fixtype=function (type) {
+	        type=type.toLocaleLowerCase().replace(/jpg/i,'jpeg');
+	        var r=type.match(/png|jpeg|bmp|gif/)[0];
+	        return 'image/'+r;
+	    }
+	    imgdata=imgdata.replace(fixtype(type), 'image/octet-stream')
+	    //将图片保存到本地
+	    var saveFile=function (data, filename) {
+	        var link=document.createElement('a');
+	        link.href=data;
+	        link.download=filename;
+	        var event=document.createEvent('MouseEvents');
+	        event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+	        link.dispatchEvent(event);
+	    }
+	    var filename=new Date().toLocaleDateString() + '.' + type;
+	    saveFile(imgdata, filename);
+	}
+});
+/**/
 $(function(){
     /*打开页面时的加载动画*/
    firstOpen('','.ds-idVertificateBox');
