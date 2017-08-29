@@ -94,19 +94,18 @@ window.onload=function(){
     var testOpen=document.getElementById('open');
     var testClose=document.getElementById('close');
     function openCamera1(){
-        var obj={"openType": 0,"layoutX": 400,"layoutY": 100,"layoutWidth": 640,"layoutHeight": 480};
+        var obj={"openType": 0,"layoutX": 400,"layoutY": 400,"layoutWidth": 640,"layoutHeight": 480};
         var data=JSON.stringify(obj);
         send_command(
             "openCamera",
             data,
             function (receivedData) {
                 alert(receivedData);
-                //Show();  /*显示拍照框???*/
                 show_ca();
         });
     }
     function closeCamera() {
-        var obj={"openType": 0,"layoutX": 400,"layoutY": 100,"layoutWidth": 640,"layoutHeight": 480};
+        var obj={"openType": 0,"layoutX": 400,"layoutY": 400,"layoutWidth": 640,"layoutHeight": 480};
         var data=JSON.stringify(obj);
         send_command(
             "closeCamera",
