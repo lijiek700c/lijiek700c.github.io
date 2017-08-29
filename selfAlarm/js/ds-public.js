@@ -126,7 +126,7 @@ function readIdInfo() {
     "nothing",
     function (receivedData){
         var idInfo= JSON.parse(receivedData);
-        alert(idInfo);
+        alert(idInfo.idCardNo);
     });
 }
 /*调设备摄像头*/
