@@ -91,7 +91,7 @@
     </div>
     <!--查询界面-->
     <div class="ds-con" style="display:none;">
-        <iframe id="caseSrearch" src="" frameborder="0" border="0" scrolling="none"></iframe>
+        <iframe id="caseSrearch" name="search" src="" frameborder="0" border="0" scrolling="none"></iframe>
         <!--页脚-->
         <div class="ds-footer clear">
             <div class="fl footerTxt"> 
@@ -204,7 +204,8 @@ var sIndex=0,aIndex=0;
 var searchSrcArr=['idVertificateSearch.html','caseSearch.html','caseList.html','caseDetails.html','completeSearch.html'];
 var alarmSrcArr=['idVertificateAlarm.html','alarmInfoWrite.html','dataUpload.html','infoPreview.html','completeAlarm.html'];
 var alarmFrame=$('#alarm');
-
+/**/
+console.log(searchFrame.contents().find('input[name=key1]').attr('name'));
 alarmFrame.on('load',function(){
     var _this=$(this);
     if(_this.attr('src')==='alarmInfoWrite.html'){

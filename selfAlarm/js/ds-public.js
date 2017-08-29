@@ -127,7 +127,7 @@ function readIdInfo() {
     function (receivedData){
         var idInfo= JSON.parse(receivedData);
         alert(idInfo.idCardNo);
-        setLocalStorage('idCardNo',idInfo.idCardNo);
+        searchFrame.contents().find('input[name=key1]').val(idInfo.idCardNo);
     });
 }
 /*调设备摄像头*/
@@ -168,4 +168,5 @@ function takePhoto1(){
     	});
 }
 /**/
+
 
