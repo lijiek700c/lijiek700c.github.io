@@ -101,8 +101,8 @@ window.onload=function(){
             data,
             function (receivedData) {
                 alert(receivedData);
-                //logger(receivedData);
-                Show();  /*显示拍照框???*/
+                //Show();  /*显示拍照框???*/
+                show_ca();
         });
     }
     function closeCamera() {
@@ -113,6 +113,7 @@ window.onload=function(){
             data,
             function (receivedData) {
                 alert(receivedData);
+                hide_ca();
         });
     }
     testOpen.onclick=function(){
