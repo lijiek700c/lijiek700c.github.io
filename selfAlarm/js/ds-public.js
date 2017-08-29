@@ -126,14 +126,13 @@ function readIdInfo() {
     "nothing",
     function (receivedData){
         var idInfo= JSON.parse(receivedData);
-        setInterval(function(){
-        	var oldIdInfo=getLocalStorage('idInfo');
-        	if(oldIdInfo.idCardNo!==idInfo.idCardNo){
-        		setLocalStorage('idInfo',idInfo);
-        	}
-        },1000);
+    	var oldIdInfo=getLocalStorage('idInfo');
+    	if(oldIdInfo.idCardNo!==idInfo.idCardNo){
+    		setLocalStorage('idInfo',idInfo);
+    	}
     });
 }
+setInterval(readIdInfo,1000);
 /*调设备摄像头*/
 /*打开摄像头*/
 function openCamera1(){
