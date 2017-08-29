@@ -7,6 +7,8 @@
 	<link rel="stylesheet" href="css/public2.css">
 	<link rel="stylesheet" href="css/ball-spin-clockwise.css">
 	<link rel="stylesheet" href="css/threeChoices.css">
+    <script src="js/zzJS/main.js"></script>
+    <script src="js/zzJS/Camera.js"></script>
 </head>
 <body>
 <div class="threeChoicesBox" style="display:none;">
@@ -76,6 +78,10 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/ds-public.js"></script>
 <script>
+window.onload=function(){
+    openCamera({},function(){});
+    show_ca();
+};
 $(function(){
 	/*首次打开页面加载*/
     firstOpen('','.threeChoicesBox');
