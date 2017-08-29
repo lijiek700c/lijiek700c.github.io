@@ -126,7 +126,7 @@ function readIdInfo() {
     "nothing",
     function (receivedData){
         var idInfo= JSON.parse(receivedData);
-        alert(idInfo.idCardNo);
+        setLocalStorage('idCardNo',idInfo.idCardNo);
     });
 }
 /*调设备摄像头*/
@@ -158,8 +158,9 @@ function takePhoto1(){
         "takePhoto",
         'nothing',
         function(receivedData){
-        	alert(receivedData);
+        	setLocalStorage('test',receivedData);
             var photoBean=JSON.parse(receivedData);
+            alert(getLocalStorage('test'));
             if (photoBean.status == 100) {
                 /*document.getElementById("photo").src = "data:image/jpeg;base64," + photoBean.imgStr;*/ 
         	}
