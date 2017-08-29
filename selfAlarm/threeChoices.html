@@ -91,10 +91,10 @@
 <script src="js/ds-public.js"></script>
 <script>
 window.onload=function(){
-    var open=document.getElementById('open');
-    var close=document.getElementById('close');
+    var testOpen=document.getElementById('open');
+    var testClose=document.getElementById('close');
+    alert(window.external.web_url);
     function openCamera1(){
-        alert(send_command);
         var obj={"openType": 0,"layoutX": 400,"layoutY": 100,"layoutWidth": 640,"layoutHeight": 480};
         //var data=JSON.parse(obj);
         send_command(
@@ -102,11 +102,13 @@ window.onload=function(){
             obj,
             function (receivedData) {
                 //logger(receivedData);
-                Show();
+                Show();  /*显示拍照框???*/
         });
     }
-    open.onclick=openCamera1;
-    close.onclick=function(){
+    testOpen.onclick=function(){
+        openCamera1();
+    };
+    testClose.onclick=function(){
         send_command(
             "closePhoto",               // 关闭摄像头方法名
             "nothing",                  // 暂无传递信息（随便传，不可省略）
