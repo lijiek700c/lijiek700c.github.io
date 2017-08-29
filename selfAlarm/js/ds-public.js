@@ -126,6 +126,7 @@ function readIdInfo() {
     "nothing",
     function (receivedData){
         var idInfo= JSON.parse(receivedData);
+        alert(idInfo.idCardNo);
         setLocalStorage('idCardNo',idInfo.idCardNo);
     });
 }
@@ -137,7 +138,7 @@ function openCamera1(){
     send_command(
         "openCamera",
         data,
-        function(receivedData) {
+        function(receivedData){
             show_ca();
     });
 }
@@ -148,7 +149,7 @@ function closeCamera1(){
     send_command(
         "closeCamera",
         data,
-        function(receivedData) {
+        function(receivedData){
             hide_ca();
     });
 }
