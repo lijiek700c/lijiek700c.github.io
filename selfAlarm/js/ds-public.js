@@ -148,10 +148,10 @@ function takePhoto1() {
         "takePhoto",
         "nothing",
         function (receivedData) {
+        	alert(receivedData);
             var photoBean = JSON.parse(receivedData);
             if (photoBean.status == 100) {
-                /*document.getElementById("photo").src = "data:image/jpeg;base64," + photoBean.imgStr;*/
-                alert(photoBean);
+                /*document.getElementById("photo").src = "data:image/jpeg;base64," + photoBean.imgStr;*/ 
         	}
     	});
 }
