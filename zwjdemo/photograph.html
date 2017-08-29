@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>拍照</title>
+    <link rel="stylesheet" href="static/css/zhengwu.css">
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.css">
+    <script src="static/js/jquery-2.0.3.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="JS/Camera.js"></script>
+    <script src="JS/main.js"></script>
+    <script src="static/js/public.js"></script>
+</head>
+<body onbeforeunload="checkLeave()"  onselectstart="return false">
+    <div class="container photograph">
+        <div class="header container">
+            <span class="header-left"><img draggable="false" src="static/images/home.png" alt="">您现在的位置：
+                <a class="btn-a" href="index.html">首页</a> <span>></span> <a href="javascript:void(0)" onclick="location.reload()" class="btn-a">高拍仪模块</a></span>
+            <span class="header-right">当前街道：河村牌坊</span>
+        </div>
+
+        <div class="container-fluid">
+            <div class="photograph-left">
+                <div class="title">户口簿</div>
+                <div class="photo-window">
+                    <!--高拍仪窗口-->
+                </div>
+            </div>
+            <ul class="start-end">
+                <li class="clear"><button class="btn  btn-primary" onclick="hide_ca()" >隐藏拍照框</button></li>
+                <li><button class="btn  btn-primary" onclick="show_ca()" >显示拍照框</button></li>
+
+                <li><button class="btn  btn-warning" onclick="A3takePhotos()" >打开A3拍照</button></li>
+                <li><button class="btn  btn-warning" onclick="A4takePhotos()" >打开A4拍照</button></li>
+                <li><button class="btn  btn-warning" onclick="takeQr()" >扫描二维码</button></li>
+
+                <li><button class="btn  btn-warning" onclick="camear1()" >打开高拍仪1</button></li>
+                <li><button class="btn  btn-warning" onclick="camear2()" >打开高拍仪2</button></li>
+
+                <li><button class="btn  btn-warning" onclick="IdtakePhotos()" >打开身份证拍照</button></li>
+                <li><button class="btn  btn-success" onclick="takePhotos()" >开始拍照</button></li>
+                <li><button class="btn  btn-danger" type="submit" onclick="closeCameras()" >完成拍照</button></li>
+                <li><button class="btn  btn-danger" type="submit" onclick="stopCamear()" >关闭拍照</button></li>
+            </ul>
+
+            <div class="photograph-right">
+                <div class="title">已扫描的文件</div>
+                <div class="photo-file">
+                    <ul id="pic-layout" class="list-unstyled">
+                        <!--<li>
+                            <p id="logger"></p>
+                        </li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <p class="log-test" id="logger">测试</p>
+    </div>
+
+    <script src="static/js/camera.js"></script>
+    <script>
+        function imgdragstart(){
+            return false;
+        }
+        for(i in document.images)document.images[i].ondragstart=imgdragstart;
+
+
+    </script>
+</body>
+</html>

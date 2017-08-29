@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>验证身份证</title>
+    <link rel="stylesheet" href="static/css/zhengwu.css">
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.css">
+    <script src="static/js/jquery-2.0.3.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="JS/IDCard.js"></script>
+    <script src="JS/main.js"></script>
+    <script src="static/js/public.js"></script>
+</head>
+<body onbeforeunload="stopidcard()"  onselectstart="return false">
+    <div class="container idreader">
+        <div class="header container">
+            <span class="header-left"><img draggable="false" src="static/images/home.png" alt="">您现在的位置：<a class="btn btn-success" href="index.html">首页</a> ></span>
+            <span class="header-right">当前街道：河村牌坊</span>
+        </div>
+
+        <div id="idreader-content">
+            <div class="content-box">
+            <div class="title">请将身份证置于二代身份证感应区内</div>
+            <!--<div class="idreader-box">-->
+                <div style="text-align:center" id="div1">请放置身份证</div>
+                <div id="divName"></div>
+                <p id="logger"></p>
+            <!--</div>-->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(clickIdCard, 100);
+        function clickIdCard() {
+            window.external.Read_IDCard("IDCard_getback");
+        }
+        function IDCard_getback(jsonStr) {
+            if (jsonStr != null) {
+                var info = JSON.parse(jsonStr);
+                var i = document.getElementById("div1");
+                i.style.display = 'none';
+                document.getElementById("divName").innerHTML = "姓名：" + info.Name + "身份证号码：" + info.IDCardNo;
+            }
+        }
+        function error() {
+            document.getElementById("div1").innerHTML = "身份证读取器连接失败";
+        }
+
+        function stopidcard() {
+            send_command(
+                    "stopRead",
+                    "nothing",
+                    function (receivedData) {
+                        logger(receivedData);
+                    });
+        }
+    </script>
+</body>
+</html>

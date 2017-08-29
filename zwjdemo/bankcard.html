@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>银行卡</title>
+    <link rel="stylesheet" href="static/css/zhengwu.css">
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.css">
+    <script src="static/js/jquery-2.0.3.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="JS/CRT.js"></script>
+    <script src="JS/main.js"></script>
+    <script src="static/js/public.js"></script>
+</head>
+<body onselectstart="return false">
+    <div class="container">
+        <div class="header container">
+            <span class="header-left"><img draggable="false" src="static/images/home.png" alt="">您现在的位置：
+                <a onclick="closeall()" class="btn-a" href="#">首页</a>>
+                <a class="btn-a" href="javascript:void(0)" onclick="location.reload()">银联模块</a>
+            </span>
+            <span class="header-right">当前街道：河村牌坊</span>
+        </div>
+
+        <div class="container-fluid">
+            <div class="ul-li-view">
+                <ul class="list-group-item list-unstyled">
+                    <li>
+                        银行卡号：<input type="text" name="" id="readcard" value="">
+                    </li>
+                    <li>
+                        <button class="btn btn-success" onclick="getbankcard()">接收银行卡</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" onclick="readcard()">开始读取银联卡账号（非接触型IC卡形式）</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" onclick="readcardIC()">开始读取银联卡账号（接触式IC卡形式）</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" onclick="readmag()">读取银联卡账号（磁卡）</button>
+                    </li>
+                </ul>
+                <ul class="list-group-item list-unstyled">
+                    <li>
+                        <button class="btn btn-warning" onclick="closebutwork()">退卡并继续工作</button>
+                    </li>
+
+                    <li>
+                        <button class="btn btn-danger" onclick="closesotp()">停止工作并退卡</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-warning" onclick="closehold()">退卡并继续工作（持卡）</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-danger" onclick="stophold()">停止工作并退卡（持卡）</button>
+                    </li>
+                </ul>
+                <ul class="list-group-item list-unstyled">
+                    <li>
+                        <p id="logger" class="log-test">测试</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="static/js/bankcardreader.js"></script>
+</body>
+</html>

@@ -1,0 +1,547 @@
+.log-test{margin: 20px;text-align: center}
+.header-left,.header-right{height: 100%;line-height: 50px;}
+a { text-decoration:none; }
+.btn-a{
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.btn-a:hover{
+    text-decoration: none;
+}
+body *{
+    -ms-user-select:none;
+    user-select:none;
+}
+.header{
+    width:100%;
+}
+.header-left{
+    float: left;
+}
+.header-left img{
+    width:30px;
+    height:30px;
+    float: left;
+    margin: 8px 5px auto 8px;
+}
+.header-right{
+    float: right;
+    margin-right: 15px;
+}
+.content{
+    background: #eee;
+}
+.search{
+    width:100%;
+    float: right;
+}
+.search .search-right{
+    float: right;
+    padding-right:0;
+}
+.input-group-addon {
+    background-color: blue!important;
+    color: #fff!important;
+}
+.input-group-addon a img{width:16px;height: 16px;}
+.menu{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+}
+.menu li {
+    width: 11%;
+    float: right;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    align-items: center;
+    justify-content: center;
+    background: dodgerblue;
+    color: white;
+    margin-left: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.menu li span{
+    margin:8%;
+}
+.menu .active{
+    background: green;
+}
+.table{
+    margin-bottom: 5px!important;
+}
+.table th{
+    text-align: center;
+    background: lightskyblue;
+    height: 50px;
+    vertical-align: inherit!important;
+}
+.table .first{
+    width:50%;
+}
+.table tr td{
+    vertical-align: inherit!important;
+    height: inherit;
+}
+.table tr td .bid{
+    background: dodgerblue;
+    width:54%;
+    font-size: 1em;
+    color: white;
+    margin:auto 22% auto 22%;
+    border:0;
+    padding: 2.5% 3%;
+}
+footer {
+    width: 100%;
+}
+footer .foot{
+    width:25%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    float: right;
+}
+footer .foot span{
+    float: left;
+}
+footer .foot button{
+    width:28%;
+    height: 0;
+    background: #f0c040;
+    float: right;
+    color: white;
+    border-style: none;
+    font-size: 1.2vw;
+    padding-bottom: 10%;
+}
+footer .foot .next{
+    margin-left: 20%;
+}
+footer .foot .prev{
+    margin-left: 5%;
+}
+footer .foot .next:hover{
+    background: #FF9C27;
+}
+footer .foot .prev:hover{
+    background: #FF9C27;
+}
+
+#myModal .title h1{
+    color: blue;
+    text-align: center;
+    margin-bottom: 0!important;
+}
+#myModal ul {
+    background: white;
+    list-style-type: none;
+    width: 90%;
+    padding: 0;
+    margin: 0 auto;
+}
+#myModal .modal-width{
+    width: 50%!important;
+    margin-top: 10%!important;
+}
+#myModal .footer{
+    width: 44%;
+    margin:auto 28% auto 28%;
+    height: 30px;
+    margin-bottom: 20px;
+}
+#myModal .footer .agree{
+    width: 35%;
+    height: 100%;
+    background: #f0c040;
+    color: white;
+    border-color: #ccc!important;
+    float: left;
+}
+#myModal .footer .disagree{
+    float: right;
+    width: 35%;
+    height: 100%;
+    background: #f0c040;
+    color: white;
+}
+#myModal .footer .agree:hover{
+    background: sandybrown;
+}
+#myModal .footer .disagree:hover{
+    background: sandybrown;
+}
+
+/*idreader.html*/
+
+#idreader-content{
+    width: 100%;
+    height: 0;
+    padding-bottom: 44.79%;
+    background: white;
+    float: left;
+}
+#idreader-content .content-box{
+    width: 70%;
+    height: 0;
+    padding-bottom: 44.79%;
+    background: whitesmoke;
+    margin:auto 15%;
+    float: left;
+}
+#idreader-content .content-box .title{
+    width:100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    margin-top:8%;
+    margin-bottom: 1%;
+}
+#idreader-content .content-box .idreader-box{
+    width:50%;
+    margin:0 25%;
+    height: 0;
+    padding-bottom: 32%;
+    float: left;
+    background: url(../images/idreader.jpg) no-repeat  center;
+}
+/*idcardinfo.html*/
+.container .titel{
+    font-size:26px;
+    width:100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:2%;
+}
+.container .idcard-info{
+    width:50%;
+    float: left;
+}
+.container .idcard-info span {
+    font-size: 1.2em;
+    width: 100%;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row nowrap;
+    -webkit-flex-flow: row nowrap;
+    align-items: center;
+    justify-content:flex-end;
+    padding-bottom:2%;
+}
+.container .idcard-info span input{
+    width:75%;
+    border-radius: 6px;
+    border-style:none;
+    border:1px solid #999999;
+    font-size: 1em;
+    text-indent: 1em;
+    padding-top:2%!important;
+    padding-bottom:2%!important;
+}
+.container .idcard-info .tis{
+    font-size: 1.2em;
+    width:75%;
+    float: right;
+    text-align: left;
+    color: red;
+    margin-top: 2%;
+}
+.container .idcard-info .idcardinfo-next{
+    float: right;
+    width:100%;
+    margin-top: 5%;
+}
+.container .idcard-info .idcardinfo-next button {
+    width:22%;
+    border-style: none;
+    background: #f0c040;
+    color: white;
+    font-size: 1.2em;
+    float: right;
+    margin-right: 20%;
+}
+.container .idcard-info .idcardinfo-next button:hover{
+    background: sandybrown;
+}
+.container .idcardinfo-keyboard{
+    width:50%;
+    float: right;
+}
+.container .idcardinfo-keyboard ul {
+    list-style-type: none;
+    width:55%;
+    margin: auto 38% auto 10%;
+}
+.container .idcardinfo-keyboard ul li {
+    width: 20%;
+    margin-left: 12%;
+    margin-top:10%;
+    height: 0;
+    padding-bottom: 12%;
+    padding-top: 8%;
+    background: skyblue;
+    float: left;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.container .idcardinfo-keyboard .top{
+    margin-top: 0;
+}
+
+/*sweepattachment.html*/
+.btn-photo{
+    background: dodgerblue;
+    width: 54%;
+    font-size: 1em;
+    color: white;
+    margin: auto 22% auto 22%;
+    border: 0;
+    padding: 2.5% 3%;
+}
+.attachment-table .table{
+    table-layout: fixed;
+}
+.attachment-table .table .t1 .t3 .t4{
+    width:20%;
+}
+.attachment-table .table .t2{
+    width:40%;
+}
+.attachment-table .table tr td {
+    white-space:nowrap;
+    overflow:auto;
+}
+.attachment-table .table tr td img{
+    width:30%;
+    margin-left:10px;
+}
+
+/*photograph.html*/
+.photograph-left{
+    width:50%;
+    height: 0;
+    padding-bottom: 45%;
+    margin-left: 2%;
+    float: left;
+    background: #eee;
+}
+.title{
+    width:100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    padding-top:2%;
+    padding-bottom:2%;
+}
+.photograph-left .photo-window{
+    width:96%;
+    margin:0 2%;
+    height: 0;
+    padding-bottom: 78%;
+    background: #fff;
+}
+.photograph-right{
+    width:29%;
+    height: 0;
+    padding-bottom: 45%;
+    float: right;
+    background: #eee;
+}
+.photograph-right .photo-file{
+    overflow: auto;
+    width:100%;
+    float: right;
+    height: 0;
+    padding-bottom: 140%;
+    background: #eee;
+}
+.photograph-right .photo-file ul {
+    width:86%;
+    margin:0 7%;
+    height: 100%;
+    background: #fff;
+}
+.photograph-right .photo-file ul li{
+    width:96%;
+    margin:5% 2%;
+}
+.photograph-right .photo-file ul li img{
+    width:100%;
+    height: auto;
+}
+.start-end{
+    width:19%;
+    float: left;
+    list-style-type: none;
+    padding: 0;
+}
+
+.start-end li{
+    text-align: center;
+    margin-top: 10%;
+}
+.clear{
+    margin-top: 0!important;
+}
+/*servicelist.html*/
+ .service-list {
+     width: 25%;
+     float: left;
+     margin-left:5%;
+     padding:0;
+     background: #ccc;
+ }
+.service-list ul {
+    width: 90%;
+    margin: 0 5%;
+    height: 0;
+    padding-bottom: 178.65%;
+}
+.service-list ul li {
+    width: 78%;
+    margin: 0 12%;
+    padding-top: 5%;
+    padding-bottom:5%;
+    background: dodgerblue;
+    margin-top:7%;
+    text-align: center;
+    font-weight:bold;
+    color: white;
+}
+.service-list ul a{
+    text-decoration: none;
+}
+.service-list .first{
+    background: limegreen;
+}
+.service-right{
+    width:70%;
+    float: right;
+}
+.service-right ul li{
+    width:14%;
+    background: limegreen;
+    height: 0;
+    padding-bottom: 8%;
+    padding-top:6%;
+    float: left;
+    margin-left:2.666%;
+    margin-top:2.666%;
+    text-align: center;
+    color: white;
+}
+
+/*print*/
+.printer ul{
+    width:100%;
+    height: 100%;
+}
+.printer ul li{
+    width:100%;
+    height: 100%;
+}
+
+.printer .print-little li input {
+    width:30%;
+    margin:3px 35%;
+    color: sandybrown;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1em;
+    text-align: center;
+}
+.printer .postion{
+    position: absolute;
+    float: left;
+}
+.printer .li-top{
+    padding-top: 10px;
+}
+.printer .li-top input{
+    width:35%;
+    height: 35px;
+}
+/*fp*/
+.fp-test li{
+    width:40%;
+    margin:1% 30%;
+}
+.fp-test li button{
+    width:49%;
+}
+
+/* keyboard  bankcard */
+.ul-li-view ul li{
+    width:auto;
+    text-align: center;
+    margin: 15px 35%;
+}
+.ul-li-view ul li input{
+    width:100%;
+    padding:5px 0;
+    text-align: center;
+}
+.ul-li-view ul li button{
+    width:100%;
+}
+
+/*voiceplay*/
+.voiceplay ul li{
+    width:40%;
+    text-align: center;
+    margin:2% auto;
+}
+.voiceplay ul li button{
+    width:45%;
+}
+.voiceplay ul li input{
+    padding:5px 0;
+    width:90%;
+    text-align: center;
+}
+
+/*write*/
+.write li{
+    width:50%;
+    margin:10px auto;
+    padding:20px auto;
+}
+.write li input{
+    width:50%;
+    height:35px;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
+}
+.write li button{
+    width:50%;
+    height:35px;
+    margin-left: 25%;
+    margin-right: 25%;
+}

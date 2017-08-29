@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>自助申办</title>
+    <link rel="stylesheet" href="static/css/zhengwu.css">
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.css">
+    <script src="static/js/jquery-2.0.3.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/js/public.js"></script>
+    <script src="JS/main.js"></script>
+</head>
+
+
+<body  onselectstart="return false" onLoad="init()">
+    <div class="container onlinebidding">
+        <div class="header container">
+            <span class="header-left">
+                <img draggable="false" src="static/images/home.png" alt="">
+                您现在的位置：<a class="btn-a" href="index.html">首页</a> <span>></span> 
+                <a href="javascript:void(0)" onclick="location.reload()" class="btn-a">服务项列表</a>
+            </span>
+            <span class="header-right">当前街道：河村牌坊</span>
+        </div>
+        <div class="container-fluid">
+            <span class="" style="font-size: 26px;color: darkblue;">服务事项列表</span>
+            <div class="search">
+                <div class="col-lg-5 search-right">
+                <div class="input-group">
+                    <input type="text" class="form-control" aria-label="...">
+                        <span class="input-group-addon">
+                            <a href="#" style="color: white;"><span><img src="static/images/search.png" alt="">查询</span></a>
+                        </span>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <ul class="menu">
+                <a href="#"><li><span>国土资源</span></li></a>
+                <a href="#"><li><span>人口计划</span></li></a>
+                <a href="#"><li><span>民政事务</span></li></a>
+                <a href="#"><li><span>社会保险</span></li></a>
+                <a href="#"><li class="active"><span>全部</span></li></a>
+            </ul>
+            <script>
+                $('.menu a li').click(function () {
+                    $(this).addClass('active').parent().siblings().children().removeClass('active');
+                })
+            </script>
+        </div>
+        <div class="container-fluid">
+            <table class="table table-bordered">
+                <tr>
+                    <th>服务事项名称</th>
+                    <th>承诺办结期限</th>
+                    <th>主管部门</th>
+                    <th>自助申办</th>
+                </tr>
+                <tr>
+                    <td>服务事项名称</td>
+                    <td>服务事项名称</td>
+                    <td>服务事项名称</td>
+                    <td><button class="btn bid" data-toggle="modal" data-target="#myModal">申办</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="btn bid" data-toggle="modal" data-target="#myModal">申办</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="btn bid" data-toggle="modal" data-target="#myModal">申办</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="btn bid" data-toggle="modal" data-target="#myModal">申办</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="btn bid" data-toggle="modal" data-target="#myModal">申办</button></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><button class="btn bid"  id="test" >申办</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="container-fluid">
+        <footer>
+            <div class="foot">
+                <span>[1/5]</span>
+                <button class="next btn">下一页</button>
+                <button class="prev  btn">上一页</button>
+            </div>
+        </footer>
+        </div>
+    </div>
+
+    <!-- 自助申办须知 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-width">
+        <div class="modal-content">
+            <div class="modal-data">
+                <span class="title"><h1>自助申办须知</h1></span>
+                <div class="modal-body">
+                    <ul>
+                        <li><h4>一、申请人请按说明填写信息，所有带“*”的必须填写。</h4></li>
+                        <li><h4>三、申请人必须按照语音提示正确填写申请资料，上传电子材料按照附件说明进行原件扫描上传，电子材料要求清晰，完整。</h4></li>
+                        <li><h4>三、申请人申请业务完成后，按照语音提示打印受理回执，妥善保管。</h4></li>
+                        <li><h4>四、申请人可以通过扫描身份证或受理回执单上的条形码查询申请业务的办理进度。</h4></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer">
+                <a href="idreader.html"><button type="submit"  class="btn btn-primary agree">同意</button></a>
+                <button type="button" class="btn btn-default disagree" data-dismiss="modal">不同意</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+#log{  font-size:1.5em; }
+.view{
+    padding: 15px 10px;
+    margin:auto;
+}
+.view input{
+    width:11%;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    background-image: none;
+    border: 1px solid #96d0ff;
+    border-radius: 4px;
+}
+.ul-li-view li{
+    padding: 15px 10px;
+    margin:auto;
+}

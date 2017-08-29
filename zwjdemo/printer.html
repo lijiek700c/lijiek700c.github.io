@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>热敏打印</title>
+    <link rel="stylesheet" href="static/css/zhengwu.css">
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.css">
+    <script src="static/js/jquery-2.0.3.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="JS/Print.js"></script>
+    <script src="JS/A4Print.js"></script>
+    <script src="JS/main.js"></script>
+    <script src="static/js/public.js"></script>
+</head>
+<body  onselectstart="return false">
+    <div class="container printer">
+        <div class="header container">
+            <span class="header-left"><img draggable="false" src="static/images/home.png" alt="">您现在的位置：
+                <a class="btn-a" href="index.html">首页</a>
+                <span>></span> <a href="javascript:void(0)" onclick="location.reload()" class="btn-a">热敏打印模块</a></span>
+            <span class="header-right">当前街道：河村牌坊</span>
+        </div>
+        
+        <div class="container-fluid">
+            <ul class="list-group-item list-unstyled text-center">
+                <li><b>小票打印</b></li>
+            </ul>
+            <ul class="list-unstyled list-group-item print-little">
+                <button class="btn btn-warning postion" onclick="printInfo()" >打印信息</button>
+                <li><input type="text" name="" value="长歌行" disabled="disabled" placeholder="长歌行"></li>
+                <li>
+                    <input type="text" name="" disabled="disabled" value="青青园中葵，朝露待日晞。" placeholder="青青园中葵，朝露待日晞。">
+                    <input type="text" name="" disabled="disabled" value="阳春布德泽，万物生光辉。" placeholder="阳春布德泽，万物生光辉。">
+                    <input type="text" name="" disabled="disabled" value="常恐秋节至，焜黄华叶衰。" placeholder="常恐秋节至，焜黄华叶衰。">
+                    <input type="text" name="" disabled="disabled" value="百川东到海，何时复西归？" placeholder="百川东到海，何时复西归？">
+                    <input type="text" name="" disabled="disabled" value="少壮不努力，老大徒伤悲！" placeholder="少壮不努力，老大徒伤悲！">
+                </li>
+
+                <li><input type="text" name="" disabled="disabled" value="子曰" placeholder="子曰"></li>
+                <li>
+                    <input type="text" name="" disabled="disabled"  value="学而时习之，不义说呼？" placeholder="学而时习之，不义说呼？">
+                    <input type="text" name="" disabled="disabled"  value="有朋自远方来，不亦乐乎？" placeholder="有朋自远方来，不亦乐乎？">
+                    <input type="text" name="" disabled="disabled"  value="人不知而不愠，不亦君子乎？" placeholder="人不知而不愠，不亦君子乎？">
+                </li>
+
+                <li style="padding-top: 20px;"><button class="btn btn-warning postion" onclick="printQr()" >打印二维码</button><input type="text" name="" id="ewm" value="奔想智能" placeholder="奔想智能"></li>
+                <button class="btn btn-warning" onclick="webPrint()" >小票网络打印</button>
+            </ul>
+
+            <ul class="list-group-item list-unstyled text-center">
+                <li><b>A4打印</b></li>
+            </ul>
+            <ul class="list-group-item list-unstyled ">
+                <li>
+                    <button class="btn btn-primary" onclick="printbitma()">打印单个图片</button>
+                    <button class="btn btn-primary" onclick="printbitmas()">打印图片列表</button>
+                    <span>打印的图片为base64编码图片</span>
+                </li>
+            </ul>
+
+            <ul class="list-group-item list-unstyled print-file">
+                <li>
+                    <button class="btn btn-danger" onclick="printfile()" >打印文件列表</button>
+                    <input type="text" id="doc" placeholder="本地文件路径" value="D:\\testdoc.doc">
+                    <input type="text" id="pdf" placeholder="本地文件路径" value="D:\\testpdf.pdf">
+                    <span>测试打印的文件为D盘目录下的testdoc.doc和testpdf.pdf</span>
+                </li>
+            </ul>
+            <ul class="list-group-item list-unstyled ">
+                <li class="li-top">
+                    <button class="btn btn-success" onclick="printweb()">打印网页页面</button>
+                    <input type="text" name="" id="printurl" disabled="disabled" placeholder="http://zwtest.benxiangai.com/net/zwwindow/zwjdemo/testprinthtml.html" value="">
+                    <span>打印网页，测试案例为zwjdemo/testprinthtml.html</span>
+                </li>
+                <li class="li-top">
+                    <button class="btn btn-success" onclick="printwebfile()">打印网上文件</button>
+                    <input type="text" name="" id="printwebfile" disabled="disabled" placeholder="http://zwtest.benxiangai.com/net/zwwindow/zwjdemo/test.doc" value="">
+                    <span>打印网页文件，测试案例为zwjdemo/test.doc</span>
+                </li>
+                <li class="li-top">
+                    <button class="btn btn-success" onclick="printwebeven()">打印html元素</button>
+                    <input type="text" name="" id="printwebeven" placeholder="<body>内容</body>"
+                           value='
+<div id="guestBook" style="padding: 10px 200px;">
+<h2>我要留言</h2>
+<div class="bookAdd">
+<form id="bookAdd" action="http://rtiai.com/guestbook/insert" method="post">
+ <dl>
+  <dt>留言主题：</dt>
+  <dd>
+   <input type="text" name="title" size="80" class="textInput">
+   <p id="title" class="cue"></p>
+  </dd>
+ </dl>
+ <dl>
+  <dt>联系人：</dt>
+  <dd>
+   <input type="text" name="name" size="55" class="textInput">
+   <p id="name" class="cue"></p>
+  </dd>
+ </dl>
+ <dl>
+  <dt>回复方式：</dt>
+  <dd>
+   <select name="contact_type" class="select">
+    <option value="">请选择...</option>
+    <option value="email">E-MAIL</option><option value="tel">电话或手机</option><option value="qq">腾讯QQ</option>
+   </select>
+   <input type="text" name="contact" size="60" class="textInput">
+   <p id="contact" class="cue"></p>
+  </dd>
+ </dl>
+ <dl>
+  <dt>留言内容：</dt>
+  <dd>
+   <textarea name="content" cols="90" rows="5" class="textArea"></textarea>
+   <p id="content" class="cue"></p>
+  </dd>
+ </dl>
+      <dl>
+  <dt>验证码：</dt>
+  <dd>
+   <input type="text" name="captcha" class="textArea captcha" size="10">
+   <img id="vcode" src="http://rtiai.com/captcha.php" alt="验证码" border="1" onclick="refreshimage()" title="看不清？点击更换另一个验证码。">
+   <p id="captcha" class="cue"></p>
+  </dd>
+ </dl>
+      <input type="hidden" name="token" value="1193ef84">
+ <dl class="submit">
+  <input type="button" class="btn" value="提交">
+                </dl>
+                </form>
+    </div>
+</div>'>
+                    <span>打印网页元素</span>
+                </li>
+            </ul>
+            <ul class="list-unstyled list-group-item center">
+                <li id="logger" class="log-test">msg</li>
+            </ul>
+
+        </div>
+    </div>
+
+
+    <script src="static/js/printer.js"></script>
+</body>
+</html>

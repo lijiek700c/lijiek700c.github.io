@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>语音播放</title>
+    <link rel="stylesheet" href="static/css/zhengwu.css">
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.css">
+    <script src="static/js/jquery-2.0.3.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="JS/main.js"></script>
+    <script src="static/js/public.js"></script>
+</head>
+<body  onselectstart="return false">
+    <div class="container voiceplay" >
+        <div class="header container">
+            <span class="header-left"><img draggable="false" src="static/images/home.png" alt="">您现在的位置：
+                <a class="btn-a" href="index.html">首页</a>
+                <span>></span> <a href="javascript:void(0)" onclick="location.reload()" class="btn-a">语音识别模块</a>
+            </span>
+            <span class="header-right">当前街道：河村牌坊</span>
+        </div>
+
+        <div class="container-fluid">
+            <ul class="list-group-item list-unstyled">
+                <li><h2>语音播放</h2></li>
+                <li><input type="text" name="" id="pllocalvoice" value="1.wav" placeholder="wav文件本地相对路径"></li>
+                <li><button class="btn btn-success" onclick="localvoiceplay()">播放本地wav文件</button>
+                <button class="btn btn-danger" onclick="stoplocalvoiceplay()">停止播放本地wav文件</button></li>
+                <li><input type="text" name="" id="plvoicestr" value="广州奔想智能科技有限公司" placeholder="要播报的字符串"></li>
+                <li><button class="btn btn-success" onclick="voicestring()">语音播报字符串</button>
+                <button class="btn btn-danger" onclick="stopvoicestring()">停止语音播报字符串</button></li>
+            </ul>
+            <ul class="list-group-item list-unstyled">
+                <li><h2>语音识别</h2></li>
+                <li>
+                    <button class="btn btn-success" onclick="lis_Init()">初始化语音识别引擎</button>
+                    <button class="btn btn-danger" onclick="lis_Close()">关闭语音识别引擎</button>
+                </li>
+                <li>Ps：最多录制时间60秒</li>
+                <li><input type="text" name="" id="time" value="60" placeholder="最多录制时间60秒"></li>
+                <li>
+                    <button class="btn btn-success" onclick="startVoice()">开始语音识别</button>
+                    <button class="btn btn-danger" onclick="lis_Stop()">关闭语音识别</button>
+                </li>
+            </ul>
+            <ul class="list-group-item list-unstyled">
+                <li id="logger">显示log</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="JS/Sound.js"></script>
+    <script src="static/js/sound.js"></script>
+</body>
+</html>

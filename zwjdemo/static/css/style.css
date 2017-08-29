@@ -1,0 +1,142 @@
+ul{list-style-type: none;margin-bottom:0!important;width:100%;float: left;padding-left:0px;}
+ul li{color: white;}
+ul li img{margin:15% 25% 15% 25%;width:50%;}
+.text{margin-top:45%;}
+body *{
+    -ms-user-select:none;
+    user-select:none;
+}
+.clean-margin{
+    margin:0!important;
+}
+.clean-margin-top{
+    margin-top: 0!important;
+}
+
+.header{
+    width:100%;
+}
+.header-left{
+    float: left;
+    height: 100%;
+    line-height: 50px;
+}
+.header-left img{
+    width:30px;
+    height:30px;
+    float: left;
+    margin: 8px auto auto 8px;
+}
+.header-right{
+    float: right;
+    height: 100%;
+    line-height: 50px;
+    margin-right: 15px;
+}
+.left{
+    width:35%;
+    float: left;
+}
+.left .left_top,.left .left_foot {
+    width: 100%;
+    float: right;
+    margin-top:5%;
+}
+.left .left_top ul li,.left .left_foot ul li{
+    float: left;
+    margin-left: 5%;
+    margin-top: 5%;
+    text-align: center;
+    padding-bottom:35%;
+    width:35%;
+    height: 0;
+}
+.left .left_top ul li{
+    background: red;
+}
+.left .left_foot ul li{
+    background: deepskyblue;
+}
+.left .left_top .cj-title,.left .left_foot .zw-title{
+    width:10%;
+    height: 0;
+    text-align: center;
+    padding-bottom:75%;
+    font-size: 1.8vw;
+    margin-top: 0;
+}
+.left .left_top .cj-title{
+    background: firebrick;
+    padding-bottom:75%;
+    font-size: 1.8vw;
+}
+.left .left_foot .zw-title{
+    background: dodgerblue;
+    padding-bottom:35%;
+    font-size: 1.6vw;
+    margin-top: 5%;
+}
+/*-----------------*/
+.right{
+    width:65%;
+    float: left;
+}
+.right .content_left{
+    width: 64%;
+    float: left;
+    margin-left:5%;
+    margin-right: 1%;
+}
+.right .content_left .module{
+    float: left;
+    width:89%;
+    background: #228B22;
+}
+.right .content_left .module .module-test{
+    padding-bottom:2%;
+    padding-top:2%;
+    margin-left:50px;
+    font-size: 23px;
+    text-indent: 15px;
+    color: white;
+}
+.right .content_left ul li{
+    float: left;
+    width:20%;
+    height: 0;
+    background: limegreen;
+    text-align: center;
+    padding-bottom:20%;
+    margin-top: 3%;
+    margin-right: 3%;
+}
+.right .content_right{
+    width: 30%;
+    float: left;
+}
+.right .content_right .other li {
+    float: left;
+    width: 82%;
+    height: 0;
+    background: sandybrown;
+    text-align: center;
+    margin-top: 10%;
+    padding-bottom: 21%;
+    padding-top: 12%;
+}
+.right .content_right .weixin{
+    width:82%;
+    float: left;
+    margin-top:10%;
+}
+.right .content_right .weixin li{
+    width:50%;
+    float: left;
+    text-align: center;
+    font-size: 1.2vw;
+    color: black;
+}
+.right .content_right .weixin .ewm{
+    width:85%;
+    margin:0;
+}

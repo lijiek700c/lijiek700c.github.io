@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>热敏打印</title>
+    <link rel="stylesheet" href="static/css/zhengwu.css">
+    <link rel="stylesheet" type="text/css" href="static/bootstrap/css/bootstrap.css">
+    <script src="static/js/jquery-2.0.3.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="JS/Finger.js"></script>
+    <script src="JS/main.js"></script>
+    <script src="static/js/public.js"></script>
+</head>
+<body onbeforeunload="closefp()"  onselectstart="return false">
+    <div class="container fp">
+        <div class="header container">
+            <span class="header-left"><img draggable="false" src="static/images/home.png" alt="">您现在的位置：
+                <a class="btn-a" href="index.html">首页</a>><a class="btn-a" href="javascript:void(0)" onclick="location.reload()">指纹识别模块</a>
+            </span>
+            <span class="header-right">当前街道：河村牌坊</span>
+        </div>
+        
+        <div class="container-fluid">
+            <ul class="list-group-item list-unstyled text-center">
+                <li><h2>指纹识别</h2></li>
+            </ul>
+            <ul class="list-group-item list-unstyled fp-test">
+                <li>
+                    <button class="btn btn-success" onclick="fpMacReadFeature()" disabled="disabled">指纹读取</button>
+                    <button class="btn btn-primary" onclick="fpMacMatch()" disabled="disabled" >指纹匹配</button>
+                </li>
+                <li><button class="btn btn-danger" onclick="closefp()" style="width: 100%;" >关闭指纹读取</button></li>
+                <li>已禁止按钮点击，如需测试，请将disabled删除</li>
+                    <img id="fpImg" src="">
+                </li>
+            </ul>
+            <ul class="list-group-item list-unstyled">
+                <li id="logger" class="log-test">指纹</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <script src="static/js/fp.js"></script>
+
+</body>
+</html>
