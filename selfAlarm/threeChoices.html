@@ -113,7 +113,9 @@ window.onload=function(){
         send_command(
             "closePhoto",               // 关闭摄像头方法名
             "nothing",                  // 暂无传递信息（随便传，不可省略）
-            function (receivedData) {}  // 回调函数,暂无
+            function (receivedData) {
+                alert(receivedData);
+            }  // 回调函数,暂无
         );
     };
 };
