@@ -73,7 +73,7 @@ $(function(){
 	window.parent.readIdInfo();
 	clearInterval(timer);
 	timer=setInterval(function(){
-		var idCardNo=getLocalStorage('idCardNo');
+		var idCardNo=window.parent.getLocalStorage('idCardNo');
 		if(idCardNo){
 			numInput.val(idCardNo);
 		}
