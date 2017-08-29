@@ -129,7 +129,7 @@ function readIdInfo() {
     	//var oldIdInfo=getLocalStorage('idCardNo');
     	//alert(oldIdInfo);
     	//if(oldIdInfo!==idInfo.idCardNo){
-    	alert(idInfo.idCardNo);
+    	//alert(idInfo.idCardNo);
     		setLocalStorage('idCardNo',idInfo.idCardNo);
     	//}
     });

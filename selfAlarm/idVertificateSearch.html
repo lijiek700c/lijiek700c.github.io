@@ -74,11 +74,10 @@ $(function(){
 	clearInterval(timer);
 	timer=setInterval(function(){
 		var idCardNo=getLocalStorage('idCardNo');
-		alert(idCardNo);
 		if(idCardNo){
 			numInput.val(idCardNo);
 		}
-	},500);
+	},200);
 	openBtn.click(function(){
 		window.parent.openCamera1();
 	});
