@@ -70,7 +70,14 @@ $(function(){
 		takeBtn=$('#take');
 	var numInput=$('input[name=key1]');
 	var timer=null;
-	setInterval(window.parent.readIdInfo(),1000);
+	clearInterval(timer);
+	timer=setInterval(function(){
+		window.parent.readIdInfo();
+		var idCardNo=window.parent.getLocalStorage('idCardNo');
+		if(idCardNo){
+			numInput.val(idCardNo);
+		}
+	},,1000);
 	openBtn.click(function(){
 		window.parent.openCamera1();
 	});
@@ -81,14 +88,6 @@ $(function(){
 		alert('拍照');
 		window.parent.takePhoto1();
 	});
-	clearInterval(timer);
-	timer=setInterval(function(){
-		var idInfo=JSON.parse(window.parent.getLocalStorage('idInfo'));
-		alert(idInfo.idCardNo);
-		if(idInfo.idCardNo){
-			numInput.val(idInfo.idCardNo);
-		}
-	},1000);
 	
 });
 </script>

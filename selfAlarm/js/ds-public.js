@@ -126,10 +126,9 @@ function readIdInfo() {
     "nothing",
     function (receivedData){
         var idInfo= JSON.parse(receivedData);
-        alert(receivedData);
-    	var oldIdInfo=getLocalStorage('idInfo');
+    	var oldIdInfo=getLocalStorage('idCardNo');
     	if(oldIdInfo.idCardNo!==idInfo.idCardNo){
-    		setLocalStorage('idInfo',idInfo);
+    		setLocalStorage('idCardNo',idInfo.idCardNo);
     	}
     });
 }
