@@ -127,30 +127,30 @@ function openCamera1(){
     send_command(
         "openCamera",
         data,
-        function (receivedData) {
+        function(receivedData) {
             show_ca();
     });
 }
 /*关闭摄像头*/
-function closeCamera1() {
+function closeCamera1(){
     var obj={"openType": 0,"layoutX": 400,"layoutY": 400,"layoutWidth": 640,"layoutHeight": 480};
     var data=JSON.stringify(obj);
     send_command(
         "closeCamera",
         data,
-        function (receivedData) {
+        function(receivedData) {
             hide_ca();
     });
 }
 /*拍照*/
-function takePhoto1() {
+function takePhoto1(){
 	var obj={"openType": 0,"layoutX": 400,"layoutY": 400,"layoutWidth": 640,"layoutHeight": 480};
     var data=JSON.stringify(obj);
     send_command(
         "takePhoto",
         data,
-        function (receivedData) {
-        	alert(receivedData);
+        function(receivedData) {
+        	alert(111);
             var photoBean = JSON.parse(receivedData);
             if (photoBean.status == 100) {
                 /*document.getElementById("photo").src = "data:image/jpeg;base64," + photoBean.imgStr;*/ 
