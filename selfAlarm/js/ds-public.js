@@ -127,7 +127,8 @@ function readIdInfo() {
     function (receivedData){
         var idInfo= JSON.parse(receivedData);
     	var oldIdInfo=getLocalStorage('idCardNo');
-    	if(oldIdInfo.idCardNo!==idInfo.idCardNo){
+    	alert(oldIdInfo);
+    	if(oldIdInfo!==idInfo.idCardNo){
     		setLocalStorage('idCardNo',idInfo.idCardNo);
     	}
     });

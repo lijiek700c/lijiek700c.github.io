@@ -74,6 +74,7 @@ $(function(){
 	clearInterval(timer);
 	timer=setInterval(function(){
 		var idCardNo=window.parent.getLocalStorage('idCardNo');
+		alert(idCardNo);
 		if(idCardNo){
 			numInput.val(idCardNo);
 		}
