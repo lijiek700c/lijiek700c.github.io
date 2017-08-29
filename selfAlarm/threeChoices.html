@@ -94,6 +94,7 @@ window.onload=function(){
     var open=document.getElementById('open');
     var close=document.getElementById('close');
     function openCamera1(){
+        alert(send_command);
         var obj={"openType": 0,"layoutX": 400,"layoutY": 100,"layoutWidth": 640,"layoutHeight": 480};
         //var data=JSON.parse(obj);
         send_command(
@@ -139,7 +140,11 @@ $(function(){
 
     	}
     });
-    
+    $(window).on({
+        'unload':function(){
+            localStorage.clear();
+        }
+    });
 });
 </script>
 </body>
