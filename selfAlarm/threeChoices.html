@@ -96,10 +96,10 @@ window.onload=function(){
     alert(window.external.web_url);
     function openCamera1(){
         var obj={"openType": 0,"layoutX": 400,"layoutY": 100,"layoutWidth": 640,"layoutHeight": 480};
-        //var data=JSON.parse(obj);
+        var data=JSON.stringify(obj);
         send_command(
             "openCamera",
-            obj,
+            data,
             function (receivedData) {
                 alert(receivedData);
                 //logger(receivedData);
