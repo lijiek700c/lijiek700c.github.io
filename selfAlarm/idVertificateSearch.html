@@ -70,7 +70,7 @@ $(function(){
 		takeBtn=$('#take');
 	var numInput=$('input[name=key1]');
 	var timer=null;
-	window.parent.readIdInfo();
+	setInterval(window.parent.readIdInfo(),1000);
 	openBtn.click(function(){
 		window.parent.openCamera1();
 	});

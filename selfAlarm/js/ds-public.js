@@ -132,7 +132,6 @@ function readIdInfo() {
     	}
     });
 }
-setInterval(readIdInfo,1000);
 /*调设备摄像头*/
 /*打开摄像头*/
 function openCamera1(){
