@@ -79,7 +79,10 @@ $(function(){
 		alert('拍照');
 		window.parent.takePhoto1();
 	});
-	$('input[name=key1]').val(getLocalStorage('idCardNo'));
+	setInterval(function(){
+		$('input[name=key1]').val(getLocalStorage('idCardNo'));
+	},200);
+	
 });
 </script>
 </body>

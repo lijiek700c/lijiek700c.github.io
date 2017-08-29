@@ -127,7 +127,7 @@ function readIdInfo() {
     function (receivedData){
         var idInfo= JSON.parse(receivedData);
         alert(idInfo.idCardNo);
-        searchFrame.contents().find('input[name=key1]').val(idInfo.idCardNo);
+        setLocalStorage('idCardNo',idInfo.idCardNo);
     });
 }
 /*调设备摄像头*/
