@@ -15,6 +15,9 @@
     .testButton.close {
         top:80px;
     }
+    .testButton.take {
+        top:160px;
+    }
 </style>
 </head>
 <body>
@@ -31,6 +34,7 @@
 	<!--操作步骤E-->
 	<button class="testButton" id="open">打开</button>
 	<button class="testButton close" id="close">关闭</button>
+	<button class="testButton take" id="take">拍照</button>
 	<div class="ds-searchBox">
 		<!--输入框-->
 		<div class="ds-inputArea clear">
@@ -62,12 +66,16 @@
 <script>
 $(function(){
 	var openBtn=$('#open'),
-		closeBtn=$('#close');
+		closeBtn=$('#close'),
+		takeBtn=$('#take');
 	openBtn.click(function(){
 		window.parent.openCamera1();
 	});
-	openBtn.click(function(){
+	closeBtn.click(function(){
 		window.parent.closeCamera();
+	});
+	takeBtn.click(function(){
+
 	});
 });
 </script>

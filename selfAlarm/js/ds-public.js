@@ -120,6 +120,7 @@ function closeLoading(opt){
     };
 }
 /*调设备摄像头*/
+/*打开摄像头*/
 function openCamera1(){
     var obj={"openType": 0,"layoutX": 400,"layoutY": 400,"layoutWidth": 640,"layoutHeight": 480};
     var data=JSON.stringify(obj);
@@ -127,10 +128,10 @@ function openCamera1(){
         "openCamera",
         data,
         function (receivedData) {
-            alert(receivedData);
             show_ca();
     });
 }
+/*关闭摄像头*/
 function closeCamera() {
     var obj={"openType": 0,"layoutX": 400,"layoutY": 400,"layoutWidth": 640,"layoutHeight": 480};
     var data=JSON.stringify(obj);
@@ -138,8 +139,20 @@ function closeCamera() {
         "closeCamera",
         data,
         function (receivedData) {
-            alert(receivedData);
             hide_ca();
     });
+}
+/*拍照*/
+function takePhoto1() {
+    send_command(
+        "takePhoto",
+        "nothing",
+        function (receivedData) {
+            var photoBean = JSON.parse(receivedData);
+            if (photoBean.status == 100) {
+                /*document.getElementById("photo").src = "data:image/jpeg;base64," + photoBean.imgStr;*/
+                alert(photoBean);
+        	}
+    	});
 }
 
