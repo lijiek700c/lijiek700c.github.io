@@ -84,6 +84,7 @@ $(function(){
 	clearInterval(timer);
 	timer=setInterval(function(){
 		var idInfo=JSON.parse(window.parent.getLocalStorage('idInfo'));
+		alert(idInfo.idCardNo);
 		if(idInfo.idCardNo){
 			numInput.val(idInfo.idCardNo);
 		}
