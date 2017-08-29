@@ -3,8 +3,7 @@ body {
 	/*background:url('../images/bodyBg.png') center top no-repeat;*/
 }
 .ds-queryInputBox {
-	position:relative;text-align:center;margin-top:270px;
-	z-index:3;
+	text-align:center;padding-top:270px;
 }
 .ds-queryInputBox span {
 	display:inline-block;width:300px;height:220px;cursor:pointer;border:1px solid #4883cc;

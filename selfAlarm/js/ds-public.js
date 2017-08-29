@@ -1,7 +1,17 @@
+/*本地存储*/
+function setLocalStorage(name,value){
+	localStorage.setItem(name,value);
+}
+function getLocalStorage(name){
+	return localStorage.getItem(name);
+}
+function clearLocalStorage(){
+	localStorage.clear();
+}
 /**/
 $(document).on('contextmenu',function(ev){
-	ev.preventDefault();
-	return false;
+	/*ev.preventDefault();
+	return false;*/
 });
 /*加载---S*/
 ;(function(window,$){
@@ -109,5 +119,27 @@ function closeLoading(opt){
     	});
     };
 }
-
+/*调设备摄像头*/
+function openCamera1(){
+    var obj={"openType": 0,"layoutX": 400,"layoutY": 400,"layoutWidth": 640,"layoutHeight": 480};
+    var data=JSON.stringify(obj);
+    send_command(
+        "openCamera",
+        data,
+        function (receivedData) {
+            alert(receivedData);
+            show_ca();
+    });
+}
+function closeCamera() {
+    var obj={"openType": 0,"layoutX": 400,"layoutY": 400,"layoutWidth": 640,"layoutHeight": 480};
+    var data=JSON.stringify(obj);
+    send_command(
+        "closeCamera",
+        data,
+        function (receivedData) {
+            alert(receivedData);
+            hide_ca();
+    });
+}
 

@@ -25,7 +25,6 @@ body {
     font-size:24px;
     font-family:'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;
     background:url('../images/bodyBg.png') center top no-repeat;
-    padding-bottom:128px;
     overflow:hidden;
 }
 i {
@@ -125,7 +124,7 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
 
 /* 操作步骤 */
 .ds-queryProceBox {
-    position:absolute;top:170px;left:30px;width:100%;height:60px;
+    position:absolute;top:20px;left:30px;width:100%;height:60px;
     font-size:24px;z-index:3;
 }
 .ds-proceBtn {
@@ -246,7 +245,7 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
 }
 /* 页脚 */
 .ds-footer {
-    position:fixed;left:0;bottom:0;width:100%;height:128px;font-size:24px;color:#e9f0f3;
+    position:absolute;left:0;bottom:0;width:100%;height:128px;font-size:24px;color:#e9f0f3;
     background:rgba(0,0,0,0.3);z-index:3;
 }
 .ds-footer > .footerTxt {
@@ -373,8 +372,19 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
     transform: translateY(3px);
     box-shadow: 0px 0px 0px 0px #d8d8d8;
 }
-/*  */
-
+/* 内容切换 */
+.ds-conArea {
+    position:relative;width:100%;height:940px;
+    z-index:3;
+}
+.ds-conArea > * {
+    position:relative;width:100%;height:100%;
+    display:none;
+}
+.ds-con > iframe {
+    width:100%;height:812px;
+    overflow:hidden;
+}
 @media screen and (max-width:1470px){
     .ds-header > div {
         margin:0;position:absolute;top:32px;right:85px;

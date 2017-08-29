@@ -4,25 +4,10 @@
 	<meta charset="UTF-8">
 	<title>完成报案</title>
 	<link rel="stylesheet" href="css/public2.css">
-	<link rel="stylesheet" href="css/ball-spin-clockwise.css">
 	<link rel="stylesheet" href="css/completeAlarm.css">
 </head>
 <body>
-<div class="ds-completeBox" style="display:none;">
-    <!--页头-->
-    <div class="ds-header clear">
-        <a class="fl" href="#">
-            <i class="fl"></i>
-            <span class="fl">湖南省公安接报案查询系统</span>
-        </a>
-        <div class="fr">
-            <p class="iconP clear">
-                <span class="fl txt">服务电话：</span>
-                <span class="fl num" >400-800-2285</span>
-            </p>
-            <p class="num">湖南湘江智慧科技股份有限公司</p>
-        </div>
-    </div>
+<div class="ds-completeBox" style="display:block;">
 	<!--操作步骤-->
 	<div class="ds-queryProceBox">
         <div class="ds-proceBtn ds-proceHome"></div>
@@ -32,12 +17,6 @@
         <div class="ds-proceBtn ds-proce">信息预览</div>
         <div class="ds-proceBtn ds-proce sel">完成报案</div>
 	</div>
-    <!--页脚-->
-    <div class="ds-footer clear">
-        <div class="fl footerTxt">
-            <p>温馨提示：点击“确定”，返回首页。</p>
-        </div>
-    </div>
     <!--提示的弹窗-->
 	<div class="js_dialog" id="iosDialog2">
         <div class="weui-mask"></div>
@@ -51,47 +30,6 @@
         </div>
     </div>
 </div>
-<!--加载S-->
-    <div class="ds-loadingBox" style="display:none;">
-        <div class="ds-wrapper">
-            <div class="la-ball-spin-clockwise la-2x">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <div class="ds-loadingTxt" style="color:#000;">
-                <span>正在加载</span>
-                <div>
-                    <p class="first">.</p>
-                    <p class="second">.</p>
-                    <p class="third">.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-<!--加载E-->
-
 <script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/ds-public.js"></script>
-
-<script>
-$(function(){
-    /*首次打开页面加载*/
-    firstOpen('正在跳转','.ds-completeBox');
-    /*关闭加载动画*/
-    hideLoading({
-        txt:'正在跳转',
-        str:'.ds-completeBox'
-    });
-    $('.weui-dialog__btn_primary','.js_dialog').on('click',function(){
-        window.location.href='threeChoices.html';
-    });
-});
-</script>
 </body>
 </html>

@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="css/public2.css">
 	<link rel="stylesheet" href="css/ball-spin-clockwise.css">
 	<link rel="stylesheet" href="css/threeChoices.css">
+    <link rel="stylesheet" href="css/lawsTxt.css">
     <script src="js/zzJS/main.js"></script>
     <script src="js/zzJS/Camera.js"></script>
 <style>
@@ -21,10 +22,9 @@
 </style>
 </head>
 <body>
-<button class="testButton" id="open">打开</button>
-<button class="testButton close" id="close">关闭</button>
+
 <div class="threeChoicesBox" style="display:none;">
-	<!--页头-->
+	<!--页头S-->
 	<div class="ds-header clear">
 		<a class="fl" href="#">
 			<i class="fl"></i>
@@ -38,27 +38,91 @@
 			<p class="num">湖南湘江智慧科技股份有限公司</p>
 		</div>
 	</div>
-	<div class="ds-queryInputBox">
-		<span>
-			<i class="search"></i>
-			<b>案件查询</b>
-		</span>
-		<span>
-			<i class="alarm"></i>
-			<b>自助报案</b>
-		</span>
-		<span>
-			<i class="laws"></i>
-			<b>法律文书</b>
-		</span>
-	</div>
+    <!--页头E-->
+<!--内容切换S-->
+<div class="ds-conArea">
+    <!--三个选项-->
+    <div class="ds-con" style="display:block;">
+        <div class="ds-queryInputBox">
+            <span>
+                <i class="search"></i>
+                <b>案件查询</b>
+            </span>
+            <span>
+                <i class="alarm"></i>
+                <b>自助报案</b>
+            </span>
+            <span>
+                <i class="laws"></i>
+                <b>法律文书</b>
+            </span>
+        </div>
+        <div class="ds-footer clear">
+            <div class="fl footerTxt">
+                <p>温馨提示：请选择您要办理的服务项目。</p>
+            </div>
+        </div>
+    </div>
+    <!--法律文书，同意不同意-->
+    <div class="ds-con">
+        <!--法律文书-->
+        <div class="ds-lawsTxt">
+            <p class="title">操作须知</p>
+            <div class="details">
+                <p>1、遇有紧急情况，建议您直接拨打110电话报警。</p>
+                <p>2、请留下有效的联系电话、地址等联系方式，以便经办单位能及时与您联系。</p>
+                <p>3、请如实、详细填写报警内容。对谎报警情、扰乱正常办公秩序的，公安机关将依法查处。</p>
+                <p>4、您所提供的情况，我们将严格保密。</p>
+            </div>
+        </div>
+        <!--按钮-->
+        <div class="ds-btnBox">
+            <span class="agree">同意</span>
+            <span>不同意</span>
+        </div>
+        <!--页脚-->
+        <div class="ds-footer clear">
+            <div class="fl footerTxt"> 
+                <p>温馨提示：点击“同意”按钮，表示我已阅读并同意以上条款，进入自助报案界面。</p>
+                <p>点击“不同意”按钮，返回首页。</p>
+            </div>
+        </div>
+    </div>
+    <!--查询界面-->
+    <div class="ds-con" style="display:none;">
+        <iframe id="caseSrearch" src="" frameborder="0" border="0" scrolling="none"></iframe>
+        <!--页脚-->
+        <div class="ds-footer clear">
+            <div class="fl footerTxt"> 
+                <p>温馨提示：把身份证放置左边感应区，读取信息成功后，点击“下一步”进行操作。</p>
+                <p>若未识别到信息，请点击“重新读取”。</p>
+            </div>
+            <div class="fr btnBox clear">
+                <span class="fl home"></span>
+                <span class="fl return"></span>
+                <span class="fl next"></span>
+            </div>
+        </div>
+    </div>
+    <!--自助报案界面-->
+    <div class="ds-con" style="display:none;">
+        <iframe id="alarm" src="" frameborder="0" border="0" scrolling="none"></iframe>
+        <!--页脚-->
+        <div class="ds-footer clear">
+            <div class="fl footerTxt"> 
+                <p>温馨提示：把身份证放置左边感应区，读取信息成功后，点击“下一步”进行操作。</p>
+                <p>若未识别到信息，请点击“重新读取”。</p>
+            </div>
+            <div class="fr btnBox clear">
+                <span class="fl home"></span>
+                <span class="fl return"></span>
+                <span class="fl next"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容切换E-->
 
-	<!--页脚-->
-	<div class="ds-footer clear">
-		<div class="fl footerTxt">
-			<p>温馨提示：请选择您要办理的服务项目。</p>
-		</div>
-	</div>
 </div>
 	<!--加载S-->
     <div class="ds-loadingBox" style="background:#fff;display:none;">
@@ -115,14 +179,14 @@ window.onload=function(){
                 hide_ca();
         });
     }
-    testOpen.onclick=function(){
+    /*testOpen.onclick=function(){
         alert(window.external.web_url);
         openCamera1();
     };
     testClose.onclick=function(){
         alert(window.external.web_url);
         closeCamera();
-    };
+    };*/
 };
 $(function(){
 	/*首次打开页面加载*/
@@ -132,24 +196,118 @@ $(function(){
     	txt:'',
     	str:'.threeChoicesBox'
     });
-    var aSelBtn=$('.ds-queryInputBox > span');
-    var aMainBtn=$('.btnBox span','.ds-footer');
-    aSelBtn.on('click touchstart',function(ev){
-    	var _this=$(this);
-    	var oI=_this.children('i');
-    	if(_this.hasClass('onSel')){
-    		return false;
-    	}
-    	aSelBtn.removeClass('onSel');
-    	_this.addClass('onSel');
-    	if(oI.hasClass('search')){
-    		window.location.href='lawsTxt.html?'+'caseSearch';
-    	}else if(oI.hasClass('alarm')){
-			window.location.href='lawsTxt.html?'+'selfAlarm';
-    	}else{
+/*-----------------------------------------*/
+var aDsCon=$('.ds-conArea > .ds-con');
+var searchFrame=$('#caseSrearch');
+var sIndex=0,aIndex=0;
+var searchSrcArr=['idVertificateSearch.html','caseSearch.html','caseList.html','caseDetails.html','completeSearch.html'];
+var alarmSrcArr=['idVertificateAlarm.html','alarmInfoWrite.html','dataUpload.html','infoPreview.html','completeAlarm.html'];
+var alarmFrame=$('#alarm');
 
-    	}
+alarmFrame.on('load',function(){
+    var _this=$(this);
+    if(_this.attr('src')==='alarmInfoWrite.html'){
+        $('.ds-header').hide();
+        _this.css('height','956px');
+        _this.next().css('bottom','-140px');
+    }else{
+        $('.ds-header').show();
+        _this.css('height','812px');
+        _this.next().css('bottom','0');
+    }
+});
+userSelect();
+setCaseFrameSrc();
+setAlarmFrameSrc();
+function setCaseFrameSrc(){
+    var aBtn=$('.btnBox > span',aDsCon.eq(2));
+    aBtn.on('click',function(ev){
+        var _this=$(this);
+        if(_this.hasClass('home')){
+            aDsCon.hide();
+            aDsCon.eq(0).show();
+        }else if(_this.hasClass('next')){
+            sIndex++;
+            (sIndex>=searchSrcArr.length)&&(sIndex=searchSrcArr.length-1);
+        }else if(_this.hasClass('return')){
+            sIndex--;
+            (sIndex<=0)&&(sIndex=0);
+        }
+        searchFrame.attr('src',searchSrcArr[sIndex]);
     });
+}
+function setAlarmFrameSrc(){
+    var aBtn=$('.btnBox > span',aDsCon.eq(3));
+    aBtn.on('click',function(ev){
+        var _this=$(this);
+        if(_this.hasClass('home')){
+            aDsCon.hide();
+            aDsCon.eq(0).show();
+        }else if(_this.hasClass('next')){
+            aIndex++;
+            (aIndex>=alarmSrcArr.length)&&(aIndex=alarmSrcArr.length-1);
+        }else if(_this.hasClass('return')){
+            aIndex--;
+            (aIndex<=0)&&(aIndex=0);
+        }
+        alarmFrame.attr('src',alarmSrcArr[aIndex]);
+    });
+}
+function userSelect(){
+    var aSelBtn=$('.ds-queryInputBox > span','.ds-conArea');
+    var aTwoBtn=$('.ds-btnBox > span','.ds-conArea');
+    /*三种选择*/
+    aSelBtn.on('click touchstart',function(ev){
+        var _this=$(this);
+        var oI=_this.children('i');
+        if(oI.hasClass('search')){
+            aDsCon.hide();
+            setLocalStorage('caseSearch',true);
+            aDsCon.eq(1).show();
+        }else if(oI.hasClass('alarm')){
+            aDsCon.hide();
+            setLocalStorage('selfAlarm',true)
+            aDsCon.eq(1).show();
+        }else{
+
+        }
+    });
+    /*同意或不同意*/
+    aTwoBtn.on('click touchstart',function(){
+        var _this=$(this);
+        if(_this.hasClass('agree')){
+            if(getLocalStorage('caseSearch')){
+                aDsCon.hide();
+                searchFrame.attr('src','idVertificateSearch.html');
+                clearLocalStorage();
+                aDsCon.eq(2).show();
+            }else if(getLocalStorage('selfAlarm')){
+                aDsCon.hide();
+                alarmFrame.attr('src','idVertificateAlarm.html');
+                clearLocalStorage();
+                aDsCon.eq(3).show();
+            }
+        }else{
+             aDsCon.hide();
+             aDsCon.eq(0).show();
+             clearLocalStorage();
+        }
+    });
+}
+
+/*var aSpan=$('div.btnBox > span','.ds-footer');
+    aSpan.on('click',function(){
+        var _this=$(this);
+        if(_this.hasClass('next')){
+            window.location.href='caseSearch.html';
+        }else if(_this.hasClass('return')){
+            window.location.href='threeChoices.html';
+        }else{
+            window.location.href='threeChoices.html';
+        }
+    });*/
+
+    
 });
 </script>
 </body>
