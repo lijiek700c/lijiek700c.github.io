@@ -32,8 +32,8 @@
 		<div class="ds-proceBtn ds-proce">完成查询</div>
 	</div>
 	<!--操作步骤E-->
-	<button class="testButton" id="open">打开</button>
-	<button class="testButton close" id="close">关闭</button>
+	<!-- <button class="testButton" id="open">打开</button>
+	<button class="testButton close" id="close">关闭</button> -->
 	<!-- <button class="testButton take" id="take">拍照</button> -->
 	<div class="ds-searchBox">
 		<!--输入框-->
@@ -42,7 +42,7 @@
 				<span class="fl">身份证号</span>
 				<input id="key1" name="key1" class="fl" type="text">
 			</label>
-			<p class="fl">重新读取</p>
+			<!-- <p class="fl">重新读取</p> -->
 		</div>
 	</div>
 	<!--提示扫描身份证-->
@@ -83,11 +83,11 @@ $(function(){
 	});
 	clearInterval(timer);
 	timer=setInterval(function(){
-		numInput.val(window.parent.getLocalStorage('idCardNo'));
-		if(numInput.val()!==''){
-			clearInterval(timer);
+		var idInfo=window.parent.getLocalStorage('idInfo');
+		if(idInfo.idCardNo){
+			numInput.val(idInfo.idCardNo);
 		}
-	},200);
+	},1000);
 	
 });
 </script>
