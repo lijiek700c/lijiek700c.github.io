@@ -68,6 +68,7 @@ $(function(){
 	var openBtn=$('#open'),
 		closeBtn=$('#close'),
 		takeBtn=$('#take');
+	window.parent.readIdInfo();
 	openBtn.click(function(){
 		window.parent.openCamera1();
 	});
@@ -75,7 +76,7 @@ $(function(){
 		window.parent.closeCamera1();
 	});
 	takeBtn.click(function(){
-		alert(1);
+		alert('拍照');
 		window.parent.takePhoto1();
 	});
 });

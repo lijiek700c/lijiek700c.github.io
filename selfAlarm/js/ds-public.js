@@ -119,6 +119,16 @@ function closeLoading(opt){
     	});
     };
 }
+/*打开身份证读取器*/
+function readIdInfo() {
+    send_command(
+    "idReaderReadInfo",
+    "nothing",
+    function (receivedData){
+        var idInfo= JSON.parse(receivedData);
+        alert(idInfo);
+    });
+}
 /*调设备摄像头*/
 /*打开摄像头*/
 function openCamera1(){
@@ -144,14 +154,12 @@ function closeCamera1(){
 }
 /*拍照*/
 function takePhoto1(){
-	var obj={"openType": 0,"layoutX": 400,"layoutY": 400,"layoutWidth": 640,"layoutHeight": 480};
-    var data=JSON.stringify(obj);
     send_command(
         "takePhoto",
-        data,
-        function(receivedData) {
-        	alert(111);
-            var photoBean = JSON.parse(receivedData);
+        'nothing',
+        function(receivedData){
+        	alert(receivedData);
+            var photoBean=JSON.parse(receivedData);
             if (photoBean.status == 100) {
                 /*document.getElementById("photo").src = "data:image/jpeg;base64," + photoBean.imgStr;*/ 
         	}
