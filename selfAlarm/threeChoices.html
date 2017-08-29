@@ -101,6 +101,7 @@ window.onload=function(){
             "openCamera",
             obj,
             function (receivedData) {
+                alert(receivedData);
                 //logger(receivedData);
                 Show();  /*显示拍照框???*/
         });
@@ -141,11 +142,6 @@ $(function(){
     	}else{
 
     	}
-    });
-    $(window).on({
-        'unload':function(){
-            localStorage.clear();
-        }
     });
 });
 </script>
