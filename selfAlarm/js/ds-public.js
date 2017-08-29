@@ -144,9 +144,11 @@ function closeCamera1() {
 }
 /*拍照*/
 function takePhoto1() {
+	var obj={"openType": 0,"layoutX": 400,"layoutY": 400,"layoutWidth": 640,"layoutHeight": 480};
+    var data=JSON.stringify(obj);
     send_command(
         "takePhoto",
-        "nothing",
+        data,
         function (receivedData) {
         	alert(receivedData);
             var photoBean = JSON.parse(receivedData);
@@ -155,4 +157,5 @@ function takePhoto1() {
         	}
     	});
 }
+/**/
 
