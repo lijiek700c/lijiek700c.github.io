@@ -80,7 +80,7 @@ $(function(){
 		window.parent.takePhoto1();
 	});
 	setInterval(function(){
-		$('input[name=key1]').val(getLocalStorage('idCardNo'));
+		$('input[name=key1]').val(window.parent.getLocalStorage('idCardNo'));
 	},200);
 	
 });
