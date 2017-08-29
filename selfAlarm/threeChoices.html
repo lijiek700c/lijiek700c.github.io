@@ -18,7 +18,7 @@
 </style>
 </head>
 <body>
-<button class="testButton">测试</button>
+<button class="testButton" id="test">测试</button>
 <div class="threeChoicesBox" style="display:none;">
 	<!--页头-->
 	<div class="ds-header clear">
@@ -86,7 +86,21 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/ds-public.js"></script>
 <script>
-
+window.onload=function(){
+    var oBtn=document.getElementById('test');
+    function openCamera(){
+        var obj={"openType": 0,"layoutX": 400,"layoutY": 100,"layoutWidth": 640,"layoutHeight": 480};
+        //var data=JSON.parse(obj);
+        send_command(
+            "openCamera",
+            obj,
+            function (receivedData) {
+                //logger(receivedData);
+                show();
+        });
+    }
+    oBtn.onclick=openCamera;
+};
 $(function(){
 	/*首次打开页面加载*/
     firstOpen('','.threeChoicesBox');
@@ -113,18 +127,7 @@ $(function(){
 
     	}
     });
-    function openCamera() {
-        var obj={"openType": 0,"layoutX": 400,"layoutY": 100,"layoutWidth": 640,"layoutHeight": 480};
-        var data=JSON.parse(obj);
-        send_command(
-            "openCamera",
-            data,
-            function (receivedData) {
-                //logger(receivedData);
-                show();
-        });
-    }
-    $('.testButton').on('click',openCamera);
+    
 });
 </script>
 </body>
