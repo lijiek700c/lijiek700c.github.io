@@ -126,7 +126,6 @@ function readIdInfo() {
     "nothing",
     function (receivedData){
         var idInfo= JSON.parse(receivedData);
-        alert(idInfo.idCardNo);
         setLocalStorage('idCardNo',idInfo.idCardNo);
     });
 }

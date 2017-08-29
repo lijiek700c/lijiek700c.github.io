@@ -34,7 +34,7 @@
 	<!--操作步骤E-->
 	<button class="testButton" id="open">打开</button>
 	<button class="testButton close" id="close">关闭</button>
-	<button class="testButton take" id="take">拍照</button>
+	<!-- <button class="testButton take" id="take">拍照</button> -->
 	<div class="ds-searchBox">
 		<!--输入框-->
 		<div class="ds-inputArea clear">
@@ -68,6 +68,8 @@ $(function(){
 	var openBtn=$('#open'),
 		closeBtn=$('#close'),
 		takeBtn=$('#take');
+	var numInput=$('input[name=key1]');
+	var timer=null;
 	window.parent.readIdInfo();
 	openBtn.click(function(){
 		window.parent.openCamera1();
@@ -79,8 +81,12 @@ $(function(){
 		alert('拍照');
 		window.parent.takePhoto1();
 	});
-	setInterval(function(){
-		$('input[name=key1]').val(window.parent.getLocalStorage('idCardNo'));
+	clearInterval(timer);
+	timer=setInterval(function(){
+		numInput.val(window.parent.getLocalStorage('idCardNo'));
+		if(numInput.val()!==''){
+			clearInterval(timer);
+		}
 	},200);
 	
 });
