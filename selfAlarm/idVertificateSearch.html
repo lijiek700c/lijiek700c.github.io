@@ -83,7 +83,7 @@ $(function(){
 	});
 	clearInterval(timer);
 	timer=setInterval(function(){
-		var idInfo=window.parent.getLocalStorage('idInfo');
+		var idInfo=JSON.parse(window.parent.getLocalStorage('idInfo'));
 		if(idInfo.idCardNo){
 			numInput.val(idInfo.idCardNo);
 		}
