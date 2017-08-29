@@ -132,7 +132,7 @@ function openCamera1(){
     });
 }
 /*关闭摄像头*/
-function closeCamera() {
+function closeCamera1() {
     var obj={"openType": 0,"layoutX": 400,"layoutY": 400,"layoutWidth": 640,"layoutHeight": 480};
     var data=JSON.stringify(obj);
     send_command(
