@@ -126,11 +126,12 @@ function readIdInfo() {
     "nothing",
     function (receivedData){
         var idInfo= JSON.parse(receivedData);
-    	var oldIdInfo=getLocalStorage('idCardNo');
-    	alert(oldIdInfo);
-    	if(oldIdInfo!==idInfo.idCardNo){
+    	//var oldIdInfo=getLocalStorage('idCardNo');
+    	//alert(oldIdInfo);
+    	//if(oldIdInfo!==idInfo.idCardNo){
+    	alert(idInfo.idCardNo);
     		setLocalStorage('idCardNo',idInfo.idCardNo);
-    	}
+    	//}
     });
 }
 /*调设备摄像头*/

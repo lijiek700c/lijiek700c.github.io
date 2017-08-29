@@ -73,12 +73,12 @@ $(function(){
 	window.parent.readIdInfo();
 	clearInterval(timer);
 	timer=setInterval(function(){
-		var idCardNo=window.parent.getLocalStorage('idCardNo');
+		var idCardNo=getLocalStorage('idCardNo');
 		alert(idCardNo);
 		if(idCardNo){
 			numInput.val(idCardNo);
 		}
-	},,1000);
+	},500);
 	openBtn.click(function(){
 		window.parent.openCamera1();
 	});
