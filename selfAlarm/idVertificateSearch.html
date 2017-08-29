@@ -70,9 +70,9 @@ $(function(){
 		takeBtn=$('#take');
 	var numInput=$('input[name=key1]');
 	var timer=null;
+	window.parent.readIdInfo();
 	clearInterval(timer);
 	timer=setInterval(function(){
-		window.parent.readIdInfo();
 		var idCardNo=window.parent.getLocalStorage('idCardNo');
 		if(idCardNo){
 			numInput.val(idCardNo);
