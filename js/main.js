@@ -12,14 +12,14 @@ require.config({
 var arr=[
 		[{href:'CDRegistrationForm/html/homePage.html',imgSrc:'images/test.png',title:'外籍人员管理首页',conIntro:''},
 		{href:'bootstrap/test.html',imgSrc:'images/test.png',title:'学习bootstrap',conIntro:''},
-		{href:'testGetCamera.html',imgSrc:'images/test.png',title:'h5调用手机摄像头',conIntro:''},
-		{href:'selfHelpReportTask/homePage.html',imgSrc:'images/test.png',title:'自助终端首页',conIntro:''},
-		{href:'selfAlarm/threeChoices.html',imgSrc:'images/test.png',title:'自助终端02',conIntro:''},
+		{href:'testGetUserMedia.html',imgSrc:'images/test.png',title:'h5调用手机摄像头',conIntro:''},
+		{href:'selfAlarm/threeChoices.html',imgSrc:'images/test.png',title:'自助终端首页',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},
-		{imgSrc:'images/test.png',title:'标题1a1',conIntro:''},
-		{imgSrc:'images/test.png',title:'标题1a1',conIntro:''}
+		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},
+		{href:'',imgSrc:'images/test.png',title:'标题1a1',conIntro:''},
+		{href:'',imgSrc:'images/test.png',title:'标题1a1',conIntro:''}
 		],
 		[{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'}],
 		[{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'},{imgSrc:'images/test.png',title:'标题3b3',conIntro:'话不多，一句就忐忑'}]
