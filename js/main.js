@@ -12,7 +12,7 @@ require.config({
 var arr=[
 		[{href:'CDRegistrationForm/html/homePage.html',imgSrc:'images/test.png',title:'外籍人员管理首页',conIntro:''},
 		{href:'bootstrap/test.html',imgSrc:'images/test.png',title:'学习bootstrap',conIntro:''},
-		{href:'testGetUserMedia.html',imgSrc:'images/test.png',title:'h5调用手机摄像头',conIntro:''},
+		{href:'testGetCamera.html',imgSrc:'images/test.png',title:'h5调用手机摄像头',conIntro:''},
 		{href:'selfAlarm/threeChoices.html',imgSrc:'images/test.png',title:'自助终端首页',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},
