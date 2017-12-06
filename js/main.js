@@ -14,7 +14,7 @@ var arr=[
 		{href:'bootstrap/test.html',imgSrc:'images/test.png',title:'学习bootstrap',conIntro:''},
 		{href:'testGetCamera.html',imgSrc:'images/test.png',title:'h5调用手机摄像头',conIntro:''},
 		{href:'selfAlarm/threeChoices.html',imgSrc:'images/test.png',title:'自助终端首页',conIntro:''},
-		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},
+		{href:'bootstrap/test2.html',imgSrc:'images/test.png',title:'bootstrap表单',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},

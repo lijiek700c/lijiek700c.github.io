@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+	<title>test</title>
+	<link rel="stylesheet" href="bootstrap.css">
+<style>
+	.row > div {background:pink;}
+</style>
+</head>
+<body style="background:#eee;">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-md-10 col-md-offset-1">
+				<a href="#">hahahehe</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3">沙发发发发那我发放到法国徐</div>
+			<div class="col-xs-3">2222</div>
+			<div class="col-xs-3">333</div>
+			<div class="col-xs-3">4444</div>
+			<div class="clearfix visible-xs-block"></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1">
+				<div class="form-group">
+					<label for="exampleInputEmail">Email address</label>
+					<input class="form-control" type="text" id="exampleInputEmail">
+				</div>
+				<div class="form-group">
+					<label for="">Password</label>
+					<input type="password" class="form-control">
+				</div>
+				<div class="form-group">
+					<textarea rows="3" class="form-control"></textarea>
+				</div>
+				<div class="checkbox">
+					<label for="checkbox">
+						<input type="checkbox" id="checkbox">
+						 Option one is this and that&mdash;be sure to include why it's great
+					</label>
+				</div>
+				<div class="checkbox disabled">
+					<label for="">
+						<input type="checkbox" disabled>
+						 Option one is this and that&mdash;be sure to include why it's great
+					</label>
+				</div>
+				<div class="radio">
+					<label>
+					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+					    Option one is this and that&mdash;be sure to include why it's great
+				    </label>
+				</div>
+				<div class="radio">
+					<label>
+					    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+					    Option one is this and that&mdash;be sure to include why it's great
+				    </label>
+				</div>
+				<div class="radio disabled">
+					<label>
+						<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+						    Option three is disabled
+					</label>
+				</div>
+			</div>
+			<div class="col-xs-10 col-xs-offset-1">
+				<div class="checkbox">
+					<label class="checkbox-inline">
+						<input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+					</label>
+					<label class="checkbox-inline">
+						<input type="checkbox" id="inlineCheckbox2" value="option1"> 2
+					</label>
+					<label class="checkbox-inline">
+						<input type="checkbox" id="inlineCheckbox3" value="option1"> 3
+					</label>
+				</div>
+				<div class="checkbox">
+					<label class="radio-inline">
+						<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> 1
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+					</label>
+				</div>
+				<div class="select">
+					<select class="form-control">
+					    <option>1</option>
+					    <option>2</option>
+					    <option>3</option>
+					    <option>4</option>
+					    <option>5</option>
+					</select><!-- 
+					<select multiple class="form-control">
+					    <option>1</option>
+					    <option>2</option>
+					    <option>3</option>
+					    <option>4</option>
+					    <option>5</option>
+					</select> -->
+				</div>
+			</div>
+			<div class="col-xs-10 col-xs-offset-1">
+				<div class="form-group has-success">
+					<label for="inputSuccess1" class="control-label">Input with success</label>
+					<input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
+					<span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+				</div>
+				<div class="form-group has-success has-feedback">
+	  				<label class="control-label" for="inputSuccess2">Input with success</label>
+	  				<input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+	  				<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+	  				<span id="inputSuccess2Status" class="sr-only">(success)</span>
+				</div>
+				<div class="form-group has-warning has-feedback">
+				    <label class="control-label" for="inputWarning2">Input with warning</label>
+				    <input type="text" class="form-control" id="inputWarning2" aria-describedby="inputWarning2Status">
+				    <span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
+				    <span id="inputWarning2Status" class="sr-only">(warning)</span>
+				</div>
+
+				<div class="form-group has-error has-feedback">
+				    <label class="control-label" for="inputError2">Input with error</label>
+				    <input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status">
+				    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+				    <span id="inputError2Status" class="sr-only">(error)</span>
+				</div>
+				<div class="form-group has-success has-feedback">
+				    <label class="control-label" for="inputGroupSuccess1">Input group with success</label>
+				    	<div class="input-group">
+				    	<span class="input-group-addon">@</span>
+				    	<input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+				    </div>
+				    <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+				    <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<h3>h1. <strong>Bootstrap heading</strong><small>Secondary text</small></h3>
+		<p><em>Nullam quis risus eget urna mollis ornare vel eu leo.</em> Come sociis natoque penatibus et magnis dis <del>parturient</del> parturient montes, nascetur ridiculus mus. <small>Nullam id dolor id nibh ultricies vehicula.</small></p>
+		<p class="lead">Vivamus <mark>sagittis</mark> lacus vel augue laoreet rutrum faucibus dolor auctor. <ins>Duis mollis, est non commodo luctus.</ins></p>
+		<p class="text-left">text-left</p>
+		<p class="text-center">text-center</p>
+		<p class="text-right">text-right</p>
+		<p class="text-justify">text-justify</p>
+		<p class="text-nowrap">text-nowrap</p>
+		<p class="text-lowercase">TEXT-LOWERCASE</p>
+		<p class="text-uppercase">text-uppercase</p>
+		<p class="text-capitalize">text-capitalize</p>
+	</div>
+	<div>
+		<p>For example, <code>&lt;section&gt;</code> should be wrapped as inline.</p>
+		<p>To switch directories, type <kbd>cd</kbd> followed by the name of the directory.</p>
+		<p>To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></p>
+		<p><pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre></p>
+		<p><samp>This text is meant to be treated as sample output from a computer program.</samp></p>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>Name</td>
+				<td>Age</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="active">
+				<td>1</td>
+				<td>LBJ</td>
+				<td>33</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>DW</td>
+				<td>35</td>
+			</tr>
+		</tbody>
+	</table>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>Name</td>
+				<td>Age</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="success">
+				<td>1</td>
+				<td>LBJ</td>
+				<td>33</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>DW</td>
+				<td>35</td>
+			</tr>
+		</tbody>
+	</table>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>Name</td>
+				<td>Age</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="warning">
+				<td>1</td>
+				<td>LBJ</td>
+				<td>33</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>DW</td>
+				<td>35</td>
+			</tr>
+		</tbody>
+	</table>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>Name</td>
+				<td>Age</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="danger">
+				<td>1</td>
+				<td>LBJ</td>
+				<td>33</td>
+			</tr>
+			<tr class="info">
+				<td>2</td>
+				<td>DW</td>
+				<td>35</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
