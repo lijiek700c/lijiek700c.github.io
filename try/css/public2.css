@@ -1,0 +1,281 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button,
+textarea, table, tr, td,p {
+    margin: 0;
+    padding: 0;
+}
+* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+body {
+    color:#333;
+    font-size:14px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow-x:hidden;
+}
+i {
+    font-style: normal;
+}
+b {
+    font-weight:normal;
+}
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+img {
+    border: none;
+    vertical-align: middle;
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+}
+
+table, tr, td {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input, select,textarea {
+    border: none;
+    height: 30px;
+    color: #666;
+    font-family:'Microsoft YaHei';
+}
+
+input:focus, select:focus {
+    outline: none;
+}
+
+textarea {
+    border:2px solid #cbcac6;
+    padding: 12px 9px;
+    color: #333;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+/* 设置输入框placeholder的样式 */
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #999;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #999;
+}
+
+input:-ms-input-placeholder,textarea:-ms-input-placeholder {
+    color: #999;
+}
+
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
+    color: #999;
+}
+
+/*左浮动*/
+.fl {
+    float: left;
+}
+
+/*右浮动*/
+.fr {
+    float: right;
+}
+
+.clear:before {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.clear:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* 操作步骤 */
+.ds-queryProceBox {
+    position:absolute;top:20px;left:30px;width:100%;height:60px;
+    font-size:24px;z-index:3;
+}
+.ds-proceBtn {
+    float:left;line-height:60px;
+    height:100%;
+}
+.ds-proceHome {
+    width:69px;
+    background:url('../images/bzHome.png') no-repeat;
+}
+.ds-proce {
+    width:202px;text-align:center;color:#444;margin-left:-12px;
+    background:url('../images/notSel.png') no-repeat;
+}
+.ds-proce.sel {
+    background:url('../images/isSel.png') no-repeat;
+}
+.ds-proce:last-child {
+    width:183px;
+    background:url('../images/complete.png') no-repeat;
+}
+.ds-proce:last-child.sel {
+    width:202px;
+    background:url('../images/isSel.png') no-repeat;
+}
+/* complete.png */
+
+/* 页头 */
+
+.ds-header {
+    position:relative;width:100%;height:140px;color:#fff;
+    background:url('../images/headerBg.png') no-repeat;
+    z-index:3;
+}
+.ds-header > a {
+    height:108px;
+    margin:20px 0 0 50px;
+}
+.ds-header > a > i {
+    width:91px;height:100px;margin-right:16px;
+    background:url('../images/jinhui.png') no-repeat;
+}
+.ds-header > a > span {
+    font-size:50px;color:#fff;line-height:102px;
+}
+.ds-header > div {
+    width:360px;font-size:22px;margin:40px 30px 0 0;color:#eee;
+}
+.ds-header > .curTimeBox {
+    width:340px;margin:62px 0 0 240px;
+    font-size:32px;line-height:40px;color:#fff;
+}
+.ds-header p.iconP {
+    height:40px;
+    font-size:30px;
+}
+.ds-header p.iconP span.txt {
+    font-size:24px;margin:7px 0 0 14px;
+}
+.ds-header p.iconP span.num {
+    font-size:32px;line-height:40px;
+}
+.ds-header p.num {
+    line-height:34px;text-align:center;
+}
+/* 页脚 */
+.ds-footer {
+    position:absolute;left:0;bottom:0;width:100%;height:128px;font-size:24px;color:#e9f0f3;
+    background:rgba(0,0,0,0.3);z-index:3;
+}
+.ds-footer > .footerTxt {
+    margin:28px 0 0 30px;line-height:36px;
+}
+.ds-footer > .footerTxt p:nth-child(2) {
+    text-indent:5em;
+}
+.ds-footer > .btnBox {
+    margin:20px 40px 0 0;
+}
+.ds-footer > .btnBox > span {
+    position:relative;float:left;width:302px;height:98px;
+    margin-left:10px;border-radius:12px;cursor:pointer;
+    -webkit-transition:all .1s ease-in;
+    -moz-transition:all .1s ease-in;
+    -ms-transition:all .1s ease-in;
+    transition:all .1s ease-in;
+}
+.ds-footer > .btnBox > span.active {
+    top:3px;
+    -ms-box-shadow:0px 0px 18px 0px #fff;
+    box-shadow:0px 0px 18px 0px #fff;
+}
+/* 整体垂直居中 */
+.verticalCenter {
+    margin-top:100px;
+    display:-moz-box;
+    display:-webkit-box;
+    display:box;
+    display:-moz-flex;
+    display:-webkit-flex;
+    display:flex;
+    -webkit-box-orient:vertical;
+    -moz-box-orient:vertical;
+    box-orient:vertical;
+    -webkit-box-pack:center;
+    -moz-box-pack:center;
+    box-pack:center;
+    -webkit-flex-flow:column nowrap;
+    -moz-flex-flow:column nowrap;
+    flex-flow:column nowrap;
+    -webkit-justify-content:center;
+    -moz-justify-content:center;
+    justify-content:center;
+}
+/*  */
+.animated {
+    -webkit-animation-duration: .6s;
+    animation-duration: .6s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+.animated.infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+.animated.hinge {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+}
+.animated.bounceIn,
+.animated.bounceOut,
+.animated.flipOutX,
+.animated.flipOutY {
+    -webkit-animation-duration: .75s;
+    animation-duration: .75s;
+}
+/*  */
+@media screen and (max-width:1470px){
+    .ds-header > div {
+        margin:0;position:absolute;top:32px;right:85px;
+    }
+}
+@media screen and (max-width:1680px) {
+    .ds-footer > .btnBox {
+        margin:0;position:absolute;top:20px;right:40px;
+    }
+}
