@@ -1,4 +1,4 @@
-define(['zepto','timer','pop'],function($,timer,pop){
+define(['Zepto','timer','pop'],function($,timer,pop){
 	var showTest=function(container){
 		if($.type(container)!=='string'){
 			return;

@@ -1,4 +1,4 @@
-define(['zepto','timer'],function($,timer){
+define(['Zepto','timer'],function($,timer){
 
 /*弹窗S*/
 var dsDialog=(function($){
