@@ -22,7 +22,7 @@ define(['zepto','timer','pop'],function($,timer,pop){
 					if(n>=imgArr.length){
 						timer.setTimeout(function(){
 							pop.hideWaitLoad();
-							t_mask.css('display','block');
+							//t_mask.css('display','block');
 						},3000);
 						return false;
 					}
