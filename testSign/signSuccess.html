@@ -7,17 +7,17 @@
 	<meta name="app-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
 	<meta name="format-detection" content="email=no">
-	<title>签到成功</title>
-	<link rel="stylesheet" href="l-public.css">
-	<link rel="stylesheet" href="l-signSuccess.css">
+	<title>签到</title>
+	<link rel="stylesheet" href="css/l-public.css">
+	<link rel="stylesheet" href="css/l-signSuccess.css">
 </head>
 <body>
-	<div class="l-container">
-		<img src="starFirst.png" alt="" class="starFirst animated infinite flash">
-		<img src="starSecond.png" alt="" class="starSecond animated infinite flash">
-		<img src="starThird.png" alt="" class="starThird animated infinite flash">
+	<div class="l-container js_l-container animated" style="display:none;">
+		<img src="images/starFirst.png" alt="" class="starFirst animated infinite flash">
+		<img src="images/starSecond.png" alt="" class="starSecond animated infinite flash">
+		<img src="images/starThird.png" alt="" class="starThird animated infinite flash">
 		<div class="l-signTxt">
-			<img src="sign-done.png" alt="">
+			<img src="images/sign-done.png" alt="">
 		</div>
 		<div class="l-staff">
 			<p>某某某</p>
@@ -25,13 +25,13 @@
 		</div>
 		<div class="l-seatInfo">
 			<span>第6桌</span><br>
-			<img class="welcome" src="welcome-seat.png" alt="">
+			<img class="welcome" src="images/welcome-seat.png" alt="">
 		</div>
 		<div class="companyInfo">
 			长沙公信诚丰信息技术服务有限公司
 		</div>
-		<img class="signBg" src="l-signBg.png" alt="">
+		<img class="signBg js_signBg" data-src="images/l-signBg.png" alt="">
 	</div>
-	<script src="setRem.js"></script>
+	<script src="js/require.js" data-main="js/signSuccess.js"></script>
 </body>
 </html>

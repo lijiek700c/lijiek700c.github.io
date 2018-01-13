@@ -1,0 +1,13 @@
+require.config({
+	paths:{
+		'jquery':'jquery-3.2.1.min',
+		'setRem':'setRem',
+		'pageLoad':'pageLoad'
+	}
+});
+require(['jquery','setRem','pageLoad'],function($,setRem,pg){
+	/*设置html的font-size*/
+	setRem();
+	/*打开页面时*/
+	pg.dsOpenLoading()._show('正在签到').imgLoadedHide();
+});

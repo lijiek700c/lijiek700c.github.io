@@ -10,37 +10,11 @@
 	body {
 		overflow:hidden;
 	}
-
-@keyframes rubberBand
-{
-    0%
-    {
-        -webkit-transform: scale3d(1,1,1)                                ;transform: scale3d(1,1,1);
-    }30%
-    {
-        -webkit-transform: scale3d(1.25,.75,1)                                ;transform: scale3d(1.25,.75,1);
-    }40%
-    {
-        -webkit-transform: scale3d(.75,1.25,1)                                ;transform: scale3d(.75,1.25,1);
-    }50%
-    {
-        -webkit-transform: scale3d(1.15,.85,1)                                ;transform: scale3d(1.15,.85,1);
-    }65%
-    {
-        -webkit-transform: scale3d(.95,1.05,1)                                ;transform: scale3d(.95,1.05,1);
-    }75%
-    {
-        -webkit-transform: scale3d(1.05,.95,1)                                ;transform: scale3d(1.05,.95,1);
-    }100%
-    {
-        -webkit-transform: scale3d(1,1,1)                                ;transform: scale3d(1,1,1);
-    }
-}
-/* staff */
-.staff-item_rubberBand {	
-					animation:rubberBand .6s ease-in-out infinite;
-					animation-fill-mode:backwards;
-				}
+	/* staff */
+	.staff-item_rubberBand {	
+		animation:rubberBand .6s ease-in-out infinite;
+		animation-fill-mode:backwards;
+	}
 	.staff-item {
 		position:absolute;top:0;left:0;
 		width:64px;height:64px;z-index:8899;
@@ -231,6 +205,6 @@
 </style>
 </head>
 <body>
-	<script src="require.js" data-main="test.js"></script>
+	<script src="js/require.js" data-main="js/test.js"></script>
 </body>
 </html>
