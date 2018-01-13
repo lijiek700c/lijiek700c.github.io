@@ -9,5 +9,8 @@ require(['jquery','setRem','pageLoad'],function($,setRem,pg){
 	/*设置html的font-size*/
 	setRem();
 	/*打开页面时*/
-	pg.dsOpenLoading()._show('正在签到').imgLoadedHide();
+	pg.dsOpenLoading._show('正在签到');
+	setTimeout(function(){
+		pg.dsOpenLoading.imgLoadedHide();
+	},2000);
 });

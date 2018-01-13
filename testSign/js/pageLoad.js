@@ -69,9 +69,8 @@ define(['jquery'],function($){
 			dsLoadingObj=null;
 		}
 	};
+	var dsOpenLoading=new dsOpenLoading();
 	return {
-		dsOpenLoading:function(txt){   
-			return new dsOpenLoading(txt);
-		}
+		dsOpenLoading:dsOpenLoading
 	};
 });
