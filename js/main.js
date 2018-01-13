@@ -7,7 +7,6 @@ require.config({
 		'refreshData':['refreshData'],
 		'testIE':['testIE']
 	}
-	//罗俊杰   17317190739
 });
 var arr=[
 		[{href:'CDRegistrationForm/html/homePage.html',imgSrc:'images/test.png',title:'外籍人员管理首页',conIntro:''},
@@ -16,7 +15,7 @@ var arr=[
 		{href:'selfAlarm/threeChoices.html',imgSrc:'images/test.png',title:'自助终端首页',conIntro:''},
 		{href:'bootstrap/test2.html',imgSrc:'images/test.png',title:'bootstrap表单',conIntro:''},
 		{href:'try/test.html',imgSrc:'images/test.png',title:'试试',conIntro:''},
-		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},
+		{href:'testSign/signSuccess.html',imgSrc:'images/test.png',title:'签到成功',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'标题1a1',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'标题1a1',conIntro:''}

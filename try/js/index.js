@@ -3,10 +3,10 @@ define(['Zepto','timer','pop'],function($,timer,pop){
 		if($.type(container)!=='string'){
 			return;
 		}
-		pop.showWaitLoad({
+		/*pop.showWaitLoad({
 			type:3,
 			txt:''
-		})._show();
+		})._show();*/
 		var container=$(container),
 			t_mask=container.children('.t_mask'),
 			t_content=container.children('.t_content'),
@@ -21,8 +21,8 @@ define(['Zepto','timer','pop'],function($,timer,pop){
 					n++;
 					if(n>=imgArr.length){
 						timer.setTimeout(function(){
-							pop.hideWaitLoad();
-							t_mask.css('opacity','1');
+							//pop.hideWaitLoad();
+							//t_mask.css('opacity','1');
 						},3000);
 						return false;
 					}
