@@ -77,8 +77,8 @@ define(['jquery'],function($){
 	staff.prototype={
 		constructor:staff,
 		createStaff:function(target){
-			var offsetmin=10,
-				offsetmax=40;
+			var offsetmin=12,
+				offsetmax=42;
 			var itemHtml='<div class="staff-item">'+
             				'<div>'+
             				'<img src="images/selfLOGO.png" alt="" />'+
