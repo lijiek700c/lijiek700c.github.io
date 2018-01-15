@@ -8,9 +8,23 @@ require.config({
 require(['jquery','setRem','pageLoad'],function($,setRem,pg){
 	/*设置html的font-size*/
 	setRem();
-	/*打开页面时*/
-	pg.dsOpenLoading._show('正在签到');
-	setTimeout(function(){
-		pg.dsOpenLoading.imgLoadedHide();
-	},2000);
+	/**/
+	if(localStorage.getItem('flag')){
+		/*签到成功之后*/
+		pg.dialog({
+			content:'您已成功签到！<br>请尽快就坐！'
+		}).done(function(){
+			localStorage.clear();
+		});
+		pg.dsOpenLoading.signedHide();
+	}else{
+		/*打开页面时*/
+		pg.dsOpenLoading._show('正在签到');
+		setTimeout(function(){
+			pg.dsOpenLoading.imgLoadedHide();
+		},500);	
+	}
+
+	
+	localStorage.setItem('flag','111');
 });
