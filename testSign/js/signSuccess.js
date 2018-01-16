@@ -24,7 +24,6 @@ require(['jquery','setRem','pageLoad'],function($,setRem,pg){
 			pg.dsOpenLoading.imgLoadedHide();
 		},500);	
 	}
-
-	
+	/*flag*/
 	localStorage.setItem('flag','111');
 });

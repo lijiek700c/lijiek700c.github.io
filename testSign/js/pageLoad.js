@@ -39,9 +39,7 @@ define(['jquery'],function($){
 				}
 				var plTimer=setTimeout($.proxy(function(){
 					clearTimeout(plTimer);
-					if($('.js_l-container').css('display')==='none'){
-						$('.js_l-container').css('display','block').addClass('slideInRight');
-					}
+					$('.js_l-container').css('display','block').addClass('slideInRight');
 					this.destroy();
 					fn&&fn();
 				},this),500);
