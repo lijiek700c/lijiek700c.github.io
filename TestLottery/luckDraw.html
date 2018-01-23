@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>抽奖</title>
+	<link rel="stylesheet" href="css/l-public.css">
+	<link rel="stylesheet" href="css/getAward.css">
+</head>
+<body onselectstart="return false;">
+<div class="js_l-container animated b_10_3">
+	<div class="award-container">
+		<div class="themeBox themeLogoRotate">
+			<p>幸运大抽奖</p>
+			<img src="images/themeLogo.png" alt="">
+		</div>
+		<!--手机号码显示框S-->
+		<div class="showTelBox">
+			
+		</div>
+		<!--手机号码显示框E-->
+		<canvas width="800" height="768" id="myCanvas" style="margin:-20px 0 0 0;"></canvas>
+		<div id="tags" style="opacity:0;visibility:hidden;"></div>
+		<div id="modal" class="modal">  
+			<div class="modal-content"> 
+				<!--插入中奖信息内容-->
+				<!--插入中奖信息内容-->   
+			</div>  
+		</div>
+	</div>
+	<!--三个按钮S-->
+	<button id="start">开始</button>
+	<button id="stop">停止</button>
+	<button id="next">下一轮</button>
+	<!--三个按钮E-->
+	<img class="js_signBg" data-src="images/signsWall.png" alt="">
+	<!--期权-->
+	<div class="qqImg magictime"></div><!-- 
+	<img class="magictime" src="images/qiquan.png" alt=""> -->
+	<!--股票-->
+	<div class="gpImg magictime"></div><!-- 
+	<img class="magictime gpImg" src="images/gupiao.png" alt=""> -->
+	<!---->
+	<div class="drawMask"></div>
+</div>
+<script src="js/require.js" data-main="js/getAward.js"></script>
+</body>
+</html>

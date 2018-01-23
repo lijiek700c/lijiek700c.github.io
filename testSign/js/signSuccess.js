@@ -1,0 +1,29 @@
+require.config({
+	paths:{
+		'jquery':'jquery-3.2.1.min',
+		'setRem':'setRem',
+		'pageLoad':'pageLoad'
+	}
+});
+require(['jquery','setRem','pageLoad'],function($,setRem,pg){
+	/*设置html的font-size*/
+	setRem();
+	/**/
+	if(localStorage.getItem('flag')){
+		/*签到成功之后*/
+		pg.dialog({
+			content:'您已成功签到！<br>请尽快就坐！'
+		}).done(function(){
+			localStorage.clear();
+		});
+		pg.dsOpenLoading.signedHide();
+	}else{
+		/*打开页面时*/
+		pg.dsOpenLoading._show('正在签到');
+		setTimeout(function(){
+			pg.dsOpenLoading.imgLoadedHide();
+		},500);	
+	}
+	/*flag*/
+	localStorage.setItem('flag','111');
+});
