@@ -1,4 +1,4 @@
-define(['jquery'],function($){
+(function($){
 	var dsLoadingObj=null;
 	/*页面打开的时候*/
 	var dsOpenLoading=(function($){
@@ -52,6 +52,7 @@ define(['jquery'],function($){
 				$('body').css('background','rgb(25,25,112)');
 				if($('.js_l-container').css('display')==='none'){
 					$('.js_l-container').css('display','block');
+					$('#container').css('display','block');
 				}
 				fn&&fn();
 				return this;
@@ -177,10 +178,10 @@ define(['jquery'],function($){
 	var dialog=new dsDialog();
 	var dsOpenLoading=new dsOpenLoading();
 	var dialog=new dsDialog();
-	return {
+	window.pg={
 		dsOpenLoading:dsOpenLoading,
 		dialog:function(config){
 			return dialog.init(config);
 		}
 	};
-});
+})(jQuery);
