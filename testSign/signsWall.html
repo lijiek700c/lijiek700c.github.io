@@ -10,7 +10,9 @@
 			html, body {
 				height: 100%;
 			}
-
+			* {
+				box-sizing: border-box;
+			}
 			body {
 				background-color: #000000;
 				margin: 0;
@@ -44,20 +46,26 @@
 			.element {
 				width: 100px;/* 120 160 */
 				height: 100px;
-				box-shadow: 0px 0px 12px rgba(0,255,255,0.5);
-				border: 1px solid rgba(127,255,255,0.25);
+				/* box-shadow: 0px 0px 12px rgba(0,255,255,0.5);
+				border: 1px solid rgba(127,255,255,0.25); */
 				text-align: center;
 				cursor: default;/* 
 				transition:all 2s ease-in; */
 			}
+			.element.newMove {
+				position:absolute;
+				width:22px;height:22px;
+			}
 
-			.element:hover {
+			/* .element:hover {
 				box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
 				border: 1px solid rgba(127,255,255,0.75);
-			}
+			} */
 				.element img{
-					width:100px;
-					height:100px;
+					width:100%;
+					height:100%;
+					max-width:100%;
+					max-height:100%;
 				}
 
 				.element .number {
@@ -115,7 +123,7 @@
 </head>
 <body>
 	<div class="js_l-container animated">
-		<div class="themeBox themeLogoRotate">
+		<div class="themeBox">
 			<p>2018年公信诚丰年终盛典</p>
 			<img src="images/themeLogo.png" alt="">
 		</div>
@@ -139,7 +147,6 @@
     		// animate
     		var _in = ['bounceIn','bounceInDown','bounceInLeft','bounceInRight','bounceInUp','fadeIn','fadeInDown','fadeInDownBig','fadeInLeft','fadeInLeftBig','fadeInRight','fadeInRightBig','fadeInUp','fadeInUpBig','rotateIn','rotateInDownLeft','rotateInDownRight','rotateInUpLeft','rotateInUpRight','slideInDown','slideInLeft','slideInRight'];
     		var _out = ['bounceOut','bounceOutDown','bounceOutLeft','bounceOutRight','bounceOutUp','fadeOut','fadeOutDown','fadeOutDownBig','fadeOutLeft','fadeOutLeftBig','fadeOutRight','fadeOutRightBig','fadeOutUp','fadeOutUpBig','rotateOut','rotateOutDownLeft','rotateOutDownRight','rotateOutUpLeft','rotateOutUpRight','slideOutDown','slideOutLeft','slideOutRight'];
-    		
     		// 模拟推送数据
 			/*var s = setInterval(function(){
 				// get animate
@@ -169,7 +176,7 @@
 			// 生成虚拟数据
 	        for(var i=0;i<375;i++){
 				personArray.push({
-		            image: "images/c.png"
+		            image: "images/a.png"
 		        });
 	        }
 
@@ -334,7 +341,6 @@
 					img.src = table[ i ].image;
 					element.appendChild( img );
 
-
 					/*var number = document.createElement( 'div' );
 					number.className = 'number';
 					number.textContent = (i/5) + 1;
@@ -354,6 +360,9 @@
 					object.position.x = Math.random() * 4000 - 2000;
 					object.position.y = Math.random() * 4000 - 2000;
 					object.position.z = Math.random() * 4000 - 2000;
+					/*存初始坐标*/
+					$(element).data('initX',object.position.x);
+					$(element).data('initY',object.position.y);
 					scene.add( object );
 
 					objects.push( object );
@@ -556,13 +565,409 @@
 				renderer.render( scene, camera );
 
 			}
+
+    		/**/
+    		var posArr=[
+    			{x:355,y:412},
+    			{x:355,y:470},
+    			{x:355,y:493},
+    			{x:355,y:516},
+    			{x:355,y:539},
+    			{x:355,y:562},
+    			{x:355,y:585},
+    			{x:378,y:395},
+    			{x:378,y:418},
+    			{x:378,y:493},
+    			{x:378,y:516},
+    			{x:378,y:540},
+    			{x:378,y:562},
+    			{x:378,y:585},
+    			{x:401,y:375},
+    			{x:401,y:398},
+    			{x:401,y:421},
+    			{x:401,y:506},
+    			{x:401,y:529},
+    			{x:401,y:552},
+    			{x:401,y:575},
+    			{x:401,y:598},
+    			{x:424,y:352},
+    			{x:424,y:375},
+    			{x:424,y:399},
+    			{x:424,y:421},
+    			{x:424,y:444},
+    			{x:424,y:518},
+    			{x:424,y:541},
+    			{x:424,y:564},
+    			{x:424,y:587},
+    			{x:424,y:610},
+    			{x:447,y:329},
+    			{x:447,y:352},
+    			{x:447,y:375},
+    			{x:447,y:399},
+    			{x:447,y:421},
+    			{x:447,y:444},
+    			{x:447,y:468},
+    			{x:447,y:529},
+    			{x:447,y:552},
+    			{x:447,y:575},
+    			{x:447,y:598},
+    			{x:447,y:621},
+    			{x:470,y:352},
+    			{x:470,y:375},
+    			{x:470,y:399},
+    			{x:470,y:421},
+    			{x:470,y:444},
+    			{x:470,y:468},
+    			{x:470,y:541},
+    			{x:470,y:564},
+    			{x:470,y:587},
+    			{x:493,y:352},
+    			{x:493,y:375},
+    			{x:493,y:399},
+    			{x:493,y:421},
+    			{x:493,y:444},
+    			{x:493,y:468},
+    			{x:493,y:490},
+    			{x:493,y:552},
+    			{x:493,y:576},
+    			{x:516,y:376},
+    			{x:516,y:399},
+    			{x:516,y:423},
+    			{x:516,y:445},
+    			{x:516,y:468},
+    			{x:516,y:492},
+    			{x:516,y:564},
+    			{x:539,y:376},
+    			{x:539,y:399},
+    			{x:539,y:423},
+    			{x:539,y:445},
+    			{x:539,y:468},
+    			{x:539,y:492},
+    			{x:539,y:514},
+    			{x:562,y:357},
+    			{x:562,y:380},
+    			{x:562,y:403},
+    			{x:562,y:426},
+    			{x:562,y:450},
+    			{x:562,y:472},
+    			{x:562,y:495},
+    			{x:562,y:519},
+    			{x:585,y:334},
+    			{x:585,y:357},
+    			{x:585,y:380},
+    			{x:585,y:403},
+    			{x:585,y:426},
+    			{x:585,y:450},
+    			{x:585,y:472},
+    			{x:585,y:495},
+    			{x:585,y:519},
+    			{x:585,y:541},
+    			{x:608,y:311},
+    			{x:608,y:334},
+    			{x:608,y:357},
+    			{x:608,y:380},
+    			{x:608,y:403},
+    			{x:608,y:426},
+    			{x:608,y:450},
+    			{x:608,y:472},
+    			{x:608,y:495},
+    			{x:608,y:519},
+    			{x:608,y:541},
+    			{x:631,y:288},
+    			{x:631,y:311},
+    			{x:631,y:334},
+    			{x:631,y:357},
+    			{x:631,y:380},
+    			{x:631,y:403},
+    			{x:631,y:426},
+    			{x:631,y:450},
+    			{x:631,y:472},
+    			{x:631,y:495},
+    			{x:631,y:519},
+    			{x:631,y:541},
+    			{x:631,y:564},
+    			{x:654,y:265},
+    			{x:654,y:288},
+    			{x:654,y:312},
+    			{x:654,y:334},
+    			{x:654,y:357},
+    			{x:654,y:381},
+    			{x:654,y:403},
+    			{x:654,y:449},
+    			{x:654,y:472},
+    			{x:654,y:495},
+    			{x:654,y:519},
+    			{x:654,y:541},
+    			{x:654,y:564},
+    			{x:677,y:242},
+    			{x:677,y:265},
+    			{x:677,y:288},
+    			{x:677,y:311},
+    			{x:677,y:334},
+    			{x:677,y:357},
+    			{x:677,y:380},
+    			{x:677,y:460},
+    			{x:677,y:483},
+    			{x:677,y:507},
+    			{x:677,y:529},
+    			{x:677,y:552},
+    			{x:677,y:576},
+    			{x:700,y:219},
+    			{x:700,y:242},
+    			{x:700,y:265},
+    			{x:700,y:288},
+    			{x:700,y:311},
+    			{x:700,y:334},
+    			{x:700,y:357},
+    			{x:700,y:473},
+    			{x:700,y:496},
+    			{x:700,y:519},
+    			{x:700,y:543},
+    			{x:700,y:565},
+    			{x:700,y:588},
+    			{x:723,y:196},
+    			{x:723,y:219},
+    			{x:723,y:243},
+    			{x:723,y:265},
+    			{x:723,y:288},
+    			{x:723,y:312},
+    			{x:723,y:334},
+    			{x:723,y:485},
+    			{x:723,y:508},
+    			{x:723,y:531},
+    			{x:723,y:555},
+    			{x:723,y:577},
+    			{x:723,y:600},
+    			{x:746,y:173},
+    			{x:746,y:196},
+    			{x:746,y:219},
+    			{x:746,y:242},
+    			{x:746,y:265},
+    			{x:746,y:288},
+    			{x:746,y:311},
+    			{x:746,y:498},
+    			{x:746,y:522},
+    			{x:746,y:544},
+    			{x:746,y:567},
+    			{x:746,y:591},
+    			{x:746,y:613},
+    			{x:769,y:150},
+    			{x:769,y:173},
+    			{x:769,y:196},
+    			{x:769,y:219},
+    			{x:769,y:242},
+    			{x:769,y:265},
+    			{x:769,y:288},
+    			{x:769,y:510},
+    			{x:769,y:534},
+    			{x:769,y:556},
+    			{x:769,y:579},
+    			{x:769,y:603},
+    			{x:769,y:625},
+    			{x:792,y:127},
+    			{x:792,y:150},
+    			{x:792,y:174},
+    			{x:792,y:196},
+    			{x:792,y:219},
+    			{x:792,y:243},
+    			{x:792,y:265},
+    			{x:792,y:523},
+    			{x:792,y:546},
+    			{x:792,y:570},
+    			{x:792,y:592},
+    			{x:792,y:615},
+    			{x:792,y:639},
+    			{x:815,y:104},
+    			{x:815,y:127},
+    			{x:815,y:150},
+    			{x:815,y:173},
+    			{x:815,y:196},
+    			{x:815,y:219},
+    			{x:815,y:242},
+    			{x:815,y:535},
+    			{x:815,y:558},
+    			{x:815,y:582},
+    			{x:815,y:604},
+    			{x:815,y:627},
+    			{x:815,y:651},
+    			{x:873,y:62},
+    			{x:873,y:85},
+    			{x:873,y:108},
+    			{x:873,y:131},
+    			{x:873,y:154},
+    			{x:873,y:177},
+    			{x:873,y:200},
+    			{x:873,y:223},
+    			{x:873,y:246},
+    			{x:873,y:269},
+    			{x:873,y:292},
+    			{x:873,y:315},
+    			{x:873,y:338},
+    			{x:873,y:361},
+    			{x:873,y:384},
+    			{x:873,y:407},
+    			{x:873,y:430},
+    			{x:873,y:453},
+    			{x:873,y:476},
+    			{x:873,y:499},
+    			{x:873,y:522},
+    			{x:873,y:545},
+    			{x:873,y:568},
+    			{x:873,y:591},
+    			{x:873,y:614},
+    			{x:873,y:637},
+    			{x:873,y:660},
+    			{x:873,y:683},
+    			{x:896,y:73},
+    			{x:896,y:96},
+    			{x:896,y:119},
+    			{x:896,y:142},
+    			{x:896,y:165},
+    			{x:896,y:188},
+    			{x:896,y:211},
+    			{x:896,y:234},
+    			{x:896,y:257},
+    			{x:896,y:280},
+    			{x:896,y:303},
+    			{x:896,y:326},
+    			{x:896,y:349},
+    			{x:896,y:372},
+    			{x:896,y:395},
+    			{x:896,y:418},
+    			{x:896,y:441},
+    			{x:896,y:464},
+    			{x:896,y:487},
+    			{x:896,y:510},
+    			{x:896,y:533},
+    			{x:896,y:556},
+    			{x:896,y:579},
+    			{x:896,y:602},
+    			{x:896,y:625},
+    			{x:896,y:648},
+    			{x:896,y:671},
+    			{x:919,y:84},
+    			{x:919,y:107},
+    			{x:919,y:130},
+    			{x:919,y:153},
+    			{x:919,y:176},
+    			{x:919,y:199},
+    			{x:919,y:222},
+    			{x:919,y:245},
+    			{x:919,y:268},
+    			{x:919,y:291},
+    			{x:919,y:314},
+    			{x:919,y:337},
+    			{x:919,y:360},
+    			{x:919,y:383},
+    			{x:919,y:406},
+    			{x:919,y:429},
+    			{x:919,y:452},
+    			{x:919,y:475},
+    			{x:919,y:498},
+    			{x:919,y:521},
+    			{x:919,y:544},
+    			{x:919,y:567},
+    			{x:919,y:590},
+    			{x:919,y:613},
+    			{x:919,y:636},
+    			{x:919,y:659},
+    			{x:942,y:95},
+    			{x:942,y:118},
+    			{x:942,y:141},
+    			{x:942,y:164},
+    			{x:942,y:187},
+    			{x:942,y:210},
+    			{x:942,y:233},
+    			{x:942,y:256},
+    			{x:942,y:279},
+    			{x:942,y:302},
+    			{x:942,y:325},
+    			{x:942,y:348},
+    			{x:942,y:371},
+    			{x:942,y:394},
+    			{x:942,y:417},
+    			{x:942,y:440},
+    			{x:942,y:463},
+    			{x:942,y:486},
+    			{x:942,y:509},
+    			{x:942,y:532},
+    			{x:942,y:555},
+    			{x:942,y:578},
+    			{x:942,y:601},
+    			{x:942,y:624},
+    			{x:942,y:647},
+    			{x:965,y:106},
+    			{x:965,y:129},
+    			{x:965,y:152},
+    			{x:965,y:175},
+    			{x:965,y:198},
+    			{x:965,y:221},
+    			{x:965,y:244},
+    			{x:965,y:267},
+    			{x:965,y:290},
+    			{x:965,y:313},
+    			{x:965,y:336},
+    			{x:965,y:359},
+    			{x:965,y:382},
+    			{x:965,y:405},
+    			{x:965,y:428},
+    			{x:965,y:451},
+    			{x:965,y:474},
+    			{x:965,y:497},
+    			{x:965,y:520},
+    			{x:965,y:543},
+    			{x:965,y:566},
+    			{x:965,y:589},
+    			{x:965,y:612},
+    			{x:965,y:635},
+    			{x:988,y:117},
+    			{x:988,y:140},
+    			{x:988,y:163},
+    			{x:988,y:186},
+    			{x:988,y:209},
+    			{x:988,y:232},
+    			{x:988,y:255},
+    			{x:988,y:278},
+    			{x:988,y:301},
+    			{x:988,y:324},
+    			{x:988,y:347},
+    			{x:988,y:370},
+    			{x:988,y:393},
+    			{x:988,y:416},
+    			{x:988,y:439},
+    			{x:988,y:462},
+    			{x:988,y:485},
+    			{x:988,y:508},
+    			{x:988,y:531},
+    			{x:988,y:554},
+    			{x:988,y:577},
+    			{x:988,y:600},
+    			{x:988,y:623}
+    		];
 			/**/
 			$('#container > div').css({
 				'top':'-40px',
 				'overflow':'visible'
 			});
-
-			clearInterval(tabTimer);
+			console.log(posArr.length);
+			//clearInterval(tabTimer);
+			setTimeout(function(){
+				requestAnimationFrame=null;
+				$('#container div.element').each(function(i,e){
+					var $e=$(e);
+					$e.addClass('newMove').removeAttr('style').css({
+						'left':$e.data('initX')+'px',
+						'top':$e.data('initY')+'px'
+					}).appendTo('.staff-box').animate({
+						'left':posArr[i].x+'px',
+						'top':posArr[i].y+'px'
+					},5000);
+					
+				});
+				$('#container div.element:last').promise().done(function(){
+					$('.staff-box').addClass('staff-box_rotate');
+				});
+			},3000);
 		</script>
 	<!-- <script src="js/require.js" data-main="js/signsWall.js"></script> -->
 </body>

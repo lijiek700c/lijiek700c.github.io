@@ -13,10 +13,10 @@ define(['jquery','tagcanvas','getPrize'],function($,TagCanvas,gp){
 	};
 	//测试数据
 	var testDataArr=[
+		{name:'某某',tel:'15899889988'},
+		{name:'某某某',tel:'15899889988'},
+		{name:'某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'}/*,
-		{name:'某某某',tel:'15899889988'},
-		{name:'某某某',tel:'15899889988'},
-		{name:'某某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'},
@@ -82,6 +82,7 @@ define(['jquery','tagcanvas','getPrize'],function($,TagCanvas,gp){
 				}
 				this.startBool=true;
 				this.TagCanvas.Start('myCanvas', 'tags',Object.assign({},options,{maxSpeed: 0.25}));
+				/*ajax?*/
 				this.stopBool=false;
 			},this));
 		},
@@ -97,8 +98,11 @@ define(['jquery','tagcanvas','getPrize'],function($,TagCanvas,gp){
 					alert('结束了');
 					return false;
 				}
+				/*ajax?*/
 				//获得中奖信息
 				gp.createPrizeInfo(_self.container,testDataArr,_self.awardIndex);
+
+				_self.showLyBox();
 				var timer = setTimeout(function(){
 					clearTimeout(timer);
 					/*显示期权或股票*/
@@ -106,6 +110,7 @@ define(['jquery','tagcanvas','getPrize'],function($,TagCanvas,gp){
 					_self.TagCanvas.Pause('myCanvas');
 					_self.hideCanvas();
 					_self.showMoadl();
+					_self.stopBool=true;
 					_self.nextBool=false;
 				},500);
 			});
@@ -206,6 +211,17 @@ define(['jquery','tagcanvas','getPrize'],function($,TagCanvas,gp){
 	          		/*gravity:true  //true或false。*/
 	        	});
 			},this),1800);
+		},
+		/**/
+		showLyBox:function(){
+			var _self=this;
+			var animArr=['nope','twisterInUp','twisterInDown'];
+			var elements=this.container.find('.prizeBox.ly img.second,.prizeBox.ly p');
+			elements.each(function(i,e){
+				var timer=setTimeout(function(){
+					$(e).css('opacity',1).addClass(animArr[i]);
+				},(i+1)*1000);
+			});
 		}
 	};
 	return new PrizeOpe();

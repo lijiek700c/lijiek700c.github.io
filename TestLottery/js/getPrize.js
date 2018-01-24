@@ -20,7 +20,7 @@ define(['jquery'],function($){
 					'<ul class="getAwardList">'+
 					'</ul>'+
 				'</div>';
-	/*一等奖*/
+	/*一等奖期权*/
 	var firstPrizeHtml='<div class="prizeBox">'+
 					'<img class="first" src="images/kLine.png" alt="">'+
 					'<img class="second" src="images/xgdqq-txt.png" alt="">'+
@@ -28,7 +28,7 @@ define(['jquery'],function($){
 					'<ul class="getAwardList">'+
 					'</ul>'+
 				'</div>';
-	/*特等奖*/
+	/*特等奖股票*/
 	var specialPrizeHtml='<div class="prizeBox">'+
 					'<img class="first" src="images/kLine.png" alt="">'+
 					'<img class="second" src="images/xgbgp-txt.png" alt="">'+
@@ -36,8 +36,20 @@ define(['jquery'],function($){
 					'<ul class="getAwardList">'+
 					'</ul>'+
 				'</div>';
+	/*旅游大奖*/
+	var lyPrizeHtml='<div class="prizeBox ly">'+
+						'<img class="first heartBeat" src="images/heart.png" alt="">'+
+						'<div class="noticeBox">'+
+							'<img class="second magictime" src="images/heart-txt.png" alt="">'+
+							'<p class="magictime">备注:需在单身趴互动游戏中胜出且</p>'+
+							'<p class="magictime">在旅游前在职并发展为情侣的才可获得此奖励</p>'+
+						'</div>'+
+					'</div>';
 	/*插入中奖人信息*/
 	function insertManInfo(dataItem){
+		if(dataItem.name.length===2){
+			dataItem.name=dataItem.name.charAt(0)+'&nbsp;&nbsp;&nbsp;'+dataItem.name.charAt(0);
+		}
 		getPrizeManInfo='<li>'+
 							'<span class="prizeName">'+dataItem.name+'</span>'+
 							'<span class="tel">'+dataItem.tel+'</span>'+
@@ -56,7 +68,7 @@ define(['jquery'],function($){
 	}
 	/*生成中奖信息字符串*/
 	function createPrizeInfo(container,data,index){
-		container.empty();
+		container.removeAttr('style').empty();
 		var htmlStr=createPrizeList(data);
 		switch(index){
 			case 0: //三等奖
@@ -74,6 +86,15 @@ define(['jquery'],function($){
 				}).html(htmlStr).find('li').css({
 					'margin-right':'0'
 				}).addClass('special').end().end().prependTo(container);
+				break;
+			case 8: //旅游
+				$(lyPrizeHtml).prependTo(container).parent().css({
+					'margin-top':'125px',
+					'width':'auto',
+					'height':'600px',
+					'max-width':'1366px',
+					'overflow':'visible'
+				});
 				break;
 		}
 	}
