@@ -1,7 +1,5 @@
 @remsize:37.5px;
-* {
-	box-sizing:border-box;
-}
+
 html {
 	font-size:@remsize
 }
@@ -9,6 +7,7 @@ body {
 	overflow-x:hidden;
 }
 .l-container {
+	box-sizing:border-box;
 	position:relative;
 	width:100%;
 	max-width:768px;
@@ -38,6 +37,7 @@ body {
 		}
 	}
 	.yearTabBox {
+		box-sizing:border-box;
 		overflow:hidden;
 		width:100%;
 		padding:0 (30px / @remsize)*1rem 0;
