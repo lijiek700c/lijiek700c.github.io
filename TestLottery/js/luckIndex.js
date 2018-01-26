@@ -11,12 +11,9 @@ require(['jquery','pageLoad'],function($,pg){
 			setTimeout($.proxy(function(){
 				var $this=$(this);
 				$this.css('display','block').addClass(animArr[i]);
-				if(i<animArr.length-1){
-					srcArr.push($this.attr('src'));
-				}
 				if(i===animArr.length-1){
 					$this.on('webkitAnimationend animationend',function(){
-						$this.parent().siblings('img.luckIndexImg').removeClass(animArr[0]).addClass('rubberBand');
+						$this.parent().siblings('img.luckIndexImg').removeClass(animArr[0]);
 					});
 					$(document).one('click',function(){
 					});

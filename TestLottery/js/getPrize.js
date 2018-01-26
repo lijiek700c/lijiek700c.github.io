@@ -48,7 +48,8 @@ define(['jquery'],function($){
 	/*插入中奖人信息*/
 	function insertManInfo(dataItem){
 		if(dataItem.name.length===2){
-			dataItem.name=dataItem.name.charAt(0)+'&nbsp;&nbsp;&nbsp;'+dataItem.name.charAt(0);
+			var nameArr=dataItem.name.split('');
+			dataItem.name=nameArr[0]+'<b>某</b>'+nameArr[1];
 		}
 		getPrizeManInfo='<li>'+
 							'<span class="prizeName">'+dataItem.name+'</span>'+

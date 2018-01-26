@@ -47,16 +47,21 @@ body {
 .prizeBox > .getAwardList {
     display:flex;
     flex-flow:row wrap;
-    justify-content:space-between;
+    justify-content:flex-start;
     margin-top:27px;
     font-size:20px;color:#fff;
 }
 .prizeBox > .getAwardList li {
-    display:none;
+    opacity:0;
     width:196px;line-height:40px;
-    margin-right:120px;
+    transition:all .3s ease-in-out;
+    flex:1 1 280px;
+}
+.prizeBox > .getAwardList li:last-child {
+    flex:0 1 286px;
 }
 .prizeBox > .getAwardList li.special{
+    flex:0 1 528px;
     width:528px;height:73px;
     text-align:center;line-height:74px;
     background:url('../images/specialBg.png') no-repeat;
@@ -64,8 +69,9 @@ body {
 .prizeBox li > span.prizeName {
     margin-right:6px;
 }
-.prizeBox > .getAwardList li:nth-child(3n) {
-    margin-right:0;
+.prizeBox li > span.prizeName b {
+    opacity:0;
+    visibility:hidden;
 }
 .prizeBox.ly > img.first {
     margin-bottom:0;
@@ -203,17 +209,17 @@ body {
   -webkit-animation-name: puffOut;
   animation-name: puffOut;
 }
-.nope {
-  -webkit-animation-name: nope;
-  animation-name: nope;
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-timing-function: ease-in-out;
-  animation-timing-function: ease-in-out;
-  -webkit-animation-iteration-count:infinite;
-  animation-iteration-count:infinite;
-  -webkit-animation-direction:alternate;
-  animation-direction:alternate;
+.rubberBand
+{
+    -webkit-animation-name: rubberBand;
+    animation-name: rubberBand;
+    -webkit-animation-duration: 7s;
+    animation-duration: 7s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+
 }
 /* twisterInUp */
 @-webkit-keyframes twisterInUp {
@@ -284,213 +290,55 @@ body {
     -webkit-filter: blur(2px);
   }
 }
-/* nope */
-@-webkit-keyframes nope {
-  0% {
-    transform: translateX(0);
-  }
-
-  6.5% {
-    transform: translateX(-7px) rotateY(-10deg);
-  }
-
-  18.5% {
-    transform: translateX(6px) rotateY(8deg);
-  }
-
-  31.5% {
-    transform: translateX(-4px) rotateY(-6deg);
-  }
-
-  43.5% {
-    transform: translateX(3px) rotateY(4deg);
-  }
-
-  50% {
-    transform: translateX(0);
-  }
-}
-@keyframes nope {
-  0% {
-    transform: translateX(0);
-  }
-
-  6.5% {
-    transform: translateX(-7px) rotateY(-10deg);
-  }
-
-  18.5% {
-    transform: translateX(6px) rotateY(8deg);
-  }
-
-  31.5% {
-    transform: translateX(-4px) rotateY(-6deg);
-  }
-
-  43.5% {
-    transform: translateX(3px) rotateY(4deg);
-  }
-
-  50% {
-    transform: translateX(0);
-  }
-}
-/* gpImg */
-
-.twisterInDown {
-  -webkit-animation-name: twisterInDown;
-  animation-name: twisterInDown;
-}
-
-.vanishOut {
-  -webkit-animation-name: vanishOut;
-  animation-name: vanishOut;
-}
-
-.boingInUp {
-  -webkit-animation-name: boingInUp;
-  animation-name: boingInUp;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-  animation-direction: alternate;
-}
-
-.tinUpIn {
-  -webkit-animation-name: tinUpIn;
-  animation-name: tinUpIn;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-  animation-direction: alternate;
-}
-/* twisterInDown */
-
-@-webkit-keyframes twisterInDown {
-  0% {
-    opacity: 0;
-    -webkit-transform-origin: 0 100%;
-    -webkit-transform: scale(0, 0) rotate(360deg) translateY(-100%);
-  }
-
-  30% {
-    -webkit-transform-origin: 0 100%;
-    -webkit-transform: scale(0, 0) rotate(360deg) translateY(-100%);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform-origin: 100% 100%;
-    -webkit-transform: scale(1, 1) rotate(0deg) translateY(0%);
-  }
-}
-@keyframes twisterInDown {
-  0% {
-    opacity: 0;
-    transform-origin: 0 100%;
-    transform: scale(0, 0) rotate(360deg) translateY(-100%);
-  }
-
-  30% {
-    transform-origin: 0 100%;
-    transform: scale(0, 0) rotate(360deg) translateY(-100%);
-  }
-
-  100% {
-    opacity: 1;
-    transform-origin: 100% 100%;
-    transform: scale(1, 1) rotate(0deg) translateY(0%);
-  }
-}
-/* spaceOutUp */
-
-.spaceOutUp {
-  -webkit-animation-name: spaceOutUp;
-  animation-name: spaceOutUp;
-}
-
-@-webkit-keyframes spaceOutUp {
-  0% {
-    opacity: 1;
-    -webkit-transform-origin: 50% 0%;
-    -webkit-transform: scale(1) translate(0%, 0%);
-  }
-
-  100% {
-    opacity: 0;
-    -webkit-transform-origin: 50% 0%;
-    -webkit-transform: scale(.2) translate(0%, -200%);
-  }
-}
-@keyframes spaceOutUp {
-  0% {
-    opacity: 1;
-    transform-origin: 50% 0%;
-    transform: scale(1) translate(0%, 0%);
-  }
-
-  100% {
-    opacity: 0;
-    transform-origin: 50% 0%;
-    transform: scale(.2) translate(0%, -200%);
-  }
-}
-/* puffIn */
-.puffIn {
-  -webkit-animation-name: puffIn;
-  animation-name: puffIn;
-}
-
-@-webkit-keyframes puffIn {
-  0% {
-    opacity: 0;
-    -webkit-transform-origin: 50% 50%;
-    -webkit-transform: scale(2,2);
-    -webkit-filter: blur(2px);
-  }
-
-  100% {
-    opacity: 1;
-    -webkit-transform-origin: 50% 50%;
-    -webkit-transform: scale(1,1);
-    -webkit-filter: blur(0px);
-  }
-}
-@keyframes puffIn {
-  0% {
-    opacity: 0;
-    transform-origin: 50% 50%;
-    transform: scale(2,2);
-    filter: blur(2px);
-  }
-
-  100% {
-    opacity: 1;
-    transform-origin: 50% 50%;
-    transform: scale(1,1);
-    filter: blur(0px);
-  }
-}
-/* pulsate */
-/* 旅游 */
-.heartBeat {
-  animation-name: heartBeat;
-  animation: heartBeat 0.66s alternate;
-  animation-iteration-count: 8;
-  animation-fill-mode: both;
-  animation-iteration-count:infinite;
-}
-
-@keyframes heartBeat {
-  from {
-    transform: scale(1.0);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  to {
-    transform: scale(1.1);
-  }
+/* rubberBand */
+@-webkit-keyframes rubberBand
+{
+    0%
+    {
+        -webkit-transform: scale3d(1,1,1)                                ;transform: scale3d(1,1,1);
+    }30%
+    {
+        -webkit-transform: scale3d(1.25,.75,1)                                ;transform: scale3d(1.25,.75,1);
+    }40%
+    {
+        -webkit-transform: scale3d(.75,1.25,1)                                ;transform: scale3d(.75,1.25,1);
+    }50%
+    {
+        -webkit-transform: scale3d(1.15,.85,1)                                ;transform: scale3d(1.15,.85,1);
+    }65%
+    {
+        -webkit-transform: scale3d(.95,1.05,1)                                ;transform: scale3d(.95,1.05,1);
+    }75%
+    {
+        -webkit-transform: scale3d(1.05,.95,1)                                ;transform: scale3d(1.05,.95,1);
+    }100%
+    {
+        -webkit-transform: scale3d(1,1,1)                                ;transform: scale3d(1,1,1);
+    }
+}@keyframes rubberBand
+{
+    0%
+    {
+        -webkit-transform: scale3d(1,1,1)                                ;transform: scale3d(1,1,1);
+    }30%
+    {
+        -webkit-transform: scale3d(1.25,.75,1)                                ;transform: scale3d(1.25,.75,1);
+    }40%
+    {
+        -webkit-transform: scale3d(.75,1.25,1)                                ;transform: scale3d(.75,1.25,1);
+    }50%
+    {
+        -webkit-transform: scale3d(1.15,.85,1)                                ;transform: scale3d(1.15,.85,1);
+    }65%
+    {
+        -webkit-transform: scale3d(.95,1.05,1)                                ;transform: scale3d(.95,1.05,1);
+    }75%
+    {
+        -webkit-transform: scale3d(1.05,.95,1)                                ;transform: scale3d(1.05,.95,1);
+    }100%
+    {
+        -webkit-transform: scale3d(1,1,1)                                ;transform: scale3d(1,1,1);
+    }
 }
 
 /* bixin */

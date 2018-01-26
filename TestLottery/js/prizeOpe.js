@@ -16,10 +16,13 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 		{name:'某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'},
+		{name:'某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'},
+		{name:'某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'},
+		{name:'某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'},
-		{name:'某某某',tel:'15899889988'}
+		{name:'某某',tel:'15899889988'}
 	]; 
 	function PrizeOpe(){
 		this.startBtn=$('#start');  //开始按钮
@@ -39,9 +42,7 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 		this.mask=$('.drawMask');
 		this.qqImg=$('.qqImg');   /*期权*/
 		this.gpImg=$('.gpImg');   /*股票*/
-		this.qqAnimArr=['twisterInUp','puffOut','nope'];
-		/*this.gpAnimArr=['twisterInDown','spaceOutUp','puffIn'];*/
-		this.gpAnimArr=['twisterInUp','puffOut','nope'];
+		this.qqAnimArr=['twisterInUp','puffOut','rubberBand'];
 		this.animIndex=0;
 		this.boomCount=0;
 		/*旅游大奖*/
@@ -74,17 +75,17 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 		startAward:function(){
 			this.startBtn.on('click',$.proxy(function(ev){
 				ev.preventDefault();
-				if(this.awardIndex>4){
-					pg.dialog({
-						content:'结束了！'
-					});
+				if(this.awardIndex>=4){
+					this.showLyBixinBox();
+					this.TagCanvas.Pause('myCanvas');
+					this.hideCanvas();
 					return false;
 				}
 				if(this.startBool){
 					return false;
 				}
 				this.startBool=true;
-				this.TagCanvas.Start('myCanvas', 'tags',Object.assign({},options,{maxSpeed: 0.25}));
+				this.TagCanvas.Start('myCanvas', 'tags',Object.assign({},options,{maxSpeed: 0.38}));
 				/*ajax?*/
 				this.stopBool=false;
 			},this));
@@ -95,20 +96,6 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 			this.stopBtn.on('click',function(ev){
 				ev.preventDefault();
 				if(_self.stopBool){
-					return false;
-				}
-				if(_self.awardIndex>=4){
-					pg.dialog({
-						content:'旅游大奖！'
-					}).done(function(){
-						_self.showLyBixinBox();
-					});
-					_self.TagCanvas.Pause('myCanvas');
-					_self.hideCanvas();
-					_self.stopBool=true;
-					_self.delayChange(function(){
-						_self.nextBool=false;
-					},5000);
 					return false;
 				}
 				/*ajax?*/
@@ -125,8 +112,6 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 				/**/
 				var timer = setTimeout(function(){
 					clearTimeout(timer);
-					/*显示期权或股票*/
-					_self.delayShowQqOrGp();
 					_self.TagCanvas.Pause('myCanvas');
 					_self.hideCanvas();
 					_self.showMoadl();
@@ -147,14 +132,6 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 				}
 				if(this.awardIndex>=4){
 					this.hideLyBixinBox();
-					pg.dialog({
-						content:'结束啦！'
-					}).done(function(){
-						_self.awardIndex++;
-						_self.startBool=false;
-						_self.stopBool=true;
-						_self.nextBool=true;
-					});
 					return false;
 				}
 				this.awardIndex++;
@@ -190,11 +167,12 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 				var $e=$(e);
 				var timer=setTimeout(function(){
 					clearTimeout(timer);
-					$e.addClass('magictime').css('display','block').addClass('ball');
+					$e.css('opacity',1);
 				},i*800);
 			});
-			elements.last().on('webkitAnimationend animationend',function(){
-				_self.nextBool=false;
+			elements.last().on('webkitTransitionend transitionend',function(){
+															/*显示期权或股票*/
+				_self.awardIndex<2?_self.nextBool=false:_self.delayShowQqOrGp();
 			});
 		},
 		/*奖品信息弹窗显示完后*/
@@ -203,13 +181,13 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 			timer=setTimeout($.proxy(function(){
 				switch(this.awardIndex){
 					case 2:
-						this.qqImg.show();
 						this.mask.show();
+						this.qqImg.show();
 						this.showQqImg();
 						break;
 					case 3:
-						this.gpImg.show();
 						this.mask.show();
+						this.gpImg.show();
 						this.showGpImg();
 						break;
 				}
@@ -221,7 +199,7 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 				this.animIndex++;
 				if(this.animIndex>=this.qqAnimArr.length){
 					this.animIndex=0;
-					this.gpAndQqHide(this.qqImg,'images/qiquan.png',1800);
+					this.gpAndQqHide(this.qqImg,'images/qiquan.png',3000);
 					return;
 				}
 				this.showQqImg();
@@ -229,9 +207,9 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 		},
 		/*显示股票*/
 		showGpImg:function(){
-			this.gpImg.addClass(this.gpAnimArr[this.animIndex]).on('webkitAnimationend animationend',$.proxy(function(){
+			this.gpImg.addClass(this.qqAnimArr[this.animIndex]).on('webkitAnimationend animationend',$.proxy(function(){
 				this.animIndex++;
-				if(this.animIndex>=this.gpAnimArr.length){
+				if(this.animIndex>=this.qqAnimArr.length){
 					this.animIndex=0;
 					this.gpAndQqHide(this.gpImg,'images/gupiao.png',3000);
 					return;
@@ -241,13 +219,15 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 		},
 		/*消失*/
 		gpAndQqHide:function(obj,src,time){
-			var timer;
+			var timer=null;
 			clearInterval(timer);
 			timer=setInterval($.proxy(function(){
-				if(this.boomCount===18){
+				if(this.boomCount===5){
 					this.boomCount=0;
-					this.mask.hide();
 					clearInterval(timer);
+					obj.css('animation-name','unknow');
+					this.nextBool=false;
+					this.mask.hide();
 				}
 				this.boomCount++;
 				obj.sparkleHover({
