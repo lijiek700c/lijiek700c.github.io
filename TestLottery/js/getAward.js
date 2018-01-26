@@ -140,5 +140,4 @@ require(['jquery','pageLoad','prizeOpe','sparkleHover'],function($,pg,prizeOpe,s
 	];
 	/**/
 	prizeOpe.init(userArr);
-	/**/
 });

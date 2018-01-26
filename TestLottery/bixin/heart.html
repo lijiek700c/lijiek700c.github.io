@@ -1,0 +1,344 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
+<title></title>
+<style type="text/css">
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td {
+    margin: 0;
+    padding: 0
+
+}
+
+html {
+    font-family: MicrosoftYaHei;
+}
+.heart{
+    width:634px;
+    margin:0 auto; 
+padding-top:125px;
+box-sizing: border-box;
+}
+body{
+    width: 1366px;
+    height:768px;
+    margin:0 auto;
+}
+.img1{
+    float: left;
+    width:114px;
+    height:57px;
+}
+.img2{
+    float:right;
+    width:114px;
+    height:57px;
+
+}
+.oneLin{
+    width:402px;
+    margin:0 auto;
+
+}
+.img{
+
+    position: relative;
+}
+.img img{
+    width:100%;
+    position: absolute;
+    display:none;
+}
+.oneList{
+ padding-top:57px;
+}
+.left{
+    float: left;
+}
+
+.img1 img,.img2 img{
+    position: absolute;
+}
+.listImg1 img{
+position: absolute;
+}
+/* 宽高 */
+.listImg1,.listImg2,.listImg6,.listImg10,.listImg11,.listimg18,.listimg26,.listImg14,.listimg16,.listImg15{
+    height:114px;
+    
+}
+.listImg4{
+    margin:1px 0;
+}
+.listImg4,.listImg8,.listImg5,.listImg9,.listimg19,.listimg16,.listimg17,.listimg16,.listImg13,.listImg12,.listImg25,.listImg21,.listImg24,.listImg23{
+    height:57px;
+
+}
+.listImg6,.listImg5,.listImg10,.listImg9,.listImg11,.listimg19,.listimg18,.listimg26,.listimg16,.listimg17,.listImg13,.listImg21,.listImg24,.listImg23,.listImg1{
+    width:57px;
+}
+.listImg2,.listImg2,.listImg8,.listImg4,.listImg7,.listImg15,.listImg12,.listImg25,.listImg22{
+    width:114px;
+}
+
+/* 宽高 */
+.listImg7,.listImg22{
+    height:172px;   
+}
+
+.listImg14{
+    width:172px;
+    margin:1px 0;
+}
+.listimg26{
+    margin-left: 1px;
+}
+.listimg17,.listImg21{
+    margin-top:1px;
+}
+.list{
+    padding-top:1px;
+}
+.listImg13{ 
+    margin-top:1px;
+}
+.listImg0{
+    margin-left:2px;
+    padding-top:57px;
+}
+.listImg6{
+    margin-left:1px;
+}
+.body{
+ 
+
+    height:100%;   
+}
+
+@keyframes botoom
+{
+    from {bottom:-80px;opacity:0;}
+    to {bottom:0;opacity:1;}
+}
+ 
+@-webkit-keyframes bottom /* Safari 与 Chrome */
+{
+  from {bottom:-80px;opacity:0;}
+  to {bottom:0;opacity:1;}
+}
+
+@keyframes right
+{
+    from {right:80px;opacity:0;}
+    to {right:0;opacity:1;}
+}
+ 
+@-webkit-keyframes right /* Safari 与 Chrome */
+{
+  from {right:80px;opacity:0;}
+  to {right:0;opacity:1;}
+}
+
+@keyframes left
+{
+    from {left:80px;opacity:0;}
+    to {left:0;opacity:1;}
+}
+ 
+@-webkit-keyframes left /* Safari 与 Chrome */
+{
+  from {left:80px;}
+  to {left:0;opacity:1;}
+}
+
+@keyframes top
+{
+    
+    from {top:-80px;opacity:0;}
+    to {top:0;opacity:1;}
+}
+ 
+@-webkit-keyframes top /* Safari 与 Chrome */
+{
+    from {top:-80px;opacity:0;}
+    to {top:0;opacity:1;}
+}
+@keyframes tops
+{
+    
+    from {top:-80px;opacity:0;}
+    to {top:57px;opacity:1;}
+}
+ 
+@-webkit-keyframes tops /* Safari 与 Chrome */
+{
+    from {top:-80px;opacity:0;}
+    to {top:57px;opacity:1;}
+}
+.activeLeft{
+    animation:left 1.5s;
+  -webkit-animation:left 1.5s;
+  display:block !important;
+}
+.activeRight{
+    animation:right 1.5s;
+  -webkit-animation:right 1.5s;
+  display:block !important;
+}
+.activebottom{
+    animation:top 1.5s;
+  -webkit-animation:top 1.5s;
+  display:block !important;
+}
+.activeTop{
+    animation:bottom 1.5s;
+  -webkit-animation:bottom 1.5s;
+  display:block !important;
+}
+.activeBottom{
+    animation:tops 1.5s;
+  -webkit-animation:tops 1.5s;
+  display:block !important;
+}
+
+
+</style>
+</head>
+<body >
+    <div class="body">
+
+
+            <div class="heart">
+                    <div class="oneLin">
+                        <div class="img img1"> <img class="activebottom" src="img/1.png" alt=""></div>
+                        <div class="img img2"><img  src="img/20.png" alt=""></div>
+                        <div style="clear:both;"></div>
+                    </div>
+                    <!-- 一列 -->
+                    <div class="list">
+                        <div class="left oneList">
+                            <div class="img listImg1"><img src="img/3.png" alt=""></div>
+                        </div>
+                        <!-- 第二列 -->
+                        <div class="left twoList">
+                            <div class="img listImg2"><img class="activeRight" src="img/2.png" alt=""></div>
+                            <div class="img listImg4"><img class="activeRight" src="img/4.png" alt=""></div>
+                            <div class=" listImg"><div class="left img listImg5"><img class="activeTop" src="img/5.png" alt=""></div><div class="left img listImg6"><img class="activeTop" src="img/6.png" alt=""></div> <div style="clear:both;"></div></div>
+                        </div>
+                        <!-- 第三列 -->
+                        <div class="left twoList">
+                            <div class="img listImg8"><img class="activebottom" src="img/8.png" alt=""></div>
+                            <div class="img listImg7"><img style="display:block;" src="img/7.png" alt=""></div>
+                            <div class=" listImg" style="margin-top:1px;">
+                                <div class="left img listImg10">
+                                    <img class="activeTop" src="img/10.png" alt="">
+                                </div>
+                                <div class="left img " style="margin:0 1px;">
+                                        <div class="img listImg9"><img class="activeTop" src="img/9.png"></div>
+                                        <div class="img listImg11"><img src="img/11.png"></div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                         </div>
+                         <!-- 第四列 -->
+                         <div class="fourList left">
+                             <!-- 第一个 -->
+                             <div>
+                                 <div class="img left listimg19"><div class="img left listimg19"></div><img class="activeBottom" style="top:57px;" src="img/19.png" alt=""></div>
+                                 <div  class="img left listimg18"><img class="activebottom" src="img/18.png" alt=""></div>
+                                 <div class="img left listimg26"><img class="activebottom" src="img/26.png" alt=""></div>
+                                 <div style="clear:both;"></div>
+                             </div>
+                            <!-- 第二个 -->
+                            <div class="listImg14 img">
+                                <img style="display:block;" src="img/14.png" alt="">
+                            </div>
+                            <!-- 第三个 -->
+                            <div>
+                                <div class="left">
+                                        <div  class="img  listimg16"><img class="activeTop" src="img/16.png" alt=""></div>
+                                        <div class="img  listimg17"><img src="img/17.png" alt=""></div>
+                                      <div style="clear:both;"></div>
+                                </div>
+                                <div class="left listImg15 img">
+                                    <img style="display:block;" src="img/15.png" alt="">
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <!-- 第四个 -->
+                            <div class="listImg12 img"><img src="img/12.png" alt=""></div>
+                            <!-- 第五个 -->
+                            <div class="listImg13 img"><img src="img/13.png" alt=""></div>
+                         </div>
+                        <!-- 第五列 -->
+                        <div class="left">
+                            <div class="img listImg25"><img class="activebottom"  src="img/25.png" alt=""></div>
+                            <div class="img listImg22"><img style="display:block;" src="img/22.png" alt=""></div>
+                             <div class="img listImg21"><img class="activeTop" src="img/21.png" alt=""></div>
+                        </div>  
+                        <!-- 第6列 -->
+                        <div class="left listImg0">
+                                <div class="img listImg24"><img class="activeLeft" src="img/24.png" alt=""></div>
+                                <div class="img listImg23" style="margin-top:1px;"><img class="activeLeft" src="img/23.png" alt=""></div>
+                        </div>
+                        <!-- 好多好多列底    -->
+                        <div style="clear:both;"></div>
+                        <!-- 一列底 -->
+                    </div>
+                  
+                </div>
+
+    </div>
+
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+$(function(){
+setTimeout(function(){
+    $(".listimg17").find("img").addClass("activeTop")
+    setTimeout(function(){
+        $(".listImg12").find("img").addClass("activeTop")
+        setTimeout(function(){
+            $(".listImg13").find("img").addClass("activeTop")
+       
+        },200)
+    },200)
+    //_______________
+    $(".listImg11").find("img").addClass("activeTop") 
+    $(".listImg1").find("img").addClass("activeRight")
+    $(".img2").find("img").addClass("activebottom")
+},1000)
+
+})
+
+</script>
+</body>
+
+</html> 
