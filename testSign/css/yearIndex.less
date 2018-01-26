@@ -37,7 +37,7 @@ body {
 	.yearTabBox {
 		overflow:hidden;
 		width:100%;
-		padding-left:(30px / @remsize)*1rem;
+		padding:0 (30px / @remsize)*1rem 0;
 		.yearTabBox_item {
 			float:left;
 			width:(80px / @remsize)*1rem;
@@ -55,11 +55,8 @@ body {
 				line-height:(14px / @remsize)*1rem;
 			}
 		}
-		.yearTabBox_item:active {
-			border-color:#FFFF68;
-			.yearTabBox_item_txt {
-				color:#FFFF68;
-			}
+		.yearTabBox_item:nth-child(3n) {
+			margin-right:0;
 		}
 	}
 	img.starFirst {
