@@ -62,9 +62,12 @@ define(['jquery'],function($){
 					var bgImgSrc=bgImg.attr('data-src');
 					/*背景图片加载成功或失败*/
 					bgImg.attr('src',bgImgSrc).on('load',$.proxy(function(){
-						/*背景图片适配*/
-						var winH=$(window).outerHeight();
-						bgImg.height(winH+'px');
+						/*调整背景图片*/
+						$('.js_l-container').css({
+							'height':$(window).outerHeight()+'px',
+							'background':'url(images/indexBg.png) no-repeat',
+							'background-size':'100% 100%'
+						});
 						this._hide(fn);
 					},this)).on('error',$.proxy(function(){
 						$('body').css('background','rgb(25,25,112)');
