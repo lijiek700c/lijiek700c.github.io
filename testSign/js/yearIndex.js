@@ -12,7 +12,7 @@ require(['jquery','setRem','pageLoad'],function($,setRem,pg){
 	pg.dsOpenLoading._show('正在打开').imgLoadedHide();
 	/**/
 	var clickedBool=false;
-	var items=$('.yearTabBox > li');
+	var items=$('.yearTabBox > li').not(':last-child');
 	var changedSrcArr=items.children('img').map(function(i,e){
 		return $(e).attr('src').replace(/\./g,'2.');
 	}).get();

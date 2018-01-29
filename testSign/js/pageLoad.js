@@ -62,6 +62,9 @@ define(['jquery'],function($){
 					var bgImgSrc=bgImg.attr('data-src');
 					/*背景图片加载成功或失败*/
 					bgImg.attr('src',bgImgSrc).on('load',$.proxy(function(){
+						/*背景图片适配*/
+						var winH=$(window).outerHeight();
+						bgImg.height(winH+'px');
 						this._hide(fn);
 					},this)).on('error',$.proxy(function(){
 						$('body').css('background','rgb(25,25,112)');
