@@ -9,21 +9,11 @@ require(['jquery','setRem','pageLoad'],function($,setRem,pg){
 	/*设置html的font-size*/
 	setRem();
 	/**/
-	if(localStorage.getItem('flag')){
-		/*签到成功之后*/
-		pg.dialog({
-			content:'您已成功签到！<br>请尽快就坐！'
-		}).done(function(){
-			localStorage.clear();
-		});
-		pg.dsOpenLoading.signedHide();
+	if(!localStorage.getItem('signSuccessFP')){	
+		pg.dsOpenLoading._show('正在签到').imgLoadedHide();
 	}else{
-		/*打开页面时*/
-		pg.dsOpenLoading._show('正在签到');
-		setTimeout(function(){
-			pg.dsOpenLoading.imgLoadedHide();
-		},500);	
+		pg.dsOpenLoading.imgLoadedHide();
 	}
-	/*flag*/
-	localStorage.setItem('flag','111');
+	/**/
+	localStorage.setItem('signSuccessFP','start');
 });
