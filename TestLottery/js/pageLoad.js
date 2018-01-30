@@ -107,8 +107,19 @@ define(['jquery'],function($){
 				this.html2='<div class="js_dialog">'+
 		            '<div class="weui-mask"></div>'+
 		            '<div class="weui-dialog animated">'+
-		                /*'<div class="weui-dialog__hd"><strong class="weui-dialog__title">'+this.title+'</strong></div>'+*/
+		                '<div class="weui-dialog__hd"><strong class="weui-dialog__title">'+this.title+'</strong></div>'+
 		                '<div class="weui-dialog__bd">'+this.content+'</div>'+
+		                '<div class="weui-dialog__ft">'+
+		                    '<a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">取消</a>'+
+		                    '<a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>'+
+		                '</div>'+
+		            '</div>'+
+		        '</div>';
+				this.html3='<div class="js_dialog">'+
+		            '<div class="weui-mask"></div>'+
+		            '<div class="weui-dialog animated">'+
+		                '<div class="weui-dialog__hd"><strong class="weui-dialog__title">'+this.title+'</strong></div>'+
+		                '<div class="weui-dialog__bd"><input class="prize" type="text" placeholder="请输入数字" /></div>'+
 		                '<div class="weui-dialog__ft">'+
 		                    '<a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">取消</a>'+
 		                    '<a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">确定</a>'+
@@ -127,6 +138,36 @@ define(['jquery'],function($){
 					case 2:
 						$('body').append(this.html2);
 						$('.weui-dialog','.js_dialog').addClass('bounceIn');
+						$('a.weui-dialog__btn_primary').on('click',$.proxy(function(ev){
+							var $this=$(ev.currentTarget);
+							$this.closest('.weui-dialog').addClass('bounceOut');
+							this.timer=setTimeout($.proxy(function(){
+								clearTimeout(this.timer);
+								dfd.resolve();
+								this._hide();
+							},this),200);
+						},this));
+						$('a.weui-dialog__btn_default').on('click touchstart',$.proxy(function(ev){
+							var $this=$(ev.currentTarget);
+							$this.closest('.weui-dialog').addClass('bounceOut');
+							this.timer=setTimeout($.proxy(function(){
+								clearTimeout(this.timer);
+								dfd.reject();
+								this._hide();
+							},this),200);
+						},this));
+						break;
+					case 3:
+						$('body').append(this.html3).find('.js_dialog input.prize').focus();
+						$('.weui-dialog','.js_dialog').addClass('bounceIn').on('keyup','input.prize',function(ev){
+							var $this=$(this);
+							var val=$.trim($this.val()).replace(/\s+/g,'');
+							if(val.length<=2){
+								window.num=parseInt(val);
+							}else{
+								$this.val(val.slice(0,2));
+							}
+						});
 						$('a.weui-dialog__btn_primary').on('click',$.proxy(function(ev){
 							var $this=$(ev.currentTarget);
 							$this.closest('.weui-dialog').addClass('bounceOut');
@@ -181,6 +222,7 @@ define(['jquery'],function($){
 		dsOpenLoading:dsOpenLoading,
 		dialog:function(config){
 			return dialog.init(config);
-		}
+		},
+		dialogBody:dialog
 	};
 });

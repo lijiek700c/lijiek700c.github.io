@@ -15,14 +15,14 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 	var testDataArr=[
 		{name:'某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'},
-		{name:'某某某',tel:'15899889988'},
+		{name:'某某某',tel:'15899889988'}/*,
 		{name:'某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'},
 		{name:'某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'},
 		{name:'某某',tel:'15899889988'},
 		{name:'某某某',tel:'15899889988'},
-		{name:'某某',tel:'15899889988'}
+		{name:'某某',tel:'15899889988'}*/
 	]; 
 	function PrizeOpe(){
 		this.startBtn=$('#start');  //开始按钮
@@ -48,6 +48,16 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 		/*旅游大奖*/
 		this.lyBixinBox=$('.body');
 		this.hideAnimArr=['swoopOutTop','swoopOutRight','swoopOutBottom','swoopOutLeft'];
+		/**/
+		this.doc=$(document);
+		this.randomBool=false;   //随机抽奖的时候，禁止其它的抽奖动作
+		this.prizeNum=0;    //随机抽奖输入的中奖人数
+		/*除随机抽奖之外的5中抽奖状态*/
+		this.thirdPrizeEnd=false;
+		this.secondPrizeEnd=false;
+		this.firstPrizeEnd=false;
+		this.specialPrizeEnd=false;
+		this.lyPrizeEnd=false;
 	}
 	PrizeOpe.prototype={
 		constructor:PrizeOpe,
@@ -59,9 +69,7 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 				// something went wrong, hide the canvas container
 				document.getElementById('myCanvasContainer').style.display = 'none';
 			}
-			this.startAward();
-			this.stopAward();
-			this.toNextAward();
+			this.awardOperate();
 		},
 		getUsers:function(userArr){
 			for (let i in userArr) {
@@ -71,77 +79,243 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 				this.tags.append(newTag);
 			}
 		},
+		//抽奖的操作
+		awardOperate:function(){
+			this.doc.on('keyup',$.proxy(function(ev){
+				ev.preventDefault();
+				switch(ev.which){
+					case 83: //停止抽奖  S
+						this.stopAward();
+						break;
+					case 68: //下一轮抽奖  D
+						this.toNextAward();
+						break;
+					//没有按正常流程进行抽奖的时候
+					case 81:  //直接抽三等奖  Q
+						if(this.thirdPrizeEnd){
+							pg.dialog({
+								content:'三等奖已经抽完啦！'
+							});
+							return false;
+						}
+						if(this.randomBool){
+							return false;
+						}
+						if(this.isOrder()){   
+							this.notRegularAward(0);
+						}
+						break;
+					case 87:  //直接抽二等奖  W
+						if(this.secondPrizeEnd){
+							pg.dialog({
+								content:'二等奖已经抽完啦！'
+							});
+							return false;
+						}
+						if(this.randomBool){
+							return false;
+						}
+						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
+							this.notRegularAward(1);
+						}
+						break;
+					case 69:  //直接抽一等奖  E
+						if(this.firstPrizeEnd){
+							pg.dialog({
+								content:'一等奖已经抽完啦！'
+							});
+							return false;
+						}
+						if(this.randomBool){
+							return false;
+						}
+						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
+							this.notRegularAward(2);
+						}
+						break;
+					case 82:  //直接抽特等奖  R
+						if(this.specialPrizeEnd){
+							pg.dialog({
+								content:'特等奖已经抽完啦！'
+							});
+							return false;
+						}
+						if(this.randomBool){
+							return false;
+						}
+						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
+							this.notRegularAward(3);
+						}
+						break;
+					case 76:    //显示旅游奖品信息  L
+						if(this.lyPrizeEnd){
+							pg.dialog({
+								content:'旅游大奖的获得者已经产生啦！'
+							});
+							return false;
+						}
+						if(this.randomBool){
+							return false;
+						}
+						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
+							this.notRegularAward(6);
+						}
+						break;
+					case 80:  //随机抽奖  P
+						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
+							this.randomBool=true;
+							this.breakRegularAward();
+							pg.dialog({
+								type:3,
+								title:'请输入本次抽奖的中奖人数！'
+							});
+						}
+						break;
+					case 13:  //关闭输入抽奖人数的弹窗并获取中奖人员信息 enter
+						var weuiDialog=$('.weui-dialog');
+						if(pg.dialogBody.type===1){
+							weuiDialog.addClass('bounceOut');
+							this.delayChange($.proxy(function(){
+								pg.dialogBody._hide();
+							},this),200);
+							return false;
+						}
+						if(weuiDialog.length===0||isNaN(window.num)){
+							weuiDialog.find('input.prize').val('');
+							return false;
+						}
+						this.prizeNum=window.num;   //随机抽奖的中奖人数
+						weuiDialog.addClass('bounceOut');
+						this.delayChange($.proxy(function(){
+							pg.dialogBody._hide();
+							this.notRegularAward(8);
+						},this),200);
+						this.openRegularAward();
+						break;
+					case 27:  //关闭输入中奖人数弹窗  esc
+						var weuiDialog=$('.weui-dialog');
+						if(weuiDialog.length===0){
+							return false;
+						}
+						weuiDialog.addClass('bounceOut');
+						this.delayChange($.proxy(function(){
+							pg.dialogBody._hide();
+						},this),200);
+						this.openRegularAward();
+						break;
+				}
+			},this));
+		},
 		//开始抽奖
 		startAward:function(){
-			this.startBtn.on('click',$.proxy(function(ev){
-				ev.preventDefault();
-				if(this.awardIndex>=4){
-					this.showLyBixinBox();
-					this.TagCanvas.Pause('myCanvas');
-					this.hideCanvas();
-					return false;
-				}
-				if(this.startBool){
-					return false;
-				}
-				this.startBool=true;
-				this.TagCanvas.Start('myCanvas', 'tags',Object.assign({},options,{maxSpeed: 0.38}));
-				/*ajax?*/
-				this.stopBool=false;
-			},this));
+			if(this.startBool){
+				return false;
+			}
+			if(this.awardIndex===4){
+				pg.dialog({
+					content:'三等奖至特等奖已结束抽奖！'
+				});
+				return false;
+			}
+			this.startAwardOpe();
+		},
+		startAwardOpe:function(){
+			this.startBool=true;
+			this.TagCanvas.Start('myCanvas', 'tags',Object.assign({},options,{maxSpeed: 0.38}));
+			this.stopBool=false;
 		},
 		//停止抽奖
 		stopAward:function(){
-			var _self=this;
-			this.stopBtn.on('click',function(ev){
-				ev.preventDefault();
-				if(_self.stopBool){
-					return false;
-				}
-				/*ajax?*/
-				//获得中奖信息
-				switch(_self.awardIndex){
-					case 2:
-						testDataArr=testDataArr.slice(0,4);
-						break;
-					case 3:
-						testDataArr=testDataArr.slice(0,1);
-						break;
-				}
-				gp.createPrizeInfo(_self.container,testDataArr,_self.awardIndex);
-				/**/
-				var timer = setTimeout(function(){
-					clearTimeout(timer);
-					_self.TagCanvas.Pause('myCanvas');
-					_self.hideCanvas();
-					_self.showMoadl();
-					_self.delayChange(function(){
-						_self.showPrizerList();
-					},500);
-				},500);
-				_self.stopBool=true;
-			});
+			if(this.stopBool){
+				return false;
+			}
+			this.stopAwardOpe();
+		},
+		stopAwardOpe:function(){
+			if(this.awardIndex===6){
+				this.showLyBixinBox();
+				this.TagCanvas.Pause('myCanvas');
+				this.hideCanvas();
+				this.delayChange($.proxy(function(){
+					this.nextBool=false;
+				},this),2800);
+				return false;
+			}
+			//获得中奖信息
+			switch(this.awardIndex){
+				case 2:
+					testDataArr=testDataArr.slice(0,4);
+					break;
+				case 3:
+					testDataArr=testDataArr.slice(0,1);
+					break;
+			}
+			gp.createPrizeInfo(this.container,testDataArr,this.awardIndex);
+			var timer = setTimeout($.proxy(function(){
+				clearTimeout(timer);
+				this.TagCanvas.Pause('myCanvas');
+				this.hideCanvas();
+				this.showMoadl();
+				this.delayChange($.proxy(function(){
+					this.showPrizerList();
+				},this),500);
+			},this),500);
+			this.stopBool=true;
 		},
 		//下一轮
 		toNextAward:function(){
-			this.next.on('click',$.proxy(function(ev){
-				var _self=this;
-				ev.preventDefault();
-				if(this.nextBool){
-					return false;
-				}
-				if(this.awardIndex>=4){
-					this.hideLyBixinBox();
-					return false;
-				}
-				this.awardIndex++;
-				this.qqImg.hide();
-				this.gpImg.hide();
-				/*隐藏中奖的信息*/
-				this.hideModalItems();
-				this.stopBool=true;
-				this.nextBool=true;
-			},this));
+			if(this.nextBool){
+				return false;
+			}
+			if(this.awardIndex===6){
+				this.hideLyBixinBox();
+				this.TagCanvas.Start('myCanvas', 'tags', Object.assign({},this.options,{maxSpeed: 0.05}));
+				this.showCanvas();
+				this.delayChange($.proxy(function(){
+					this.startBool=false;
+					this.stopBool=true;
+					this.nextBool=true;
+				},this),800);
+				return false;
+			}
+			if(this.awardIndex===8){
+				this.toNextAwardOpe();
+				return false;
+			}
+			this.toNextAwardOpe();
+		},
+		toNextAwardOpe:function(){
+			this.qqImg.hide();
+			this.gpImg.hide();
+			/*隐藏中奖的信息*/
+			this.hideModalItems();
+			this.stopBool=true;
+			this.nextBool=true;
+		},
+		//直接抽几等奖的时候
+		breakRegularAward:function(){
+			this.startBool=true;
+			this.stopBool=true;
+			this.nextBool=true;
+		},
+		//开启正常操作
+		openRegularAward:function(){
+			this.startBool=false;
+			this.stopBool=true;
+			this.nextBool=true;
+		},
+		//是否按正常抽奖顺序
+		isOrder:function(){
+			return this.startBool===false&&this.stopBool===true&&this.nextBool===true;
+		},
+		//非正常流程抽奖
+		notRegularAward:function(index){
+			this.startAward();
+			this.breakRegularAward();
+			this.awardIndex=index;
+			this.delayChange($.proxy(function(){
+				this.stopBool=false;
+			},this),1800);
 		},
 		//显示弹窗
 		showMoadl:function(){
@@ -171,8 +345,14 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 				},i*800);
 			});
 			elements.last().on('webkitTransitionend transitionend',function(){
-															/*显示期权或股票*/
+				/*显示期权或股票*/
 				_self.awardIndex<2?_self.nextBool=false:_self.delayShowQqOrGp();
+				/*显示随机抽奖名单*/
+				if(_self.awardIndex===8){
+					_self.delayChange(function(){
+						_self.nextBool=false;
+					},800);
+				}
 			});
 		},
 		/*奖品信息弹窗显示完后*/
@@ -226,7 +406,9 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 					this.boomCount=0;
 					clearInterval(timer);
 					obj.css('animation-name','unknow');
-					this.nextBool=false;
+					this.delayChange($.proxy(function(){
+						this.nextBool=false;
+					},this),800);
 					this.mask.hide();
 				}
 				this.boomCount++;
@@ -255,18 +437,40 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 			elements.each(function(i,e){
 				var $e=$(e);
 				$e.addClass('magictime').addClass(_self.hideAnimArr[i]);
-				if(i===_self.hideAnimArr.length-1){
+				if(i===elements.length-1){
 					$e.on('webkitAnimationend animationend',function(){
 						_self.hideMoadl(); 
 						_self.showCanvas();
 						_self.TagCanvas.Start('myCanvas',"tags",Object.assign({},options,{maxSpeed: 0.05}));
-						_self.startBool=false;
+						_self.delayChange(function(){
+							_self.startBool=false;
+						},800);
+						/*除随机抽奖外的其它五种抽奖状态*/
+						/*this.thirdPrizeEnd=false;
+						this.secondPrizeEnd=false;
+						this.firstPrizeEnd=false;
+						this.specialPrizeEnd=false;*/
+						switch(_self.awardIndex){
+							case 0:
+								_self.thirdPrizeEnd=true;
+								break;
+							case 1:
+								_self.secondPrizeEnd=true;
+								break;
+							case 2:
+								_self.firstPrizeEnd=true;
+								break;
+							case 3:
+								_self.specialPrizeEnd=true;
+								break;
+						}
 					});
 				}
 			});
 		},
 		/*旅游大奖*/
 		getLyPrize:function(){
+			var _self=this;
 			setTimeout(function(){
 			    $(".listimg17").find("img").addClass("activeTop");
 		    	setTimeout(function(){
@@ -280,6 +484,8 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 	    		$(".listImg1").find("img").addClass("activeRight")
 	    		$(".img2").find("img").addClass("activebottom")
 			},1000);
+			/*除随机抽奖外的其它五种抽奖状态*/
+			this.lyPrizeEnd=true;
 		},
 		showLyBixinBox:function(){
 			this.lyBixinBox.show();

@@ -32,7 +32,7 @@ body {
 }
 /* prize */
 .prizeBox {
-    position:relative;
+    position:relative;height:100%;
 }
 .prizeBox > * {
     display:block;
@@ -89,12 +89,11 @@ body {
 .prizeBox.ly > .noticeBox > img.second {
     margin-bottom:23px;
 }
+.luckFooterBox{position:absolute;width:100%;height:48px;left:0;bottom:20px;display:flex;justify-content:center}
+.luckFooterBox img{width:42px;height:48px;max-width:42px;max-height:48px;}
+.luckFooterBox .luckFooterBox_txt{font-size:18px;color:#D9BB88;line-height:48px;margin-left:10px}
 
 
-/* 手机号码显示框 */
-.showTelBox {
-
-}
 /* 三个按钮 */
 #start,#stop,#next {
     position:absolute;z-index:6;
@@ -126,7 +125,7 @@ body {
 }
 /*  */
 .b_10_3 {
-		widows:100%;height: 100%;
+		width:100%;height: 100%;
 		overflow: hidden; text-align:center;
 }
 .modal{  
@@ -192,6 +191,18 @@ body {
     display:none;position:fixed;
     top:0;left:0;bottom:0;right:0;
     z-index:8899;
+}
+/* 弹窗的输入框 */
+.weui-dialog__bd .prize {
+  font-size:18px;line-height:28px;
+  outline:none;border:none;
+  padding-left:12px;
+  border:2px solid #bbb;
+  border-radius:2px;
+  color:#333;
+}
+.weui-dialog__bd .prize:focus {
+  box-shadow:0px 0px 3px 3px #eee;
 }
 /*  */
 .magictime {

@@ -45,6 +45,16 @@ define(['jquery'],function($){
 							'<p class="magictime">在旅游前在职并发展为情侣的才可获得此奖励</p>'+
 						'</div>'+
 					'</div>';
+	/*随机抽奖*/
+	var randomPrizeHtml='<div class="prizeBox">'+
+					'<img src="images/getPrizer.png" alt="">'+
+					'<ul class="getAwardList">'+
+					'</ul>'+
+					'<div class="luckFooterBox">'+
+						'<img class="vivify rollInLeft" src="images/logo2.png" alt="" style="display: block;">'+
+						'<p class="vivify luckFooterBox_txt swoopInRight" style="display: block;">长沙公信诚丰信息技术服务有限公司</p>'+
+					'</div>'+
+				'</div>';
 	/*插入中奖人信息*/
 	function insertManInfo(dataItem){
 		if(dataItem.name.length===2){
@@ -88,7 +98,7 @@ define(['jquery'],function($){
 					'margin-right':'0'
 				}).addClass('special').end().end().prependTo(container);
 				break;
-			case 8: //旅游
+			case 6: //旅游
 				$(lyPrizeHtml).prependTo(container).parent().css({
 					'margin-top':'125px',
 					'width':'auto',
@@ -96,6 +106,15 @@ define(['jquery'],function($){
 					'max-width':'1366px',
 					'overflow':'visible'
 				});
+				break;
+			case 8: //随机抽奖
+				container.css({
+					'margin-top':'0',
+					'height':'768px'
+				});
+				$(randomPrizeHtml).css({
+					'padding-top':'200px'
+				}).find('ul.getAwardList').css('margin-top','97px').html(htmlStr).end().prependTo(container);
 				break;
 		}
 	}
