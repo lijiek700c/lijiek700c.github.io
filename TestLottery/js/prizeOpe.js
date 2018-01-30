@@ -152,9 +152,9 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 							return false;
 						}
 						if(this.lyPrizeEnd){
-							pg.dialog({
+							/*pg.dialog({
 								content:'旅游大奖的获得者已经产生啦！'
-							});
+							});*/
 							return false;
 						}
 						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
@@ -277,9 +277,9 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 				this.showCanvas();
 				this.delayChange($.proxy(function(){
 					this.startBool=false;
-					this.stopBool=true;
-					this.nextBool=true;
 				},this),800);
+				this.stopBool=true;
+				this.nextBool=true;
 				return false;
 			}
 			if(this.awardIndex===8){
