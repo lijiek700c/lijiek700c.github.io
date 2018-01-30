@@ -92,13 +92,13 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 						break;
 					//没有按正常流程进行抽奖的时候
 					case 81:  //直接抽三等奖  Q
+						if(this.randomBool){
+							return false;
+						}
 						if(this.thirdPrizeEnd){
 							pg.dialog({
 								content:'三等奖已经抽完啦！'
 							});
-							return false;
-						}
-						if(this.randomBool){
 							return false;
 						}
 						if(this.isOrder()){   
@@ -106,13 +106,13 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 						}
 						break;
 					case 87:  //直接抽二等奖  W
+						if(this.randomBool){
+							return false;
+						}
 						if(this.secondPrizeEnd){
 							pg.dialog({
 								content:'二等奖已经抽完啦！'
 							});
-							return false;
-						}
-						if(this.randomBool){
 							return false;
 						}
 						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
@@ -120,13 +120,13 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 						}
 						break;
 					case 69:  //直接抽一等奖  E
+						if(this.randomBool){
+							return false;
+						}
 						if(this.firstPrizeEnd){
 							pg.dialog({
 								content:'一等奖已经抽完啦！'
 							});
-							return false;
-						}
-						if(this.randomBool){
 							return false;
 						}
 						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
@@ -134,13 +134,13 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 						}
 						break;
 					case 82:  //直接抽特等奖  R
+						if(this.randomBool){
+							return false;
+						}
 						if(this.specialPrizeEnd){
 							pg.dialog({
 								content:'特等奖已经抽完啦！'
 							});
-							return false;
-						}
-						if(this.randomBool){
 							return false;
 						}
 						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
@@ -148,13 +148,13 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 						}
 						break;
 					case 76:    //显示旅游奖品信息  L
+						if(this.randomBool){
+							return false;
+						}
 						if(this.lyPrizeEnd){
 							pg.dialog({
 								content:'旅游大奖的获得者已经产生啦！'
 							});
-							return false;
-						}
-						if(this.randomBool){
 							return false;
 						}
 						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
@@ -200,6 +200,7 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 						weuiDialog.addClass('bounceOut');
 						this.delayChange($.proxy(function(){
 							pg.dialogBody._hide();
+							this.randomBool=false;
 						},this),200);
 						this.openRegularAward();
 						break;
@@ -462,6 +463,9 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 								break;
 							case 3:
 								_self.specialPrizeEnd=true;
+								break;
+							case 8:
+								_self.randomBool=false;
 								break;
 						}
 					});
