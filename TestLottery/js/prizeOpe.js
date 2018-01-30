@@ -96,9 +96,9 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 							return false;
 						}
 						if(this.thirdPrizeEnd){
-							pg.dialog({
+							/*pg.dialog({
 								content:'三等奖已经抽完啦！'
-							});
+							});*/
 							return false;
 						}
 						if(this.isOrder()){   
@@ -110,9 +110,9 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 							return false;
 						}
 						if(this.secondPrizeEnd){
-							pg.dialog({
+							/*pg.dialog({
 								content:'二等奖已经抽完啦！'
-							});
+							});*/
 							return false;
 						}
 						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
@@ -124,9 +124,9 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 							return false;
 						}
 						if(this.firstPrizeEnd){
-							pg.dialog({
+							/*pg.dialog({
 								content:'一等奖已经抽完啦！'
-							});
+							});*/
 							return false;
 						}
 						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
@@ -138,9 +138,9 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 							return false;
 						}
 						if(this.specialPrizeEnd){
-							pg.dialog({
+							/*pg.dialog({
 								content:'特等奖已经抽完啦！'
-							});
+							});*/
 							return false;
 						}
 						if(this.isOrder()){   //没有按正常流程进行抽奖的时候
@@ -203,6 +203,9 @@ define(['jquery','pageLoad','tagcanvas','getPrize'],function($,pg,TagCanvas,gp){
 							this.randomBool=false;
 						},this),200);
 						this.openRegularAward();
+						break;
+					case 32:  //空格键   返回抽奖首页
+						window.location.href='luckIndex.html';
 						break;
 				}
 			},this));

@@ -14,7 +14,11 @@ require.config({
 	}
 });
 require(['jquery','pageLoad','prizeOpe','sparkleHover'],function($,pg,prizeOpe,sparkleHover){
-	pg.dsOpenLoading._show('正在打开').imgLoadedHide();
+	if(!localStorage.getItem('luckDrawFP')){
+		pg.dsOpenLoading._show('正在打开').imgLoadedHide();
+	}else{
+		pg.dsOpenLoading.imgLoadedHide();
+	}
 	/*用户名单*/
 	var userArr = [
 		{username:'chen',tel:'恭喜发财'},
@@ -140,4 +144,6 @@ require(['jquery','pageLoad','prizeOpe','sparkleHover'],function($,pg,prizeOpe,s
 	];
 	/*抽奖*/
 	prizeOpe.init(userArr);
+	/**/
+	localStorage.setItem('luckDrawFP','start');
 });
