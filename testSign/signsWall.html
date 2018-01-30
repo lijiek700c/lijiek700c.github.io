@@ -815,22 +815,9 @@
 				return dfd.promise();
 			}
 			/**/
-			$.ajax({
-				url:'http://172.16.1.83:8080/GxcfNewYear/getAvatar',
-				data:{},
-				type:'GET',
-				dataType:'json',
-				success:function(data){
-					console.log(data);
-				},
-				error:function(err){
-					console.log(err);
-				},
-			});
 			$.Deferred(breakPosArr).done(function(){
 				pg.dsOpenLoading.imgLoadedHide();
-				/*拼logo*/
-				/*setTimeout(function(){
+				setTimeout(function(){
 					clearInterval(tabTimer);
 					requestAnimationFrame=null;
 					$('#container div.element').each(function(i,e){
@@ -847,7 +834,7 @@
 						$('#container > div').css('top','0px');
 						$('.staff-box').addClass('staff-box_rotate');
 					});
-				},30000);*/
+				},30000);
 			});
 			/**/
 			$('#container > div').css({
