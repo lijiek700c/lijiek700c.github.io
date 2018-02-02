@@ -1,0 +1,48 @@
+require.config({
+	paths:{
+		'jquery':'jquery-3.2.1.min',
+		'pageLoad':'pageLoad',
+		'tagcanvas':'tagcanvas.min',
+		'getPrize':'getPrize',
+		'sparkleHover':'sparkleHover'
+	},
+	shim:{
+		tagcanvas:{
+			depts:['jquery'],
+			exports:'TagCanvas'
+		}
+	}
+});
+require(['jquery','pageLoad','prizeOpe','sparkleHover'],function($,pg,prizeOpe,sparkleHover){
+	var localUserObj={};
+	localUserObj.userArr=[];
+		pg.dsOpenLoading._show('正在打开');
+	if(!localStorage.getItem('localUserObj')){
+		$.ajax({
+			url:'http://172.16.1.83:8080/GxcfNewYear/getWinner',
+			type:'GET',
+			data:{
+				number:118
+			}
+		}).done(function(data){
+			localUserObj.userArr=data;
+			localStorage.setItem('localUserObj',JSON.stringify(localUserObj));
+			/*抽奖*/
+			prizeOpe.init(localUserObj.userArr);
+			/**/
+			pg.dsOpenLoading.imgLoadedHide();
+		}).fail(function(){
+			pg.dialog({
+				content:'获取人员信息失败！'
+			}).done(function(){
+				window.location.reload();
+			});
+		});
+	}else{
+		localUserObj.userArr=$.parseJSON(localStorage.getItem('localUserObj')).userArr;
+		/*抽奖*/
+		prizeOpe.init(localUserObj.userArr);
+		/**/
+		pg.dsOpenLoading.imgLoadedHide();
+	}
+});

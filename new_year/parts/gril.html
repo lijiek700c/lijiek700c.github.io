@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>单身趴</title>
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <script src="jQuery-1.11.2.js"></script>
+</head>
+<body class="body">
+<div class="heart_img">
+  <div  class="Heard">
+    <span style="font-size:0.5em;" class="partake">参与活动男生60人</span>
+  </div>
+</div>
+<div style="padding:0 12px; border-top:1px solid white;">
+  <!-- one -->
+   <div class="one_pople">
+     <div class="herad_img"><img src="img/img_herad.jpg"></div>
+     <div class="name_text">
+       <div class="name"><span class="pople_name">张某某</span>  <span class="old">(26岁)</span></div>
+       <div class="Autograph">用自己拼来的一个可能，回敬所有人说的不可能</div>
+     </div>
+     <div class="radio"> <img src="img/action.png" style="padding-bottom:0.2em; display:none;" ></div>
+   </div>
+   <!-- one di -->
+     <!-- one -->
+     <div class="one_pople">
+        <div class="herad_img"><img src="img/img_herad.jpg"></div>
+        <div class="name_text">
+          <div class="name"><span class="pople_name">李某某</span>   <span class="old">(26岁)</span></div>
+          <div class="Autograph">用自己拼来的一个可能，回敬所有人说的不可能</div>
+        </div>
+        <div class="radio"><img src="img/action.png" style="padding-bottom:0.2em; display:none;" ></div>
+      </div>
+      <!-- one di -->
+           <!-- one -->
+     <div class="one_pople">
+        <div class="herad_img"><img src="img/img_herad.jpg"></div>
+        <div class="name_text">
+          <div class="name"><span class="pople_name">刘某某</span>   <span class="old">(26岁)</span></div>
+          <div class="Autograph">用自己拼来的一个可能，回敬所有人说的不可能</div>
+        </div>
+        <div class="radio"><img src="img/action.png" style="padding-bottom:0.2em; display:none;"></div>
+      </div>
+      <!-- one di -->
+           <!-- one -->
+     <div class="one_pople">
+        <div class="herad_img"><img src="img/img_herad.jpg"></div>
+        <div class="name_text">
+          <div class="name"><span class="pople_name">陈某某</span>  <span class="old">(26岁)</span></div>
+          <div class="Autograph">用自己拼来的一个可能，回敬所有人说的不可能</div>
+        </div>
+        <div class="radio "><img src="img/action.png" style="padding-bottom:0.2em; display:none;" ></div>
+      </div>
+      <!-- one di -->
+</div>
+
+<a href="que.html"><div class="btn">确认</div></a>
+</body>
+<script>
+      window.onload=function(){
+  //       var width=document.body.clientWidth
+  // var  body=document.getElementsByClassName("body")
+  //   console.log(width)
+  // document.getElementsByClassName("body").style.width="px"
+
+          $(".one_pople").click(function(){
+                // 选择男生出现的选择效果和确认选择按钮
+              if($(this).find(".radio").hasClass("activ_bor")){
+                $(this).find(".radio").find("img").removeClass("active")
+                $(this).find(".radio").removeClass("activ_bor")
+                $(".btn").removeClass("active")
+                $(".partake").html("参与活动男生60人")
+              }else{
+                $(this).siblings().find(".radio").removeClass("activ_bor")
+                $(this).find(".radio").addClass("activ_bor")
+                $(this).find(".radio").find("img").addClass("active")
+                $(this).siblings().find(".radio").find("img").removeClass("active")
+                $(".btn").addClass("active")
+              // 这里是名字显示
+              var name=$(this).find(".pople_name").html()
+              $(".partake").html("已选男生"+name)
+
+              }
+          })
+   
+
+      }
+ </script>
+</html>
+
+ 

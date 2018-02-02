@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>单身趴</title>
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <script src="jQuery-1.11.2.js"></script>
+  <style>
+  body{
+    position:relative;
+    background:url(img/sure.png) no-repeat;
+    background-size:100% 100%;
+
+    color:white;
+
+}
+.manImg,.grilImg{
+  width:3.9em;
+  height:3.9em;
+  border-radius:50%;
+  overflow:hidden;
+  position: absolute;
+}
+.manImg img,.grilImg img{
+  width:100%;
+} 
+.heard{
+  display: -webkit-box;
+  width:7.4em;
+  margin:0 auto;
+  position: relative;
+  top:3.4em;
+}
+.center{
+  padding-top:10em;
+  box-sizing: border-box;
+}
+.nameTitle{
+  width:10em;
+  margin:0 auto;
+  display: none;
+}
+.nameTitle img {
+  width:100%;
+}
+.hisName div{
+  width:50%;
+  font-size: 1em;
+  color:#FFE7AD;
+}
+.hisName{
+  display:-webkit-box;
+  margin-top:0.4em;
+  animation:img 1.5s;
+  -webkit-animation:img 1.5s;
+}
+.showTitile{
+  animation:img 1.5s;
+  -webkit-animation:img 1.5s;
+  display:block;
+}
+
+.man,.woman{
+  text-align:center;
+}
+.title{
+  color: #E6C269;
+  font-size:0.8em;
+  width:209pt;
+  text-align: center;
+  font-family:PingFang-SC-Regular;
+  letter-spacing:1px;
+  margin-top:4.5em;
+  overflow: hidden;
+  height: 20px;
+}
+.title2{
+  color: #E8D1B4;
+    background: url(img/heard.png);
+    background-size:100% 100%;
+    padding:0.2em;
+    font-size:1.4em;
+    width:11em;
+  text-align: center;
+  margin-top:0.4em;
+}
+
+.footer{
+  width:100%;
+  text-align: center;
+  margin:0 auto;
+  color: #FFDCFF;
+  font-size:0.7em;
+  position: absolute;
+  bottom:10px;
+}
+@media screen and (max-height:570px) {
+  .center {
+   padding-top: 9em;
+   box-sizing: border-box;
+}
+.title {
+    color: #E6C269;
+    font-size: 0.8em;
+    width: 209pt;
+    text-align: center;
+    font-family: PingFang-SC-Regular;
+    letter-spacing: 1px;
+    margin-top: 1.5em;
+    overflow: hidden;
+    height: 20px;
+}
+}
+
+@media screen and (min-height:800px){
+   body{
+     padding-top:50px;
+     box-sizing: border-box;
+   }
+}
+
+
+@keyframes myfirst
+{
+    from {left:-40px;}
+    to {left:0;}
+}
+ 
+@-webkit-keyframes myfirst /* Safari 与 Chrome */
+{
+  from {left:-40px;}
+  to {left:0;}
+}
+.manImg{
+  animation:myfirst 1.5s;
+  -webkit-animation:myfirst 1.5s;
+}
+.grilImg{
+  animation:mygril 1.5s;
+  -webkit-animation:mygril 1.5s;
+}
+
+
+@keyframes mygril
+{
+    from {right:-40px;}
+    to {right:0;}
+}
+ 
+@-webkit-keyframes mygril /* Safari 与 Chrome */
+{
+  from {right:-40px;}
+  to {right:0;}
+}
+
+@keyframes img
+{
+    from {padding-top:40px;}
+    to {padding-top:0;}
+}
+ 
+@-webkit-keyframes img /* Safari 与 Chrome */
+{
+  from {padding-top:40px;}
+  to {padding-top:0;}
+}
+
+@keyframes title
+{
+    from {width:0;}
+    to {width:209pt;}
+}
+ 
+@-webkit-keyframes title /* Safari 与 Chrome */
+{
+  from {width:0;}
+    to {width:209pt;}
+}
+
+@keyframes title2
+{
+ 0%{opacity:1;}
+ 25%{opacity:0;}
+ 50%{opacity:1;}
+ 75%{opacity:0;}
+ 100%{opacity:1;}
+}
+ 
+@-webkit-keyframes title2 /* Safari 与 Chrome */
+{
+  0%{opacity:1;}
+  25%{opacity:0;}
+  50%{opacity:1;}
+  75%{opacity:0;}
+  100%{opacity:1;}
+}
+.showGame{
+  animation:title 1.5s;
+  -webkit-animation:title 1.5s;
+  display:block;
+}
+.showTitle2{
+  animation:title2 1.5s;
+  -webkit-animation:title2 1.5s;
+  display:block;
+}
+  </style>
+</head>
+<body>
+  <div class="ss">
+      <div class="heard">
+          <div class="manImg" style="left:0;"><img src="img/img_herad.jpg"></div>
+          <div class="grilImg" style="right:0;"><img src="img/gril.jpg"></div>
+        </div>
+
+  </div>
+
+
+  <div class="center">
+  
+  
+  
+    <div class="nameTitle title_Img "> <img src="img/paired.png"></div>
+    <div class="nameTitle pName ">
+      <div class="man ">男生</div>
+      <div class="woman">女神</div>
+    </div>
+  
+  
+  
+  
+    <div class="title nameTitle">
+        您即将和男神一起参加单身趴游戏
+    </div>
+  
+  
+    <div class="title2 nameTitle ">
+        神秘大奖等你来赢
+    </div>
+  </div>
+  <div class="footer">
+      长沙公信诚丰信息技术服务有限公司
+  </div>
+
+</body>
+<script>
+      window.onload=function(){
+            setTimeout(function(){
+              $(".title_Img").addClass("showTitile")
+              setTimeout(function(){
+                  $(".pName").addClass("hisName")
+                  setTimeout(function(){
+                    $(".title").addClass("showGame")
+                    setTimeout(function(){
+                      $(".title2").addClass("showTitle2")
+                    },1000)
+                  },1000)
+              },1000)
+            },1000)
+      }
+ </script>
+</html>
+
+ 

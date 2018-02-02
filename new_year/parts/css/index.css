@@ -1,0 +1,126 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+th,
+td {
+    margin: 0;
+    padding: 0
+
+}
+
+html {
+    height:100%;
+    font-family: MicrosoftYaHei;
+    font-size: 18px;
+}
+.heart_img{
+    width:100%;padding:10px 0;
+    font-size:2em;
+
+}
+body{
+    position:relative;
+    background:url(../img/bg_img.png) no-repeat;
+    background-size: 100% 100%;
+    color:white;
+    height:100%;
+}
+.herad_img{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    overflow: hidden;
+
+}
+.herad_img img{
+    width:100%;
+
+}
+.one_pople{
+    display: -webkit-box;
+    display:box;
+    width:100%;
+  padding:7px 0;
+  border-top:1px solid #999999;
+  box-sizing:border-box;
+}
+.radio{
+    width:0.888em;
+    height: 0.88em;
+    border-radius:50%;
+   border:1px solid white   ;
+
+   margin-top:0.88em  ;
+}
+.name_text{
+    padding-right: 30px;
+    -webkit-box-flex: 1;    
+    padding-left:10px;
+}
+.name{
+    font-size:0.8em;
+    color:#ffffff;
+}
+.Autograph{
+    font-size:0.5em;
+    margin-top:6px;
+    color:#E3E3E3;
+ 
+}
+.one_pople:first-child{
+    border:none;
+}
+.old{
+    font-size:0.5em;
+    margin-left:10px;
+}
+.radio img {
+    width:100%;
+}
+.active{
+    display:block !important;
+}
+.activ_bor{
+    border: none;
+}
+.Heard{
+    text-align: center;
+width:80%;
+background:url(../img/heard.png) no-repeat left 50%;
+height:1.6em;
+line-height:1.3em;
+background-size:100%; 
+margin:auto;
+}
+.btn{
+    height:50px;
+    position:absolute;
+    text-align: center;
+    background:#EDEDFA;
+    font-size:1em;
+    width:100%;
+    bottom:0;
+    color: #0000D9;
+    line-height:50px;
+    display: none;
+}

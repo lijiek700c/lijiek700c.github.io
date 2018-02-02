@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>签到墙</title>
+	<link rel="stylesheet" href="css/l-public.css">
+	<link rel="stylesheet" href="css/signsWall.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<style>
+			html, body {
+				height: 100%;
+			}
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				background-color: #000000;
+				margin: 0;
+				font-family: Helvetica, sans-serif;
+				overflow: hidden;
+			}
+
+			a {
+				color: #ffffff;
+			}
+
+			#info {
+				position: absolute;
+				width: 100%;
+				color: #ffffff;
+				padding: 5px;
+				font-family: Monospace;
+				font-size: 13px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+			}
+
+			#menu {
+				position: absolute;
+				bottom: 20px;
+				width: 100%;
+				text-align: center;
+			}
+
+			.element {
+				width: 100px;/* 120 160 */
+				height: 100px;
+				/* box-shadow: 0px 0px 12px rgba(0,255,255,0.5);
+				border: 1px solid rgba(127,255,255,0.25); */
+				text-align: center;
+				cursor: default;/* 
+				transition:all 2s ease-in; */
+			}
+			.element.newMove {
+				position:absolute;
+				width:22px;height:22px;
+			}
+
+			/* .element:hover {
+				box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
+				border: 1px solid rgba(127,255,255,0.75);
+			} */
+				.element img{
+					width:100%;
+					height:100%;
+					max-width:100%;
+					max-height:100%;
+				}
+				.element img.changed{
+					
+				}
+
+				.vivify {
+  					-webkit-animation-duration: 1.8s;
+  					-webkit-animation-fill-mode: both;
+  					animation-duration: 1.8s;
+  					animation-fill-mode: both; 
+  				}
+  				.pulsate {
+  -webkit-animation-name: pulsate;
+  animation-name: pulsate;
+  -webkit-transform-origin: center;
+  transform-origin: center; }
+
+@keyframes pulsate {
+  0% {
+    -webkit-animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); }
+  50% {
+    -webkit-transform: scale3d(0.8, 0.8, 0.8);
+    transform: scale3d(0.8, 0.8, 0.8); }
+  100% {
+    -webkit-animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+/*  */
+
+.blink {
+  -webkit-animation-name: blink;
+  animation-name: blink;
+  -webkit-animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s; }
+
+@keyframes blink {
+  0% {
+    opacity: 1; }
+  25% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  75% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+	</style>
+</head>
+<body>
+	<div class="js_l-container animated" style="display:none;">
+		<div class="themeBox">
+			<p>2018年公信诚丰年终盛典</p>
+			<img src="images/themeLogo.png" alt="">
+		</div>
+		<div class="staff-box"></div>
+		<img class="singsWall js_signBg" data-src="images/signsWall.jpg" alt="">
+	</div>
+	<!--js-->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/three.min.js"></script>
+	<script src="js/tween.min.js"></script>
+	<script src="js/TrackballControls.js"></script>
+	<script src="js/CSS3DRenderer.js"></script>
+	<script src="js/pageLoad2.js"></script>
+	<!--js-->
+	<div id="container"></div>
+	<script>
+	/*公信诚丰*/
+	(function($){
+		/*staff*/
+		var staff=function(){
+			this.order=0;
+			this.staff=null;
+			this.AllStaff=null;
+			this.winW=$(window).outerWidth();
+			this.winH=$(window).outerHeight();
+			//起点坐标
+			this.posArr=[
+					{
+						xs:0,
+						xe:60,
+						ys:60,
+						ye:this.winH-60
+					},
+					{
+						xs:60,
+						xe:this.winW-60,
+						ys:0,
+						ye:60
+					},
+					{
+						xs:this.winW-60,
+						xe:this.winW,
+						ys:60,
+						ye:this.winH-60
+					},
+					{
+						xs:60,
+						xe:this.winW-60,
+						ys:this.winH-60,
+						ye:this.winH
+					}
+				];
+			//初始坐标
+			this.initPosArr=[
+					{
+						xs:-300,
+						xe:-200,
+						ys:0,
+						ye:this.winH
+					},
+					{
+						xs:0,
+						xe:this.winW,
+						ys:-300,
+						ye:-200
+					},
+					{
+						xs:this.winW+300,
+						xe:this.winW+200,
+						ys:0,
+						ye:this.winH
+					},
+					{
+						xs:0,
+						xe:this.winW,
+						ys:this.winH+300,
+						ye:this.winH+200
+					}
+			];
+			//目标位置
+			this.tPosArr=[
+			//公
+				[
+					{x:465,y:130},
+					{x:488,y:130},
+					{x:511,y:130},
+					{x:548,y:130},
+					{x:571,y:130},
+					{x:594,y:130},
+					{x:455,y:154},
+					{x:604,y:154},
+					{x:445,y:178},
+					{x:614,y:178},
+					{x:435,y:202},
+					{x:624,y:202},
+					{x:425,y:226},
+					{x:634,y:226},
+					{x:415,y:250},
+					{x:644,y:250},
+					{x:475,y:214},
+					{x:465,y:238},
+					{x:455,y:260},
+					{x:445,y:283},
+					{x:435,y:307},
+					{x:425,y:329},
+					{x:415,y:352},
+					{x:438,y:352},
+					{x:461,y:352},
+					{x:484,y:352},
+					{x:507,y:352},
+					{x:530,y:352},
+					{x:553,y:352},
+					{x:576,y:352},
+					{x:599,y:352},
+					{x:622,y:352},
+					{x:645,y:352},
+					{x:635,y:329},
+					{x:625,y:306}
+				],
+			//信
+				[
+					{x:694,y:130},
+					{x:716,y:130},
+					{x:705,y:154},
+					{x:705,y:176},
+					{x:705,y:199},
+					{x:705,y:220},
+					{x:705,y:242},
+					{x:705,y:265},
+					{x:705,y:286},
+					{x:705,y:308},
+					{x:705,y:331},
+					{x:705,y:352},
+					{x:841,y:106},
+					{x:749,y:130},
+					{x:772,y:130},
+					{x:795,y:130},
+					{x:818,y:130},
+					{x:841,y:130},
+					{x:864,y:130},
+					{x:887,y:130},
+					{x:910,y:130},
+					{x:933,y:130},
+					{x:749,y:168},
+					{x:772,y:168},
+					{x:795,y:168},
+					{x:818,y:168},
+					{x:841,y:168},
+					{x:864,y:168},
+					{x:887,y:168},
+					{x:910,y:168},
+					{x:933,y:168},
+					{x:749,y:206},
+					{x:772,y:206},
+					{x:795,y:206},
+					{x:818,y:206},
+					{x:841,y:206},
+					{x:864,y:206},
+					{x:887,y:206},
+					{x:910,y:206},
+					{x:933,y:206},
+					{x:749,y:242},
+					{x:772,y:242},
+					{x:795,y:242},
+					{x:818,y:242},
+					{x:841,y:242},
+					{x:864,y:242},
+					{x:887,y:242},
+					{x:910,y:242},
+					{x:933,y:242},
+					{x:933,y:265},
+					{x:933,y:286},
+					{x:933,y:308},
+					{x:933,y:331},
+					{x:933,y:352},
+					{x:910,y:352},
+					{x:887,y:352},
+					{x:864,y:352},
+					{x:841,y:352},
+					{x:818,y:352},
+					{x:795,y:352},
+					{x:772,y:352},
+					{x:749,y:352},
+					{x:749,y:331},
+					{x:749,y:308},
+					{x:749,y:286},
+					{x:749,y:265}
+				],
+			//诚
+				[
+					{x:415,y:410},
+					{x:438,y:410},
+					{x:461,y:410},
+					{x:484,y:410},
+					{x:415,y:446},
+					{x:438,y:446},
+					{x:461,y:446},
+					{x:484,y:446},
+					{x:415,y:482},
+					{x:438,y:482},
+					{x:461,y:482},
+					{x:484,y:482},
+					{x:415,y:518},
+					{x:438,y:518},
+					{x:461,y:518},
+					{x:484,y:518},
+					{x:415,y:554},
+					{x:438,y:554},
+					{x:461,y:554},
+					{x:484,y:554},
+					{x:484,y:577},
+					{x:484,y:598},
+					{x:484,y:620},
+					{x:461,y:620},
+					{x:438,y:620},
+					{x:415,y:620},
+					{x:415,y:598},
+					{x:415,y:577},
+					{x:606,y:396},
+					{x:520,y:420},
+					{x:547,y:420},
+					{x:571,y:420},
+					{x:595,y:420},
+					{x:619,y:420},
+					{x:645,y:420},
+					{x:520,y:442},
+					{x:520,y:464},
+					{x:520,y:486},
+					{x:520,y:508},
+					{x:520,y:530},
+					{x:520,y:552},
+					{x:520,y:574},
+					{x:520,y:596},
+					{x:520,y:618},
+					{x:544,y:488},
+					{x:568,y:488},
+					{x:568,y:510},
+					{x:568,y:532},
+					{x:568,y:554},
+					{x:568,y:576},
+					{x:568,y:598},
+					{x:568,y:620},
+					{x:608,y:444},
+					{x:608,y:466},
+					{x:608,y:488},
+					{x:608,y:510},
+					{x:608,y:532},
+					{x:608,y:554},
+					{x:608,y:576},
+					{x:608,y:598},
+					{x:608,y:620},
+					{x:631,y:620},
+					{x:645,y:476},
+					{x:645,y:498},
+					{x:645,y:520}
+				],
+			//丰
+				[
+					{x:699,y:422},
+					{x:722,y:422},
+					{x:745,y:422},
+					{x:768,y:422},
+					{x:791,y:422},
+					{x:837,y:422},
+					{x:860,y:422},
+					{x:883,y:422},
+					{x:906,y:422},
+					{x:929,y:422},
+					{x:699,y:490},
+					{x:722,y:490},
+					{x:745,y:490},
+					{x:768,y:490},
+					{x:791,y:490},
+					{x:837,y:490},
+					{x:860,y:490},
+					{x:883,y:490},
+					{x:906,y:490},
+					{x:929,y:490},
+					{x:699,y:559},
+					{x:722,y:559},
+					{x:745,y:559},
+					{x:768,y:559},
+					{x:791,y:559},
+					{x:837,y:559},
+					{x:860,y:559},
+					{x:883,y:559},
+					{x:906,y:559},
+					{x:929,y:559},
+					{x:814,y:400},
+					{x:814,y:422},
+					{x:814,y:444},
+					{x:814,y:466},
+					{x:814,y:488},
+					{x:814,y:510},
+					{x:814,y:532},
+					{x:814,y:554},
+					{x:814,y:576},
+					{x:814,y:598},
+					{x:814,y:620}
+				],
+			//边框
+				[
+	            	{x:366,y:82},
+	            	{x:388,y:82},
+	            	{x:410,y:82},
+	            	{x:432,y:82},
+	            	{x:454,y:82},
+	            	{x:476,y:82},
+	            	{x:498,y:82},
+	            	{x:520,y:82},
+	            	{x:542,y:82},
+	            	{x:564,y:82},
+	            	{x:586,y:82},
+	            	{x:608,y:82},
+	            	{x:630,y:82},
+	            	{x:652,y:82},
+	            	{x:674,y:82},
+	            	{x:696,y:82},
+	            	{x:718,y:82},
+	            	{x:740,y:82},
+	            	{x:762,y:82},
+	            	{x:784,y:82},
+	            	{x:806,y:82},
+	            	{x:842,y:82},
+	            	{x:867,y:82},
+	            	{x:890,y:82},
+	            	{x:913,y:82},
+	            	{x:936,y:82},
+	            	{x:959,y:82},
+	            	{x:982,y:82},
+	            	{x:982,y:111},
+	            	{x:982,y:133},
+	            	{x:982,y:155},
+	            	{x:982,y:177},
+	            	{x:982,y:199},
+	            	{x:982,y:221},
+	            	{x:982,y:243},
+	            	{x:982,y:265},
+	            	{x:982,y:287},
+	            	{x:982,y:309},
+	            	{x:982,y:331},
+	            	{x:982,y:353},
+	            	{x:982,y:375},
+	            	{x:982,y:397},
+	            	{x:982,y:419},
+	            	{x:982,y:441},
+	            	{x:982,y:463},
+	            	{x:982,y:485},
+	            	{x:982,y:507},
+	            	{x:982,y:529},
+	            	{x:982,y:551},
+	            	{x:982,y:573},
+	            	{x:982,y:595},
+	            	{x:982,y:617},
+	            	{x:982,y:639},
+	            	{x:982,y:668},
+	            	{x:960,y:668},
+	            	{x:938,y:668},
+	            	{x:916,y:668},
+	            	{x:894,y:668},
+	            	{x:872,y:668},
+	            	{x:850,y:668},
+	            	{x:828,y:668},
+	            	{x:806,y:668},
+	            	{x:784,y:668},
+	            	{x:762,y:668},
+	            	{x:740,y:668},
+	            	{x:718,y:668},
+	            	{x:696,y:668},
+	            	{x:674,y:668},
+	            	{x:652,y:668},
+	            	{x:630,y:668},
+	            	{x:608,y:668},
+	            	{x:586,y:668},
+	            	{x:564,y:668},
+	            	{x:542,y:668},
+	            	{x:520,y:668},
+	            	{x:498,y:668},
+	            	{x:476,y:668},
+	            	{x:454,y:668},
+	            	{x:432,y:668},
+	            	{x:410,y:668},
+	            	{x:388,y:668},
+	            	{x:366,y:668},
+	            	{x:366,y:646},
+	            	{x:366,y:624},
+	            	{x:366,y:602},
+	            	{x:366,y:580},
+	            	{x:366,y:558},
+	            	{x:366,y:536},
+	            	{x:366,y:514},
+	            	{x:366,y:492},
+	            	{x:366,y:470},
+	            	{x:366,y:448},
+	            	{x:366,y:426},
+	            	{x:366,y:404},
+	            	{x:366,y:382},
+	            	{x:366,y:324},
+	            	{x:366,y:302},
+	            	{x:366,y:280},
+	            	{x:366,y:258},
+	            	{x:366,y:236},
+	            	{x:366,y:214},
+	            	{x:366,y:192},
+	            	{x:366,y:170},
+	            	{x:366,y:148},
+	            	{x:366,y:126},
+	            	{x:366,y:104}
+				]
+			];
+		};
+		staff.prototype={
+			constructor:staff,
+			/*取坐标新建*/
+			createStaff:function(obj,target){
+				var offsetmin=12,
+					offsetmax=34;
+				/*下标*/
+				var index=getRandom(0,4);
+				var initPosArea=this.initPosArr[index];
+				var posArea=this.posArr[index];
+				var initX=getRandom(initPosArea.xs,initPosArea.xe);
+				var posX=getRandom(posArea.xs,posArea.xe);
+				if(posX<=offsetmin){
+					posX=offsetmin;
+				}else if(posX>=this.winW-offsetmax){
+					posX=this.winW-offsetmax;
+				}
+				var initY=getRandom(initPosArea.ys,initPosArea.ye);
+				var posY=getRandom(posArea.ys,posArea.ye);
+				if(posY<=offsetmin){
+					posY=offsetmin;
+				}else if(posY>=this.winH-offsetmax){
+					posY=this.winH-offsetmax;
+				}
+				this.staff=obj;
+				this.staff.css({
+					'left':initX+'px','top':initY+'px'
+				}).animate({
+					'left':posX+'px','top':posY+'px'
+				}).delay(800).animate({
+					'left':target.x+'px','top':target.y+'px'
+				},200)
+				this.staff=null;
+			},
+			/*随机获取*/
+			getTargetPos:function(){
+				var selectedArr,tPosLen,fIndex;
+				tPosLen=this.tPosArr.length;
+				fIndex=getRandom(0,tPosLen);
+				if(this.tPosArr[fIndex].length!==0){
+					selectedArr=this.tPosArr[fIndex];
+				}else{
+					/*筛选出不为空的子数组*/
+					var filterArr=this.tPosArr.filter(function(item,index){
+						return item.length>0;
+					});
+					tPosLen=filterArr.length;
+					fIndex=getRandom(0,tPosLen);
+					selectedArr=filterArr[fIndex];
+				}
+				var sLen=selectedArr.length;
+				var sIndex=getRandom(0,sLen);
+				/*获取单个坐标*/
+				var oTarget=selectedArr.splice(sIndex,1);
+				return oTarget[0];
+			},
+			/*按文字边框顺序获取*/
+			getTargetOrderPos:function(){
+				var selectedArr;
+				if(this.tPosArr[this.order].length!==0){
+					selectedArr=this.tPosArr[this.order];
+				}else{
+					this.order++;
+					selectedArr=this.tPosArr[this.order];
+				}
+				var sLen=selectedArr.length;
+				var sIndex=getRandom(0,sLen);
+				/*获取单个坐标*/
+				var oTarget=selectedArr.splice(sIndex,1);
+				return oTarget[0];
+			},
+			/*判断坐标数组是否全部为空*/
+			tPosIsEmpty:function(){
+				var bool=this.tPosArr.every(function(item){
+					return item.length===0;
+				});
+				return bool?true:false; 
+			},
+			/*坐标总数*/
+			getPosSum:function(){
+				var countArr=this.tPosArr.map(function(item){
+					return item.length;
+				});
+				var sum=0;
+				$.each(countArr,function(i,v){
+					sum+=v;
+				});
+				return sum;
+			}
+		};
+		/*common*/
+		function getRandom(m,n){
+			return Math.floor(m+Math.random()*(n-m));
+		}
+		if(!('Staff' in window)){
+			window.Staff=staff;
+		}
+	})(jQuery);	
+		/*本地信息*/
+		var localInfoArr=[
+		    "http://p.qlogo.cn/bizmail/dpymELP06ZkDyBz5Heqm42XpeQrryibiboSU6stnWXibpz2gsia555vmRA/0", 
+		    "http://p.qlogo.cn/bizmail/3qzqELp9VicKniabepTaVl8iatPSoNlNVTnjY9O6NicaNcNDoFxIcxYG0Q/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf4JI4mtgBJex99rFbQlpZuzbzfy13nial4WDq8dIgae7tg/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf7H054KU3PxWMQUibRa366HVUIqm0aya7pwbarVTdCgs0w/", 
+		    "http://p.qlogo.cn/bizmail/4G40EZqygVmQibYI4eelj7hndWvDCFWqJj2gOWSTiaK9d9gO9ibgR1NMQ/0", 
+		    "http://p.qlogo.cn/bizmail/ic4sg7EoUhQoC1fpy2XPPx0YDsEiaGbHJTONjaMZJ1fsqltsnWLCRMcg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf497OaLLPogicicoOZwOgEvnibFgdAawOZh3qX9JUm34youw/", 
+		    "http://p.qlogo.cn/bizmail/L8ib9cP4zjqibFChWcrShYYiatNrA5YFE1clQpaWnaO0BDUV4FkvhQVxw/0", 
+		    "http://p.qlogo.cn/bizmail/x2Erazd7EH9cYibvKLx61Nx9cbU8RxdpeyAJwPf66rB8T7UicZTiaqhsg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf73JyicRQNMMgBlXvIJBXQhdTCQcHY79xvXIrut2Nfm7bg/", 
+		    "http://p.qlogo.cn/bizmail/WZiaprzwTLiaibia9Liccqj1f4wPM38EUHg9D9CrzAL5y9xkRSLibh4Dj4MA/0", 
+		    "http://p.qlogo.cn/bizmail/AV0h9uic8yx2U5KlPLfJiafU2NuMKnX1MqRl43DWQ7tsT4eib9p8KPp2A/0", 
+		    "http://p.qlogo.cn/bizmail/vbkQfHAXatw8cQrcrrgFwIN1B3YXxSPibrlU8gzfEIFoibahSxrJNdZQ/0", 
+		    "http://p.qlogo.cn/bizmail/d50s2SibXMWKswMd27eicoW3VDLIrb0Gn2kldLzMDlQAKn1Qj8p3loBg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6DYUXnD4YPrR8gOp4GuRMHrPtH1bTvy3mJXWNGV6ZoJw/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZQF5wCCN2yo748d4ic7ia7AKg/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZjlxJr4lNwNkK2HOHQEGTRA/", 
+		    "http://p.qlogo.cn/bizmail/sFNpLWvwlqoWLzEJvLj053SvvhiceNv84Ga4SSk0UjiaBRD05ISR6tew/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1G9N0IaP15O2ariaTduSIXfA/", 
+		    "http://p.qlogo.cn/bizmail/yXVLsdOXVwcAskFFHMfrBjaBpSkYjKnuOkniaZePup3d8NbQuKIBBKw/0", 
+		    "http://p.qlogo.cn/bizmail/IZ1oVcRO0ykL1CqPJcVZWHFjqiba8OjEGTngvlBV0xkHmOb7zc7Syow/0", 
+		    "http://p.qlogo.cn/bizmail/lppZXj6qFREczibdrAJibeib6qT5JicwyYogdNSf5pZYT9h8DLs1zvOWyg/0", 
+		    "http://p.qlogo.cn/bizmail/Pq7o7cUmoTT3W6Wibz0RJMOibO9bGSoicqNK0favRc0XRu2NRRsqDT4cQ/0", 
+		    "http://p.qlogo.cn/bizmail/Gr13nTMlez09QHzkWCqDrLhZibnyibRcNibrbPMhHWsEK89lPuCia1o9DA/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6dVdUrKyVseKvF5JZAA19MnU7AeSErIF9YszQgicvvg5Q/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZA4qZ9viaUyKjRr1Oib44qyKw/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf497OaLLPogicicoOZwOgEvnibOV8KwqrmFzKPdqOia3oGWGw/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf4elCFd4HMlMZ9ibxJkTNfEfpWwcGIG86HLSZicWrLEqvRQ/", 
+		    "http://p.qlogo.cn/bizmail/xZD3BfOzxpILhrWRq3cALneMYpOIeW99hD1Abbib1v6LADtzaHqNGwg/0", 
+		    "http://p.qlogo.cn/bizmail/6D7pC23z0YnQXiamN4qwwJr9gg2H5o5XQCicnlB8HFm6JcdqpUNmztdA/0", 
+		    "http://p.qlogo.cn/bizmail/bgM1lNXtgFLZibtOeNIRm2jVebsjmYKYMV3fa1SQVPiaaS5q57pHeUBw/0", 
+		    "http://p.qlogo.cn/bizmail/CtBnmWEicnI0l1lIDCChqX44O3jQibQShUswfTPfGCicGxTBOPO4h6V7Q/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZuYfpCk9FJBLuRluPMzjumg/", 
+		    "http://p.qlogo.cn/bizmail/I69G1zYhI5gicPqliajskpgw1qrAicGawfnqemF0JxZ0LaIiaE7x3hC6Og/0", 
+		    "http://p.qlogo.cn/bizmail/Np9Bm3dq2oqptSseGpgA8EH3DgiampsQAvKibpzyI1yP3libXNzTt2xUw/0", 
+		    "http://p.qlogo.cn/bizmail/vPC9r3FXW0fsxuQ2LWyROGTiaTq0zjKM6CPTiaFM2jLickzXw1oBy2ic5Q/0", 
+		    "http://p.qlogo.cn/bizmail/qkpJJHKQNAvHoib6OUubBKxEq09IG9XAMOicwEGcy8ohYhiaG0bv7VKVw/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZrkJqy1xkyCjevxg6t9lmjg/", 
+		    "http://p.qlogo.cn/bizmail/9Z2YxrbBTBuBnicZzWGuGVPA3BpUkobQPSAN37l5GTxib69IftnEic9TQ/", 
+		    "http://p.qlogo.cn/bizmail/L1ybYkBALIeznzbeMaKu0XNxMDRj9krqiafswKIej10iavHUvpo0XDRg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1gwgR9UBicySpkQF0If8eUFQ/", 
+		    "http://p.qlogo.cn/bizmail/ogKUvJicnynrtku70ib9coenoldSxownAGvU7CbZibonKI2cTKILHjQRw/0", 
+		    "http://p.qlogo.cn/bizmail/ZO5p1uCwWVF05fPewzgtMqH8j999nIrkfstBRH6Z4Q8icmnic1Tgvbng/0", 
+		    "http://p.qlogo.cn/bizmail/9Qm8Hx2HfQric7XvcWoFjQvlyickAw4GkPhvficq0iaSoBtsGjGtWv0Zkw/0", 
+		    "http://p.qlogo.cn/bizmail/sjQENcNuEkcXbVd5XZ6PdmyhsmL4xariaBgFs82DdwaK0ucNYiclVmXA/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1kql7IibvbK06Lwq7Kp4DK8Q/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf7yeHoyJmdc4pzS2zuBSqXEmxxk2l95pYFcC1m9QVYzgg/", 
+		    "http://p.qlogo.cn/bizmail/dsic4ovh19OgaK7FmXUWLUmptHqmlgrvStB46371ib6705xOpriajVwhg/0", 
+		    "http://p.qlogo.cn/bizmail/qe2xP8puHjo1Qh1MZyT7wuggZ58etRibVvQk7ofzwls6qhVfdY17Vgg/0", 
+		    "http://p.qlogo.cn/bizmail/VV14RDxujCahbhqDLKhKwniaIm9bRUvAP5XS7plPSP8ibMVrJvqDiaMpg/0", 
+		    "http://p.qlogo.cn/bizmail/BEvfZJ18p7qic5mLM6bKDUL7hHdM5lGHpZpZZbGfNQXFXAVqibmlo8sw/0", 
+		    "http://p.qlogo.cn/bizmail/6x9vvicaZoognUQQmSf0uHzUGw4BxeNennfClhEhYUibwbWfEzrx0vXA/0", 
+		    "http://p.qlogo.cn/bizmail/B8foJBc9nwQ9OichgEUib5APjW8h1DfRgeWONh1L4uZREliaXSsNEOEfQ/0", 
+		    "http://p.qlogo.cn/bizmail/JEzf0EUByRTcOUDkPosFQN59uKgfSalTv8y1t9ZL8IZByNRFoM6sOg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6ibicliazLWqN71ZRtWNxJHjMyezuPgLSomVGDdYwr84ibicw/", 
+		    "http://p.qlogo.cn/bizmail/dQCZick2pemqEiaoiawHN4X4iaHOs0ic2BoXxrKSmIJwiaAXxVejhSA0GW7Q/0", 
+		    "http://p.qlogo.cn/bizmail/Iichdh6RZfD0sibuEZW6gZaN1B2V8nFM2yATjrzibUIoBnVvGcGobueQw/0", 
+		    "http://p.qlogo.cn/bizmail/xwjdS5HOD9wgOdUzZrPibvW3N1ewxZtNa1TXw9IA3ubRk7oBW012A3w/0", 
+		    "http://p.qlogo.cn/bizmail/qSM9oGe3XElhkeDPO670eIeY7H1P65YkrTv7d9MicV4UIhMcyTBpCYg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf497OaLLPogicicoOZwOgEvnib0gjic5ibz3DxJcJiaWk88zRGA/", 
+		    "http://p.qlogo.cn/bizmail/SyQCjmgaeaBickgdtd5Zic7oDsicpduWpEzjMZpGdpZsojia8OUxWdmVVw/0", 
+		    "http://p.qlogo.cn/bizmail/YhHRBcq2DeyZhicdMMk5wLvSWWnNKVycBw8v0fyic9OMh6KbQZ6z4FDg/0", 
+		    "http://p.qlogo.cn/bizmail/XnTf5haWOU5jQzQIYAhzeke2RofaDUVUqDlDhSia8SG0ricGicybMmx9w/0", 
+		    "http://p.qlogo.cn/bizmail/hfHjKHsNQwdC7tmouzo78Iw6Micic51aKEfRzkVae7klcokKtMLORezw/0", 
+		    "http://p.qlogo.cn/bizmail/xwibbPOKiauMmu33q4LSnZicJUovhw7LKJiaQoHr8AucQ1DSV5dfzedz6A/0", 
+		    "http://p.qlogo.cn/bizmail/RUaUlc61nzhuqwUeunDia7GLZoHzC1ibQMNkm4cNvVlCJiabFLp91Q3wA/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6QkMv4KMQKdMP2BIicmpOdXShkNWBVwV2sy9LZMYgGMcg/", 
+		    "http://p.qlogo.cn/bizmail/1YMQh5YU8mBoM5lxQNic3ick5C6IUAAgp3xpkhfXpXfmAJXJibkOOTbEQ/0", 
+		    "http://p.qlogo.cn/bizmail/Ticicc4AOJZ87BbNEcX4fkUVAUoUkz00r3qKdjId2EiacCJtj93rcHxSA/0", 
+		    "http://p.qlogo.cn/bizmail/OPAX5YWsmc29mHt8Vv1gNQsmicyauxVaMet2O6L2CgsB9dHx2ThZQicg/0", 
+		    "http://p.qlogo.cn/bizmail/pUtZRN5NXA3jib1nf5YVLaYlnKdcHY2As00Buic0lbwh0Scd7h4KD4QQ/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5mJ06RjMibD32Sq9kgef0lOwOTfWRGShLkQl8n5iawnxaA/", 
+		    "http://p.qlogo.cn/bizmail/yl8UG1FaIWaG6O5l13bCMoJRxfeCzrM6dJmDuQ5BJxUkWic0GcyW7Bg/0", 
+		    "http://p.qlogo.cn/bizmail/echUHZKqouXR2WMZ5zXiaySD6I98uleHGQnvrRUJN4GGC4xqwg2dXlg/0", 
+		    "http://p.qlogo.cn/bizmail/tlJufWaNnyDVnadicvfJ2Qib6nEJ7dEnw7DQjMHvdNS9gcOZkV4c4xBw/0", 
+		    "http://p.qlogo.cn/bizmail/nY7wcJrYQfHsJoV4031ia7Ub4sVncj1bK7wGuXPxJRzgKHxnjRVLkSw/0", 
+		    "http://p.qlogo.cn/bizmail/YjyEuaZzib02bgWXTWCcPKPACZv8vsukkFb9RianqRuwPYl5wOfwRF3A/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6nFS8DibRR9BgX4MtI0u1kBBYB5N0AZ78bz97okiaOM1qQ/", 
+		    "http://p.qlogo.cn/bizmail/F5RYT6hjnwUxpL1gbw9zPUQVL9D5QuUyxQGaLDIVgmlnLDvvlicIKsA/0", 
+		    "http://p.qlogo.cn/bizmail/9KLvXGOXaUAQtV9iblHAVDPia4lokn01ibpfhJJueFYqnK2G2wT6iciaPYg/0", 
+		    "http://p.qlogo.cn/bizmail/Uhk7QLA9tCKBKddQAFIDicXibbs2zdJx2jTLX3Xr7K8AuJdeic6K9YTpA/0", 
+		    "http://p.qlogo.cn/bizmail/5nWEWNdwyRHmic5BzibrlZ5ZY7DK5EnLYPBvBaiaoHG7HPeUibQM0YiaPFw/0", 
+		    "http://p.qlogo.cn/bizmail/gfEjOSLVS53Go3V6glOMiamCVdxtnjz6TX1opzY9BzsJ3TkvGQII1vQ/0", 
+		    "http://p.qlogo.cn/bizmail/TZWI1ShaIc7kcXxdichYt5AzZViaXNGcmz7XWkCCpM9VfQY0gtKW7vdw/0", 
+		    "http://p.qlogo.cn/bizmail/WvMgGYOXITiaQV1PQaFR7e32OEibCxjojv1JgxibK75Rd6V4YeRMldmSA/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PX7anUAkpplfDW6ubBxibEwz12zDNE39pFibuLRM4mp4w/", 
+		    "http://p.qlogo.cn/bizmail/Sx4esDCFUdcKwhtVqbPp5gicYnpS99ic4sDOMI3SeU87MIXu73cojDbw/0", 
+		    "http://p.qlogo.cn/bizmail/Taa8fgahJVOqyNyxbKqVFugGgB8o7PDmb0jTjQPSibO4fF5GM1icNHDQ/0", 
+		    "http://p.qlogo.cn/bizmail/59zzpV7RXA237x4ORA1JdrsRhicklOJlu0zSAn30ZUCNIxrIhkzEUmg/0", 
+		    "http://p.qlogo.cn/bizmail/KmvibiacJYNJ5esFica0uv7Q9Fma4f2nC6VA9erficZMWYPIyQNyF5YOnw/0", 
+		    "http://p.qlogo.cn/bizmail/XjxDicq7TWvem5wZzlPh8YZkCocE8NaN82UM63x5a26g7VbX0Xf7p9A/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf615WbTzjFNNOSu27iabGMjxXKJYzFiauWPQ7HNeZge5IMw/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1STr6S7vl0TmWZFh4VI9ZGQ/", 
+		    "http://p.qlogo.cn/bizmail/Nh6gXdZnUpabu3N1iaogWNctmkKyPiakSYQPZMiaE3JE3Iobx6FvAHRbw/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6icrRqLy2EEGRtDsKSaiaE6dxjqJMOZNIIqqJRSUibc6brA/", 
+		    "http://p.qlogo.cn/bizmail/l5xdqqCSuSr8jTsNl5V5bcvia9FuL0O9SvPPMObMLV7olr2ia4IVwOag/0", 
+		    "http://p.qlogo.cn/bizmail/KwT53XwBCgG8AyvibbVu0v35iclFCtYAIUxKqYiaiaSc4ZZaj2K7u9lWQg/", 
+		    "http://p.qlogo.cn/bizmail/8VsE1Q2SKc8W9NiaAt8Cuj8SUuW5Jw7eicziaI75kX5uFr5kHIfspwyPQ/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZdusNsJ8ZBl5K1bEq3h6fCA/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5mJ06RjMibD32Sq9kgef0lOiclOiaZsmPk33yrN9VHPtglQ/", 
+		    "http://p.qlogo.cn/bizmail/Q9OfXEneNiaAVwCjkNMISg2xicfFqibecvWCDsETWPUQlds5kOmjDuxzw/0", 
+		    "http://p.qlogo.cn/bizmail/6Z4HZmaOYphhwrMOYuJznjxhDn0vGjls924H2hVHGJx3JAiaP5MBckw/0", 
+		    "http://p.qlogo.cn/bizmail/tplekia2QCTViaZpzPZQ5cIib8Cib0NdLv6IUuXwY4EwxmhDM7YfCUNHBA/0", 
+		    "http://p.qlogo.cn/bizmail/k6ggKYr2hID0EwiaTWJh89wlSvI5ziaHWMib0bxibZTkJ8MF6AMXKJ2tjg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZATBKNic1XNcvShw91KXGkvg/", 
+		    "http://p.qlogo.cn/bizmail/juKicLcEvwta7Cia5s6jCe3h9aFzavuJznCxEwxdwia9MibqNmVr8n67gQ/0", 
+		    "http://p.qlogo.cn/bizmail/mdIiafEjTRd69C3RAhmC3Y2Xf6NrEoVqune3J0qT1cUOC5N1yqiaJgZA/0", 
+		    "http://p.qlogo.cn/bizmail/ohY7RZxCmVGkOG3EdbagRbvLtek2D25UmdbFMeoJeIUI0S9ib692PLA/0", 
+		    "http://p.qlogo.cn/bizmail/x424STKJa9ZC2FYSVQKxZZTfm4QQOCqk1nNGYddL6XQ4AibmGOl8lWg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5VEVrSBDOuxFM6GUUgveO0VhLsacyibTFKffP8PpsM34w/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf7yeHoyJmdc4pzS2zuBSqXE9ia2bmRT7WpGnynqUibNREUA/", 
+		    "http://p.qlogo.cn/bizmail/4ayarW86u7V1G6j4aE14IgjGgjFiae46QqQUNYrtbTiaLfrG6y9mot3g/0", 
+		    "http://p.qlogo.cn/bizmail/g54Z3PaKIePuFSGic79Ehf33uOSBZzJcNv2GNyxfL246uHgvAubLoKg/0", 
+		    "http://p.qlogo.cn/bizmail/L86iacWpjiapbKpyibazibCHJmgz9S5gXRBTVjibdFzs9wdfQibOgibOorTFw/0", 
+		    "http://p.qlogo.cn/bizmail/xicLcgTnWtRMgUpC2DzHQziask3t7BzOawPA5Fz9hnm9qicxiaPIbQ5TZw/0", 
+		    "http://p.qlogo.cn/bizmail/9fHPGSCVcwpC1pryx68aQGV3icO1zWic6UUWBRSfFOUDqQ24UVhMJICQ/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZdLK0eEUPpB4O2VO1mJNkYw/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf4exQbWucwGiclwEoibSgR2Yy30sugicxbWXG6qM2pgCiaQTw/", 
+		    "http://p.qlogo.cn/bizmail/IuVMFUOKH3Qia0sdsrwUsIvUqDupt6MsD7Z0GejxJ5zz8z7lS3icbNDg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1yDxnU91ibibxQdfcCPicvkgJg/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf7yeHoyJmdc4pzS2zuBSqXEY7kRZD3SHxx2oXcIV52pkQ/", 
+		    "http://p.qlogo.cn/bizmail/5bE9d3BCRiaeL9jIvAUtHiagr94K59wDtVqtZ7uAruNichicO2ugE3AhsQ/0", 
+		    "http://p.qlogo.cn/bizmail/eQyGupQySWSaDP5Yyw2fosQRSQOyibibQGIbiavNTmHWPC7puJAqbjwqg/0", 
+		    "http://p.qlogo.cn/bizmail/A0bFicicE3Xac7UbBSBzxKSxWyKm2jF6DoZkA3mibibB1cWGvzQycFjKRQ/0", 
+		    "http://p.qlogo.cn/bizmail/p0bPjib2I7WHkBhIDXBNS3XF25DBuXqtOqXJQI4xLN4TdIOJpJo858w/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1F1VVoftvILXicvnxmypZfsQ/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1xMcfWkt9nvlx3ry5EAQINg/", 
+		    "http://p.qlogo.cn/bizmail/GMUCuhF44v5ibRycaQwGibPmbkKWoo8EO6ynZTQ6XuK1WDewhzoOtI3A/0", 
+		    "http://p.qlogo.cn/bizmail/gq5MiaYaY4rsXPzwMUTdWa1Tlhf8rV46fttA1KIlSp4Q9c6z5k0qaoA/0", 
+		    "http://p.qlogo.cn/bizmail/4D8mK2q41lMTGUyG8OSjBHicyHhXN8uzwUr6yEoFiaeeKJ90cVE8D5tA/0", 
+		    "http://p.qlogo.cn/bizmail/ls4VclJf6HMuibEg7NvrCeOFmcHiciaeyic21ItZOvY4hzZJfmlAs1ARhA/0", 
+		    "http://p.qlogo.cn/bizmail/tp1Jrc5aDLOzGLSMEdHcKtoPClVAIaarASFOiaYDPMKiaJAbP6QN8amg/0", 
+		    "http://p.qlogo.cn/bizmail/wldGyRft7LOiaMvS9icaXw6icdfQFgPVtDEVM6ibQ4c70N8d81B1frtLIg/0", 
+		    "http://p.qlogo.cn/bizmail/BPLUCQgyIkVDuIbozcib6p68aaHUGFkR2JhDOTibTb93QPZfSXeyN5hw/0", 
+		    "http://p.qlogo.cn/bizmail/oHA1sBjia53HibIhHNQ2DBSibjvAyb96KR0icCoPZUh3xQcT7HaS1on1Ow/0", 
+		    "http://p.qlogo.cn/bizmail/vuRLiaVcQeQLBYpjLCn6ncFoH2xweNXXM9Uy0JlBruRmiaEo6iaoXPPiaw/0", 
+		    "http://p.qlogo.cn/bizmail/6VkUhz9uNb1UTwrmnqGzqDu0tu02n5EKSOpa2dthwRAghRVqtIYjibw/0", 
+		    "http://p.qlogo.cn/bizmail/GJgx5vfibibsxgHI4oWfSlw0CNp1FudZ8eQFtFzLgz6tQJ9embf08tXQ/0", 
+		    "http://p.qlogo.cn/bizmail/dGjYWsWuCJTDpCeAsMwWNz7OtMRicv41BIZKtvNJgJgA8D69IkfTfbw/0", 
+		    "http://p.qlogo.cn/bizmail/gBBKDfGjbn503dQR1wP7n2L2CuNxPHgLhOapUDVxngNXMaa6cfoMqw/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6nFS8DibRR9BgX4MtI0u1kBdjzuMk9oo0ZfniaLQFXqqog/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1V4IYkQFmR0CHGlJ6JXzW7w/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf4gQSZJQnibv3r8KoiaUNsib85DOr73mXtJzs8WNButV2vMA/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf7DkTCA6I9dZ2Su5IW7QcBuj1nScKeoT9xUvgm6IBGYfw/", 
+		    "http://p.qlogo.cn/bizmail/O1MmCkXNtLNMUqX86KfLvHV9h4KumZ7TtDgONcFlTtsWiaG3ia6jESBA/0", 
+		    "http://p.qlogo.cn/bizmail/YksgFxHwpJeMIicQYibIk93P0yDpoVicib1DqlWHLl4EfkpsWv1hybqr6w/0", 
+		    "http://p.qlogo.cn/bizmail/PIabsfAnuMuVz2fkLAJuSFM7TDbCt2b1rUaCMicQWniaK720WIF9EohA/0", 
+		    "http://p.qlogo.cn/bizmail/lyyic6s0pb26pOymL4kcoPzrNbCl8f9EjIaoMm43NehtkpsHNicmbYyw/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6Dyp3ZOgiaJq8fRqQVzBicH6VVV4ibRIa0vUXbiadQb9h3dQ/", 
+		    "http://p.qlogo.cn/bizmail/SU7I8eibiaUIeGwGHtNda1OnMgMAPCCnic3ib6rhia2ZyZEPsGtq0XsKfrw/0", 
+		    "http://p.qlogo.cn/bizmail/iaPGUPDzhL11mE0FxnRC1cPBZbGFRtOlV1FcWgBic8xH0AkRLEia0Gu0Q/0", 
+		    "http://p.qlogo.cn/bizmail/bX8SDeqVqgmZtgCH0hvPtWiciaoXMGzTxwFPcsicDaABjHVenUBRgiad4g/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5mJ06RjMibD32Sq9kgef0lO0KauOCQvSnRAosSCMmLn6A/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj12GaqBibCprUtr07CIFuDF2g/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1YemBIS87dWTlxasxZZjWZw/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZemN8fuU2vggtnRVVY602WA/", 
+		    "http://p.qlogo.cn/bizmail/hiaUL5H3I3eEdjb40439oO9mLdiascZdKliaN51qvvA83p5bZowrJDkTg/0", 
+		    "http://p.qlogo.cn/bizmail/rp5RBItJibqJjzylGibgp2mjjjR1taScuic6P4KmzL1oIoT40g3icbyCiaA/0", 
+		    "http://p.qlogo.cn/bizmail/7NLvnZaSniaTSdibBmjEhsyNnQBplj5BAFvaoGPiaMvXC8YaKEWgMib19Q/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf72JXrqdgG1IynJBwWiaVg2ocSC3141192oHGqHE6XR9VA/", 
+		    "http://p.qlogo.cn/bizmail/oPVUJ9JzZB93Jr2ebv42yOibgZMmcbNrQdsV0jcVOsCCNrIbUCEbpsA/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1gxaVnDMyZTE9jP5ItKicKNQ/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZYDqiaLa9KiaDMWN5VENWiaXcA/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5mJ06RjMibD32Sq9kgef0lOgtPRCrhd4r3d9h580LAygQ/", 
+		    "http://p.qlogo.cn/bizmail/r20U2WJySIiaub1a3N1DlfnD2rtag5auzHzTBe2TYE2TJH7mnHEej0Q/0", 
+		    "http://p.qlogo.cn/bizmail/Z6fIBUuCPzvfhO38ET1FyDT2Eic69LmxmnxFRvV5RkaMjE4K9hic7Sfw/0", 
+		    "http://p.qlogo.cn/bizmail/OacjIUaLs7rLoElibhdjNuiafP0QhZKXYFd3ER6qcMG68YjbsL74tACw/0", 
+		    "http://p.qlogo.cn/bizmail/NeBS57AicibCGKfGPgSAvs7kyerY7U6DBuaibeWaCWImCSPV6MymlstQg/0", 
+		    "http://p.qlogo.cn/bizmail/K2Ribw1dsv7VhElGiaYcicdiboNtcfniauLEaF3vRH1WmFmqibJ9ibibJ9wntg/0", 
+		    "http://p.qlogo.cn/bizmail/Da1bk5TlJ1Qo0ib7QMtTqoKmJ110vPI0XLjhqLJS0Vw63W9UpRMTGaw/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1QYYmpWNBoicNoPMianwd21PA/", 
+		    "http://p.qlogo.cn/bizmail/kx2ZsdfB5rT3anz1eOjiarSOTCpg1Nfe8nQIVW9rI0cAiaSnWnWzI4Aw/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf65ic6FGuR795eI5zx3cdSJdFxbllRYobUWtkhpZtrnNYA/", 
+		    "http://p.qlogo.cn/bizmail/KR4FD9blzPk67w90MUoVeEfuR50U84qIbhW85urKPvudkA5HxaIMiaw/0", 
+		    "http://p.qlogo.cn/bizmail/qaHricQwcqllJtxVKakbW5YoeJBNvmsFPFzvkEEic2mIv8Vkzl7JmhDw/0", 
+		    "http://p.qlogo.cn/bizmail/gxoxtDcCJdnX87ibLfzJhLCg7u1MmEB3MmW8WyCuSg6MqTHgzc7l0icw/0", 
+		    "http://p.qlogo.cn/bizmail/IbiaZup45lvvicU1oUPz5cNMXta83G7ibs2DnGr2lQM0c1Aj0IEZ9mVMQ/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6QkMv4KMQKdMP2BIicmpOdXzF8I5Qz6qYUYvB5b0NicuAQ/", 
+		    "http://p.qlogo.cn/bizmail/dTzia5qpnGtmoqpXC4LPkxnKoAeNodEtWMq31hI1as1hw8rPzX5KXlA/0", 
+		    "http://p.qlogo.cn/bizmail/ZGG4satsUqlJKFt1AqgGt4ASpbdt0ibWpp881ZwcBBoqeAHtw7iaShGg/0", 
+		    "http://p.qlogo.cn/bizmail/ib8pXr9NykTcSXxYggpqBMfhgWO2ytSoY8nFCibRFTiawzxfYXun0qXOw/0", 
+		    "http://p.qlogo.cn/bizmail/GSdxtDUuQ3jn6WtdgvFVlXLSdyKmQQyEhQvoxzyMxaXWnWic2n1AwPw/0", 
+		    "http://p.qlogo.cn/bizmail/j7ZwapINJOv59A2kbMniaibevzBYAuzo2x6SOejqclVrtobwSGadfxKQ/0", 
+		    "http://p.qlogo.cn/bizmail/GUaXZIicWzLPHwkycSH8IqpzUcXoycOfcucibWcYBoWsvo1Pa2KsQSYQ/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6nFS8DibRR9BgX4MtI0u1kBHAWI9tz8BkyUptKl0E5rmw/", 
+		    "http://p.qlogo.cn/bizmail/g5NBjV4mvoBETfLr6INkDciaU7cBJmUfjL5L2DBUXUWgwfXLQFIE4Eg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6EPhictZAIPWHPb0TU8aYYbPU9wfN6Jes0v4rVDoKkW4g/", 
+		    "http://p.qlogo.cn/bizmail/3sFjnmp3snWL9612kPJxgZmCmFibnTkQPyqzD1cXcC7B4teIQA9XdqA/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf7QGqzj6XI7v7XU4bdzStrsy16poumITjCuAEZvGgmtaQ/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1SEtMm6lY2UXVz1Ric9LPNNQ/", 
+		    "http://p.qlogo.cn/bizmail/1xnxm6s5ORwPnTqaXecqPdcGfnjkpJlKEWsicWhwKx7O16kspMu9zfA/0", 
+		    "http://p.qlogo.cn/bizmail/gibhjpoMrrT5bg7yjbckDIl4HxiaHv2wYicfOTqakyeV7AUd0Qsc5HYxA/0", 
+		    "http://p.qlogo.cn/bizmail/C6mIDdAVNjE3Q5Ro6TNlTVgjcaiaqaBsaExsUMUuOk8Fjm9HAGKN5sg/0", 
+		    "http://p.qlogo.cn/bizmail/xfcpf4PDKs9iaZfOtbVyy9dlsUJcc97IiaeaW58w1ZT0wfdfIYo8SvnQ/0", 
+		    "http://p.qlogo.cn/bizmail/rgm2kcQGmtwAodnC46YB2GrWx0jJnyIXHian3FKMp0UdRIAzOIvs10w/0", 
+		    "http://p.qlogo.cn/bizmail/VsJ1fvISPsHIazClbUA4I4tNnNrEtrHQicBRu9x3YJMy3veia0DvwsyA/0", 
+		    "http://p.qlogo.cn/bizmail/qbasMR5KF8EANOJqURfrLicr2TQiaQJiazviaDaClc5e5LE5S65GPibnZmQ/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf4jadryWRVvIJM5jTwblbCjuibaeb3ib3WtdODKIQicQtlIA/", 
+		    "http://p.qlogo.cn/bizmail/vHtp5YhsNd0xdUo49QUoMAHBjRG6ac3ZR0pSrmUazTqd6KaBvvloBA/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1RjdlFDh09iauNibSngutRXrg/", 
+		    "http://p.qlogo.cn/bizmail/aBibhdCCdenCvT1q7wibMRUK1pp71MeTzlB4YKOyhMx1gbUFTN5u0QvA/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5H2JFuJZW9V9Cx2iaqqSLuHmC0ic1bLZ5ZicEqhqNl5FdWw/", 
+		    "http://p.qlogo.cn/bizmail/ExvQNPkjCn2RUStpAjnqFlpqY7ic8fTaT7DzNgKTkQzewX636WcjlKQ/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1mB202YZxDd3iaJ1kQqgpF2g/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5IZxoovPOIZ6ABTmbUIsunC9r0ycseJK9iaAZnoyTHibMA/", 
+		    "http://p.qlogo.cn/bizmail/gsn4oMZNfv8vza7Kps5nND3nb2ibnGKeRGkZrRBHUYYhpbJ6icw4243g/0", 
+		    "http://p.qlogo.cn/bizmail/0KdUias9shicTwvSRrZydyubcKiacX1mx47kPReNRCOuibicNsx3QbaX0OQ/0", 
+		    "http://p.qlogo.cn/bizmail/144nop9p1ScgsiadicCplbINqjicOv9lVbl9BtY5gia787CE58mibIVSTKg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf7zhrw2VcPEeE29vibr6JRJtSUzTibRwfq5L5748wbfFj7Q/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6nFS8DibRR9BgX4MtI0u1kBicjrkOfyia7q3qXyWtE7cO8g/", 
+		    "http://p.qlogo.cn/bizmail/5PYu3X7J508gEEyVcG8CWIOGANnkziczNlLCKHsic3pgbzdj9ZMgvT9A/0", 
+		    "http://p.qlogo.cn/bizmail/ljEHD6LxtBYADAVXiafmLIS1DY38aic3ibEAbVr3whmaj4VV1nEEuZKRQ/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1UIsElYEIibwv8FcZ0uiauVug/", 
+		    "http://p.qlogo.cn/bizmail/ugFJI4xiagCIGpXWqI9ib9wv9mHiangReMYPmU6mqzq2ibKXoibbJzmNmvQ/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZtq8MtwjRhYYle8BS7m6Wicg/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf4TdgBOJqeJlUPtae3Rd20HyibqLqnQ0kpTicp4NicpdCQTQ/", 
+		    "http://p.qlogo.cn/bizmail/JYvk3xpDrUAdYh3ZTylAM7PHQCiaWicj8jhp95JMvrC5Lhe8t536ibw0w/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf4jadryWRVvIJM5jTwblbCj3icWfo6Ria4ZBRIsS3sso5Ag/", 
+		    "http://p.qlogo.cn/bizmail/xKZ7LRE4GM7Tianjhb8icwgjCXY7wIOIORrLvxNZSDUsDmib1OOUuxygA/0", 
+		    "http://p.qlogo.cn/bizmail/F0DTRg2dBkLlcqqRjBhhAUsqiaVEzkfkIstJAAW3aUMQSIwD8qLiccEA/0", 
+		    "http://p.qlogo.cn/bizmail/93VtjpYl3b24XF5XDGRVXribaibevCJSfwVUXz9JwGuk7PbAkn1M6f4A/0", 
+		    "http://p.qlogo.cn/bizmail/8IPNRSmYuib22L9Irx9yxUkMEib9lCsHAo9x784azkQ6zItYrSKv7wJQ/0", 
+		    "http://p.qlogo.cn/bizmail/TcWjRgoxt7q6xdcjy9gFuCNBiaHQtqM5cibfwCEDl6Zkrib0v9LxplCdQ/0", 
+		    "http://p.qlogo.cn/bizmail/O4LcPMicooMPsSIl7tNzvVl486ibaE2h300nLTRUbtsiac2iaa0OIswPww/0", 
+		    "http://p.qlogo.cn/bizmail/bPx4sRhFbnsYwAgUX7Z8s8DmrFnotticiaof4QybIgfwibQg5YfL8kXJg/0", 
+		    "http://p.qlogo.cn/bizmail/g9a5Mj5LIko3cjkAawb6zdicbxHaFYaw84nCMxwCxVMKfdfkfzCu21g/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf7mNOibWdMX36zsD46QGFLY2wgDic3RKX2IxHqpAzHZMp2A/", 
+		    "http://p.qlogo.cn/bizmail/xQ5goRricXYfeYty2GW7rRljvqlgpzxb6hhYLNVr7J5a3NdIuuHbQdg/0", 
+		    "http://p.qlogo.cn/bizmail/WFPLmtXLk40sCTf6k43JBOLh69ic2ZNajziapqicYWWLe9ndn5rNl7Y6g/0", 
+		    "http://p.qlogo.cn/bizmail/0O3oWyzIjuebYn1BHjAleGsqweAtYZic2GQyfpfoHJPHB1rtRicrmt0g/0", 
+		    "http://p.qlogo.cn/bizmail/ups0lHZP6fnRp7WfQm451Q5kqZIIKImrMtJfjcJvaHufmr6Xrw1QMg/0", 
+		    "http://p.qlogo.cn/bizmail/I5EAGTjTIgnRCbHSadyF8MFtBicN7VsGV9QIk1y4odGZGw51m2Srwicw/0", 
+		    "http://p.qlogo.cn/bizmail/YPfqQ28XOYVA3FMw5QIwvKmC2pYbXqWUyXThwsbPRvt2xsMlC1ahBA/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6KwGOd9uvDaYKtD0P4JV1mDZmEjZic5z5ZfW4osE9crOQ/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5z3IW3wtI79YtoqBMYMTxRFyasz9mSjialE7BEib9mibhvA/", 
+		    "http://p.qlogo.cn/bizmail/opXpqHONVw9ibDyFGT4Tqrdn7CCHPRX2SCHtbPzbKQFIUeBVW6lzgVA/0", 
+		    "http://p.qlogo.cn/bizmail/qicrdCP8CeLOGkxReP1zYedOGNAzZOX8jgiaxUcDxVVhO3iaa1ia2a0PyQ/0", 
+		    "http://p.qlogo.cn/bizmail/BibZ1HRorJ9spM2cSXdwhVZ0q2wHo6P2T0rLG6cav0T5ZRuvCMichRrg/0", 
+		    "http://p.qlogo.cn/bizmail/3nIXibKyrWU4VBB0LPlaBnjqicpoMZCuiaqI33pwVHAImSOsUAvyhp5Nw/0", 
+		    "http://p.qlogo.cn/bizmail/Lrll1JZn2VamBLiaDFKXdoLcM2vBc1v0LMxeYUJkl3S31KicXcw0rEeg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1iafEM3rZ4c8EpCuObONkjuQ/", 
+		    "http://p.qlogo.cn/bizmail/DehFcHDntbk1XEZdfGkBSy0Zj7mic37iah3xjBJBicGibVxTKqRdGqwaUA/0", 
+		    "http://p.qlogo.cn/bizmail/r5z8bhlmPykBw8V3yeJREyrLQbZPV9RSCgzt0N8jrVq4oSZ0SoNM2w/0", 
+		    "http://p.qlogo.cn/bizmail/4SRUIHadeYlIfCpukTcxRN5VWSu2zHyWobTdM9ib3nI1Xz35rEHzXKg/0", 
+		    "http://p.qlogo.cn/bizmail/yff6ePaNW3xEhPIchQIyhwWlgMVbAzVefUXvQPjOibibpIDtAd7feE5g/0", 
+		    "http://p.qlogo.cn/bizmail/Rdj1dBVo6MiaSbgNMPS8WmK0KyaSdVBwmOgdTHqrRZlUbylkYzEcZJg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1CUibGIJNVIV9KqdW1BA2LTA/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf4n4a5dS5oIxjSj7Fun9fyhicrHOhvaarB76DDVcWicicY3Q/", 
+		    "http://p.qlogo.cn/bizmail/s4VamYUUp1VkiarEfv53QdAYz0YMjhp9VT9ju3OBOxAN4HFXRQaAkicw/0", 
+		    "http://p.qlogo.cn/bizmail/EgfZ3dSicTLr6dLCyACOQgS4vvic5vbMluJP16E6hkAqgODhNgoGwIwg/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1icWe22GbMAeWDIzOOX2x5Fg/", 
+		    "http://p.qlogo.cn/bizmail/fIv8ibE8jgMXvFibBLEZWD0q0WYJH2jibxtUbvoXtn4tUHEQ6N8DXnKEQ/0", 
+		    "http://p.qlogo.cn/bizmail/SPME9J0iclqE1waBz649jTjbTwNjo71HhrtKnlyWrGlCmsGLhICTQxQ/0", 
+		    "http://p.qlogo.cn/bizmail/JibPuftDcL8dEQqvPW8DF5QK9xGABTwQhzrZHFYczicVqdLZXmB401WA/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6icrRqLy2EEGRtDsKSaiaE6d8yicPFntJbWAK8lz2ibibBwVw/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf4QxONtOKTHnGFgJGLuEBrU797BBVOgorNicDxt7GwxbvQ/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6ibicliazLWqN71ZRtWNxJHjMgcEKz07epeGBCNp764bZMw/", 
+		    "http://p.qlogo.cn/bizmail/L29CmibaNm2DjtsG0rxQRNAicj5ibKtwsbfOp4Gd2d0szxyV1nib03Oksg/0", 
+		    "http://p.qlogo.cn/bizmail/7hIWF8ggBr6EHqjdD2WfVPBzNGNevcl7Lic5WV9ibZiczkR4icmprJ3OTQ/0", 
+		    "http://p.qlogo.cn/bizmail/tdudCNXxvaJXkLV9QibNGZMXvjiawPDugvHmrYBucvWVsqwDDqtXWSvA/0", 
+		    "http://p.qlogo.cn/bizmail/8T1lnl9l9FSgdgH6FD1hWQaAgWVRkGjtdJIUlicmM3iaD9hGiaQ5qeTQw/0", 
+		    "http://p.qlogo.cn/bizmail/rFAlbnogVdufCFwZiczyMicpaYFy57HBcSUv94ko2CBZFOzxwpAQHb7w/0", 
+		    "http://p.qlogo.cn/bizmail/3xM4eSxIrR7KPBoFbDxgVWmnXFhPLLrlOx1Gf2jlCgNSAXB39LTlzA/0", 
+		    "http://p.qlogo.cn/bizmail/ZIYz5icVJYUzms9hcgR6b3ErWgLbOByXxtyT3jYheuiaHy9XpO6ePGiag/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf4gQSZJQnibv3r8KoiaUNsib85pXQiblrEDIrpc8BqjceuXWA/", 
+		    "http://p.qlogo.cn/bizmail/sXqe59lIvMeRLP65P0SibTkj6FEyyF9ZvPCmiadfEyR6uPBSmuyicfwnQ/0", 
+		    "http://p.qlogo.cn/bizmail/J15Da2SgGEWvAZevo271ia2OCKVsCc9jmOQY0IlRsbuicxYjLe4nyEyg/0", 
+		    "http://p.qlogo.cn/bizmail/ib455qXfpntSdAgEgXJvdQocvH4veGCOAIQgVqwtdbAsuicIib8D2Oo4A/0", 
+		    "http://p.qlogo.cn/bizmail/yTjt4Y0b03TRRibevBZVwiaKjyBZCBkutbF6UpUXWLJAflAaFaDBkCYQ/0", 
+		    "http://p.qlogo.cn/bizmail/eWGibkeia7UuCblOyxtAV6L9ABUAQo0MFaZxo0cZkfUfLR2w0BlyQPAA/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1N8Gibo3xz97A8euEF6HHmbw/", 
+		    "http://p.qlogo.cn/bizmail/SviakToPWSCPCQFtx8l1EbTFia9BRWZ1BQ2ZB18ibbctqZbODHEX0iaalw/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf5MmG4WoibVeibhlSg6eUDpj1SmNbH5A3LJ0V7BbDCP8zSw/", 
+		    "http://p.qlogo.cn/bizmail/KYVUopicicfUdAj3eUxHlGn5iaXsASdEoTHIHIsq6BybPbh3272rdM3mg/0", 
+		    "http://p.qlogo.cn/bizmail/0bVs70kEe3SeViahKBLFGLThY3m2PSv3iahicyjbm1ZHXkkBqJ15cztgA/0", 
+		    "http://p.qlogo.cn/bizmail/V9iasDsia0FhuMwKBvPAKpYpb87YsX7Pxl4CPEticUDsD1OiaB2YktzdMQ/0", 
+		    "http://p.qlogo.cn/bizmail/EOuPcicF9WksMlhuEX2wk0ZxEfGLcE86rpia77nXcVPXoutvPLTwC78Q/0", 
+		    "http://p.qlogo.cn/bizmail/ZIYz5icVJYUzms9hcgR6b3ErWgLbOByXxtyT3jYheuiaHy9XpO6ePGiag/0", 
+		    "http://p.qlogo.cn/bizmail/yO52Pal9eDWFVsrhy5nMMNKqRWpicTXGcAJIRmHVgLVVTm1icpA9y39g/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6icrRqLy2EEGRtDsKSaiaE6dUVXjEPAkXqCDyPAMABmw2Q/", 
+		    "http://p.qlogo.cn/bizmail/ibNLHD2Qw8fVdOvuVcgHv9AaahCQBLhRZxbG7euLtBwaxicqBLAaGrPA/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZrLoR4GQko8rcemYRO32aFQ/", 
+		    "http://p.qlogo.cn/bizmail/yicYL1CpHkav8ynVzkOQltZWKK6TNer6zvvmSjZ9E8qqsS6xTLSZE3g/0", 
+		    "http://p.qlogo.cn/bizmail/W0aN74bYMpFicia9nfXkn3E3w4AFdMvSeFUtI4EL6GibRicHZUdr6pTfag/0", 
+		    "http://p.qlogo.cn/bizmail/4hLrBKaIzMiajP900DKmgEwMfDrO4ZX6bx6mpjVJCjrtc5TYAvmbxEg/0", 
+		    "http://p.qlogo.cn/bizmail/VNJkZEprIhibauAfrsQCMz0tmCPoVMeyfP87zMsmKhPY2XO7vibib1a5g/0", 
+		    "http://p.qlogo.cn/bizmail/NC5GKCUoByOe9HtQ0QRhRwkibzBiacMMHXviaPS2H5WiajJPozPkkzuO8g/0", 
+		    "http://p.qlogo.cn/bizmail/Ozbwb75DOfF6qgBSHp0DzuDcKmQBictNJ088DWbSf3LOialibHcBiaOxNw/0", 
+		    "http://p.qlogo.cn/bizmail/icxbKT2g0VaoaN9hz7EWxpGKibG9T2ibJ2bNRMKC8iaOY6NG2WAofFtphA/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf73JyicRQNMMgBlXvIJBXQhdUF30pjfqbrsDrlsP1MpTdQ/", 
+		    "http://p.qlogo.cn/bizmail/D7OMbibByrQGTt0AhvuicjCzg3Yl2Js5AOwT1gcZ7UibegblYibD0sELicA/0", 
+		    "http://p.qlogo.cn/bizmail/iayibVV7MYt8sZQWMicWkj45lRFNwCyTz3pmJiaYQCDib6G5YCae5SxTTIg/0", 
+		    "http://p.qlogo.cn/bizmail/rORNBmvmbHLS0OXotf8aTRticT05KmdKYK8mS30yro4KiaC2dYuCv3eA/0", 
+		    "http://p.qlogo.cn/bizmail/kLyibjnB263wUoZnlChDZclicwS8ecdAZXWq7cNrJEYsicbur9iafviaamw/", 
+		    "http://p.qlogo.cn/bizmail/3GXufSLNEGqSF2OZ39WzwV71uF8P4RsHvjnf4Dq5mEibgQvqZRSNBQA/0", 
+		    "http://p.qlogo.cn/bizmail/kphSSibFKichjBZc7IRwnqD41ia4Uz32kQr4qCWHedmiaCq4M7fCTNyH0A/0", 
+		    "http://p.qlogo.cn/bizmail/UUENvCjn4x0jpQUc0YnF1icTyxCJOq5YXN9JbrA4Y858g4w9ky1CtpQ/0", 
+		    "http://p.qlogo.cn/bizmail/iaktfLxu4YrSmVJaaicuicBJ8AUdwPfWUgrMbK2EYmdmNTdpWzjE6LIOA/0", 
+		    "http://p.qlogo.cn/bizmail/sXqMg3uF7IpRBYD1cSfqYSiaRzE4oA58AnMz8wjucVAtyEnlOv50uJQ/0", 
+		    "http://p.qlogo.cn/bizmail/vtbxicyQiaka0yOzJrHTPvl0mcUssvPxCts2j39fbYUEAGKiaqsTe0Jjw/0", 
+		    "http://p.qlogo.cn/bizmail/qEcSLiaGMyrr36yLFicgrDOO9MCEBcqAW64icaEP0HwgEDMrv5zFBZic7g/0", 
+		    "http://p.qlogo.cn/bizmail/xRppbaFQaibxWPibEY8XyicSEr51niaictEYZcwmgnC8MoPw45B8YY9abKA/0", 
+		    "http://p.qlogo.cn/bizmail/gGgkfKKdm10ggUpjbA3aEEr0ppdFSa2icndY00icibzVMpcNcktUBy4Dw/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf77xMwdrVv8F7fucgUx5H3V2ibSGApMewxc3D8WPMBHqrg/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf4aKrpuebsiaiaqGPvMdvjdYsjpzLaNtz6j2loiaLQttW9ew/", 
+		    "http://p.qlogo.cn/bizmail/CYXElOmSJKsHhzSd4pu8xPPQsqmMuV8qqUlTdpFp6icG3dfibfWuibcOQ/0", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf4HWTkloial97rdKIkfZw49O7P3sNnMEqfS1icN2xJn1O2g/", 
+		    "http://shp.qpic.cn/bizmp/Oic2tI86Ivf6PPATDYQNEl5J6zHxLrbJZCIwVpSXMtd1Ch4wlM3T0HQ/", 
+		    "http://p.qlogo.cn/bizmail/jib52UcS0bRIic7c7oXBibtVZMhItwMqrlZETM7kV9TXSDiaShK5UWlwXw/0", 
+		    "http://p.qlogo.cn/bizmail/KEv03y4DicicdFs7FSIzDckvGysDfKEB7U1mF35jgm2B8w8iaewlAufyg/0", 
+		    "http://p.qlogo.cn/bizmail/77Ccgibt2CpdRXX4R7fLPBGWj5ES7icaF81rWuFZUoD8xNiahZl3DmMbw/0", 
+		    "http://p.qlogo.cn/bizmail/3ExjcGibiaYXA3U4g5ibAD3flaA8GXeyaoAfib30bEsvwUYLvUJVCgDzVQ/0", 
+		    "http://p.qlogo.cn/bizmail/mkBePjaBfIs59LCxCfCJLq0FHicVrFNOr5w3fdicnBsUfican1Lwbs2Iw/0"
+		]
+		console.log(localInfoArr.length);
+		pg.dsOpenLoading._show('正在加载');
+		/**/
+		var tabTimer;
+		/*存动态生成的图片*/
+		var personArray =[];
+		/*存初始的坐标*/
+		var initPosArr=[];
+		/**/
+		var elements;   //375个元素
+	    var imgElements;   //375张头像图片
+		var CurPersonNum = 0;
+		/*公信诚丰Logo*/
+		var gxcfLogo;
+		/**/
+		var staffBox=$('.staff-box');
+		/*中心点位置*/
+		var cx=Math.ceil(staffBox.width())/2;
+		var cy=Math.ceil(staffBox.height())/2;
+		/*人员信息存本地*/
+		var localInfoObj={};
+		/*$.ajax({
+			url:'http://172.16.1.83:8080/GxcfNewYear/getAvatarAll',
+			type:'GET',
+			dataType:'json',
+		}).done(function(data){
+				console.log(data);
+				localInfoObj.userArr=data;
+				localStorage.setItem('userArr',JSON.stringify(localInfoObj));*/
+				for(var i=0;i<375;i++){    //244  --  375
+					if(localInfoArr[i]!==undefined){
+						personArray.push({
+				            image:localInfoArr[i]
+				        });
+					}else{
+						personArray.push({
+				            image:'images/logo1.png'
+				        });
+					}
+        		}
+        		/*S*/
+		        var table = [];
+			    
+	    		for (var i = 0; i < personArray.length; i++) {
+	        		table[i] = new Object();
+			        if (i < personArray.length) {
+			            table[i] = personArray[i];
+			            table[i].src = personArray[i].thumb_image;
+			        } 
+	        		table[i].p_x = i % 20 + 1;
+	        		table[i].p_y = Math.floor(i / 20) + 1;
+	    		}
+				var camera, scene, renderer;
+				var controls,objects,targets;
+
+				/**/
+				function init() {
+					/*公信诚丰logo*/
+					gxcfLogo=new Staff();
+					/**/
+					objects = [];
+					targets = { table: [], sphere: [], helix: [], grid: [] };
+					/**/
+					camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+					camera.position.z = 3000;
+
+					scene = new THREE.Scene();
+
+					// table
+					for ( var i = 0; i <table.length; i ++ ) {
+						/**/
+						initPosArr[i]={};
+						var element = document.createElement( 'div' );
+						element.className = 'element';
+
+						var img = document.createElement('img');
+						img.src = table[ i ].image;
+						img.className='vivify';
+						element.appendChild( img );
+
+						var object = new THREE.CSS3DObject( element );
+						object.position.x = Math.random() * 4000 - 2000;
+						object.position.y = Math.random() * 4000 - 2000;
+						object.position.z = Math.random() * 4000 - 2000;
+						/*存初始坐标*/
+						$(element).data('initX',object.position.x);
+						$(element).data('initY',object.position.y);
+						/**/
+						if(initPosArr.length!==table.length){
+							initPosArr[i].x=object.position.x;
+							initPosArr[i].y=object.position.y;
+						}
+						scene.add( object );
+
+						objects.push( object );
+
+						// 表格需要坐标进行排序的
+						var object = new THREE.Object3D();
+						/*object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
+						object.position.y = - ( table[ i + 4 ] * 180 ) + 990;*/
+						object.position.x = ( table[ i ].p_x * 140 ) - 1330;
+						object.position.y = - ( table[ i ].p_y * 180 ) + 990;
+
+						targets.table.push( object );
+
+					}
+
+					// sphere
+
+					var vector = new THREE.Vector3();
+					var spherical = new THREE.Spherical();
+
+					for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+						var phi = Math.acos( -1 + ( 2 * i ) / l );
+						var theta = Math.sqrt( l * Math.PI ) * phi;
+
+						var object = new THREE.Object3D();
+
+						spherical.set( 800, phi, theta );
+
+						object.position.setFromSpherical( spherical );
+
+						vector.copy( object.position ).multiplyScalar( 2 );
+
+						object.lookAt( vector );
+
+						targets.sphere.push( object );
+					}
+
+					// helix
+
+					var vector = new THREE.Vector3();
+					var cylindrical = new THREE.Cylindrical();
+
+					for ( var i = 0, l = objects.length; i < l; i ++ ) {
+
+						var theta = i * 0.175 + Math.PI;
+						var y = - ( i * 5 ) + 450;
+
+						var object = new THREE.Object3D();
+
+						// 参数一 圈的大小 参数二 左右间距 参数三 上下间距
+						cylindrical.set( 900, theta, y );
+
+						object.position.setFromCylindrical( cylindrical );
+
+						vector.x = object.position.x * 2;
+						vector.y = object.position.y;
+						vector.z = object.position.z * 2;
+
+						object.lookAt( vector );
+
+						targets.helix.push( object );
+
+					}
+
+					// grid
+
+					for ( var i = 0; i < objects.length; i ++ ) {
+
+						var object = new THREE.Object3D();
+
+						object.position.x = ( ( i % 5 ) * 400 ) - 800; // 400 图片的左右间距  800 x轴中心店
+						object.position.y = ( - ( Math.floor( i / 5 ) % 5 ) * 300 ) + 500;  // 500 y轴中心店
+						object.position.z = ( Math.floor( i / 25 ) ) * 200 - 800;// 300调整 片间距 800z轴中心店
+
+						targets.grid.push( object );
+
+					}
+					//渲染
+					renderer = new THREE.CSS3DRenderer();
+					renderer.setSize( window.innerWidth, window.innerHeight );
+					renderer.domElement.style.position = 'absolute';
+					document.getElementById( 'container' ).appendChild( renderer.domElement );
+					// 鼠标控制
+					controls = new THREE.TrackballControls( camera, renderer.domElement );
+					controls.rotateSpeed = 0.5;
+					controls.minDistance = 500;
+					controls.maxDistance = 6000;
+					controls.addEventListener( 'change', render );
+
+					// 自动更换
+					var ini = 0;
+					clearInterval(tabTimer);
+					tabTimer=setInterval(function(){
+						ini = ini >= 4 ? 0 : ini;
+						++ini;
+						switch(ini){
+							case 1:
+								transform( targets.sphere, 1000 );
+								break;
+							case 2:
+								transform( targets.grid, 1000 );
+								break;
+							case 3:
+								transform( targets.table, 1000 );
+								break;
+							case 4:
+								transform( targets.helix, 1000 );
+								break;
+						}	
+					},5000);
+				}
+				function transform( targets, duration ) {
+
+					TWEEN.removeAll();
+
+					for ( var i = 0; i < objects.length; i ++ ) {
+
+						var object = objects[ i ];
+						var target = targets[ i ];
+
+						new TWEEN.Tween( object.position )
+							.to( { x: target.position.x, y: target.position.y, z: target.position.z }, Math.random() * duration + duration )
+							.easing( TWEEN.Easing.Exponential.InOut )
+							.start();
+
+						new TWEEN.Tween( object.rotation )
+							.to( { x: target.rotation.x, y: target.rotation.y, z: target.rotation.z }, Math.random() * duration + duration )
+							.easing( TWEEN.Easing.Exponential.InOut )
+							.start();
+
+					}
+
+					new TWEEN.Tween( this )
+						.to( {}, duration * 2 )
+						.onUpdate( render )
+						.start();
+
+				}
+
+				function onWindowResize() {
+
+					camera.aspect = window.innerWidth / window.innerHeight;
+					camera.updateProjectionMatrix();
+
+					renderer.setSize( window.innerWidth, window.innerHeight );
+
+					render();
+
+				}
+				function animate() {
+					if(scene===null){
+						return;
+					}
+					// 让场景通过x轴或者y轴旋转  & z
+					scene.rotation.x += 0.011;
+					scene.rotation.y += 0.008;
+					requestAnimationFrame( animate );
+					TWEEN.update();
+					controls.update();
+					// 渲染循环
+					render();
+				}
+				function render() {
+
+					renderer.render( scene, camera );
+
+					/**/
+					elements=$(renderer.domElement.getElementsByTagName('div')[0].children);
+					imgElements=elements.children('img');
+
+				}
+				/*--------新增--------*/
+        		/*销毁*/
+        		function destroys(){
+        			objects.lenngth=0;
+					document.getElementById( 'container' ).removeChild( renderer.domElement );
+        			clearInterval(tabTimer);
+        			camera=null;
+        			scene=null;
+        			objects=null;
+        			targets=null;
+        		}
+        		/*启动*/
+        		function openThree3D(){
+        			init();
+					animate();
+					setTimeout(function(){
+						logoCombination();
+					},40000+getRandom(2,8)*1000);
+        		}
+
+				/*启动*/
+				openThree3D();
+				//-----------------------------------------------
+				/**/
+	    		/*拼logo*/
+	    		var sortPosArr=[];
+	    		/*新国都logo坐标*/
+	    		var posArr=[
+	    			{x:355,y:412},
+	    			{x:355,y:470},
+	    			{x:355,y:493},
+	    			{x:355,y:516},
+	    			{x:355,y:539},
+	    			{x:355,y:562},
+	    			{x:355,y:585},
+	    			{x:378,y:395},
+	    			{x:378,y:418},
+	    			{x:378,y:493},
+	    			{x:378,y:516},
+	    			{x:378,y:540},
+	    			{x:378,y:562},
+	    			{x:378,y:585},
+	    			{x:401,y:375},
+	    			{x:401,y:398},
+	    			{x:401,y:421},
+	    			{x:401,y:506},
+	    			{x:401,y:529},
+	    			{x:401,y:552},
+	    			{x:401,y:575},
+	    			{x:401,y:598},
+	    			{x:424,y:352},
+	    			{x:424,y:375},
+	    			{x:424,y:399},
+	    			{x:424,y:421},
+	    			{x:424,y:444},
+	    			{x:424,y:518},
+	    			{x:424,y:541},
+	    			{x:424,y:564},
+	    			{x:424,y:587},
+	    			{x:424,y:610},
+	    			{x:447,y:329},
+	    			{x:447,y:352},
+	    			{x:447,y:375},
+	    			{x:447,y:399},
+	    			{x:447,y:421},
+	    			{x:447,y:444},
+	    			{x:447,y:468},
+	    			{x:447,y:529},
+	    			{x:447,y:552},
+	    			{x:447,y:575},
+	    			{x:447,y:598},
+	    			{x:447,y:621},
+	    			{x:470,y:352},
+	    			{x:470,y:375},
+	    			{x:470,y:399},
+	    			{x:470,y:421},
+	    			{x:470,y:444},
+	    			{x:470,y:468},
+	    			{x:470,y:541},
+	    			{x:470,y:564},
+	    			{x:470,y:587},
+	    			{x:493,y:352},
+	    			{x:493,y:375},
+	    			{x:493,y:399},
+	    			{x:493,y:421},
+	    			{x:493,y:444},
+	    			{x:493,y:468},
+	    			{x:493,y:490},
+	    			{x:493,y:552},
+	    			{x:493,y:576},
+	    			{x:516,y:376},
+	    			{x:516,y:399},
+	    			{x:516,y:423},
+	    			{x:516,y:445},
+	    			{x:516,y:468},
+	    			{x:516,y:492},
+	    			{x:516,y:564},
+	    			{x:539,y:376},
+	    			{x:539,y:399},
+	    			{x:539,y:423},
+	    			{x:539,y:445},
+	    			{x:539,y:468},
+	    			{x:539,y:492},
+	    			{x:539,y:514},
+	    			{x:562,y:357},
+	    			{x:562,y:380},
+	    			{x:562,y:403},
+	    			{x:562,y:426},
+	    			{x:562,y:450},
+	    			{x:562,y:472},
+	    			{x:562,y:495},
+	    			{x:562,y:519},
+	    			{x:585,y:334},
+	    			{x:585,y:357},
+	    			{x:585,y:380},
+	    			{x:585,y:403},
+	    			{x:585,y:426},
+	    			{x:585,y:450},
+	    			{x:585,y:472},
+	    			{x:585,y:495},
+	    			{x:585,y:519},
+	    			{x:585,y:541},
+	    			{x:608,y:311},
+	    			{x:608,y:334},
+	    			{x:608,y:357},
+	    			{x:608,y:380},
+	    			{x:608,y:403},
+	    			{x:608,y:426},
+	    			{x:608,y:450},
+	    			{x:608,y:472},
+	    			{x:608,y:495},
+	    			{x:608,y:519},
+	    			{x:608,y:541},
+	    			{x:631,y:288},
+	    			{x:631,y:311},
+	    			{x:631,y:334},
+	    			{x:631,y:357},
+	    			{x:631,y:380},
+	    			{x:631,y:403},
+	    			{x:631,y:426},
+	    			{x:631,y:450},
+	    			{x:631,y:472},
+	    			{x:631,y:495},
+	    			{x:631,y:519},
+	    			{x:631,y:541},
+	    			{x:631,y:564},
+	    			{x:654,y:265},
+	    			{x:654,y:288},
+	    			{x:654,y:312},
+	    			{x:654,y:334},
+	    			{x:654,y:357},
+	    			{x:654,y:381},
+	    			{x:654,y:403},
+	    			{x:654,y:449},
+	    			{x:654,y:472},
+	    			{x:654,y:495},
+	    			{x:654,y:519},
+	    			{x:654,y:541},
+	    			{x:654,y:564},
+	    			{x:677,y:242},
+	    			{x:677,y:265},
+	    			{x:677,y:288},
+	    			{x:677,y:311},
+	    			{x:677,y:334},
+	    			{x:677,y:357},
+	    			{x:677,y:380},
+	    			{x:677,y:460},
+	    			{x:677,y:483},
+	    			{x:677,y:507},
+	    			{x:677,y:529},
+	    			{x:677,y:552},
+	    			{x:677,y:576},
+	    			{x:700,y:219},
+	    			{x:700,y:242},
+	    			{x:700,y:265},
+	    			{x:700,y:288},
+	    			{x:700,y:311},
+	    			{x:700,y:334},
+	    			{x:700,y:357},
+	    			{x:700,y:473},
+	    			{x:700,y:496},
+	    			{x:700,y:519},
+	    			{x:700,y:543},
+	    			{x:700,y:565},
+	    			{x:700,y:588},
+	    			{x:723,y:196},
+	    			{x:723,y:219},
+	    			{x:723,y:243},
+	    			{x:723,y:265},
+	    			{x:723,y:288},
+	    			{x:723,y:312},
+	    			{x:723,y:334},
+	    			{x:723,y:485},
+	    			{x:723,y:508},
+	    			{x:723,y:531},
+	    			{x:723,y:555},
+	    			{x:723,y:577},
+	    			{x:723,y:600},
+	    			{x:746,y:173},
+	    			{x:746,y:196},
+	    			{x:746,y:219},
+	    			{x:746,y:242},
+	    			{x:746,y:265},
+	    			{x:746,y:288},
+	    			{x:746,y:311},
+	    			{x:746,y:498},
+	    			{x:746,y:522},
+	    			{x:746,y:544},
+	    			{x:746,y:567},
+	    			{x:746,y:591},
+	    			{x:746,y:613},
+	    			{x:769,y:150},
+	    			{x:769,y:173},
+	    			{x:769,y:196},
+	    			{x:769,y:219},
+	    			{x:769,y:242},
+	    			{x:769,y:265},
+	    			{x:769,y:288},
+	    			{x:769,y:510},
+	    			{x:769,y:534},
+	    			{x:769,y:556},
+	    			{x:769,y:579},
+	    			{x:769,y:603},
+	    			{x:769,y:625},
+	    			{x:792,y:127},
+	    			{x:792,y:150},
+	    			{x:792,y:174},
+	    			{x:792,y:196},
+	    			{x:792,y:219},
+	    			{x:792,y:243},
+	    			{x:792,y:265},
+	    			{x:792,y:523},
+	    			{x:792,y:546},
+	    			{x:792,y:570},
+	    			{x:792,y:592},
+	    			{x:792,y:615},
+	    			{x:792,y:639},
+	    			{x:815,y:104},
+	    			{x:815,y:127},
+	    			{x:815,y:150},
+	    			{x:815,y:173},
+	    			{x:815,y:196},
+	    			{x:815,y:219},
+	    			{x:815,y:242},
+	    			{x:815,y:535},
+	    			{x:815,y:558},
+	    			{x:815,y:582},
+	    			{x:815,y:604},
+	    			{x:815,y:627},
+	    			{x:815,y:651},
+	    			{x:873,y:62},
+	    			{x:873,y:85},
+	    			{x:873,y:108},
+	    			{x:873,y:131},
+	    			{x:873,y:154},
+	    			{x:873,y:177},
+	    			{x:873,y:200},
+	    			{x:873,y:223},
+	    			{x:873,y:246},
+	    			{x:873,y:269},
+	    			{x:873,y:292},
+	    			{x:873,y:315},
+	    			{x:873,y:338},
+	    			{x:873,y:361},
+	    			{x:873,y:384},
+	    			{x:873,y:407},
+	    			{x:873,y:430},
+	    			{x:873,y:453},
+	    			{x:873,y:476},
+	    			{x:873,y:499},
+	    			{x:873,y:522},
+	    			{x:873,y:545},
+	    			{x:873,y:568},
+	    			{x:873,y:591},
+	    			{x:873,y:614},
+	    			{x:873,y:637},
+	    			{x:873,y:660},
+	    			{x:873,y:683},
+	    			{x:896,y:73},
+	    			{x:896,y:96},
+	    			{x:896,y:119},
+	    			{x:896,y:142},
+	    			{x:896,y:165},
+	    			{x:896,y:188},
+	    			{x:896,y:211},
+	    			{x:896,y:234},
+	    			{x:896,y:257},
+	    			{x:896,y:280},
+	    			{x:896,y:303},
+	    			{x:896,y:326},
+	    			{x:896,y:349},
+	    			{x:896,y:372},
+	    			{x:896,y:395},
+	    			{x:896,y:418},
+	    			{x:896,y:441},
+	    			{x:896,y:464},
+	    			{x:896,y:487},
+	    			{x:896,y:510},
+	    			{x:896,y:533},
+	    			{x:896,y:556},
+	    			{x:896,y:579},
+	    			{x:896,y:602},
+	    			{x:896,y:625},
+	    			{x:896,y:648},
+	    			{x:896,y:671},
+	    			{x:919,y:84},
+	    			{x:919,y:107},
+	    			{x:919,y:130},
+	    			{x:919,y:153},
+	    			{x:919,y:176},
+	    			{x:919,y:199},
+	    			{x:919,y:222},
+	    			{x:919,y:245},
+	    			{x:919,y:268},
+	    			{x:919,y:291},
+	    			{x:919,y:314},
+	    			{x:919,y:337},
+	    			{x:919,y:360},
+	    			{x:919,y:383},
+	    			{x:919,y:406},
+	    			{x:919,y:429},
+	    			{x:919,y:452},
+	    			{x:919,y:475},
+	    			{x:919,y:498},
+	    			{x:919,y:521},
+	    			{x:919,y:544},
+	    			{x:919,y:567},
+	    			{x:919,y:590},
+	    			{x:919,y:613},
+	    			{x:919,y:636},
+	    			{x:919,y:659},
+	    			{x:942,y:95},
+	    			{x:942,y:118},
+	    			{x:942,y:141},
+	    			{x:942,y:164},
+	    			{x:942,y:187},
+	    			{x:942,y:210},
+	    			{x:942,y:233},
+	    			{x:942,y:256},
+	    			{x:942,y:279},
+	    			{x:942,y:302},
+	    			{x:942,y:325},
+	    			{x:942,y:348},
+	    			{x:942,y:371},
+	    			{x:942,y:394},
+	    			{x:942,y:417},
+	    			{x:942,y:440},
+	    			{x:942,y:463},
+	    			{x:942,y:486},
+	    			{x:942,y:509},
+	    			{x:942,y:532},
+	    			{x:942,y:555},
+	    			{x:942,y:578},
+	    			{x:942,y:601},
+	    			{x:942,y:624},
+	    			{x:942,y:647},
+	    			{x:965,y:106},
+	    			{x:965,y:129},
+	    			{x:965,y:152},
+	    			{x:965,y:175},
+	    			{x:965,y:198},
+	    			{x:965,y:221},
+	    			{x:965,y:244},
+	    			{x:965,y:267},
+	    			{x:965,y:290},
+	    			{x:965,y:313},
+	    			{x:965,y:336},
+	    			{x:965,y:359},
+	    			{x:965,y:382},
+	    			{x:965,y:405},
+	    			{x:965,y:428},
+	    			{x:965,y:451},
+	    			{x:965,y:474},
+	    			{x:965,y:497},
+	    			{x:965,y:520},
+	    			{x:965,y:543},
+	    			{x:965,y:566},
+	    			{x:965,y:589},
+	    			{x:965,y:612},
+	    			{x:965,y:635},
+	    			{x:988,y:117},
+	    			{x:988,y:140},
+	    			{x:988,y:163},
+	    			{x:988,y:186},
+	    			{x:988,y:209},
+	    			{x:988,y:232},
+	    			{x:988,y:255},
+	    			{x:988,y:278},
+	    			{x:988,y:301},
+	    			{x:988,y:324},
+	    			{x:988,y:347},
+	    			{x:988,y:370},
+	    			{x:988,y:393},
+	    			{x:988,y:416},
+	    			{x:988,y:439},
+	    			{x:988,y:462},
+	    			{x:988,y:485},
+	    			{x:988,y:508},
+	    			{x:988,y:531},
+	    			{x:988,y:554},
+	    			{x:988,y:577},
+	    			{x:988,y:600},
+	    			{x:988,y:623}
+	    		];
+	    		var changedCount=0;    //改变头像图片的次数
+	    		var receivedSrcArr=null;
+				/*打乱新国都logo的坐标*/
+				function breakPosArr(dfd){
+					var sortArr=function(){
+						if(posArr.length===0){
+							dfd.resolve();
+							return;
+						}
+						var len=posArr.length;
+						var s=getRandom(0,len);
+						var tmpPosObj=posArr.splice(s,1)[0];
+						sortPosArr.push(tmpPosObj);
+						/**/
+						sortArr();
+					};
+					sortArr();
+					return dfd.promise();
+				}
+				function getRandom(m,n){
+					return Math.floor(m+Math.random()*(n-m));
+				}
+				/*拼新国都Logo*/
+				function logoCombination(){
+					var timer=setTimeout(function(){
+						clearTimeout(timer);
+						destroys();
+						elements.each(function(i,e){
+							var $e=$(e);
+							$e.addClass('newMove').removeAttr('style').css({
+								'left':$e.data('initX')+'px',
+								'top':$e.data('initY')+'px'
+							}).appendTo('.staff-box').animate({
+								'left':sortPosArr[i].x+'px',
+								'top':sortPosArr[i].y+'px'
+							},5000);
+						}).last().promise().done(function(){
+							logoSplit();
+						});
+					},1800);
+				}
+				/*拆新国都Logo*/
+				function logoSplit(){
+					var timer=setTimeout(function(){
+						clearTimeout(timer);
+						elements.each(function(i,e){
+							var $e=$(e);
+							$e.animate({
+								'left':$e.data('initX')+'px',
+								'top':$e.data('initY')+'px'
+							},5000)
+						}).last().promise().done(function(){
+							/*拼公信诚丰logo之前*/
+							logoChangedBefore(logoCombinationGXCF);
+						});
+					},2800);		
+				}
+				/*拼公信诚丰logo之前*/
+				function logoChangedBefore(fn){
+					elements.each(function(i,e){
+						var $e=$(e);
+						var $eOffset=$e.offset();
+						var mx=$eOffset.left>cx?$eOffset.left+1000:$eOffset.left-1000;
+						var my=$eOffset.top>cy?$eOffset.top+1000:$eOffset.top-1000;
+						$e.animate({
+							'left':mx+'px',
+							'top':my+'px'
+						},5000);
+					}).last().promise().done(function(){
+						fn&&fn();
+					});
+				}
+				/*拼公信诚丰logo  313个*/  
+				function logoCombinationGXCF(){
+					var index=0;
+					var timer=setInterval(function(){
+						if(gxcfLogo.tPosIsEmpty()){
+							clearInterval(timer);
+							/*拆公信诚丰logo*/
+							openThree3DAgainBefore(function(){
+								gxcfLogo=null;
+								/**/
+								elements.remove();
+								renderer=null;
+								/*再次启动*/
+								openThree3D();
+							});
+							return;
+						}
+						var targetPos=gxcfLogo.getTargetOrderPos();
+						gxcfLogo.createStaff(elements.eq(index),targetPos);
+						index++;
+					},100);
+				}
+				/*再次启动前*/
+				function openThree3DAgainBefore(fn){
+					var timer=setTimeout(function(){
+						elements.each(function(i,e){
+							var $e=$(e);
+							$e.animate({
+								'left':$e.data('initX')+'px',
+								'top':$e.data('initY')+'px'
+							},5000).slideUp(500);
+						}).last().promise().done(function(){
+							fn&&fn();
+						});
+					},5800);
+				}
+				/**/
+				$.Deferred(breakPosArr).done(function(){
+					pg.dsOpenLoading.imgLoadedHide();	
+				});
+				/**/
+				$('#container > div').css({
+					'top':'0px',
+					'overflow':'visible'
+				});
+        		/*E*/
+		/*}).fail(function(err){
+			pg.dialog({
+				content:'数据加载失败！！！'
+			});
+		});*/		
+</script>
+</body>
+</html>
