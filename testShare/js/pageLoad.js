@@ -75,7 +75,7 @@
 			},
 			videosLoaded:function(){
 				var videos=$('video');
-				videos.last().on('canplay',$.proxy(function(){
+				videos.last().on('loadedmetadata',$.proxy(function(){
 					this._hide();
 				},this));
 				return this;
