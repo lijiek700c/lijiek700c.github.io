@@ -75,7 +75,7 @@
 			},
 			videosLoaded:function(){
 				var videos=$('video');
-				videos.on('suspend',$.proxy(function(){
+				videos.on('loadstart',$.proxy(function(){
 					this._hide();
 				},this)).on('stalled',$.proxy(function(){
 					this._hide();
