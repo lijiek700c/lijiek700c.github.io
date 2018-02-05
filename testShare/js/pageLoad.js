@@ -75,10 +75,16 @@
 			},
 			videosLoaded:function(){
 				var videos=$('video');
-				videos.last().on('progress',$.proxy(function(){
+				videos.on('suspend',$.proxy(function(){
+					this._hide();
+				},this)).on('stalled',$.proxy(function(){
 					this._hide();
 				},this)).on('error',$.proxy(function(){
-
+					this._hide(function(){
+						pg.dialog({
+							content:'视频数据加载失败！'
+						});
+					});
 				},this));
 				return this;
 			},
