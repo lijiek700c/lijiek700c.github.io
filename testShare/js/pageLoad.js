@@ -75,12 +75,11 @@
 			},
 			videosLoaded:function(){
 				var videos=$('video');
-				this._hide();
-				/*videos.last().on('progress',$.proxy(function(){
+				videos.last().on('progress',$.proxy(function(){
 					this._hide();
 				},this)).on('error',$.proxy(function(){
 
-				},this));*/
+				},this));
 				return this;
 			},
 			destroy:function(){
