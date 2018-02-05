@@ -75,8 +75,10 @@
 			},
 			videosLoaded:function(){
 				var videos=$('video');
-				videos.last().on('loadedmetadata',$.proxy(function(){
+				videos.last().on('suspend',$.proxy(function(){
 					this._hide();
+				},this)).on('error',$.proxy(function(){
+					
 				},this));
 				return this;
 			},
