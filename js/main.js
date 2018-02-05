@@ -16,7 +16,7 @@ var arr=[
 		{href:'bootstrap/test2.html',imgSrc:'images/test.png',title:'bootstrap表单',conIntro:''},
 		{href:'try/test.html',imgSrc:'images/test.png',title:'试试',conIntro:''},
 		{href:'testSign/signSuccess.html',imgSrc:'images/test.png',title:'签到成功',conIntro:''},
-		{href:'',imgSrc:'images/test.png',title:'',conIntro:''},
+		{href:'testShare/testShare.html',imgSrc:'images/test.png',title:'节目视频',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'标题1a1',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'标题1a1',conIntro:''}
 		],
