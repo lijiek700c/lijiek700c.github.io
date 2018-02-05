@@ -12,12 +12,17 @@
 </head>
 <body>
 	<div class="l-container js_l-container animated" style="display:none;">
-		<video src="mp4/rjqy-jsb.mp4" controls="controls" loop="loop"></video>
+		<video controls="controls" loop="loop">
+			<source src="mp4/rjqy-jsb.mp4" type="video/mp4">
+			<source src="mp4/rjqy-jsb.mp4" type="video/ogg">
+		</video>
 	</div>
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/pageLoad.js"></script>
 	<script>
 		$(document).ready(function(){
+			var netType=pg.dsOpenLoading.testNetStatus();
+			alert(netType.effectiveType);
 			pg.dsOpenLoading._show().videosLoaded();
 		});
 	</script>

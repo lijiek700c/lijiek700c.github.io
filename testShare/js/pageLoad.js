@@ -75,18 +75,20 @@
 			},
 			videosLoaded:function(){
 				var videos=$('video');
-				videos.on('loadstart',$.proxy(function(){
-					this._hide();
-				},this)).on('stalled',$.proxy(function(){
-					this._hide();
+				videos.on('stalled',$.proxy(function(){
+					pg.dialog({
+						content:'网速太慢了！'
+					});
 				},this)).on('error',$.proxy(function(){
-					this._hide(function(){
-						pg.dialog({
-							content:'视频数据加载失败！'
-						});
+					pg.dialog({
+						content:'视频数据加载失败！'
 					});
 				},this));
+				this._hide();
 				return this;
+			},
+			testNetStatus:function(){
+				return navigator.connection;
 			},
 			destroy:function(){
 				$('.js_ds-loadingBox').addClass('slideOutDown').fadeOut(1000,function(){

@@ -27,9 +27,6 @@ a {
 video {
 	width:100%;
 }
-.l-container {
-	padding:0 10px;
-}
 .animated {
 	-webkit-animation-duration: .6s;
 	animation-duration: .6s;
