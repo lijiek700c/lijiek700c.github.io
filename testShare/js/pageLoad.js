@@ -87,9 +87,6 @@
 				this._hide();
 				return this;
 			},
-			testNetStatus:function(){
-				return navigator.connection;
-			},
 			destroy:function(){
 				$('.js_ds-loadingBox').addClass('slideOutDown').fadeOut(1000,function(){
 					$(this).remove();

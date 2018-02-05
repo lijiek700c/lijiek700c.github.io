@@ -21,7 +21,7 @@
 	<script src="js/pageLoad.js"></script>
 	<script>
 		$(document).ready(function(){
-			var netType=pg.dsOpenLoading.testNetStatus();
+			var netType=navigator.connection;
 			alert(netType.effectiveType);
 			pg.dsOpenLoading._show().videosLoaded();
 		});
