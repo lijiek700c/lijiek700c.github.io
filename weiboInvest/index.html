@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  	<meta name="app-mobile-web-app-capable" content="yes">
+  	<meta name="app-mobile-web-app-status-bar-style" content="black">
+  	<meta name="format-detection" content="telephone=no">
+  	<meta name="format-detection" content="email=no">
+	<title>新浪微博年度调查</title>
+<link href="./css/weiboInvest.css" rel="stylesheet"></head>
+<body>
+	<div class="l-container js_l-container animated" style="display:block;">
+		<div class="bannerBox">
+			<img class="js_signBg" src="images/bg.png" alt="" >	
+		</div>
+		<!--选择-->
+		<div class="userSelectArea">
+			<div class="questionBox" v-for="(item,i) in selectData">
+				<p class="quesTitle">
+					<span v-text="item.title"></span>
+					<span class="mul" v-text="item.mul"></span>
+					<b v-text="item.red"></b>
+				</p>
+				<ul class="queSelectList"  :data-order="i+1" :data-multiple="item.mul">
+					<li class="listItem"  v-for="(selItem,j) in item.selList">
+						<input type="checkbox">
+						<img src="images/notSelect.png" alt="">
+						<p>
+							<span v-text="selItem.info"></span>
+							<span class="beizhu" v-text="selItem.beizhu"></span>
+						</p>
+					</li>
+				</ul>
+			</div>
+			<!---->
+			<div class="loginBox">
+				<ul>
+					<li v-for="(item,k) in inputData">
+						<p class="notice">
+							<span v-text="item.title"></span>
+							<span v-text="item.beizhu"></span>
+							<b v-text="item.red">*</b>
+						</p>
+						<div class="insert">
+							<input type="text" :placeholder="item.placeholder">
+						</div>
+					</li>
+				</ul>
+				<div class="submitBtn">提交</div>
+			</div>
+		</div>
+		<div class="footer">
+			<p>本服务由</p>
+			<p>长沙市公信诚丰信息技术服务有限公司提供技术支持</p>
+			<p>热线电话：0731-8873&nbsp;0000</p>
+		</div>
+	</div>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/vue.min.js"></script>
+<script type="text/javascript" src="js/weiboInvest.js"></script></body>
+</html>

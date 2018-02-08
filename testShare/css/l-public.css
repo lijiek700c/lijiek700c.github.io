@@ -24,8 +24,12 @@ a {
 	text-decoration: none;
 	-webkit-tap-highlight-color: transparent
 }
+.l-container {
+	background:#F5F5DC;
+}
 video {
 	width:100%;
+	object-fit:fill;
 }
 .animated {
 	-webkit-animation-duration: .6s;
