@@ -23,7 +23,7 @@
 					<b v-text="item.red"></b>
 				</p>
 				<ul class="queSelectList"  :data-order="i+1" :data-multiple="item.mul">
-					<li class="listItem"  v-for="(selItem,j) in item.selList">
+					<li class="listItem"  v-for="(selItem,j) in item.selList" :data-aOrder="j+1" @click.lazy="selectAnswer($event)">
 						<input type="checkbox">
 						<img src="images/notSelect.png" alt="">
 						<p>
@@ -43,17 +43,21 @@
 							<b v-text="item.red">*</b>
 						</p>
 						<div class="insert">
-							<input type="text" :placeholder="item.placeholder">
+							<input type="text" 
+							:placeholder="item.placeholder" 
+							:data-regType="item.type" 
+							@focus="inputFocus($event)" 
+							@blur="inputBlur($event)">
 						</div>
 					</li>
 				</ul>
-				<div class="submitBtn">提交</div>
+				<div class="submitBtn" @click.lazy="submitData($event)">提交</div>
 			</div>
 		</div>
 		<div class="footer">
 			<p>本服务由</p>
 			<p>长沙市公信诚丰信息技术服务有限公司提供技术支持</p>
-			<p>热线电话：0731-8873&nbsp;0000</p>
+			<p>热线电话：0731-8804&nbsp;6666</p>
 		</div>
 	</div>
 	<script src="js/jquery-3.2.1.min.js"></script>
