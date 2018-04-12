@@ -17,7 +17,7 @@ var arr=[
 		{href:'try/test.html',imgSrc:'images/test.png',title:'试试',conIntro:''},
 		{href:'testSign/signSuccess.html',imgSrc:'images/test.png',title:'签到成功',conIntro:''},
 		{href:'testShare/testShare.html',imgSrc:'images/test.png',title:'节目视频',conIntro:''},
-		{href:'',imgSrc:'images/test.png',title:'标题1a1',conIntro:''},
+		{href:'dist/index.html',imgSrc:'images/test.png',title:'Hammer',conIntro:''},
 		{href:'',imgSrc:'images/test.png',title:'标题1a1',conIntro:''}
 		],
 		[{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'},{imgSrc:'images/test.png',title:'标题2b2',conIntro:'唱情歌落俗，说爱又太苦'}],
