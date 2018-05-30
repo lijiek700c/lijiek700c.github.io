@@ -1,6 +1,5 @@
 body {
 	padding-bottom:20px;
-	background:#f0f5fa;
 }
 .fe-container {
 	width:1600px;
@@ -60,6 +59,7 @@ body {
 	flex:0 0 220px;
 	width:220px;
 	background:#F0F3F8;
+	box-shadow:3px 0px 3px rgba(0,0,0,0.2);
 }
 .fe-mis_sideBar_headImgBox {
 	flex-flow:column nowrap;
@@ -244,6 +244,8 @@ body {
 }
 .fe-mis_checkBox > input[type="checkbox"],.fe-mis_checkBox > input[type="radio"] {
 	position:absolute;left:-9999em;
+	filter:alpha(opacity:0);
+	opacity:0;
 }
 .fe-mis_checkBox > .circle {
 	position:absolute;top:50%;left:0;
@@ -329,8 +331,8 @@ body {
 	font-size:16px;
 	color:#333;
 }
-.fe-mis_table.bgLine > thead > tr  {
-	background:#A8ABB3;
+.fe-mis_table.bgLine > thead > tr {
+	background:#a8abb3;
 }
 .fe-mis_table.bgLine > thead td {
 	color:#FAFBFD;
@@ -438,6 +440,9 @@ body {
 .fe-mis_ta_detailItem {
 	position:relative;
 	margin-bottom:16px;
+}
+.fe-mis_ta_detailItem:last-child {
+	margin-bottom:0px;
 }
 .fe-mis_ta_detailItem > .detailTitle {
 	top:0px;left:0px;
