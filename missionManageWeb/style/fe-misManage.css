@@ -311,9 +311,7 @@ body {
 /* 表格 */
 .fe-mis_table {
 	border-radius:2px;
-	border:1px solid #EFF0F3;
-	border-right:none;
-	border-bottom:none;
+	border:1px solid #eff0f3;
 	background:#FAFBFD;
 }
 .fe-mis_table td {
@@ -321,22 +319,37 @@ body {
 	line-height:40px;
 	padding:0px 10px;
 	font-size:14px;
-	border-right:1px solid #EFF0F3;
-	border-bottom:1px solid #EFF0F3;
+	border-right:1px solid #d8dce6;
+	border-bottom:1px solid #d8dce6;
 	color:#666;
 	text-align:center;
 }
+.fe-mis_table > thead > tr {
+	border-bottom:1px solid #c0c3cc;
+}
 .fe-mis_table > thead td {
 	line-height:46px;
+	border-right:none;
+	border-bottom:none;
 	font-size:16px;
 	color:#333;
+}
+.fe-mis_table > tbody > tr >td:last-child {
+	border-right:none;
+}
+.fe-mis_table > tbody > tr:last-child > td {
+	border-bottom:none;
 }
 .fe-mis_table.bgLine > thead > tr {
 	background:#a8abb3;
 }
 .fe-mis_table.bgLine > thead td {
+	border-right:1px solid #d8dce6;
 	color:#FAFBFD;
 }
+/* .fe-mis_table.bgLine > thead td:last-of-type {
+	border-right-color:transparent;
+} */
 .fe-mis_table.bgLine > tbody > tr:nth-child(2n) {
 	background:#EBEFFA;
 }
