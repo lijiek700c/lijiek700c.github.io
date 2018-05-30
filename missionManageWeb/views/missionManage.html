@@ -75,56 +75,17 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-						<td>10</td>
-						<td>11</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-						<td>10</td>
-						<td>11</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-						<td>10</td>
-						<td>11</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>2</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
-						<td>6</td>
-						<td>7</td>
-						<td>8</td>
-						<td>9</td>
-						<td>10</td>
-						<td>11</td>
+						<td>任务名称</td>
+						<td>计划开始时间类型</td>
+						<td>创建时间</td>
+						<td>计划开始时间</td>
+						<td>提交时间</td>
+						<td>考核时间</td>
+						<td>评分</td>
+						<td>任务状态</td>
+						<td>责任人</td>
+						<td>监督人</td>
+						<td>操作</td>
 					</tr>
 				</tbody>
 			</table>
@@ -504,7 +465,7 @@
 <script type="text/x-template" id="data-statistics">
 	<div class="fe-mis_component">
 		<div class="fe-mis_task-approval bgNone">
-			<div class="fe-ms_ds_opeCharts">
+			<div class="fe-ms_ds_opeCharts fe-mis_basic">
 				<div class="fe-mis_ds_opeBox">
 					<span class="fl fe-mis_iTitle name">统计类型</span>
 					<label for="yb" class="fl fe-ms_label">
@@ -972,12 +933,18 @@ $.when($.ready).done(function(){
 						fontSize:16
 					},
 				    legend: {
-				        data:['测试人1','测试人2']
+				        data:['测试人1','测试人2'],
+				        textStyle:{
+				        	fontSize:14
+				        }
 				    },
 					tooltip:{
 						show:true,
 						trigger:'axis',
-						formatter:'{a}--任务数：{c}<br />{a1}--任务数：{c1}'
+						formatter:'{a}--任务数：{c}<br />{a1}--任务数：{c1}',
+				        textStyle:{
+				        	fontSize:12
+				        }
 					},
 					animationEasing:'elasticInOut',
 				    xAxis:{

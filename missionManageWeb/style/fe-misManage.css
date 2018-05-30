@@ -15,16 +15,16 @@ body {
 	align-items: center;
 	height:60px;
 	padding-right:20px;
-	background:#F0F3F8 url('../images/fe-headBg.png') no-repeat;
+	background:url('../images/fe-headBg.png') no-repeat;
 }
 .fe-mis_head_switch {
 	flex:0 0 auto;
 	width:102px;height:100%;
-	background:rgba(0,119,230,0.5) url('../images/fe-exit.png') center no-repeat;
+	background:rgba(0,119,229,0.2) url('../images/fe-exit.png') center no-repeat;
 	cursor:pointer;
 }
 .fe-mis_head_switch:active {
-	background-color:rgba(8,100,185,0.5);
+	background-color:rgba(0,119,229,0.8);
 }
 .fe-mis_head_searchBox {
 	position:relative;
@@ -38,11 +38,10 @@ body {
 	border:1px solid transparent;
 	font-size:14px;
 	color:#fff;
-	background:rgba(0,119,230,0.5);
+	background:rgba(0,119,229,0.2);
 }
 .fe-mis_head_searchBox > input:focus {
 	border-color:#fff;
-	box-shadow:0px 0px 6px rgba(0,0,0,0.3);
 }
 .fe-mis_head_searchBox > .searchIcon {   
 	top:2px;left:12px;
@@ -67,6 +66,8 @@ body {
 	align-items:center;
 	justify-content:flex-start;
 	height:198px;
+	border-bottom:1px solid #F0FFFF;
+	background:#f5f6fa;
 }
 .fe-mis_sideBar_headImgBox > .headPotrait {
 	flex:0 0 92px;
@@ -91,15 +92,16 @@ body {
 .fe-mis_sideBar_selectItem {
 	position:relative;
 	height:48px;
+	margin-bottom:1px;
 	padding-left:15px;
 	line-height:48px;
+	border-bottom:1px solid #e6e6eb;
 	background:#EBEFF5;
-	overflow:hidden;
 	cursor:pointer;
 }
-.fe-mis_sideBar_selectItem:before {
+.fe-mis_sideBar_selectItem:after {
 	content:'';
-	position:absolute;left:0px;bottom:0px;
+	position:absolute;left:0;bottom:-2px;
 	width:100%;height:1px;
 	background:#F0FFFF;
 }
@@ -113,7 +115,8 @@ body {
 	overflow:scroll;
 }
 .fe-mis_sideBar_selectItem.on {
-	background:#EA927F;
+	background:#f5f6fa;
+	/* border-bottom-color:#f5f6fa; */
 }
 .fe-mis_sideBar_selectItem > .icon {
 	width:32px;height:32px;
@@ -305,6 +308,7 @@ body {
 }
 /* 表格 */
 .fe-mis_table {
+	border-radius:2px;
 	border:1px solid #EFF0F3;
 	border-right:none;
 	border-bottom:none;
@@ -347,9 +351,9 @@ body {
 	border-radius:2px;
 }
 .fe-mis_basic {
-	border-radius:2px;
-	border:1px solid #EFF0F3;
-	background:#EFF0F3;
+    border: 1px solid #EFF0F3;
+    border-radius: 2px;
+    background:#FAFBFD;
 }
 .fe-mis_ta_wrap {
 	margin-top:20px;
@@ -472,13 +476,10 @@ body {
 }
 .fe-mis_task-approval.bgAdd {
 	border:1px solid #EFF0F3;
-	background:#EFF0F3;
+	background:#fafbfd;
 }
 .fe-ms_ds_opeCharts {
 	margin-bottom:18px;
-    border: 1px solid #EFF0F3;
-    border-radius: 2px;
-    background:#FAFBFD;
 }
 .fe-mis_ds_opeBox {
 	padding:24px 0px 24px 40px;
@@ -593,6 +594,14 @@ body {
 	}
 	.fe-mis_ta_detailItem > .detailTxt {
 		padding: 10px 20px 10px 125px;
+	}
+	.fe-mis_ta_btnBox {
+		padding-top:16px;
+	}
+	.btnWid {
+		width:138px;
+		font-size:16px;
+		line-height:42px;
 	}
 	/*数据统计*/
 	.fe-mis_ds_opeBox {
