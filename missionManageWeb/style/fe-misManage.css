@@ -186,7 +186,6 @@ body {
 	overflow:scroll;
 }
 .fe-mis_rightCon_Box {
-	/* height:2000px; */
 	padding:16px;
 }
 /* 输入框 */
@@ -555,4 +554,79 @@ body {
 .pt36 {
 	padding-top:36px;
 }
+/* <=1366 */
+@media screen and (max-width:1599px) {
+	.fe-container {
+		width:1280px;
+		max-width:1280px;
+	}
+	.fe-mis_head {
+		/* background-size:cover; */
+	}
+	.fe-mis_rightCon_Box {
+		padding:10px;
+	}
+	/*任务审核*/
+	.fe-mis_task-approval {
+		width:1040px;
+	}
+	.fe-mis_ta_infoArea {
+		padding:12px 10px 20px;
+	}
+	.fe-mis_ta_verListItem {
+		font-size:16px;
+	}
+	.fe-mis_ta_infoListItem:first-child > .fe-ms_label:first-child ~ .fe-ms_label {
+		margin-left:10px;
+	}
+	.iWid202 {
+		width:162px;
+	}
+	.fe-mis_ta_infoListItem:nth-child(2) > .fe-ms_label:first-of-type {
+		margin-left:10px;
+	}
+	.fe-mis_ta_infoListItem:nth-child(2) > .fe-ms_label:first-of-type ~ .fe-ms_label {
+		margin-left:10px;
+	}
+	.fe-mis_ta_detailItem > .detailTitle {
+		width:100px;
+	}
+	.fe-mis_ta_detailItem > .detailTxt {
+		padding: 10px 20px 10px 125px;
+	}
+	/*数据统计*/
+	.fe-mis_ds_opeBox {
+    	padding:10px;
+	}
+	.fe-mis_ds_opeBox > .fe-mis_iTitle.name:first-of-type {
+		margin-right:10px;
+	}
+	.fe-mis_ds_opeBox > .fe-ms_label:first-of-type,.fe-mis_ds_opeBox > .fe-ms_label:nth-of-type(2) {
+		margin-right:10px;
+	}
+	.fe-mis_ds_opeBox > .fe-mis_btn {
+		margin-right:10px;
+	}
+	.ds-btnRes {
+		width:100px;
+	}
+	/*图表*/
+	.fe-ms_ds_chart {
+		width:1040px;
+	}
+	/*表格*/
+	.fe-mis_table > thead td {
+		font-size:14px;
+	}
+	.fe-mis_table td {
+		font-size:12px;
+	}
+}
+/* <1280 */
+@media screen and (max-width:1279px) {
+	.fe-container {
+		display:none;
+	}
+}
+
 
