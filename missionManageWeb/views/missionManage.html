@@ -56,34 +56,181 @@
 <!--任务审批-->
 <script type="text/x-template" id="task-approval">
 	<div class="fe-mis_component">
-		<div class="fe-mis_task-approval">
-			<ul class="fe-mis_ta_verList clear">
-				<li 
-					class="fe-mis_ta_verListItem"
-					v-for="(item,index) in tabsData"
-					:class="{select:item.isSelect}"
-					v-text="item.txt"
-					@click="tabVersion(index)"
-				></li>
-			</ul>
-			<ta-version
-				v-for="(item,index) in versionData"
-				:key="index"
-				:model="item"
-				:is-show="item.isShow"
-			></ta-version>
+		<div class="fe-mis_task-approval bgNone">
+			<table class="fe-mis_table bgLine ds-tableRes">
+				<thead>
+					<tr>
+						<td>任务名称</td>
+						<td>类型</td>
+						<td>创建时间</td>
+						<td>计划开始时间</td>
+						<td>提交时间</td>
+						<td>考核时间</td>
+						<td>评分</td>
+						<td>任务状态</td>
+						<td>责任人</td>
+						<td>监督人</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="fe-mis_ta_wrap fe-mis_basic" v-show="showVersion">
+				<ul class="fe-mis_ta_verList clear">
+					<li 
+						class="fe-mis_ta_verListItem"
+						v-for="(item,index) in tabsData"
+						:class="{select:item.isSelect}"
+						v-text="item.txt"
+						@click="tabVersion(index)"
+					></li>
+				</ul>
+				<ta-version
+					v-for="(item,index) in versionData"
+					:key="index"
+					:model="item"
+					:is-show="item.isShow"
+				></ta-version>
+			</div>
 		</div>
 	</div>
 </script>
+<!--相关事务-->
 <script type="text/x-template" id="related-affairs">
 	<div class="fe-mis_component">
 		related-affairs
+		<div class="fe-mis_task-approval">
+			<table class="fe-mis_table bgLine ds-tableRes">
+				<thead>
+					<tr>
+						<td>任务名称</td>
+						<td>类型</td>
+						<td>创建时间</td>
+						<td>计划开始时间</td>
+						<td>提交时间</td>
+						<td>考核时间</td>
+						<td>评分</td>
+						<td>任务状态</td>
+						<td>责任人</td>
+						<td>监督人</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </script>
 <!--新建任务-->
 <script type="text/x-template" id="new-task">
 	<div class="fe-mis_component">
-		<div class="fe-mis_task-approval">
+		<div class="fe-mis_task-approval bgAdd">
 			<div class="fe-mis_ta_infoArea">
 				<ul class="fe-mis_ta_infoList">
 					<li class="fe-mis_ta_infoListItem">
@@ -177,32 +324,180 @@
 		</div>
 	</div>
 </script>
+<!--草稿箱-->
 <script type="text/x-template" id="drafts">
 	<div class="fe-mis_component">
-		drafts
-		<label for="" class="fe-ms_label">
-			<span class="fl fe-mis_iTitle">任务类型</span>
-			<div class="fl fe-mis_inputBox iWid162">
-				<select>
-					<option disbaled>---请选择---</option>
-					<option value="">1122</option>
-				</select>
-			</div>
-		</label>
-		<label for="" class="fe-ms_label">
-			<span class="fl fe-mis_iTitle">负责人</span>
-			<div class="fl fe-mis_inputBox iWid162">
-				<select>
-					<option disbaled>---请选择---</option>
-					<option value="">1122</option>
-				</select>
-			</div>
-		</label>
+		<div class="fe-mis_task-approval">
+			drafts
+			<label for="" class="fe-ms_label">
+				<span class="fl fe-mis_iTitle">任务类型</span>
+				<div class="fl fe-mis_inputBox iWid162">
+					<select>
+						<option disbaled>---请选择---</option>
+						<option value="">1122</option>
+					</select>
+				</div>
+			</label>
+			<label for="" class="fe-ms_label">
+				<span class="fl fe-mis_iTitle">负责人</span>
+				<div class="fl fe-mis_inputBox iWid162">
+					<select>
+						<option disbaled>---请选择---</option>
+						<option value="">1122</option>
+					</select>
+				</div>
+			</label>
+			<table class="fe-mis_table bgLine ds-tableRes">
+				<thead>
+					<tr>
+						<td>任务名称</td>
+						<td>类型</td>
+						<td>创建时间</td>
+						<td>计划开始时间</td>
+						<td>提交时间</td>
+						<td>考核时间</td>
+						<td>评分</td>
+						<td>任务状态</td>
+						<td>责任人</td>
+						<td>监督人</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </script>
+<!--完成任务-->
 <script type="text/x-template" id="finish-task">
 	<div class="fe-mis_component">
 		finish-task
+		<div class="fe-mis_task-approval">
+			<table class="fe-mis_table bgLine ds-tableRes">
+				<thead>
+					<tr>
+						<td>任务名称</td>
+						<td>类型</td>
+						<td>创建时间</td>
+						<td>计划开始时间</td>
+						<td>提交时间</td>
+						<td>考核时间</td>
+						<td>评分</td>
+						<td>任务状态</td>
+						<td>责任人</td>
+						<td>监督人</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td>5</td>
+						<td>6</td>
+						<td>7</td>
+						<td>8</td>
+						<td>9</td>
+						<td>10</td>
+						<td>11</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </script>
 <!--数据统计-->
@@ -226,6 +521,8 @@
 						</div>
 						<span class="fl fe-mis_iTitle">周报</span>
 					</label>
+					<span class="fl fe-mis_btn fe-mis_btn-blue ds-btnRes">上一周</span>
+					<span class="fl fe-mis_btn fe-mis_btn-blue ds-btnRes">下一周</span>
 					<span class="fl fe-mis_iTitle name">统计时间</span>
 					<label for="" class="fl fe-ms_label">
 						<div class="fl fe-mis_inputBox iWid202">
@@ -578,6 +875,7 @@ $.when($.ready).done(function(){
 			return {
 				st:0,
 				et:0,
+				showVersion:true,//是否显示版本
 				tabsData:[    //版本tab栏
 					{
 						txt:'初始版本',
@@ -673,10 +971,13 @@ $.when($.ready).done(function(){
 						lineHeight:38,
 						fontSize:16
 					},
+				    legend: {
+				        data:['测试人1','测试人2']
+				    },
 					tooltip:{
 						show:true,
 						trigger:'axis',
-						formatter:'责任人：'+owner+'<br />任务数：{c}'
+						formatter:'{a}--任务数：{c}<br />{a1}--任务数：{c1}'
 					},
 					animationEasing:'elasticInOut',
 				    xAxis:{
@@ -707,8 +1008,26 @@ $.when($.ready).done(function(){
 				    },
 				    series:[
 					    {
+					    	name:'测试人1',
 					        data:[90,20,30,60,50,60,70,80,90,100,90,80],
 					        type:'line',
+					        stack:'测试人1',
+					        itemStyle:{
+					        	color:'#49AEF2'
+					        },
+					        lineStyle:{
+					        	color:'#49AEF2'
+					        },
+	       					areaStyle:{
+	       						color:'#87ddf9',
+	       						opacity:0.3
+	       					}
+					    },
+					    {
+					    	name:'测试人2',
+					        data:[20,100,30,60,90,60,50,60,90,10,90,20],
+					        type:'line',
+					        stack:'测试人2',
 					        itemStyle:{
 					        	color:'#49AEF2'
 					        },

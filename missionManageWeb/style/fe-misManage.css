@@ -326,6 +326,18 @@ body {
 	font-size:16px;
 	color:#333;
 }
+.fe-mis_table.bgLine > thead > tr  {
+	background:#A8ABB3;
+}
+.fe-mis_table.bgLine > thead td {
+	color:#FAFBFD;
+}
+.fe-mis_table.bgLine > tbody > tr:nth-child(2n) {
+	background:#EBEFFA;
+}
+.fe-mis_table.bgLine > tbody > tr:hover,.fe-mis_table.bgLine > tbody > tr:nth-child(2n):hover {
+	background:#D9F0FF;
+}
 .fe-mis_cBlock {
 	border-radius:2px;
 	background:#EFF0F3;
@@ -333,9 +345,15 @@ body {
 /* 任务审批 */
 .fe-mis_task-approval {
 	width:1348px;min-height:913px;
-	border:1px solid #EFF0F3;
 	border-radius:2px;
+}
+.fe-mis_basic {
+	border-radius:2px;
+	border:1px solid #EFF0F3;
 	background:#EFF0F3;
+}
+.fe-mis_ta_wrap {
+	margin-top:20px;
 }
 .fe-mis_ta_verList {
 	height:52px;
@@ -453,6 +471,10 @@ body {
 	border:none;
 	background:transparent;
 }
+.fe-mis_task-approval.bgAdd {
+	border:1px solid #EFF0F3;
+	background:#EFF0F3;
+}
 .fe-ms_ds_opeCharts {
 	margin-bottom:18px;
     border: 1px solid #EFF0F3;
@@ -464,19 +486,23 @@ body {
 	overflow:hidden;
 }
 .fe-mis_ds_opeBox > .fe-mis_iTitle.name:first-of-type {
-	margin-right:30px;
+	margin-right:20px;
 }
 .fe-mis_ds_opeBox > .fe-ms_label:first-of-type {
-	margin-right:70px;
+	margin-right:20px;
 }
 .fe-mis_ds_opeBox > .fe-ms_label:nth-of-type(2) {
-	margin-right:110px;
+	margin-right:20px;
 }
 .fe-mis_ds_opeBox > .fe-ms_label:nth-of-type(3) + .fe-mis_iTitle.name {
 	margin:0px 8px;
 }
 .fe-mis_ds_opeBox > .fe-ms_label:last-of-type + .fe-mis_btn {
-	margin-left:58px;
+	margin-left:20px;
+}
+.fe-mis_ds_opeBox > .fe-mis_btn {
+	margin-left:0px;
+	margin-right:20px;
 }
 .fe-ms_ds_chart {
 	width:1258px;/* height:252px; */height:400px;
