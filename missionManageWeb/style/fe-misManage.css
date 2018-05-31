@@ -315,6 +315,7 @@ body {
 	background:#FAFBFD;
 }
 .fe-mis_table td {
+	max-width:120px;
 	min-height:40px;
 	line-height:40px;
 	padding:0px 10px;
@@ -323,6 +324,7 @@ body {
 	border-bottom:1px solid #d8dce6;
 	color:#666;
 	text-align:center;
+
 }
 .fe-mis_table > thead > tr {
 	border-bottom:1px solid #c0c3cc;
@@ -355,6 +357,9 @@ body {
 }
 .fe-mis_table.bgLine > tbody > tr:hover,.fe-mis_table.bgLine > tbody > tr:nth-child(2n):hover {
 	background:#D9F0FF;
+}
+.fe-mis_table.bgLine > tbody > tr:hover > td {
+	border-right-color:transparent;
 }
 .fe-mis_cBlock {
 	border-radius:2px;

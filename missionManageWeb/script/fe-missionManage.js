@@ -1,3 +1,20 @@
+var selectDatas={
+	user:[
+		{
+			label:'测试1',value:'D'
+		},
+		{
+			label:'测试2',value:'T'
+		}
+	],
+	misType:[
+		{
+			label:'临时',value:'tmp'
+		},
+		{
+			label:'派发',value:'pf'
+		}]
+};
 //jedate日期插件
 function showDate(){
     var test=Object.prototype.toString;
@@ -80,52 +97,33 @@ $.when($.ready).done(function(){
 		},
 		data:function(){
 			return {
-				st:0,
-				et:0,
 				showVersion:true,//是否显示版本
-				tabsData:[    //版本tab栏
-					{
-						txt:'1.0版本',
-						isSelect:false
-					},
-					{
-						txt:'初始版本',
-						isSelect:true
-					}
-				],
-				versionData:[  //传进版本组件的数据
-					{
-						startTime:'st',
-						endTime:'et',
-						projectName:'项目2',
-						projectType1:'t1',  //设置项目类型的checkbox的id
-						projectType2:'t2',
-						projectType3:'t3',
-						isShow:false    //版本显示或隐藏
-					},
-					{
-						startTime:'st1',
-						endTime:'et1',
-						projectName:'项目1',
-						projectType1:'t4',
-						projectType2:'t5',
-						projectType3:'t6',
-						isShow:true
-					}
-				]
+				propData:{    //传进
+					tabsData:[    //版本tab栏
+						{
+							txt:'1.0版本',
+							isSelect:false
+						},
+						{
+							txt:'初始版本',
+							isSelect:true
+						}
+					],
+					versionData:[  //传进版本组件的数据
+						{
+							projectName:'项目2',
+							isShow:false    //版本显示或隐藏
+						},
+						{
+							projectName:'项目1',
+							isShow:true
+						}
+					]
+				}
 			};
 		},
 		methods:{
-			tabVersion:function(index){  //切换显示的版本
-				this.tabsData.forEach(function(item){
-					item.isSelect=false;
-				});
-				this.versionData.forEach(function(item){
-					item.isShow=false;
-				});
-				this.tabsData[index].isSelect=true;
-				this.versionData[index].isShow=true;
-			}
+			
 		}
 	});
 	//相关事务
@@ -275,6 +273,54 @@ $.when($.ready).done(function(){
 			return {};
 		}
 	});
+	//任务审批组件
+	Vue.component('ta-version-box',{
+		template:'#ta-version-box',
+		props:{
+			model:{
+				type:Object
+			},
+			showVersion:{
+				type:Boolean
+			}
+		},
+		created:function(){
+			this.getedData=$.extend(true,{},this.model);
+		},
+		data:function(){
+			return {
+				getedData:null
+			};
+		},
+		methods:{
+			add:function(){
+				this.getedData.tabsData.unshift({
+					txt:'2.0版本',
+					isSelect:false
+				});
+				var tmpArrs=this.getedData.versionData.splice(0,this.getedData.versionData.length);
+				this.getedData.versionData=null;
+				tmpArrs.unshift({
+					projectName:'项目3',
+					isShow:false    //版本显示或隐藏
+				});
+				this.$nextTick($.proxy(function(){
+					this.getedData.versionData=tmpArrs;
+					tmpArrs=null;
+				},this));
+			},
+			tabVersion:function(index){  //切换显示的版本
+				this.getedData.tabsData.forEach(function(item){
+					item.isSelect=false;
+				});
+				this.getedData.versionData.forEach(function(item){
+					item.isShow=false;
+				});
+				this.getedData.tabsData[index].isSelect=true;
+				this.getedData.versionData[index].isShow=true;
+			}
+		}
+	});
 	//任务审批版本
 	Vue.component('ta-version',{
 		template:'#ta-version',
@@ -290,6 +336,7 @@ $.when($.ready).done(function(){
 			this.ownData=$.extend(true,{},this.model);
 		},
 		mounted:function(){
+			console.log(this.ownData);
 			//日期插件
 			showDate({id:this.ownData.startTime,isYmd:true});
 			showDate({id:this.ownData.endTime,isYmd:true});
@@ -297,6 +344,19 @@ $.when($.ready).done(function(){
 		data:function(){
 			return {
 				ownData:null
+			};
+		}
+	});
+	//下拉框
+	Vue.component('mis-type',{
+		template:'#mis-type',
+		props:['type','initSelected'],
+		created:function(){
+			this.optionDatas=$.extend(true,{},selectDatas);
+		},
+		data:function(){
+			return {
+				optionDatas:null
 			};
 		}
 	});

@@ -77,7 +77,7 @@
 				<tbody>
 					<tr>
 						<td>任务名称</td>
-						<td>计划开始时间类型</td>
+						<td>计划开始时间</td>
 						<td>创建时间</td>
 						<td>计划开始时间</td>
 						<td>提交时间</td>
@@ -90,23 +90,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<div class="fe-mis_ta_wrap fe-mis_basic" v-show="showVersion">
-				<ul class="fe-mis_ta_verList flex">
-					<li 
-						class="fe-mis_ta_verListItem"
-						v-for="(item,index) in tabsData"
-						:class="{select:item.isSelect}"
-						v-text="item.txt"
-						@click="tabVersion(index)"
-					></li>
-				</ul>
-				<ta-version
-					v-for="(item,index) in versionData"
-					:key="index"
-					:model="item"
-					:is-show="item.isShow"
-				></ta-version>
-			</div>
+			<ta-version-box :model="propData" :show-version="showVersion"></ta-version-box>
 		</div>
 	</div>
 </script>
@@ -645,43 +629,43 @@
 				<label for="" class="fe-ms_label">
 					<span class="fl fe-mis_iTitle name">计划开始时间</span>
 					<div class="fl fe-mis_inputBox iWid202">
-						<input type="text" placeholder="---请选择---" :id="ownData.startTime">
+						<input type="text" placeholder="---请选择---">
 						<i class="drop-arrow"></i>
 					</div>
 				</label>
 				<label for="" class="fe-ms_label">
 					<span class="fl fe-mis_iTitle name">计划结束时间</span>
 					<div class="fl fe-mis_inputBox iWid202">
-						<input type="text" placeholder="---请选择---" :id="ownData.endTime">
+						<input type="text" placeholder="---请选择---">
 						<i class="drop-arrow"></i>
 					</div>
 				</label>
 				<label for="" class="fe-ms_label">
 					<span class="fl fe-mis_iTitle name">负责人</span>
 					<div class="fl fe-mis_inputBox iWid202">
-						<input type="text">
+						<mis-type type="user" init-selected="D"></mis-type>
 					</div>
 				</label>
 			</li>
 			<li class="fe-mis_ta_infoListItem">
 				<span class="fl fe-mis_iTitle name">项目类型</span>
-				<label :for="ownData.projectType1" class="fl fe-ms_label">
+				<label class="fl fe-ms_label">
 					<div class="fl fe-mis_checkBox">
-						<input type="checkbox" :id="ownData.projectType1">
+						<input type="checkbox">
 						<span class="circle"></span>
 					</div>
 					<span class="fl fe-mis_iTitle">日常任务</span>
 				</label>
-				<label :for="ownData.projectType2" class="fl fe-ms_label">
+				<label class="fl fe-ms_label">
 					<div class="fl fe-mis_checkBox">
-						<input type="checkbox" :id="ownData.projectType2">
+						<input type="checkbox">
 						<span class="circle"></span>
 					</div>
 					<span class="fl fe-mis_iTitle">上级派发任务</span>
 				</label>
-				<label :for="ownData.projectType3" class="fl fe-ms_label">
+				<label class="fl fe-ms_label">
 					<div class="fl fe-mis_checkBox">
-						<input type="checkbox" :id="ownData.projectType3">
+						<input type="checkbox">
 						<span class="circle"></span>
 					</div>
 					<span class="fl fe-mis_iTitle">临时任务</span>
@@ -691,10 +675,7 @@
 				<label for="" class="fe-ms_label">
 					<span class="fl fe-mis_iTitle name">任务状态</span>
 					<div class="fl fe-mis_inputBox iWid202">
-						<select>
-							<option disbaled>---请选择---</option>
-							<option value="">1122</option>
-						</select>
+						<mis-type type="misType" init-selected="pf"></mis-type>
 					</div>
 				</label>
 			</li>
@@ -734,6 +715,36 @@
 			<span class="fe-mis_btn fe-mis_btn-blue btnWid">确定</span>
 		</div>
 	</div>
+</script>
+<!--任务审批-->
+<script type="text/x-template" id="ta-version-box">
+	<div class="fe-mis_ta_wrap fe-mis_basic" v-show="showVersion">
+		<ul class="fe-mis_ta_verList flex">
+			<li 
+				class="fe-mis_ta_verListItem"
+				v-for="(item,index) in getedData.tabsData"
+				:class="{select:item.isSelect}"
+				v-text="item.txt"
+				@click="tabVersion(index)"
+			></li>
+		</ul>
+		<ta-version
+			v-for="(item,index) in getedData.versionData"
+			:key="index"
+			:model="item"
+			:is-show="item.isShow"
+		></ta-version>
+	</div>
+</script>
+<!--下拉框-->
+<script type="text/x-template" id="mis-type">
+	<select v-model="initSelected" :id="type">
+		<option
+			v-for="(item,index) in optionDatas[type]"
+			:value="item.value"
+			v-text="item.label"
+		></option>
+	</select>
 </script>
 </body>
 </html>
