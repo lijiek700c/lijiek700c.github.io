@@ -1,0 +1,45 @@
+Project
+  - src
+    - client //客户端项目
+      - index.ts // 客户端项目文件
+      - tsconfig.json // 客户端配置文件
+        {
+          "extends": "../../tsconfig.json", // 继承基础配置
+          "compilerOptions": {
+            "outDir": "../../dist/client", // 指定输出目录
+          },
+          "references": [ // 指定依赖的工程
+            {"path": "./common"}
+          ]
+        }
+    - common // 前后端通用依赖工程
+      - index.ts  // 前后端通用文件
+      - tsconfig.json // 前后端通用代码配置文件
+        {
+          "extends": "../../tsconfig.json", // 继承基础配置
+          "compilerOptions": {
+            "outDir": "../../dist/client", // 指定输出目录
+          }
+        }
+    - server // 服务端项目
+      - index.ts // 服务端项目文件
+      - tsconfig.json // 服务端项目配置文件
+        {
+          "extends": "../../tsconfig.json", // 继承基础配置
+          "compilerOptions": {
+            "outDir": "../../dist/server", // 指定输出目录
+          },
+          "references": [ // 指定依赖的工程
+            {"path": "./common"}
+          ]
+        }
+  - tsconfig.json // 前后端项目通用基础配置
+    {
+      "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "strict": true,
+        "composite": true, // 增量编译
+        "declaration": true
+      }
+    }
